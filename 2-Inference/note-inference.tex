@@ -1,0 +1,159 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{scribe}
+\usepackage{listings}
+\usepackage{eufrak}
+
+\newenvironment{hints}{\textbf{Hints.}}{}
+
+\Scribe{Zhuohua Shen}
+\Lecturer{}
+\LectureNumber{}
+\LectureDate{Oct 2024}
+\LectureTitle{Statistical Inference}
+
+\lstset{style=mystyle}
+
+\begin{document}
+	\MakeScribeTop
+	\tableofcontents
+
+%#############################################################
+%#############################################################
+%#############################################################
+%#############################################################
+
+References: most of the contents are from the undergraduate course STA3020 (by Prof. Jianfeng Mao in 2022-2023 T1, and Prof. Jiasheng Shi in 2023-2024 T2) and postgraduate course STAT5010 (by Kin Wai Keith Chan in 2024-2025 T1), with main textbook \cite{casella2002statistical} 
+
+
+\section{Statistical Models}
+See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \P_*$, where $\P_*$ refers to the unknown \red{data generating process} (DGPg), we find $\widehat{\P}\approx \P_*$. A \red{statistical model} is a set of distributions $\scrF=\{\P_{\theta}:\theta\in\Theta\}$, where $\Theta$ is the \red{parameter space}. A \red{parametric model} is the model with $\dim(\Theta)<\infty$, while a \red{nonparametric model} satisfies $\dim(\Theta)=\infty$. 
+
+\begin{defbox}
+	\begin{definition}[\textbf{Exponential family}]\label{def:exp-family}
+		A k-dimensional \red{exponential family} (EF) $\scrF=\{f_\theta:\theta\in\Theta\}$ is a model consisting of pdfs of the form
+		\begin{equation}\label{eq:exp-family-pdf}
+			f_\theta(x)=c(\theta)h(x)\exp\left\{\sum_{j=1}^k\eta_j(\theta)T_j(x)\right\}
+		\end{equation}
+	\end{definition}
+	where $c(\theta),h(x)\geq 0$, $\Theta=\{\theta:c(\theta)\geq 0, \eta_j(\theta) \text{ being well defined for } 1\leq j\leq k\}$. Let $\eta_j=\eta_j(\theta)$, the \red{canonical form} is 
+	\begin{equation}\label{eq:exp-family-can}
+		f_\eta(x)=b(\eta)h(x)\exp\left\{\sum_{j=1}^k\eta_jT_j(x)\right\},
+	\end{equation}
+	\begin{itemize}[itemsep=2pt,topsep=0pt,parsep=0pt]
+		\item $k$-dim \red{natural exponential family} (NEF): $\scrF'=\{f_{\eta}:\eta\in \Xi\}$; 
+		\item \red{natural parameter} $\eta=(\eta_1,\ldots,\eta_k)^T$;
+		\item \red{natural parameter space}: $\Xi=\{\eta\in\mathbb{R}^k:0<b(\eta)<\infty\}$; 
+		\item the NEF $\scrF'$ is of \red{full rank} if $\Xi$ contains an open set in $\R^k$;
+		\item the EF is a \red{curved exponential family} if $p=\dim(\Theta)<k$.
+	\end{itemize}
+\end{defbox}
+\textbf{Properties of EF}:
+\begin{itemize}[itemsep=2pt,topsep=0pt,parsep=0pt]
+	\item Let $X\sim f_{\eta}$, where $\eta\in\Xi$ such that (i) $f_{\eta}$ is of the form \eqref{eq:exp-family-can} with $B(\eta)=-\log b(\eta)$, and (ii) $\Xi$ contains an open set in $\R^k$. Then, for $j,j'=1,\ldots,k$, $\E\{T_j(X)\}={\partial B(\eta)}/{\partial\eta_j}$ and $\Cov\{T_j(X),T_{j'}(X)\}={\partial^2B(\eta)}/\sbk{\partial\eta_j\partial\eta_{j'}}$.  
+	\item \red{Stein's identity}:
+\end{itemize}
+
+\begin{defbox}
+	\begin{definition}[\textbf{Location-scale family}]\label{def:ls-family}
+		Let $f$ be a density. 
+		\begin{itemize}
+			\item A \red{location-scale family} is given by $\scrF=\{f_{\mu,\sigma}:\mu \in\R, \sigma\in\R^{++}\}$, where $f_{\mu,\sigma}(x)= f\left({(x-\mu)}/\sigma\right)/\sigma$.
+			\item \red{location parameter}: $\mu$; \red{scale parameter}: $\sigma$; \red{standard density}: $f$;
+			\item A \red{location family} is $\scrF=\{f_{\mu,1}:\mu\in\R\}$.
+			\item A \red{scale family} is $\scrF=\{f_{0,\sigma}:\sigma\in\R^{++}\}$ 
+		\end{itemize}
+	\end{definition}
+\end{defbox}
+\textbf{Representation}: $X=\mu + \sigma Z$, $Z\sim f_{0,1}(\cdot)$. 
+\begin{itemize}
+	\item See some examples in Example 3.9, Keith's note 3, and Table 1 in Shi's note L1. 
+	\item Transform between location parameter and scale parameter by taking log.
+\end{itemize}
+
+
+\begin{defbox}
+	\begin{definition}[\textbf{Identifiable family}]\label{def:id-family}
+		If $\forall \theta_1,\theta_2\in\Theta$ that    
+		\begin{equation*}
+			\theta_1\neq\theta_2\quad\Rightarrow\quad f_{\theta_1}(\cdot)\neq f_{\theta_2}(\cdot),
+		\end{equation*}
+		then $\scrF$ is said to be an \red{identifiable family}, or equivalently $\theta\in\Theta$ is \red{identifiable}. 
+	\end{definition}
+\end{defbox}
+A typical feature of non-identifiable EF is that $p=\dim(\Theta)>k$. Typically,
+\begin{itemize}
+	\item $p<k$, curved (must).
+	\item $p=k$, of full rank.
+	\item $p>k$, non-identifiable.  
+\end{itemize} 
+
+\section{Principles of Data Reduction}\label{sec:prin-data-reduce}
+\red{Statistics:} $T=T(X_{1:n})$, a function of $X_{1:n}$ and free of any unknown parameter.  
+
+\subsection{Sufficiency Principle}\label{sec:prin-data-reduce-suff}
+\textbf{Sufficiency principle}: If $T=T(X_{1:n})$ is a ``sufficient statistics'' for $\theta$, then any inference on $\theta$ will depend on $X_{1:n}$ only through $T$.
+
+\begin{defbox}
+	\begin{definition}[\textbf{Sufficient, minimal sufficient, ancillary, and complete statistics}]\label{def:stat-SS-MSS-ANS-CS}
+		Suppose $X_{1:n}\simiid \P_{\theta}$, where $\theta\in\Theta$. Let $T=T(X_{1:n})$ be a statistic. Then $T$ is \red{sufficient} (SS) for $\theta$
+		\begin{itemize}
+			\item[$\Leftrightarrow$] (def) $[X_{1:n}\mid T=t]$ is free of $\theta$ for each $t$.
+			\item[$\Leftrightarrow$] (technical lemma) $T(x_{1:n})=T(x_{1:n}')$ implies that $f_{\theta}(x_{1:n})/f_{\theta}(x_{1:n}')$ is free of $\theta$.
+			\item[$\Leftrightarrow$] (Neyman-Fisher factorization theorem) $\forall\theta\in\Theta$, $x_{1:n}\in\scrX^n$, $f_\theta(x_{1:n})=A(t,\theta)B(x_{1:n})$.
+		\item[$\Leftrightarrow$] Define $\Lambda(\theta',\theta''\mid x_{1:n}):=f_{\theta'}(x_{1:n})/f_{\theta''}(x_{1:n})$. $\forall \theta',\theta''\in\Theta$, $\exists$ function $C_{\theta',\theta''}$ such that $\Lambda(\theta',\theta''\mid x_{1:n})=C_{\theta',\theta''}(t)$, for all $x_{1:n}\in\scrX^n$ where $t=T(x_{1:n})$.    
+		\end{itemize}
+	$T$ is \red{minimal sufficient} (MSS) for $\theta$
+	\begin{itemize}
+		\item[$\Leftrightarrow$] (def) (1) $T$ is a SS for $\theta$; (2) $T=g(S)$ for any other SS $S$.
+		\item[$\Leftrightarrow$] (1) $T$ is a SS for $\theta$; (2) $S(x_{1:n})=S(x_{1:n}')$ implies $T(x_{1:n})=T(x_{1:n}')$ for any SS $S$.   
+		\item[$\Leftrightarrow$] (Lehmann-Scheffé theorem) $\forall x_{1:n},x_{1:n}'\in\scrX^n$, $f_{\theta}(x_{1:n})/f_{\theta}(x_{1:n}')$ is free of $\theta$ $\Leftrightarrow$ $T(x_{1:n})=T(x_{1:n}')$.    
+	\end{itemize}
+	$A=A(X_{1:n})$ is \red{ancillary} (ANS) if the distribution of $A$ does not depend on $\theta$. 
+
+	\noindent $T$ is \red{complete} (CS) if $\forall\theta\in\Theta$, $\Ex_{\theta}g(T)=0$ implies $\forall\theta\in\Theta$, $\P_{\theta}\{g(T)=0\}=1$. 
+	\end{definition}
+\end{defbox}
+\noindent\textbf{Properties}
+\begin{itemize}
+	\item (Transformation) If $T=r(T')$, then (i) $T$ is SS $\Rightarrow$ $T'$ is SS; (ii) $T'$ is CS $\Rightarrow$ $T$ is CS; (iii) $r$ is one-to-one, then if one is SS/MSS/CS, then the another is.    
+	\item (\red{Basu's Lemma}) $X_i\simiid\P_\theta$, $A$ is ANS and $T$ s CSS, then $A \indep T$.
+	\item (\red{Bahadur's theorem}) $X_i\simiid\P_\theta$, if an MSS exists, then any CSS is also an MSS.
+	\begin{itemize}
+		\item Then if a CSS exists, then any MSS is also a CSS $\Rightarrow$ CSS=MSS.
+		\item \red{All or nothing}: start with MSS $T$, check whether $T$ is CS. (i) Yes, it is both CSS and MSS, then the set of MSS=CSS; (ii) No, there is no CSS at all.  
+	\end{itemize}
+	\item (Exp-family) If $X_i\simiid f_{\eta}$ in \eqref{eq:exp-family-can}, then $T=(\sum_{i=1}^nT_1(X_i),\ldots,\sum_{i=1}^nT_k(X_i))$ is a SS, called \red{natural sufficient statistic}. If $\Xi$ contains an open set in $\R^k$ (i.e., $\scrF'$ is of full rank), then $T$ is MSS and CSS. 
+\end{itemize}
+
+\noindent\textbf{Proof techniques}
+\begin{itemize}
+	\item Prove $T$ is not sufficient for $\theta$: show if $\exists x_{1_n}, x_{1:n}'\in\calX^n$ and $\theta',\theta''\in\Theta$, such that $T(x_{1:n})=T(x_{1:n}')$ and $\Lambda(\theta',\theta''\mid x_{1:n})\neq \Lambda(\theta',\theta''\mid x_{1:n}')$.  
+	\item Prove $A$ is an ANS: consider location-scale representation.
+	\item Prove $T$ is a CS: use definition or take $\rmd\Ex_{\theta}g(T)/\rmd\theta=0$. 
+	\item Disprove $T$ is CS: 
+	\begin{itemize}
+		\item Construct an ANS $S(T)$ based on $T$, then $\Ex S(T)$ is free of $\theta$, then $g(T)=S(T)-\Ex S(T)$ is free of $\theta$ but $g(T)\neq 0$ w.p.1. 
+		\item (Cancel the 1st moment) Find two unbiased estiamtors for $\theta$ as a function of $T$. E.g., $X_1,X_2\simiid \mathrm{N}(\theta,\theta^2)$, $T=(X_1,X_2)$, $g(T)=X_1-X_2\sim\mathrm{N}(0,2\theta^2)$. 
+	\end{itemize}
+	
+\end{itemize}
+
+
+\begin{remark}\label{rmk:SS-MSS-ANS-CS}
+	\begin{itemize}
+		\item ANS $A$ is useless on its own, but useful together with other information. 
+		\item $\P(A(\X)\mid \theta)$ is free of $\theta$, but for non-SS $T$, $\P(A(\X)\mid T(\X))$ is not necessarily free of $\theta$. 
+	\end{itemize}
+\end{remark}
+
+\subsection{Likelihood principle}\label{sec:prin-data-reduce-lik}
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{mybib}
+%%% end of doc
+\end{document}

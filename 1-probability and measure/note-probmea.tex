@@ -1,0 +1,55 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{scribe}
+\usepackage{listings}
+\usepackage{eufrak}
+
+\newenvironment{hints}{\textbf{Hints.}}{}
+
+\Scribe{Zhuohua Shen}
+\Lecturer{}
+\LectureNumber{}
+\LectureDate{Nov 2024}
+\LectureTitle{Probability and measure}
+
+\lstset{style=mystyle}
+
+\begin{document}
+	\MakeScribeTop
+	\tableofcontents
+
+%#############################################################
+%#############################################################
+%#############################################################
+%#############################################################
+
+References: STAT5005 and \textit{Probability: Theory and Examples}, 4th edition, by Richard Durrett, published by Cambridge University Press.
+
+\section{Measure Theory}\label{sec:measure}
+
+\subsection{Expectation}\label{sec:measure-expectation}
+\begin{lemma}\label{lamma:measure-expectation-expInt}
+	Let $X\geq 0$, $p>0$, we have $\E X^p=\int_{0}^{\infty }px^{p-1}\P(X>x) \rmd x$.
+\end{lemma}
+
+
+\section{Law of Large Numbers}\label{sec:LLN}
+
+
+
+
+\subsection{Almost Surely Convergence}\label{sec:LLN-AS}
+
+This lemma gives an equivalent relation between expectation and sum of tail probability.
+\begin{lemma}\label{lemma:LLN-AS-expectation-sumTail}
+	Let $X_i$ iid and $\varepsilon>0$, then $\sum_{n=1}^{\infty } \P(\abs{X_n}>n\varepsilon) \leq \varepsilon^{-1}\E\abs{X_i} \leq  \sum_{n=0}^\infty \P(\abs{X_n}>n\varepsilon)$.  
+\end{lemma}
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{mybib}
+%%% end of doc
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{scribe}
+\usepackage{listings}
+\usepackage{eufrak}
+
+\newenvironment{hints}{\textbf{Hints.}}{}
+
+\Scribe{Zhuohua Shen}
+\Lecturer{}
+\LectureNumber{}
+\LectureDate{Nov 2024}
+\LectureTitle{Math Tools}
+
+\lstset{style=mystyle}
+
+\begin{document}
+	\MakeScribeTop
+	\tableofcontents
+
+%#############################################################
+%#############################################################
+%#############################################################
+%#############################################################
+
+References: 
+\begin{itemize}
+	\item CUHKSZ: MAT3007 - Optimization I
+	\item CUHKSZ: MAT3220 - Optimization II. Textbook: 
+	\item \begin{enumerate}
+		\item \textit{Introduction to Nonlinear Optimization: Theory, Algorithms, and
+		Applications with MATLAB}, Amir Beck.
+		\item \textit{Convex Optimization}, S. Boyd and L. Vandenberghe.
+		\item \textit{Nonlinear Programming}, D. Bertsekas.
+		\item \textit{First-Order Methods in Optimization}, Amir Beck
+	\end{enumerate}
+	
+	
+\end{itemize}
+
+\section{Nonlinear Optimization}\label{sec:nonlinearOPT}
+\subsection{KKT Conditions}\label{sec:KKT}
+\begin{thmbox}
+	\begin{theorem}[The Fritz-John necessary conditions]\label{thm:KKT-FJnecessary}
+		Let $\x^*$ be a local minimum of the problem
+		\begin{align*}
+		&\min\quad f(\x)\\
+		&s.t.\quad g_i(\x)\leq0,\quad i=1,2,\ldots,m
+		\end{align*}
+		where $f,g_1,\ldots,g_m\in C^1(\R^n)$. Then $\exists$ multipliers $\lambda_0,\ldots,\lambda_m\geq 0$, which are not all zeros, such that  
+		\begin{align*}
+			\lambda_0\nabla f(\x^*)+\sum_{i=1}^m\lambda_i\nabla g_i(\x^*)& =\0 \\
+			\lambda_ig_i(\x^*)& =0, \quad i=1,2,\ldots,m.
+		\end{align*} 
+	\end{theorem}	
+\end{thmbox}
+
+A major drawback of the Fritz-John conditions is, they allow $\lambda_0=0$. Under an additional \blue{regularity condition}, we can assume $\lambda_0=1$. Let $I(\x^*)$ be the set of active constraints at $\x^*$: 
+\begin{equation*}
+	I(\x^*)=\{i:g_i(\x^*)=0\}.
+\end{equation*}
+\begin{thmbox}
+	\begin{theorem}[The KKT conditions for inequality constrained problems]\label{thm:KKT-ineq_constrained}
+		Let $\x^*$ be a local minimum of 
+		\begin{align*}
+		&\min\quad f(\x)\\
+		&s.t.\quad g_i(\x)\leq0,\quad i=1,2,\ldots,m
+		\end{align*}
+		where $f,g_1,\ldots,g_m\in C^1(\R^n)$. If \blue{$\{\nabla g_i(\x^*)\}_{i\in I(\x^*)}$ are linearly independent}. Then $\exists \lambda_1,\ldots,\lambda_m\geq 0$ such that  
+		\begin{align*}
+			\nabla f(\x^*)+\sum_{i=1}^m\lambda_i\nabla g_i(\x^*)& =\0 \\
+			\lambda_ig_i(\x^*)& =0, \quad i=1,2,\ldots,m.
+		\end{align*} 
+	\end{theorem}	
+\end{thmbox}
+
+\begin{thmbox}
+	\begin{theorem}[The KKT conditions for inequality/equality constrained problems]\label{thm:KKT-ineq_eq_constrained}
+		Let $\x^*$ be a local minimum of 
+		\begin{equation}\label{eq:KKT-ineq_eq}
+			\begin{aligned}
+				&\min\quad  f(\x)\\
+				&s.t.\quad  g_i(\x)\leq0,\quad i=1,2,\ldots,m\\
+				&\quad\quad\ h_j(\x)=0,\quad j=1,\ldots,p
+				\end{aligned}	
+		\end{equation}
+		where $f,g_1,\ldots,g_m,h_1,\ldots,h_p\in C^1(\R^n)$. If \blue{$\{\nabla g_i(\x^*),\nabla h_j(\x^*),i\in I(\x^*),j=1,\ldots,p\}$ are linearly independent}. Then $\exists \lambda_1,\ldots,\lambda_m\geq 0$, $\mu_1,\ldots,\mu_p\in\R$,  such that 
+		\begin{equation}\label{eq:KKT-point}
+			\begin{aligned}
+				\nabla f(\x^*)+\sum_{i=1}^m\lambda_i\nabla g_i(\x^*) + \sum_{j=1}^{p}\mu_j\nabla h_j(\x^*)& =\0, \\
+				\lambda_ig_i(\x^*)& =0, \quad i=1,2,\ldots,m.
+			\end{aligned} 
+		\end{equation} 
+	\end{theorem}	
+\end{thmbox}
+Consider problem (1), a feasible point $\x^*$ is called a \red{KKT point}
+if $\exists \lambda_1,\ldots,\lambda_m\geq 0$, $\mu_1,\ldots,\mu_p\in\R$, such that \eqref{eq:KKT-point} holds. $\x^*$ is called \blue{regular} if $\{\nabla g_i(\x^*),\nabla h_j(\x^*),i\in I(\x^*),j=1,\ldots,p\}$ are linearly independent.
+\begin{itemize}
+	\item The additional requirement of regularity is not required in linearly
+	constrained problems in which no such assumption is needed.
+\end{itemize}
+
+
+
+
+
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{mybib}
+%%% end of doc
+\end{document}
