@@ -86,10 +86,11 @@ colorlinks=true,
 allcolors=blue,
 %linkcolor=blue,
 anchorcolor=blue,
-citecolor=blue}
+citecolor=pink}
 % packages for color boxes
 \usepackage{tikz,lipsum,lmodern}
 \usepackage[most]{tcolorbox}
+\usepackage{enumerate}
 %\usepackage{natbib}
 %\usepackage{url}
 
@@ -216,13 +217,17 @@ citecolor=blue}
 \newcommand{\wt}{\widetilde}
 
 % "blackboard-fonted" letters for the reals, naturals etc.
-\newcommand{\C}{\mathbb C}
-\newcommand{\E}{\mathbb E}
-\newcommand{\F}{\mathbb F}
-\newcommand{\N}{\mathbb N}
-\newcommand{\Q}{\mathbb Q}
-\newcommand{\R}{\mathbb R}
-\newcommand{\Z}{\mathbb Z}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbE}{\mathbb E}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbZ}{\mathbb Z}
+
+\newcommand{\bbeta}{{\boldsymbol \eta}}
+\newcommand{\bbtheta}{\boldsymbol \theta}
 
 % operators that should be typeset in Roman font
 \newcommand{\poly}{\mathrm{poly}}
@@ -232,7 +237,6 @@ citecolor=blue}
 \newcommand{\val}{{\mathrm{val}}}
 
 % complexity classes
-\renewcommand{\P}{\mathrm{P}}
 \newcommand{\NP}{\mathrm{NP}}
 \newcommand{\BPP}{\mathrm{BPP}}
 \newcommand{\DTIME}{\mathrm{DTIME}}
@@ -343,8 +347,8 @@ citecolor=blue}
 \newcommand{\0}{{\boldsymbol 0}}
 \newcommand{\1}{{\boldsymbol 1}}
 
-\newcommand{\bbeta}{{\boldsymbol \eta}}
-\newcommand{\bbtheta}{\boldsymbol \theta}
+
+\newcommand{\rmP}{\mathrm{P}}
 
 
 % useful for Fourier analysis
@@ -368,6 +372,7 @@ citecolor=blue}
 %% statistical inference 
 % \def\simiid{\stackrel{\mathrm{iid}}{\sim}}
 \def\simiid{{\sim}_{\mathrm{iid}}}
+\def\eqd{\stackrel{\mathrm{d}}{=}}
 \newcommand{\indep}{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern4mu{#1#2}}}
 \newcommand{\rmd}{\mathrm{d}}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  17 NOV 2024 23:13
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  21 NOV 2024 00:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -667,11 +667,14 @@ File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (d:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.4.1'
-)) (d:/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
+)) (d:/texlive/2024/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
+\@enLab=\toks47
+) (d:/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip58
 \enit@outerparindent=\dimen274
-\enit@toks=\toks47
+\enit@toks=\toks48
 \enit@inbox=\box82
 \enit@count@id=\count339
 \enitdp@description=\count340
@@ -691,7 +694,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen280
 \Gm@layouthoffset=\dimen281
 \Gm@layoutvoffset=\dimen282
-\Gm@dimlist=\toks48
+\Gm@dimlist=\toks49
 )
 \c@theorem=\count344
 \c@tcb@cnt@defboxt=\count345
@@ -814,7 +817,11 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
 \tf@toc=\write5
 \openout5 = `note-probmea.toc'.
 
- (./note-probmea.bbl (./note-probmea.brf)
+
+
+[1
+
+] (./note-probmea.bbl (./note-probmea.brf)
 \tf@brf=\write6
 \openout6 = `note-probmea.brf'.
 
@@ -824,25 +831,23 @@ LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 )
 
-[1
-
-] (./note-probmea.aux)
+[2] (./note-probmea.aux)
  ***********
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
  ***********
 Package rerunfilecheck Info: File `note-probmea.out' has not changed.
-(rerunfilecheck)             Checksum: 63C6794521B92C105E8686CC683B579C;568.
+(rerunfilecheck)             Checksum: 3C782133C7E6E09DA7280CA1605D91F3;1059.
 Package rerunfilecheck Info: File `note-probmea.brf' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 29535 strings out of 473995
- 591508 string characters out of 5737702
- 1112047 words of memory out of 5000000
- 51920 multiletter control sequences out of 15000+600000
- 598254 words of font info for 78 fonts, out of 8000000 for 9000
+ 29641 strings out of 473995
+ 593681 string characters out of 5737702
+ 1125427 words of memory out of 5000000
+ 52023 multiletter control sequences out of 15000+600000
+ 598619 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,6n,110p,545b,343s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,6n,110p,545b,658s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on note-probmea.pdf (1 page).
+Output written on note-probmea.pdf (2 pages).

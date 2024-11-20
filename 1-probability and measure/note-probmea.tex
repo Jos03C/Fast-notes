@@ -31,7 +31,7 @@ References: STAT5005 and \textit{Probability: Theory and Examples}, 4th edition,
 
 \subsection{Expectation}\label{sec:measure-expectation}
 \begin{lemma}\label{lamma:measure-expectation-expInt}
-	Let $X\geq 0$, $p>0$, we have $\E X^p=\int_{0}^{\infty }px^{p-1}\P(X>x) \rmd x$.
+	Let $X\geq 0$, $p>0$, we have $\bbE X^p=\int_{0}^{\infty }px^{p-1}\bbP(X>x) \rmd x$.
 \end{lemma}
 
 
@@ -44,9 +44,68 @@ References: STAT5005 and \textit{Probability: Theory and Examples}, 4th edition,
 
 This lemma gives an equivalent relation between expectation and sum of tail probability.
 \begin{lemma}\label{lemma:LLN-AS-expectation-sumTail}
-	Let $X_i$ iid and $\varepsilon>0$, then $\sum_{n=1}^{\infty } \P(\abs{X_n}>n\varepsilon) \leq \varepsilon^{-1}\E\abs{X_i} \leq  \sum_{n=0}^\infty \P(\abs{X_n}>n\varepsilon)$.  
+	Let $X_i$ iid and $\varepsilon>0$, then $\sum_{n=1}^{\infty } \bbP(\abs{X_n}>n\varepsilon) \leq \varepsilon^{-1}\bbE\abs{X_i} \leq  \sum_{n=0}^\infty \bbP(\abs{X_n}>n\varepsilon)$.  
 \end{lemma}
 
+
+\section{Central Limit Theorem}\label{sec:CLT}
+
+\section{Random Walks}\label{sec:RW}
+\red{Random walk (RW)}: Let $\X_i$ be iid rvs in $\bbR^d$. Let $\S_n=\sum_{i=1}^{n}\X_i$. Then $\{\S_n:n\geq 1\}$ is called a RW. Take $\S_0=\0$.  
+
+\noindent \red{Simple random walk (SRW)}: If $\bbP(X_i=1)=\bbP(X_i=-1)=1/2$, then $\{S_n\}$ is called a SRW in $\bbR^1$. If $\bbP(\X_i=(1,1))=\bbP(\X_i=(1,-1))=\bbP(\X_i=(-1,1))=\bbP(\X_i=(-1,-1))=1/4$, then called a SRW in $\bbR^2$.
+
+\noindent \underline{\textbf{Long-term behavior of RW}}
+
+\noindent \red{Permutable (or exchangeable)}: An event that does not change under finite permutation of $\{\X_1,\X_2,\ldots\}$.
+\begin{itemize}
+	\item All events in the tail $\sigma$-field $\calT$ are permutable.
+	\item $\{\omega:\S_{n}(\omega)\in B \ \mathrm{i.o.}\}$ is permutable but not tail event. 
+	\item $\{\omega:\lim\sup_{n\to\infty}\S_{n}(\omega)/c_{n}\geq1\}$.
+\end{itemize}
+
+\begin{thmbox}
+\begin{theorem}[Hewitt-Savage 0-1 law]\label{thm:HS01Law}
+	If $\X_i$ iid and event $A$ is permutable, then $\bbP(A)=0$ or $1$.   
+\end{theorem}
+\end{thmbox}
+
+\begin{thmbox}
+	\begin{theorem}[Long-term behavior of RW \ref{proof:longTermRW-1d}]\label{thm:longTermRW-1d}
+		For a RW in $\bbR$, one of the following has probability $1$:
+		\begin{enumerate}[label=(\roman*)]
+			\item $S_n=0$ for all $n$ ;
+			\item $S_n\to \infty $ as $n\to \infty $;
+			\item $S_n\to - \infty $ as $n\to \infty $;
+			\item $- \infty = \liminf_{n} S_n < \limsup_n S_n=\infty $.   
+		\end{enumerate}  
+	\end{theorem}
+\end{thmbox}
+
+\noindent \underline{\textbf{For two levels $a<b$, find the probability that RW reaches $b$ before $a$}}
+
+\noindent \red{Filtration}: Let $X_i$ be a sequence of rvs, $\{\calF_n:=\sigma(X_1,\ldots,X_n)\}_{n=1}^\infty $ as an increasing sequence of $\sigma$-fields, is called a filtration. We usually take $\calF_0=\{\phi,\Omega\}$.  
+
+\noindent \red{Stopping time/optional random variable/optimal time/Markov time}: $\tau\in\bbN^+\cup\{\infty \}$ is a stopping time w.r.t. $\{\calF_n\}$ if $\{\tau=n\}\in\calF_n$, $\forall n\in\bbN^+$. (Equivalent def: $\{\tau\leq n\}\in\calF_n$ or $\{\tau\geq n+1\}\in\calF_n$ for $n\in\bbN^+$)
+\begin{itemize}
+	\item If $\tau_1,\tau_2$ are stopping time, then $\tau_1\wedge\tau_2$, $\tau_1\vee\tau_2$, $\tau_1+\tau_2$ are stopping times.    
+\end{itemize}
+
+\appendix
+\section{Proofs}\label{sec:proof}
+\subsection{Proofs - section \ref{sec:RW}}\label{sec:proof-RW}
+\begin{proof}[Proof of Theorem \ref{thm:longTermRW-1d}]\label{proof:longTermRW-1d}
+	By the 0-1 law \ref{thm:HS01Law}, $\{\limsup_n S_n\geq c\}$ has probability 0 or 1, meaning that $\limsup_n S_n=c\in [-\infty ,\infty ]$ w.p.1. Since $S_n \eqd S_{n+1}-X_{1}$, we have $c=c-X_1$.
+\begin{enumerate}[label=(\roman*)]
+	\item If $c\in\bbR$, then $X_1\equiv 0$ a.s., so $S_n=0$ for all $n$ a.s.
+\end{enumerate}
+If $X_1\neq 0$ a.s., then $c=-\infty $ or $\infty $,   
+\begin{enumerate}
+	\item[(ii)] If $c=\infty $, and $\liminf_n S_n=\infty $, then case (ii);
+	\item[(iii)] If $c=-\infty $, and $\liminf_n S_n=-\infty $, then case (iii);
+	\item[(iv)] If $c=\infty $, and $\liminf_n S_n=-\infty $, then case (iv).       
+\end{enumerate}
+\end{proof}
 
 
 \bibliographystyle{abbrv}
