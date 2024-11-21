@@ -347,7 +347,7 @@ citecolor=pink}
 \newcommand{\0}{{\boldsymbol 0}}
 \newcommand{\1}{{\boldsymbol 1}}
 
-
+\newcommand{\rmd}{\mathrm{d}}
 \newcommand{\rmP}{\mathrm{P}}
 
 
@@ -361,8 +361,6 @@ citecolor=pink}
 % my definitions
 \def\floor#1{\lfloor #1 \rfloor}
 \def\flwed#1#2{\lfloor #1 \wedge #2 \rfloor}
-\def\blue#1{\textcolor{blue}{#1}}
-\def\red#1{\textcolor{red}{#1}}
 \def\ceil#1{\lceil #1 \rceil}
 \def\sbk#1{\left( {#1}\right)}
 \def\mbk#1{\left[ {#1}\right]}
@@ -375,7 +373,15 @@ citecolor=pink}
 \def\eqd{\stackrel{\mathrm{d}}{=}}
 \newcommand{\indep}{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern4mu{#1#2}}}
-\newcommand{\rmd}{\mathrm{d}}
+
+
+
+%% colors
+\def\blue#1{\textcolor{blue}{#1}}
+\def\red#1{\textcolor{red}{#1}}
+\def\yellow#1{\textcolor{yellow}{#1}}
+\def\pink#1{\textcolor{pink}{#1}}
+\def\brown#1{\textcolor{brown}{#1}}
 
 \newcommand{\half}{{\textstyle \frac12}}
 \newcommand{\myfig}[4]{\begin{figure}[h] \begin{center} \includegraphics[width=#1\textwidth]{#2} \caption{#3} \label{#4} \end{center} \end{figure}} 

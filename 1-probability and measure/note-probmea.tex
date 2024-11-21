@@ -55,6 +55,8 @@ This lemma gives an equivalent relation between expectation and sum of tail prob
 
 \noindent \red{Simple random walk (SRW)}: If $\bbP(X_i=1)=\bbP(X_i=-1)=1/2$, then $\{S_n\}$ is called a SRW in $\bbR^1$. If $\bbP(\X_i=(1,1))=\bbP(\X_i=(1,-1))=\bbP(\X_i=(-1,1))=\bbP(\X_i=(-1,-1))=1/4$, then called a SRW in $\bbR^2$.
 
+\subsection{Stopping Times (\ref{sec:proof-stoppingTimes})}\label{sec:stoppingTimes}
+
 \noindent \underline{\textbf{Long-term behavior of RW}}
 
 \noindent \red{Permutable (or exchangeable)}: An event that does not change under finite permutation of $\{\X_1,\X_2,\ldots\}$.
@@ -71,7 +73,7 @@ This lemma gives an equivalent relation between expectation and sum of tail prob
 \end{thmbox}
 
 \begin{thmbox}
-	\begin{theorem}[Long-term behavior of RW \ref{proof:longTermRW-1d}]\label{thm:longTermRW-1d}
+	\begin{theorem}[Long-term behavior of RW]\label{thm:longTermRW-1d}
 		For a RW in $\bbR$, one of the following has probability $1$:
 		\begin{enumerate}[label=(\roman*)]
 			\item $S_n=0$ for all $n$ ;
@@ -84,17 +86,134 @@ This lemma gives an equivalent relation between expectation and sum of tail prob
 
 \noindent \underline{\textbf{For two levels $a<b$, find the probability that RW reaches $b$ before $a$}}
 
-\noindent \red{Filtration}: Let $X_i$ be a sequence of rvs, $\{\calF_n:=\sigma(X_1,\ldots,X_n)\}_{n=1}^\infty $ as an increasing sequence of $\sigma$-fields, is called a filtration. We usually take $\calF_0=\{\phi,\Omega\}$.  
+\noindent \red{Filtration}: Let $\X_i$ be a sequence of rvs, $\{\calF_n:=\sigma(\X_1,\ldots,\X_n)\}_{n=1}^\infty $ as an increasing sequence of $\sigma$-fields, is called a filtration. We usually take $\calF_0=\{\phi,\Omega\}$.  
 
 \noindent \red{Stopping time/optional random variable/optimal time/Markov time}: $\tau\in\bbN^+\cup\{\infty \}$ is a stopping time w.r.t. $\{\calF_n\}$ if $\{\tau=n\}\in\calF_n$, $\forall n\in\bbN^+$. (Equivalent def: $\{\tau\leq n\}\in\calF_n$ or $\{\tau\geq n+1\}\in\calF_n$ for $n\in\bbN^+$)
 \begin{itemize}
+	\item Constant $\tau=n$ is a stopping time. 
 	\item If $\tau_1,\tau_2$ are stopping time, then $\tau_1\wedge\tau_2$, $\tau_1\vee\tau_2$, $\tau_1+\tau_2$ are stopping times.    
+	\item \red{Hitting time of $A$}: let $A$ measurable, then $\tau=\inf\{n\geq 1:\S_n\in A\}$ is a stopping time.     
+	\item $\sigma$-field $\calF_N$=the information known at time $N$. Def: $\calF_N$ is the collection of sets $A$ that have $A\cup\{N=n\}\in\calF_n$, $\forall n< \infty $. Example: $\{N\leq n\}\in\calF_N$, i.e., $N$ is $\calF_N$-measurable.          
 \end{itemize}
+
+\begin{thmbox}
+	\begin{theorem}[Wald's equation]\label{thm:WaldEq}
+		
+	Let $X_i$ iid and $\tau$ be a stopping time. 
+	\begin{enumerate}
+		\item (Wald's first equation)
+		If $\bbE \abs{X_1}< \infty $ and $\bbE \tau < \infty $, then $\bbE S_{\tau}=\bbE X_1 \bbE \tau$.     
+		\item (Wald's second equation) If $\bbE X_1=0$, $\bbE X_1^2=\sigma^2<\infty$, $\bbE \tau < \infty $, then $\bbE S_{\tau}^2=\sigma^2 \bbE \tau$.    
+	\end{enumerate}
+	\end{theorem}
+\end{thmbox}
+
+\begin{exbox}
+\begin{example}[Results for 1-d SRW]\label{eg:1dSRW}
+	For 1-d SRW, let $a,b\in\bbZ$, $a<0<b$. Let $N=\inf \{n: S_n\notin (a,b)\}=\inf\{n:S_n=a \text{ or } b\}$. Then 
+	\begin{enumerate}
+		\item $\bbE N <\infty $,
+		\item $S_N=a$ or $b$,
+		\item $\bbP (S_N=a)=b/(b-a)$, $\bbP(S_N=b)=-a/(b-a)$,
+		\item $\bbE N=\bbE S_N^2=(-a)b$.      
+	\end{enumerate} 
+\end{example}
+\end{exbox}
+
+\subsection{Recurrence vs. Transience (\ref{sec:proof-RecTrans})}\label{sec:RecTrans}
+\noindent \underline{\textbf{When RW return to 0?}}
+We consider SRW on $\bbR^d$ and define its first, second, ..., $n$th returning time to the origin to be 
+\begin{align*}
+	\tau_{1}&=\inf\{m\geq1:\S_{m}=\0\},\\\tau_{n}&=\inf\{m>\tau_{n-1}:\S_{m}=\0\}.
+\end{align*}
+
+\begin{thmbox}
+	\begin{theorem}\label{thm:returnTimeRW}
+		For any RW, the following are equivalent:
+		\begin{enumerate}[label=(\roman*)]
+			\item $\bbP(\tau_{1}<\infty)=1$ 
+			\item $\bbP(\tau_{n}<\infty)=1, \forall n=1,2,3,\ldots$
+			\item $\bbP(\S_{m}=\0 \ i.o.)=1$
+			\item $\sum_{m=1}^{\infty}\bbP(\S_{m}=\0)=\infty.$ 
+		\end{enumerate}
+	\end{theorem}
+\end{thmbox}
+\begin{itemize}
+	\item $\bbP(\tau_n<\infty)=(\bbP(\tau_1<\infty))^n$. 
+\end{itemize}
+
+\noindent \red{Recurrent}: If $\bbP (\tau_1<\infty )=1$, then the RW is called recurrent.
+
+\noindent \red{Transient}: If $\bbP (\tau_1<\infty )<1$, then the RW is called Transient.
+
+
+\begin{thmbox}
+	\begin{theorem}[Recurrence of SRW]\label{thm:RecSRW}
+		SRW is recurrent in $d\leq 2$ and transient in $d\geq 3$.   
+	\end{theorem}
+\end{thmbox}
+\begin{itemize}
+	\item We define the first time a random walk starting from $\a$ reaches $\b$: $\tau_{\a\to \b}:=\inf\{m\geq1:\a+\S_m=\b\}.$ It can be proved that $\bbP(\tau_1<\infty )=1$ iff $\bbP(\tau_{\a\to \b}<\infty )=1$, $\forall \a,\b$.   
+\end{itemize}
+
+
+\subsection{Reflection Principle and Arcsine Distribution (\ref{sec:proof-ReflectionArcsine})}\label{sec:ReflectionArcsine}
+\noindent \underline{\textbf{What is the distribution of the time spent above 0?}} We consider the SRW, $d=1$, and think of the sequence $S_1,\ldots,S_n$ as being represented by a polygonal line with segments $(k-1,S_{k-1})\rightarrow (k,S_k)$.  
+\begin{thmbox}
+	\begin{theorem}[Reflection Principle]\label{thm:ReflectionPrin}
+		\
+		\begin{itemize}
+			\item (Reflection principle for numbers) If $x,y>0$, then the number of paths from $(0,x)$ to $(n,y)$ that are 0 at some time is equal to the number of paths from $(0,-x)$ to $(n,y)$.    
+			\item (Reflection principle for SRW) 
+			Let $X_i$ be SRW with $d=1$. Then $\forall b\in\bbN^+$, 
+			\begin{equation*}
+				\bbP(\max_{1\leq k\leq n} S_k\geq b)=2\bbP(S_n>b) + \bbP(S_n=b).
+			\end{equation*}  
+		\end{itemize}
+	\end{theorem}
+		
+	\begin{theorem}[Hit 0 time]\label{thm:ReflectionHit0} $\bbP(S_1> 0,\ldots,S_{2n}> 0)=\frac12\bbP(S_{2n}=0)$, and
+		$\bbP(S_1\neq 0,\ldots,S_{2n}\neq 0)=\bbP(S_{2n}=0)$. 
+	\end{theorem}
+\end{thmbox}
+
+\noindent \red{Arcsine distribution}: a continuous distribution with density $\frac1{\pi\sqrt{x(1-x)}}$, $x\in(0,1)$. Define 
+\begin{align*}
+	L_{2n}&:=\sup\{m\leq2n:S_m=0\}, &\text{(last time at 0)}\\
+	F_n&:=\inf\{0\leq m\leq n:S_m=\max\limits_{0\leq k\leq n}S_k\},&\text{(first time at maximum)}\\
+	\pi_{2n}&:=\text{ number of } k:1\leq k\leq2n \text{ such that the line } (k-1,S_{k-1})\to(k,S_k) \text{ is above the $x$-axis}.
+\end{align*}
+
+\begin{thmbox}
+	\begin{theorem}[Arcsine law]\label{thm:ArcsineLaw}
+		$\frac{L_{2n}}{2n},\frac{F_n}n,\frac{\pi_{2n}}{2n}$ all converge in distribution to the arcsine distribution.
+	\end{theorem}
+\end{thmbox}
+
+
+\section{Techniques}\label{sec:techniques}
+\subsection{Convergence}\label{sec:tech-cvg}
+\subsubsection{Convergence of random series}\label{sec:tech-cvg-rseries}
+Let $X_i$ be a sequence of rvs. $S_n=\sum_{i=1}^{n}X_i$. By 0-1 law, $\bbP(\lim_{n}S_n \text{ exists})=0$ or $1$.   
+
+\underline{To show the convergence of random series}:
+\begin{enumerate}
+	\item 
+\end{enumerate}
+
+\underline{To show the divergence of random series}:
+\begin{enumerate}
+	\item If SLLN holds, $S_n/n \to \mu$ a.s., if $\mu>0$, then $S_n\to \infty$ a.s.
+\end{enumerate}
+
+Next, we consider $S_n/f(n)$. 
+
 
 \appendix
 \section{Proofs}\label{sec:proof}
-\subsection{Proofs - section \ref{sec:RW}}\label{sec:proof-RW}
-\begin{proof}[Proof of Theorem \ref{thm:longTermRW-1d}]\label{proof:longTermRW-1d}
+\subsection{Proofs - \ref{sec:RW}}\label{sec:proof-RW}
+\subsubsection{Proofs - \ref{sec:stoppingTimes}}\label{sec:proof-stoppingTimes}
+\begin{proof}[\underline{\textbf{Proof of Theorem \ref{thm:longTermRW-1d}}}]
 	By the 0-1 law \ref{thm:HS01Law}, $\{\limsup_n S_n\geq c\}$ has probability 0 or 1, meaning that $\limsup_n S_n=c\in [-\infty ,\infty ]$ w.p.1. Since $S_n \eqd S_{n+1}-X_{1}$, we have $c=c-X_1$.
 \begin{enumerate}[label=(\roman*)]
 	\item If $c\in\bbR$, then $X_1\equiv 0$ a.s., so $S_n=0$ for all $n$ a.s.
@@ -106,6 +225,122 @@ If $X_1\neq 0$ a.s., then $c=-\infty $ or $\infty $,
 	\item[(iv)] If $c=\infty $, and $\liminf_n S_n=-\infty $, then case (iv).       
 \end{enumerate}
 \end{proof}
+
+\begin{proof}[\underline{\textbf{Proof of Theorem \ref{thm:WaldEq}}}]
+	Prove 1: First suppose $X_i\geq 0$. We have 
+	\begin{equation*}
+		\bbE S_{\tau} = \bbE \sum_{i=1}^{\tau} X_i = \bbE \sum_{i=1}^{\infty } X_i \1_{\{\tau\geq i\}} = \sum_{i=1}^{\infty }\bbE X_i\1_{\{\tau\geq i\}} = \sum_{i=1}^{\infty }\bbE X_i \bbE \1_{\{\tau\geq i\}} = \bbE X_1 \bbE \tau,
+	\end{equation*} 
+	where the 3rd equality uses Fubini by $X_i\geq 0$, and the 4th uses $\{\tau\geq i\}\in \calF_{i-1}$. For general case, since $ \sum_{i=1}^{\infty }\bbE \abs{X_i}\1_{\{\tau\geq i\}}=\sum_{i=1}^{\infty }\bbE\abs{X_i}\bbE\1_{\{\tau\geq i\}}< \infty $, we can still use the Fubini. 
+
+	Prove 2: If $\tau<n$, then $\tau\wedge n=\tau\wedge(n-1)$, so $S_{\tau\wedge n}^2=S_{\tau\wedge (n-1)}^2$; if $\tau\geq n$, we have $\tau\wedge n=n$ and $\tau\wedge(n-1)=n-1$, so $S_{\tau\wedge n}^2=S_n^2=(S_{n-1}+X_{n})^2=(S_{\tau\wedge(n-1)}+X_{n})^2$. Hence write
+	\begin{equation*}
+		S_{\tau\wedge n}^2=S_{\tau\wedge(n-1)}^2+(2X_nS_{n-1}+X_n^2)\1_{\{\tau\geq n\}}.
+	\end{equation*}  
+	Note that all the following expectations exist,
+	\begin{equation*}
+		\begin{aligned}
+			\bbE S_{\tau\wedge n}^{2}& =\bbE S_{\tau\wedge(n-1)}^{2}+\bbE \left(2X_{n}S_{n-1}1_{\{\tau\geq n\}}\right)+\bbE [X_{n}^{2}1_{\{\tau\geq n\}}] \\
+			&=\bbE S_{\tau\wedge(n-1)}^{2}+\sigma^{2}\bbP (\tau\geq n) & \quad (\text{stopping time, independence, and } \bbE X_i=0) \\
+			&=\ldots & (\mathrm{reduce~to~}n-2,n-3,\ldots) \\
+			&=\sigma^2\sum_{i=1}^n\bbP(\tau\geq i).
+			\end{aligned}
+	\end{equation*}
+	In the 1st line, the expectation $\bbE X_n S_{n-1}$ exists since both rvs are in $\calL^2$. By the last line, $\norm{S_{\tau\wedge n}-S_{\tau\wedge m}}^2=\sigma^2\sum_{i=m+1}^{n}\bbP (\tau\geq i)\to 0$ as $n,m\to \infty $, $\{S_{\tau\wedge n}\}_{n}$ is a Cauchy sequence in $\calL^2$, so letting $n\to \infty $  gives the result. 
+\end{proof}
+
+\begin{proof}[\underline{\textbf{Proof of Example \ref{eg:1dSRW}}}]
+	1. For any positive integer $k$, by dividing the interval $(0,k(b-a))$ into $k$ subintervals of
+	equal length and considering an extreme case behavior (keep going upwards) of the random
+	walk within each subinterval, we obtain
+	\begin{align*}
+		\bbE N = &\sum_{i=0}^{\infty }\bbP(N>i) \leq (b-a)\sum_{k=0}^{\infty }\bbP(N>k(b-a)) \\
+		&\leq (b-a)\sum_{k=0}^{\infty } \bbP((X_{(j-1)(b-a)+1},\ldots,X_{j(b-a)}\neq (1,\ldots,1)), j=1,\ldots,k) \\
+		&\leq (b-a)\sum_{k=0}^{\infty } \sbk{1-\frac{1}{2^{b-a}}}^k<\infty. 
+	\end{align*}
+
+	\noindent 2. It is obvious.
+
+	\noindent 3. By Wald's first equation \ref{thm:WaldEq}, $0=\bbE S_N = a\bbP(S_N=a)+b\bbP(S_N=b)$, we also have $1=\bbP(S_N=a)+\bbP(S_N=b)$, so solve for the result.
+	
+	\noindent 4. By Wald's second equation \ref{thm:WaldEq} and $\sigma=1$, we have $\bbE N=\bbE S_N^2 = a^2 \bbP(S_N=a) + b^2 \bbP (S_N=b)$, and use 3.  
+\end{proof}
+
+\subsubsection{Proofs - \ref{sec:RecTrans}}\label{sec:proof-RecTrans}
+\begin{proof}[\underline{\textbf{Proof of Theorem \ref{thm:returnTimeRW}}}] We have
+	\begin{align*} 
+		\bbP(\tau_{2}<\infty)& =\bbP(\tau_{1}<\infty,\tau_{2}-\tau_{1}<\infty) \\
+		&=\sum_{m,n=1}^\infty \bbP(\tau_1=m,\tau_2-\tau_1=n) \\
+		&= \sum_{m,n=1}^\infty \bbP(\X_1+\cdots+\X_m=\0,\X_1+\cdots+\X_u\neq\0,\forall 1\leq u<m; \\
+		&\qquad \qquad \quad \X_{m+1}+\cdots+\X_{m+n}=\0,\X_{m+1}+\cdots+\X_{m+v}\neq\0,\forall 1\leq v<n) \\
+		&=\sum_{m,n=1}^\infty \bbP(\tau_1=m)\bbP(\tau_1=n) & (\text{iid}) \\
+		&=(\bbP(\tau_1<\infty ))^2.
+	\end{align*} 
+	Similarly, we can prove $\bbP(\tau_n<\infty)=(\bbP(\tau_1<\infty))^n.$ So (i) and (ii) are equivalent. They are equivalent to (iii) by examining their meanings. Finally, 
+	\begin{align*}
+		\sum_{m=0}^{\infty}\bbP(\S_{m}=\0)& =\sum_{m=0}^{\infty}\bbE\1_{\{\S_{m}=\0\}}=\bbE\sum_{m=0}^{\infty}\1_{\{\S_{m}=\0\}} 
+		=\bbE\sum_{n=0}^\infty1_{\{\tau_n<\infty\}} \\
+		&=\sum_{n=0}^\infty \bbP(\tau_n<\infty)=\sum_{n=0}^\infty\bbP(\tau_1<\infty)^n=\frac{1}{1-\bbP(\tau_1<\infty )}.
+	\end{align*} 
+	So (i) and (iv) are equivalent.
+\end{proof}
+
+\begin{proof}[\underline{\textbf{Proof of Theorem \ref{thm:RecSRW}}}]
+	In $d=1$, use (iv) in Theorem \ref{thm:returnTimeRW} to show. 
+	\begin{align*}
+		\sum_{m=1}^{\infty}P(S_{m}=0)& =\sum_{n=1}^{\infty}P(S_{2n}=0) & \text{(can only return to 0 at even steps)} \\
+		&=\sum\limits_{n=1}^\infty\binom{2n}{n}(\frac{1}{2})^{2n}& \text{(combinatorics)} \\
+		&\sim\sum_{n=1}^\infty\frac{\sqrt{2\pi2n}(\frac{2n}e)^{2n}}{(\sqrt{2\pi n}(\frac ne)^n)^2}\frac1{2^{2n}}& \text{(Stirling's formula)} \\
+		&=\sum_{n=1}^\infty\frac1{\sqrt{\pi n}}=\infty.
+	\end{align*}
+
+	In $d=2$, note that in order for $S_{2n}=0$, we must for some $0\leq m\leq n$ have $m$ up steps, $m$ down steps, $n-m$ to the left, and $n-m$ to the right, so 
+	\begin{align*}
+		\bbP(\S_{2n}=\0)&=\frac{1}{4^{2n}}\sum_{m=0}^{n}\binom{2n}{m}\binom{2n-m}{m}\binom{2n-2m}{n-m}=\frac{1}{4^{2n}}\sum_{m=0}^{n}\frac{(2n)!}{m! m! (n-m)! (n-m)!}\\
+		&=\frac{1}{4^{2n}}\binom{2n}n\sum_{m=0}^n\binom nm\binom n{n-m}=4^{-2n}\binom{2n}n^2\sim (\pi n)^{-1/2}
+	\end{align*}  
+	by Stirling's formula. So its sum is $\infty $, still recurrent.
+	
+	For $d=3$, more complicated combinatorics give $\bbP(\S_{2n}=0)\asymp\frac{1}{n^{3/2}}$, summing up to a finite
+	number; hence transient. In even higher dimensions, the probabilities become even smaller;
+	hence all transient.
+\end{proof}
+
+\subsubsection{Proofs - \ref{sec:ReflectionArcsine}}\label{sec:proof-ReflectionArcsine}
+\begin{proof}[\underline{\textbf{Proof of Theorem \ref{thm:ReflectionPrin}}}]
+	To show the first result, suppose $(0,s_0),(1,s_1),\ldots,(n,s_n)$ is a path from $(0,x)$ to $(0,y)$. Let $K=\inf\{k:s_k=0\}$. Let $s_k'=-s_k$ for $k\leq K$ and $s_k'=s_k$ for $K\leq k\leq n$. Then $(k,s_k')$, $0\leq k\leq n$, is a path from $(0,-x)$ to $(n,y)$. Conversely, given a path from $(0,-x)$ to $(n,y)$, we can also construct a reflected path. We have a one-toone
+	correspondence between the two classes of paths, so their numbers must be
+	equal.
+
+	Then, we have 
+	\begin{equation*}
+		\begin{aligned}
+			\bbP(\max_{1\leq k\leq n}S_k\geq b)&=P(\max_{1\leq k\leq n}S_k\geq b,S_n>b)+P(\max_{1\leq k\leq n}S_k\geq b,S_n<b)+P(\max_{1\leq k\leq n}S_k\geq b,S_n=b) \\
+			&=\bbP(S_n>b) + \bbP (\max_{1\leq k\leq n}S_k\geq b,S_n>b) + \bbP(S_n=b)\\
+			&=2\bbP(S_n>b) + \bbP(S_n=b),
+	\end{aligned}
+	\end{equation*}
+	which prove the second result.
+\end{proof}
+
+\begin{proof}[\underline{\textbf{Proof of Theorem \ref{thm:ReflectionHit0}}}]
+	To count the number of paths from $(0,0)$ to $(n,x)$, denote $a,b\in\bbN$ be the number of positive steps and $b$ negative steps, respectively. $n=a+b$, and $x=a-b$, where $x\in[-n,n]$, and $n-x$ is even. The number of paths from $(0,0)$ to $(n,x)$ is $N_{n,x}=\binom{n}{a}$. 
+	
+	Since 
+	\begin{equation*}
+		\bbP(S_{1}>0,\ldots,S_{2n}>0)=\sum_{r=1}^{\infty}\bbP(S_{1}>0,\ldots,S_{2n-1}>0,S_{2n}=2r).	
+	\end{equation*}  
+	Now we count the number of paths of $(1,1)\rightarrow(2n,2r)$, that are never 0. Since the total number of paths of $(1,1)\rightarrow(2n,2r)$ is $N_{2n-1,2r-1}$, the number of these paths touching 0 is the number of paths of $(1,-1)\rightarrow(2n,2r)$, i.e., $N_{2n-1,2r+1}$, by reflection principle, we have the number of paths of $(1,1)\rightarrow(2n,2r)$ never touching 0 is $N_{2n-1,2r-1}-N_{2n-1,2r+1}$. Hence 
+	\begin{align*}
+		\sum_{r=1}^{\infty}\bbP(S_{1}>0,\ldots,S_{2n-1}>0,S_{2n}=2r)&=\sum_{r=1}^{\infty}\frac{1}{2}\frac{1}{2^{2n-1}}(N_{2n-1,2r-1}-N_{2n-1,2r+1})=\frac{1}{2^{2n}}N_{2n-1,1},
+	\end{align*}        
+	where the $1/2$ in the $2$nd term guarantees $S_1>0$. Since $\bbP(S_{2n}=0)=\frac{1}{2^{2n}}N_{2n-1,-1}+\frac{1}{2^{2n}}N_{2n-1,1}=2\cdot \frac{1}{2^{2n}}N_{2n-1,1}$,      
+	\begin{equation*}
+		\bbP(S_{1}>0,\ldots,S_{2n}>0)=\frac{1}{2^{2n}}N_{2n-1,1}=\frac{1}{2}\bbP(S_{2n}=0).
+	\end{equation*}
+	Symmetry implies $\bbP(S_{1}<0,\ldots,S_{2n}<0)=(1/2)\bbP(S_{2n}=0)$. Then the proof is completed.
+\end{proof}
+
 
 
 \bibliographystyle{abbrv}
