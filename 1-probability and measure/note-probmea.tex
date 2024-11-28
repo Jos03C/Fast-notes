@@ -12,7 +12,7 @@
 \Lecturer{}
 \LectureNumber{}
 \LectureDate{Nov 2024}
-\LectureTitle{Probability and measure}
+\LectureTitle{Probability Theory}
 
 \lstset{style=mystyle}
 
@@ -349,7 +349,7 @@ If $X_1\neq 0$ a.s., then $c=-\infty $ or $\infty $,
 	In $d=2$, note that in order for $S_{2n}=0$, we must for some $0\leq m\leq n$ have $m$ up steps, $m$ down steps, $n-m$ to the left, and $n-m$ to the right, so 
 	\begin{align*}
 		\bbP(\S_{2n}=\0)&=\frac{1}{4^{2n}}\sum_{m=0}^{n}\binom{2n}{m}\binom{2n-m}{m}\binom{2n-2m}{n-m}=\frac{1}{4^{2n}}\sum_{m=0}^{n}\frac{(2n)!}{m! m! (n-m)! (n-m)!}\\
-		&=\frac{1}{4^{2n}}\binom{2n}n\sum_{m=0}^n\binom nm\binom n{n-m}=4^{-2n}\binom{2n}n^2\sim (\pi n)^{-1/2}
+		&=\frac{1}{4^{2n}}\binom{2n}n\sum_{m=0}^n\binom nm\binom n{n-m}=4^{-2n}\binom{2n}n^2 \asymp  n^{-1}.
 	\end{align*}  
 	by Stirling's formula. So its sum is $\infty $, still recurrent.
 	
