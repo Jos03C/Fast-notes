@@ -149,7 +149,7 @@ citecolor=pink}
       macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
       using,while},%
    sensitive=true,%
-   alsoother={$},%
+   alsoother={},%
    morecomment=[l]\#,%
    morecomment=[n]{\#=}{=\#},%
    morestring=[s]{"}{"},%
@@ -370,6 +370,7 @@ citecolor=pink}
 %% statistical inference 
 % \def\simiid{\stackrel{\mathrm{iid}}{\sim}}
 \def\simiid{{\sim}_{\mathrm{iid}}}
+\def\pto{\stackrel{\mathrm{p}}{\to}}
 \def\eqd{\stackrel{\mathrm{d}}{=}}
 \newcommand{\indep}{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern4mu{#1#2}}}

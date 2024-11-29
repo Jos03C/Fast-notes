@@ -228,17 +228,158 @@ We consider SRW on $\bbR^d$ and define its first, second, ..., $n$th returning t
 	\end{example}
 \end{exbox}
 
-
-
-\subsection{Almost surely convergence}\label{sec:martingale_ascvg}
 \begin{thmbox}
-	\begin{theorem}[Martingale convergence theorem]\label{thm:martingale_cvg}
+	\begin{theorem}[Properties]\label{thm:cond_exp_prop}\rm
+		If $\bbE \abs{X}$, $\bbE\abs{X_n}$, $\bbE \abs{Y}<\infty $, then 
+		\begin{itemize}
+			\item[(a)] (linearity) $\bbE(aX+Y|\calA)=a\bbE(X|\calA)+\bbE(Y|\calA).$ 
+			\item[(b)] (monotonicity) If $X\leq Y$, then $\bbE(X|\calA)\leq \bbE(Y|\calA)$.
+			\item[(c)] (MCT) If $X_n\geq 0$, $X_{n}\uparrow X$, and $\bbE X<\infty $, then $E(X_n|\mathcal{A})\uparrow E(X|\mathcal{A})$.
+			\item[(d)] (Fatou) If $X_n\geq 0$, $\bbE X_n<\infty $, and $\bbE[ \liminf_n X_n]<\infty $, then $\liminf_n\bbE(X_n|\calA)\leq \bbE[\liminf_n X_n|\calA]$.   
+			\item[(e)] (DCT) If $X_n\to X$ a.s., $\abs{X_n}\leq Y$, $\bbE|Y|<\infty $, then $\bbE(X_n|\calA)\to\bbE(X|\calA)$. 
+			\item[(f)] If $X$ is $\calA$-measurable, $\bbE|XY|<\infty $, then $\bbE(XY|\calA)=X\bbE(Y|\calA)$.     
+			\item[(g)] (Tower property) If $\calA_1\subset\calA_2$, then $\bbE[\bbE(X|\calA_1)|\calA_2]=\bbE(X|\calA_1)$, and $\bbE[\bbE(X|\calA_2)|\calA_1]=\bbE(X|\calA_1)$.
+		\end{itemize}  
+	\end{theorem}
+\end{thmbox}
+
+\begin{thmbox}
+	\begin{theorem}[Inequalities]\label{thm:cond_exp_ineq}\rm
+		If $\bbE \abs{X}$, $\bbE \abs{Y}<\infty $, then 
+		\begin{itemize}
+			\item[(i)] (Jensen's inequality) If $\varphi$ is convex, $\bbE|\varphi(X)|<\infty $, then $\varphi(\bbE[X|\calA])\leq \bbE[\varphi(X)|\calA]$.  
+			\item[(ii)] (Markov's inequality) If $X\geq 0$, $a>0$, then $\bbP(X\geq a|\calA)\leq a^{-1}\bbE(X|\calA)$.
+			\item[(iii)] (Chebyshev's inequality) If $a>0$, then $\bbP(\abs{X}\geq a|\calA)\leq a^{-2}\bbE(X^2|\calA)$.
+			\item[(iv)] (Hölder's Inequality) If $p\geq 1$, $p^{-1}+q^{-1}=1$, and $\bbE|X|^p$, $\bbE|Y|^p<\infty $, then 
+			{\setlength\abovedisplayskip{0.15cm}
+			\setlength\belowdisplayskip{0.15cm}
+			\begin{equation*}
+				\abs{\bbE(XY|\calA)}\leq \{\bbE(\abs{X}^p|\calA)\}^{1/p} \{\bbE(\abs{Y}^q|\calA)\}^{1/q}.
+			\end{equation*}}
+			\item[(v)] (Minkowski inequality) If $p\geq 1$, $\bbE|X|^p$, $\bbE|Y|^p<\infty $, then 
+			{\setlength\abovedisplayskip{0.15cm}
+			\setlength\belowdisplayskip{0.15cm}
+			\begin{equation*}
+				\cbk{\bbE(\abs{X+Y}^p|\calA)}^{1/p} \leq	\cbk{\bbE(\abs{X}^p|\calA)}^{1/p} + \cbk{\bbE(\abs{Y}^p|\calA)}^{1/p}.
+			\end{equation*}}
+			\item[(vi)] (Triangular inequality) If $\bbE X^2 <\infty $. Then for any $\calA$-measurable $Y$ with $\bbE Y^2<\infty $, we have  
+			{\setlength\abovedisplayskip{0.15cm}
+			\setlength\belowdisplayskip{0.15cm}
+			\begin{equation*}
+				\norm{X-\bbE(X|\calA)}^2 \leq \norm{X-Y}^2.
+			\end{equation*}}    
+		\end{itemize}  
+	\end{theorem}
+\end{thmbox}
+By (vi), $\bbE(X|\calA)$ is the projection of $X$ onto $\calL^2(\calA)$, that is, $\bbE(X|\calA)=\arg \min_Y \norm{X-Y}^2$, for $\calA$-measurable $Y$. 
+
+\subsection{Martingales}\label{sec:martingale}
+\begin{defbox}
+	\begin{definition}\label{def:martingale}
+		Let $\{\calF_n\}$ be a \red{filtration}, an increasing sequence of $\sigma$-fields. A sequence $\{S_n\}$ is said to be \red{adapted to} $\{\calF_n\}$ if $S_n$ is $\calF_n$-measurable. $\{S_n\}$ is called a \red{martingale} w.r.t. $\{\calF_n\}$ if 
+		\begin{enumerate}
+			\item[(i)] $\bbE|S_n|<\infty $.
+			\item[(ii)] $\{\S_n\}$ is adapted to $\{\calF_n\}$.     
+			\item[(iii)] $\bbE(S_n|\calF_{n-1})=S_{n-1}$.  
+		\end{enumerate}     
+		If in (iii), $\bbE(S_n|\calF_{n-1})\leq S_{n-1}$ (or $\geq $), then $\{S_n\}$ is said to be a \red{supermartingale} (or \red{submartingale}).  
+	\end{definition}
+\end{defbox}
+\noindent Simple facts:
+\begin{itemize}
+	\item If $\{S_n\}$ is a martingale, then $\bbE S_1=\cdots=\bbE S_n =\cdots$, and $\bbE|S_1|\leq\bbE|S_2|\leq\cdots$. 
+	\item If $\{S_n\}$ is a supermartingale, then $\bbE S_1\geq\bbE S_{2}\geq \cdots$; if submartingale, $\bbE S_1\leq\bbE S_2\leq\cdots$.
+	\item If $\{S_n\}$ is a supermartingale, then $\{-S_n\}$ is a submartingale, and vice versa. 
+	\item Let $n>m$, if $\{S_n\}$ is a 
+	\begin{itemize}
+		\item martingale $\quad \quad \ \implies \bbE(S_n|\calF_m)=S_m$
+		\item supermartingale $\implies \bbE(S_n|\calF_m)\leq S_m$
+		\item submartingale $\quad   \implies \bbE(S_n|\calF_m)\geq S_m$
+	\end{itemize}  
+\end{itemize}
+
+\begin{thmbox}
+	\begin{theorem}[\textbf{Martingale transforms}]\label{thm:martingale_trans}\rm
+		\
+		\begin{enumerate}
+			\item[(1)] If $\{S_n\}$ is a martingale and $\varphi$ is a convex (concave) function such that $\bbE\abs{\varphi(S_n)}<\infty $, then $\varphi(S_n)$ is a submartingale (supermartingale).   
+			\item[(2)] If $S_n$ is a submartingale and $\varphi$ is an increasing convex (concave) function such that $\bbE\abs{\varphi(S_n)}<\infty $, then $\varphi(S_n)$ is a submartingale (supermartingale). 
+		\end{enumerate}
+	\end{theorem}
+\end{thmbox}
+\begin{itemize}
+	\item From (1), if $p\geq 1$ and $\bbE|S_n|^p<\infty $, then $\abs{S_n}^p$ is a submartingale.   
+	\item From (2), if $S_n$ is a submartingale, then $(X_n-a)^+$ is a submartingale; if $X_n$ is a supermartingale, then $X_n\wedge a$ is a supermartingale.    
+\end{itemize}
+
+\subsection{Martingale convergence}\label{sec:martingale_cvg}
+
+\red{Predictable sequence}: $H_n$, $n\geq 2$, which is $\calF_{n-1}$-measurable. $(H\cdot S)_n=\sum_{m=1}^{n}H_m(S_{m}-S_{m-1})$.    
+\begin{itemize}
+	\item If $\{S_n\}$ is a supermartingale (submartingale), $H_n$ ($n\geq 2$) is predictable, $H_n\geq 0$, and $H_n$ is bounded. Then $(H\cdot S)_n$ is a supermartingale (submartingale). For martingale, it is true without assuming $H_n\geq 0$.    
+	\item Let $N$ be a stopping time, and $H_n=\1_{\{n\leq N\}}$, then $S_{n\wedge N}=(H\cdot S)_n+S_0$ is a supermartingale/submartingale/martingale as $S_n$ is.
+\end{itemize}
+
+Let $a<b$, $N_0=1$, for $k\geq 1$, let $N_{2k-1}=\inf\{m>N_{2k-2}: S_m\leq a\}$ and $N_{2k}=\inf\{m>N_{2k-1}: S_m\geq b\}$, all are stopping times. Let $H_m=\1\{N_{2k-1}<m<N_{2k}\text{ for some } k\}$ be the indicator of climbing. Let $U_n=\sup\{k:N_{2k}\leq n\}$ be the number of \red{upcrossings} by time $n$. From the picture we have 
+\begin{enumerate}
+	\item[(1)] $H_m$ is predictable;
+	\item[(2)] $(b-a) U_n \leq \sum_{m=2}^{n}H_m(S_m-S_{m-1})$ $\Rightarrow (b-a)\bbE U_n\leq \bbE(S_n-S_1)$.   
+\end{enumerate} 
+\begin{thmbox}
+	\begin{theorem}[Upcrossing inequality]\label{thm:upcrossings_ineq}\rm
+		$\{S_n\}$ is a submartingale. $a<b$ are two constants. For $U_n$ defined above,
+		{\setlength\abovedisplayskip{0.15cm}
+			\setlength\belowdisplayskip{0.15cm}
+			\begin{equation*}
+				\bbE U_n\leq \frac{1}{b-a}\mbk{
+					\bbE(S_n-a)^+ - \bbE(S_1-a)^+
+				}
+			\end{equation*}}     
+	\end{theorem}
+\end{thmbox}
+
+\begin{thmbox}
+	\begin{theorem}[\textbf{Martingale convergence theorem}]\label{thm:martingale_cvg}\rm
 		Suppose $S_n$ is a submartingale and $\liminf \bbE S_n^+<\infty $ (or $\sup \bbE S_n^+<\infty $), then $S_n\to S$ a.s. with $\bbE\abs{S}<\infty $.   
 	\end{theorem}
-	\begin{theorem}\label{thm:martingale_cvg_super}
-		Suppose $S_n$ is a supermartingale. If $S_n\geq 0$, then $S_n\to S$ a.s. and $\bbE S\leq\bbE S_1 <\infty $.    
+	\begin{theorem}\label{thm:martingale_cvg_super}\rm
+		Suppose $\{S_n\}$ is a supermartingale. If $S_n\geq 0$, then $S_n\to S$ a.s. and $\bbE S\leq\bbE S_1 <\infty $.    
 	\end{theorem}
+	\begin{corollary}[WLLN for martingales]\label{cor:WLLN_mart}\rm
+		Suppose $X_i$ are identically distributed and $\bbE\abs{X_1}<\infty $. Let $\calF_n=\sigma(X_1,\ldots,X_n)$. Let $S_1=X_1$, and $S_n=S_{n-1}+X_n-\bbE(X_n|\calF_{n-1})$, $n\geq 2$. Then $\{S_n\}$ is a martingale and ${S_n}/{n} \pto 0.$       
+	\end{corollary}
+\end{thmbox}
 
+\begin{exbox}
+	\begin{example}[Branching processes]\label{eg:branching_process}\rm
+		Let $\xi_i^{n}\in\bbN$, $i,n\geq 1$ be iid ($n$: time, i: the $i$th parent). Define $Z_n$ by $Z_0=1$, and 
+		{\setlength\abovedisplayskip{0.15cm}
+		\setlength\belowdisplayskip{0.15cm}
+		\begin{equation*}
+			Z_{n+1}=\begin{cases}
+				\xi_1^{n+1}+\cdots + \xi_{Z_n}^{n+1} & \text{ if } Z_n > 0 \\
+				0	& \text{ if } Z_n=0.
+			\end{cases}
+		\end{equation*}}  
+		$Z_n$ is called a \red{Galton-Watson process}. Let $\calF_n=\sigma(\xi_i^m:i\geq 1, 1\leq m\leq n)$ and $\mu=\bbE \xi_i^m\in(0,\infty )$, then $\{Z_n/\mu^n\}$ is a martingale w.r.t. $\calF_n$.    
+		\begin{itemize}
+			\item If $\mu<1$, then $Z_n=0$ for all $n$ sufficiently large, so $Z_n/\mu^n\to 0$.
+			\item If $\mu=1$ and $\bbP(\xi_i^m=1)<1$, then $Z_n=0$ for all $n$ sufficiently large.        
+		\end{itemize}
+	\end{example}
+\end{exbox}
+
+
+\subsection{Doob's inequality; $\calL^p$ convergence; CLT}\label{sec:doob_Lp_CLT}
+\begin{thmbox}
+	\begin{theorem}[\textbf{Doob's inequality}]\label{thm:Doob_ineq}\rm
+		$\{S_n\}$ is a submartingale w.r.t. $\{\calF_n\}$. Then $\forall x>0$,
+		{\setlength\abovedisplayskip{0.15cm}
+		\setlength\belowdisplayskip{0.15cm}
+		\begin{equation*}
+			\bbP\sbk{\max_{1\leq k\leq n} S_k\geq x}\leq \frac{1}{x}\bbE\mbk{S_n\1\{\max_{1\leq k\leq n}S_k\geq x\}}\leq \frac{\bbE S_n^+}{x}.
+		\end{equation*}}   
+	\end{theorem}
 \end{thmbox}
 
 

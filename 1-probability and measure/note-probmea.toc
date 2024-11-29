@@ -1,23 +1,25 @@
-\babel@toc {english}{}\relax 
+\babel@toc {english}{}
 \contentsline {section}{\numberline {1}Measure Theory}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Expectation}{1}{subsection.1.1}%
 \contentsline {section}{\numberline {2}Law of Large Numbers}{1}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Almost Surely Convergence}{1}{subsection.2.1}%
-\contentsline {section}{\numberline {3}Central Limit Theorem}{1}{section.3}%
-\contentsline {section}{\numberline {4}Random Walks}{1}{section.4}%
+\contentsline {section}{\numberline {3}Central Limit Theorem}{2}{section.3}%
+\contentsline {section}{\numberline {4}Random Walks}{2}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Stopping Times (\ref {sec:proof-stoppingTimes})}{2}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Recurrence vs. Transience (\ref {sec:proof-RecTrans})}{2}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Reflection Principle and Arcsine Distribution (\ref {sec:proof-ReflectionArcsine})}{3}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Martingales}{3}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Conditional expectation \ref {sec:proof-cond_exp}}{3}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Almost surely convergence}{3}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Techniques}{4}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Convergence}{4}{subsection.6.1}%
-\contentsline {subsubsection}{\numberline {6.1.1}Convergence of random series}{4}{subsubsection.6.1.1}%
-\contentsline {section}{\numberline {A}Proofs}{4}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Proofs - \ref {sec:RW}}{4}{subsection.A.1}%
-\contentsline {subsubsection}{\numberline {A.1.1}Proofs - \ref {sec:stoppingTimes}}{4}{subsubsection.A.1.1}%
-\contentsline {subsubsection}{\numberline {A.1.2}Proofs - \ref {sec:RecTrans}}{5}{subsubsection.A.1.2}%
-\contentsline {subsubsection}{\numberline {A.1.3}Proofs - \ref {sec:ReflectionArcsine}}{5}{subsubsection.A.1.3}%
-\contentsline {subsection}{\numberline {A.2}Proofs - \ref {sec:martingales}}{6}{subsection.A.2}%
-\contentsline {subsubsection}{\numberline {A.2.1}Proofs - \ref {sec:cond_exp}}{6}{subsubsection.A.2.1}%
+\contentsline {subsection}{\numberline {5.2}Martingales}{4}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Martingale convergence}{4}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Doob's inequality; ${\cal L}^p$ convergence; CLT}{5}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Techniques}{5}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Convergence}{5}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Convergence of random series}{5}{subsubsection.6.1.1}%
+\contentsline {section}{\numberline {A}Proofs}{5}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Proofs - \ref {sec:RW}}{5}{subsection.A.1}%
+\contentsline {subsubsection}{\numberline {A.1.1}Proofs - \ref {sec:stoppingTimes}}{5}{subsubsection.A.1.1}%
+\contentsline {subsubsection}{\numberline {A.1.2}Proofs - \ref {sec:RecTrans}}{6}{subsubsection.A.1.2}%
+\contentsline {subsubsection}{\numberline {A.1.3}Proofs - \ref {sec:ReflectionArcsine}}{7}{subsubsection.A.1.3}%
+\contentsline {subsection}{\numberline {A.2}Proofs - \ref {sec:martingales}}{8}{subsection.A.2}%
+\contentsline {subsubsection}{\numberline {A.2.1}Proofs - \ref {sec:cond_exp}}{8}{subsubsection.A.2.1}%
