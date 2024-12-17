@@ -11,7 +11,7 @@
 \Scribe{Zhuohua Shen}
 \Lecturer{}
 \LectureNumber{}
-\LectureDate{Nov 2024}
+\LectureDate{2024}
 \LectureTitle{Probability Theory}
 
 \lstset{style=mystyle}
@@ -25,14 +25,377 @@
 %#############################################################
 %#############################################################
 
-References: STAT5005 and \textit{Probability: Theory and Examples}, 4th edition, by Richard Durrett, published by Cambridge University Press.
+References: MAT3280, STAT5005 and \textit{Probability: Theory and Examples}, 4th edition, by Richard Durrett, published by Cambridge University Press.
+
+\section{Preliminary}\label{sec:premi}
+\subsection{Riemann--Stieltjes integrals}\label{sec:RS-int}
+\underline{\textbf{Goal}}: Consider a closed interval $[a,b], a<b$. Let $\alpha(x)$ be a non-decreasing function on $[a,b]$. $f\in \mathrm{bdd[a,b]}$.  Want to define RS integral $\int_{a}^{b}f(x)\rmd\alpha(x)$. 
+
+Let $P:a=x_0<x_1<\cdots<x_n=b$ be a partition of $[a,b]$. Let $M_k (m_k):=\sup (\inf)\{f(x):x_{k-1}\leq x\leq x_k\}$, $t_k$ is chosen arbitrarily in $[x_{k-1},x_k]$, $k=1,2,\ldots, n$, we define
+\begin{itemize}
+	\item upper sum $U(P,f,\alpha):=\sum_{k=1}^{n} M_k \cdot (\alpha(x_k)-\alpha(\alpha_{k-1}))$,
+	\item lower sum $L(P,f,\alpha):=\sum_{k=1}^{n} m_k \cdot (\alpha(x_k)-\alpha(\alpha_{k-1}))$,
+	\item \red{Riemann--Stieltjes sum} $S(P,f,\alpha):=\sum_{k=1}^{n} f(t_k) \cdot (\alpha(x_k)-\alpha(\alpha_{k-1}))$.
+\end{itemize}
+Sandwiching inequalities: $L(P,f,\alpha)\leq S(P,f,\alpha)\leq U(P,f,\alpha)$, $\forall P$. 
+\begin{defbox}
+	\begin{definition}[Riemann--Stieltjes integrable]\label{def:RSint}
+		If $\lim_{\norm{P}\to \infty }L(P,f,\alpha)=U(P,f,\alpha)$, then we say $f$ is \red{Riemann--Stieltjes (RS) integrable} on $[a,b]$ w.r.t. $\alpha(x)$, $f\in\scrR(\alpha)$. We denote the common limit as 
+		\begin{sequation*}
+			\int_{a}^{b}f\rmd\alpha \ \mathrm{\ or\ } \int_{a}^{b} f(x) \rmd(\alpha(x)).
+		\end{sequation*}
+		An improper RS integral is defined by the double limit (provided exists and finite, i.e., converges)
+		\begin{sequation*}
+			\int_{-\infty }^{\infty } f\rmd \alpha := \lim_{(a,b)\to(-\infty ,\infty )}\int_{a}^{b} f\rmd \alpha.
+		\end{sequation*}
+	\end{definition}
+\end{defbox}
+Note that if $\beta(x)=\alpha(x)+C$, then $\int_{a}^{b}f d\alpha = \int_{a}^{b} f d\beta$. RS integral can be defined more generally when $\alpha(x)$ is BV. RS integrals have the following properties:
+\begin{enumerate}
+	\item (\textbf{linearity}) $f,g\in\scrR(\alpha)$,  $\forall c,d\in\bbR$, $cf+dg\in\scrR(\alpha)$, $\int_{a}^{b}(cf+dg)d\alpha=c\int_{a}^{b}fd\alpha + d\int_{a}^{b}gd\alpha$; 
+	\item (\textbf{monotonicity}) $f,g\in\scrR(\alpha)$, if $f\leq g,\forall x\in[a,b]$, then $\int_{a}^{b}fd\alpha\leq\int_{a}^{b}gd\alpha$;
+	\item (\textbf{additivity of integration}) Let $a<c<b$, if $f\in\scrR(\alpha)$ on $[a,c]$ and on $[c,b]$, then $f\in\scrR(\alpha)$ on $[a,b]$, and $\int_{a}^{b}fd\alpha=\int_{a}^{c}fd\alpha + \int_{c}^{b}fd\alpha$. 
+	\item (\textbf{linearity of} $\balpha$) Suppose $\alpha_1(x)$ and $\alpha_2(x)$ are two non-decreasing functions, $f\in\scrR(\alpha_1),f\in\scrR(\alpha_2),$, then $f\in\scrR(\alpha_1+\alpha_2)$, and $\int_{a}^{b}fd(\alpha_1+\alpha_2)=\int_{a}^{b}fd\alpha_1+\int_{a}^{b}fd\alpha_2$.       
+\end{enumerate}
+
+\begin{thmbox}
+	\begin{theorem}[Finite discontinuities]\label{thm:RSint-finitediscts}
+		\rm $f\in\mathrm{bdd}[a,b]$, and there are finitely many points $c_1,c_2,\ldots,c_n\in[a,b]$ such that $f$ is discontinuous at each $c_i$. If $\alpha$ is continuous on $c_i,\forall i$, then $f\in\scrR(\alpha)$.   
+	\end{theorem}
+
+	\begin{theorem}[Continuous functions]\label{thm:RSint-cts}
+		\rm Suppose $f\in \rmC[a,b]$ and let $\alpha\in\rmC^1[a,b]$ (or $\alpha'(x)$ Riemann integrable on $[a,b]$) be nondecreasing. If $f\in\scrR(\alpha)$, then the function $f\alpha'$ is Riemann integrable on $[a,b]$ and we have   
+	{\setlength\abovedisplayskip{0.15cm}
+	\setlength\belowdisplayskip{0.15cm}
+	\begin{equation*}
+		\int_{a}^{b} f\rmd \alpha = \int_{a}^{b}f(\alpha) \alpha'(x)\rmd x.
+	\end{equation*}}
+	\end{theorem}
+\end{thmbox}
+
+There are two techniques to compute RS integral:
+\begin{enumerate}
+	\item (integration by parts) $\int_{a}^{b}f\rmd \alpha=f\alpha \big|_{a}^b - \int_{a}^{b}\alpha\rmd f$;
+	\item (change of variables) if $g$ is strictly increasing on $[c,d]$, $f\in\scrR(\alpha)$ on $[g(c),g(d)]$, let $h=f\circ g$, $\beta=\alpha\circ g$, then $h\in\scrR(\beta)$ on $[c,d]$, with $\int_{g(c)}^{g(d)}f\rmd \alpha=\int_{c}^{d}h\rmd \beta$.          
+\end{enumerate}
+
+
 
 \section{Measure Theory}\label{sec:measure}
 
+
+
+
+\subsection{Probability spaces}\label{sec:prob-spaces}
+\begin{defbox}
+	\begin{definition}[Concepts]\label{def:spaces}
+		\
+		\begin{itemize}
+			\item \red{Sample space} $\Omega$: a set.
+			\item \red{Field/algebra} $\scrF'$: collection of subsets of $\Omega$ satisfying: (i)$\Omega\in\scrF'$, (ii) $A\in\scrF$ implies $A^c\in\scrF'$, (iii) $A,B\in\scrF'$ implies $A\cup B\in\scrF'$.  
+			\item \red{$\sigma$-field/algebra} $\scrF$: collection of subsets of $\Omega$ satisfying: (i) $\Omega\in\scrF$, (ii) $A\in\scrF$ implies $A^c\in\scrF$, (iii) $A_i\in\scrF$ implies $\cup_{i=1}^\infty  A_i\in\scrF$.
+			\item $(\Omega,\scrF)$ is a \red{measurable space}.
+			\begin{itemize}
+				\item A set in $\scrF$ is called \red{$\scrF$-measurable}, or simply measurable.
+				\item If $\scrG$ is a subcollection of $\scrF$, we say that $\scrG$ is a \red{sub-$\sigma$-field} of $\scrF$ if $\scrG$ is also a $\sigma$-field.    
+			\end{itemize}
+			\item \red{Measure} $\mu:\scrF\to\bbR$, if (i) $\mu(A)\geq 0$, (ii) $\mu(\emptyset)=0$, (iii) $A_i\in\scrF$ disjoint, then $\mu(\biguplus_{i=1}^n A_i )=\sum_{i=1}^{n}\mu(A_i)$.             
+			\begin{itemize}
+				\item A measure $\mu$ is said to be \red{finite} if $\mu(\Omega)$ is finite.   
+				\item If $\mu(\Omega)=1$, then $\mu$ is a \red{probability measure}. 
+			\end{itemize}
+		\end{itemize}
+	\end{definition}
+\end{defbox}
+
+Let $\mu$ be a measure on $(\Omega,\scrF)$, it has the following properties:
+\begin{itemize}
+	\item[(a)] (\textbf{monotonicity}) if $A\subset B$, then $\mu(A)\leq\mu(B)$;
+	\item[(b)] (\textbf{addition law}) $\forall A.B\in\scrF$, $\mu(A\cup B)=\mu(A)+\mu(B)-\mu(A\cap B)$;
+	\item[(c)] (\textbf{sub-additivity}) $\mu(\cup_{i=1}^\infty A_i)\leq \sum_{i=1}^{\infty }\mu(A_i)$;
+	\item[(d)] (\textbf{lower semi-continuity/continuity from
+	below}) if $A_n\uparrow A=\cup_{n=1}^\infty A_n$, then $\mu(A_n)\uparrow \mu(A)$;
+	\item[(e)] (\textbf{upper semi-continuity/continuity from above}) if $A_n\downarrow A=\cap_{n=1}^\infty A_n$ and $\mu(A_1)<\infty $, then $\mu(A_n)\downarrow \mu(A)$.            
+\end{itemize}  
+
+\begin{defbox}
+	\begin{definition}[liminf and limsup]\label{def:liminfsup}
+		Let $E_1,E_2,\ldots$ be an arbitrary sequence of subsets in a set $\Omega$. The \red{limit inferior} and \red{limit superior} of $(E_i)_{i\geq 1}$ are defined respectively as 
+		\begin{sequation*}
+			\liminf_i E_i:=\bigcup_{j=1}^\infty\bigcap_{k\geq j}E_k=\{E_i\ i.o.\}, \qquad \limsup_i E_i:=\bigcap_{j=1}^\infty\bigcup_{k\geq j}E_k=\{E_i\ e.v.\}
+		\end{sequation*}
+	\end{definition}
+\end{defbox}
+We have $\liminf_i E_i \subseteq \limsup_i E_i$. If equality holds, we say the \red{limit of $(E_i)_{i\geq 1}$} exists, and is defined as $\liminf_i E_i$ or $\limsup_i E_i$.    
+
+\begin{defbox}
+	\begin{definition}[generated $\sigma$-field]\label{def:generated-sigma-field}
+		Let $\scrA$ be a collection of subsets of $\Omega$,  let $\sigma(\scrA)$ be the \red{$\sigma$-field generated by $\scrA$}, defined as 
+		\begin{sequation*}
+			\sigma(\scrA) = \bigcap_{\scrA\subseteq\scrF, \scrF \sigma-\text{field}} \scrF.
+		\end{sequation*}   
+	\end{definition}
+\end{defbox}
+It is well-defined because if $\{\scrF_i:i\in I\}$ are all $\sigma$-fields, $I$ can be uncountable, then $\cap_{i\in I}\scrF_i$ is also a $\sigma$-field. The $\sigma(\scrA)$ is the smallest $\sigma$-field containing $\scrA$. If $\Omega=\bbR$, $\scrA=\{(a,b):-\infty <a\leq b< \infty  \}$, then $\sigma(\scrA)$ is called the \red{Borel field/algebra}, written as $\scrB(\bbR)$. Likewise, define $\scrB(\bbR^d)$ the $\sigma$-algebra generated by the open balls in $\bbR^d$. A set in $\scrB(\bbR)$ is called a \red{Borel set}. 
+\begin{itemize}
+	\item $\scrB(\bbR)=\sigma(\{(a,b):a<b\})$, which can be $\{[a,b]\}$, $\{(a,b]\}, \ldots$
+	\item $\scrB(\bbR^d)$ can also be generated by open $d$-dimensional open boxes in the form $(a_1,b_1)\times(a_2,b_2)\times\cdots\times(a_d,b_d)$.   
+\end{itemize}   
+
+\subsubsection{Measure extension theorem}\label{sec:mea-extension}
+
+\begin{defbox}
+	\begin{definition}[Concepts]\label{def:premea-extension-sigmaFinite}
+		\
+		A \red{pre-measure} $\mu_0:\scrF_0\to [0,\infty ]$ defined on a field $\scrF_0$ is a set function satisfying (i) $\mu_0(\emptyset)=0$ and (ii) if $A_i\in\scrF_0$ mutually disjoint sets in $\Omega$ and $\biguplus_i A_i\in\scrF_0$, then $\mu_0(\biguplus_{i=1}^\infty A_i)=\sum_{i=1}^{\infty }\mu_0(A_i)$.    
+
+		Let $\scrF$ be a $\sigma$-field containing $\scrF_0$. We say that $\mu:\scrF\to[0,\infty ]$ is an \red{extension} of $\mu_0$ if $\mu$ is a measure and satisfies $\mu(E)=\mu_0(E)$, $\forall E\in\scrF_0$.     
+
+		$\mu_0$ is said to be \red{finite} if $\mu_0(\Omega)<\infty $. It is said to be \red{$\sigma$-finite} if $\exists$ at most countably many sets $\Omega_i\in\scrF_0$ such that $\Omega=\cup_{i=1}^\infty \Omega_i$ and $\mu_0(\Omega_i)<\infty $ for all $i$.            
+	\end{definition}
+\end{defbox}
+We note that a probability measure is automatically $\sigma$-finite. WLOG, we may assume $\Omega_i$'s form a partition of $\Omega$. If $\Omega_i$'s are not mutually disjoint, set $\Omega_i=\Omega_i\setminus(\cup_{j=1}^{i-1}\Omega_j)$. 
+
+\begin{thmbox}
+	\begin{theorem}[Measure extension theorem/Hahn-Kolmogorov-Carathéodory]\label{thm:extension}
+		\rm Let $\scrF_0$ be a field on $\Omega$ and $\mu_0$ be a premeasure on $\scrF_0$. There is a measure $\mu$ defined on $\sigma(\scrF_0)$ that extends to $\mu_0$. Moreover, if $\mu_0$ is $\sigma$-finite, then the extension is unique.         
+	\end{theorem}
+\end{thmbox}
+
+\begin{itemize}
+	\item (Counting measure) $\Omega=\bbN^+$, $\scrF_0$ is the collection of all finite and co-finite sets. $\mu_0(E)=\infty $ if $E$ is infinite and $\abs{E}$ if $E$ is finite. $E=\{2,4,6,8,\ldots\}\notin \scrF_0$, $\mu_0(E)$ is undefined. But it is $\sigma$-finite by taking $\Omega_i=\{i\}$. $\mu_0$ can be extended to the power set $2^{\bbN}$, the counting measure on $\bbN^+$.   
+	\item If $\Omega=\bbR$, $\scrF_0=\{\text{finite union of }(a,b], a\in\bbR\cup\{-\infty \}, b\in\bbR\cup\{\infty \}\}$, then $\scrF_0$ is a field. Define $\mu_0$ on $\scrF_0$ by $\mu_0(\biguplus_{i=1}^n (a_i,b_i])=\sum_{i=1}^{n}(b_i-a_i)$ the total length of the set, if all $a_i$ and $b_i<\infty $. Otherwise, the length is $\infty $. It is $\sigma$-finite by taking $\Omega_i=(-i,i]$. $\mu_0$ can be extended to $\scrB(\bbR)$, and the extension is unique, called the \red{Borel measure} on $\bbR$, denoted by $\lambda$.      
+\end{itemize}
+
+\subsubsection{Lebesgue--Stieltjes measures}\label{sec:LS-measure}
+\underline{\textbf{Stieltjes measure function}}
+\begin{defbox}
+	\begin{definition}[distribution function]\label{def:dist}
+		Let $(\bbR,\scrB(\bbR),\bbP)$ be a probability space. The \red{distribution function} induced by $P$ is defined as 
+		\begin{equation*}
+			F(x):=\bbP((-\infty ,x]),\quad x\in\bbR.
+		\end{equation*}  
+	\end{definition}
+\end{defbox}
+df vs cdf: cdf is for rv, while df is for a probability measure.
+\begin{thmbox}
+	\begin{theorem}[Properties of df]\label{thm:df-prop}\rm
+		The df $F(x)$ of a probability measure satisfies the following properties:
+		\begin{enumerate}
+			\item $F(x)$ is non-decreasing;
+			\item $F(x)$ is right-continuous;
+			\item $\lim_{x\to \infty }F(x)=1$;
+			\item $\lim_{x\to -\infty}F(x)=0$.  
+		\end{enumerate} 
+	\end{theorem}
+\end{thmbox}
+
+\begin{defbox}
+	\begin{definition}[Stieltjes measure function]\label{def:Stieltjes-measure}
+		A function $F:\bbR\to\bbR$ is called a \red{Stieltjes measure function} if 
+		\begin{enumerate}
+			\item $F$ is non-decreasing;
+			\item $F$ is right-continuous.  
+		\end{enumerate} 
+	\end{definition}
+\end{defbox}
+
+\noindent\underline{\textbf{Lebesgue-Stieltjes measures}}
+Given a Stieltjes measure function, we can apply the measure extension theorem \ref{thm:extension} to construct a measure on $\scrB(\bbR)$. Intuitively, the Lebesgue--Stieltjes measure $\mu$ assigns a length to each Borel set on the real line, where the length of $(a,b]$ is given by $F(b)-F(a)$.
+\begin{thmbox}
+	\begin{theorem}\label{thm:LSmeasure}\rm
+		Let $F$ be a Stieltjes measure function defined on $\bbR$. Then $\exists$ a unique measure $\mu$ defined on $\scrB(\bbR)$ such that $\mu((a,b])=F(b)-F(a)$. The measure $
+		\mu$ is called the \red{Lebesgue-Stieltjes (LS) measure} induced by $F$.        
+	\end{theorem}
+\end{thmbox}
+
+For example,
+\begin{itemize}
+	\item (Lebesgue measure) take $F(x)=x$, then the LS measure on $\scrB(\bbR)$ is Lebesgue measure, denoted by $\lambda$, $\lambda([a,b])=b-a$. It is translation-invariant;
+	\item (Uniform distribution) $F(x)=x\1_{\{0\leq x\leq 1\}}+ \1_{\{1<x\}}$, then the LS measure $\mu$ is the uniform distribution on $[0,1]$, $\mu((a,b])=b-a$ if $0<a<b<1$;
+	\item (Continuous distribution) Let $f(x)\geq 0$ be a pdf, i.e., Riemann-integrable on $R$, and $\int_{\bbR}f(x)\rmd x=1$. Then $F(x):=\int_{-\infty }^{x}f(t)\rmd t$ is a Stieltjes measure function. Denote the LS measure by $P$, $P((a,b))=\int_{a}^{b}f(t)\rmd t$, $a<b$;   
+	\item (Dirac measure, point mass) $F(x)=\1_{\{x\geq x_0\}}$. $P(A)=\1_{\{x_0\in A\}}$;
+	\item (Discrete distribution) $i\in\bbN^+$, $p_i\geq 0$, $\sum_{i=1}^{\infty }p_i=1$. Define $F(x)=\sum_{i=1}^{\infty }p_i\1_{\{x\geq x_i\}}$. Then LS measure $P(\{x\})=\sum_{i=1}^{\infty }p_i\1_{\{x=x_i\}}$.
+\end{itemize}
+
+\subsubsection{Null sets and complete measures}\label{sec:null-complete}
+Consider a probability space $(\Omega,\scrF,\mu)$. If $\mu(E)=0$, we hope $\forall E'\subseteq E$, $\mu(E')=0$. But $E'$ may not be measurable.
+\begin{defbox}
+	\begin{definition}\label{def:null-complete}
+		Given a measure space $(\Omega,\scrF,\mu)$, we define a set $N\subseteq \Omega$ as a \red{null set} if $\exists E\in\scrF$ s.t. $N\subseteq E$ and $\mu(E)=0$. The measure space $(\Omega,\scrF,\mu)$ is said to be \red{complete} if all null sets are indeed $\scrF$-measurable. 
+	\end{definition}
+\end{defbox}     
+
+\begin{thmbox}
+	\begin{theorem}[Completion]\label{thm:null-completion}
+		Let $(\Omega,\scrF,\mu)$ be a measure space and $\scrN$ be the set of all null sets. We can define a new collection of sets
+		\begin{sequation*}
+			\scrF':=\{A\cup N: A\in\scrF,\ N\in\scrN\}.
+		\end{sequation*}
+		We can extend the measure $\mu$ to a measure on $\scrF'$, denoted by $\mu'$, by 
+		\begin{sequation*}
+			\mu'(A\cup N):=\mu(A),
+		\end{sequation*}   
+		and the extended measure space $(\Omega,\scrF',\mu')$ is complete. 
+	\end{theorem}
+\end{thmbox}
+
+By enlarging the $\sigma$-field in this way, we may assume that the measure is complete
+without loss of generality.
+
+\subsubsection{$\pi$-$\lambda$ theorem and uniqueness of measure extension}\label{sec:pi-lambda-thm}
+We will use the term \red{set system} to refer to a collection of subsets in $\Omega$.
+\begin{defbox}
+	\begin{definition}\label{def:pi-lambda-sys}
+		We define a \red{$\pi$-system} in $\Omega$ as a set system $\scrP$ that satisfies 
+		\begin{sequation*}
+			A,B\in\scrP \Rightarrow A\cap B\in\scrP. 
+		\end{sequation*}  
+		A \red{$\lambda$-system/Dynkin system} in $\Omega$ is a set system $\scrL$ that satisfies:
+		\begin{enumerate}
+			\item[(i)] $\Omega\in\scrL$;
+			\item[(ii)] $A\in\scrL \Rightarrow \Omega\setminus A\in\scrL $;
+			\item[(iii)] If $A_i\in\scrL$, $A_i\uparrow A$, then $A\in\scrL$.      
+		\end{enumerate}  
+	\end{definition}
+\end{defbox} 
+\begin{itemize}
+	\item (iii) is equivalent to: If $A_i\in\scrL$ mutually disjoint, then $\cup_i A_i\in\scrL$.  
+	\item If $\scrA$ is both $\pi$ and $\lambda$-system, then $\scrA$ is a $\sigma$-field.     
+\end{itemize}
+
+\begin{thmbox}
+	\begin{theorem}[Dynkin's $\pi$-$\lambda$ theorem]\label{thm:pi-lambda-thm}\rm
+		If $\scrP$ is a $\pi$-system and $\scrL$ is a $\lambda$-system, and $\scrP\subset \scrL$, then $\sigma(\scrP)\subset \scrL$.      
+	\end{theorem}
+\end{thmbox}
+We can use the $\pi$-$\lambda$ theorem to prove the uniqueness of measure extension.
+
+\begin{thmbox}
+	\begin{theorem}[Uniqueness of measure extension]\label{thm:unique-measure-extension}\rm
+		Suppose $\scrF_0$ is a field on a sample space $\Omega$, and $\mu_1$ and $\mu_2$ are two measures on $\sigma(\scrF_0)$ such that $\mu_1(A)=\mu_2(A)$ for all $A\in\scrF_0$. Furthermore, suppose $\exists$ a sequence of disjoint sets $\Omega_i\in\scrF_0$, for $i=1,2,\ldots$, such that $\biguplus_i \Omega_i=\Omega$ and $\mu_1(\Omega_i)=\mu_2(\Omega_i)<\infty $ for all $i$. Then $\mu_1(B)=\mu_2(B)$ for all $B\in\sigma(\scrF_0)$.            
+	\end{theorem}
+\end{thmbox}
+
+As an application of the uniqueness result, we prove that a probability measure on $\bbR$ is
+uniquely determined by its Stieltjes measure function.
+\begin{thmbox}
+	\begin{theorem}\label{thm:unique-prob-measure}\rm
+		Let $P$ be a probability measure on $(\bbR,\scrB(\bbR))$, and let $F(x)$ be its induced distribution function. If $\exists$ another probability $Q$ on $\scrB(\bbR)$ such that 
+		\begin{sequation*}
+			P((-\infty ,x])=Q((-\infty ,x]),\quad \forall x\in\bbR,
+		\end{sequation*}      
+	then $P(B)=Q(B)$, $\forall B\in\scrB(\bbR)$.  
+	\end{theorem}
+\end{thmbox}
+Multivariate version: On $(\bbR^d,\scrB(\bbR^d))$, $P$ is uniquely determined by multivariate distribution function $F(\x)$.   
+
+\subsection{Measurable functions}\label{sec:mea}
+
+Given a function $f:\Omega\to\Omega'$, the \red{inverse image} of a set $A\subseteq\Omega'$ via the function $f$ is defined as 
+\begin{sequation*}
+	f^{-1}(A):=\{x\in\Omega:f(x)\in A\}.
+\end{sequation*}  
+\begin{itemize}
+	\item $f^{-1}(A^c)=(f^{-1}(A))^c$.
+	\item If $(A_i)_{i\in I}$ is any collection of sets in $\Omega'$, then $f^{-1}(\cap_{i\in I}A_i)=\bigcap_{i\in I}f^{-1}(A_i)$ and $f^{-1}(\cup_{i\in I}A_i)=\bigcup_{i\in I}f^{-1}(A_i).$
+	\item If $h=g\circ f$, then $h^{-1}(B)=f^{-1}(g^{-1}(B))$ for any subset $B$ of the codomain of $g$.    
+\end{itemize}
+
+\begin{defbox}
+	\begin{definition}[\textbf{Measurable functions}]\label{def:mea-fun-rv}
+		Let $(\Omega,\scrF)$ and $(\Omega',\scrG)$ be two measurable spaces. A function $f:\Omega\to\Omega'$ is called \red{$(\scrF,\scrG)$-measurable} if $\forall B\in\scrG$, $f^{-1}(B)\in\scrF$. When $\scrG$ is understood from the context, we say that $f$ is \red{$\scrF$-measurable}. If both $\scrF$ and $\scrG$ are understood, we say that $f$ is \red{measurable}.     
+		
+		When $(\Omega,\scrF)=(\bbR,\scrB(\bbR))$, we will refer to an $\scrF$-measurable function as a \red{Borel measurable} function.
+
+		When $(\Omega',\scrG)=(\bbR,\scrB(\bbR))$, a $(\scrF,\scrB(\bbR))$-measurable function $X:\Omega\to\bbR$ is called a \red{(real-valued) measurable function}. If $(\Omega,\scrF,\mu)$ is a probability space, we refer to $X$ as a \red{random variable}. Furthermore, if $(\Omega',\scrG)=(\bbR^d,\scrB(\bbR^d))$, then $\X$ is called a \red{random vector}.
+	\end{definition}
+\end{defbox}
+Examples:
+\begin{itemize}
+	\item If $\scrF=2^{\Omega}$ or $\scrG=\{\emptyset,\Omega'\}$, then $\forall f:\Omega\to\Omega'$ is $(\scrF,\scrG)$-measurable.
+	\item If $\scrF=\{\emptyset,\Omega\}$, and $\scrG$ is the $\sigma$-field in which all singletons are $\scrG$-measurable, then an $(\scrF,\scrG)$-measurable function is a constant function.        
+	\item Let $A\subseteq\Omega$. The indicator function $\1_A(\omega)$ is $(\scrF,\scrB(\bbR))$-measurable iff $A$ is measurable. 
+	\begin{itemize}
+		\item Let $(\Omega,\scrF)=(\bbR,\scrB(\bbR))$, since $\bbQ$ and Cantor set $C\in\scrB(\bbR)$, $\1_{\bbQ}$ and $\1_{C}$ is Borel measurable. But Vitali set $V\notin\scrB(\bbR)$, so $\1_V$ is not Borel measurable.       
+	\end{itemize}
+\end{itemize}
+
+\noindent \red{$\sigma$-field generated by $f$}: $\sigma(f):=\{f^{-1}(B):B\in\scrG\}$ is the smallest $\sigma$-field in $\Omega$ to make $f$ measurable.   
+\begin{itemize}
+	\item If $f(\omega)=a\in\Omega'$, $\forall \omega\in\Omega$, then $\sigma(f)=\{\Omega,\emptyset\}$.
+	\item If $f(\omega)=a\1_{A}+b\1_{A^c}$, $a\neq b$, then $\sigma(f)=\{\Omega,\emptyset,A,A^c\}=\sigma(A)$.       
+\end{itemize}
+
+\noindent \red{Induced $\sigma$-field}: $\{B\subset\Omega':f^{-1}(B)\in\scrF\}$ is the largest $\sigma$-field in $\Omega'$ to make $f$ measurable.    
+
+
+\begin{thmbox}
+	\begin{theorem}[\textbf{Composition of measurable functions}]\label{thm:comp-mea}\rm
+		Suppose $f:(\Omega,\scrF)\to(\Omega',\scrG)$ is $(\scrF,\scrG)$-measurable, and $g:(\Omega',\scrG)\to(\Omega'',\scrH)$ is $(\scrG,\scrH)$-measurable. Then the composed function $h=g\circ f$ is $(\scrF,\scrH)$-measurable.   
+	\end{theorem}
+	\begin{theorem}[\textbf{Check measurability}]\label{thm:check-mea}\rm
+		Let $f:(\Omega,\scrF)\to(\Omega',\scrG)$ be a function, $\sigma(\scrC)=\scrG$. Then $f$ is $(\scrF,\scrG)$-measurable iff $f^{-1}(A)\in\scrF$, $\forall A\in\scrC$. 
+	\end{theorem}
+	\begin{theorem}[\textbf{Measurability on $\bbR^m$}]\label{thm:cts-bbR}\rm
+		A continuous function $f:\bbR^m\to\bbR^n$ is $(\scrB(\bbR^m),\scrB(\bbR^n))$-measurable. In particular, a continuous real-valued function $f:\bbR^m\to\bbR$ is measurable. 
+	\end{theorem}
+	\begin{theorem}[\textbf{Random vector}]\label{thm:rvec}\rm
+		$\X=(X_1 , \ldots , X_d)^T$ is a random vector iff $X_i$ is a rv, $\forall i=1,\ldots,d$.   
+	\end{theorem}
+\end{thmbox}
+\noindent \red{$\sigma(X_1,\ldots,X_d)$}: the smallest $\sigma$-field to make any $X_i$ measurable, $\forall i=1,\ldots,d$, which is $\sigma(\sigma(X_1),\ldots,\sigma(X_d))$; it is also the smallest $\sigma$-field to make $\X=(X_1 , \ldots , X_d)^T$ measurable.
+
+\noindent \red{$\sigma(X_1,X_2,\ldots)$}$=\sigma(\sigma(X_1),\sigma(X_2),\ldots)$ or $\sigma(\X:\Omega\to\bbR^\infty )=\sigma((-\infty ,x_1]\times\cdots(-\infty ,x_d],\ \x\in\bbR^d,\ d=1,2,\ldots,)$, that is, any finite collection of $X_i$ is measurable. 
+
+\subsubsection{Operations of measurable functions}\label{sec:oper-mea}
+If $X_1,\ldots,X_n$ are rvs, $f:(\bbR^n,\scrB(\bbR^n))\to(\bbR,\scrB(\bbR))$ is measurable, then $f(X_1,\ldots,X_n)$ is a rv by composition. 
+
+\begin{thmbox}
+	\begin{theorem}\label{thm:oper-mea}\rm
+		If $f,g:\Omega\to\bbR$ are $\scrF$-measurable, then $f+g$, $f-g$, $c\cdot f$, and $f/g$ are measurable, where $c$ is a constant, and in $f/g$, we assume that $g(\omega)\neq 0$, $\forall\omega$.           		
+	\end{theorem}
+\end{thmbox}
+
+Define the \red{extended real line} $\bbR^*=[-\infty ,\infty ]$, $\scrB(\bbR^*)=\sigma\{A,A\cup\{-\infty \},A\cup\{\infty \}, A\cup\{\infty ,-\infty \}:A\in\scrB(\bbR)\}=\sigma((-\infty ,x]:x\in\bbR\cup\{\infty \})$. By convention, $0\cdot \infty =0$ and $0\cdot(-\infty )=0$. If $f:\Omega\to\bbR^*$ is measurable, then it is called \red{generalized random variable}.   
+
+\begin{thmbox}
+	\begin{theorem}\label{thm:max-mea}\rm
+		Suppose $f_i:\Omega\to\bbR^*$ is measurable for $i\in\bbN^+$, then the functions
+		\begin{sequation*}
+			\inf_i f_i, \ \sup_i f_i,\ \liminf_i f_i,\ \limsup_i f_i, \ \lim_i f_i \ (\text{if exists})
+		\end{sequation*}
+		 are measurable, i.e., generalized rvs.       
+	\end{theorem}
+\end{thmbox}
+Let $\Omega_0=\{\omega\in\Omega:\lim_n f_n(\omega) \text{ exists and finite}\}=\{\omega\in\Omega:\limsup_n f_n(\omega)-\liminf_n f_n(\omega)=0\}\in\scrF$. If $P(\Omega_0)=1$, then we say $\{f_n\}_{n=1}^\infty $ \red{converges almost surely}.   
+
+\subsubsection{Random variables and distributions}\label{sec:rv-dist}
+Let $X:(\Omega,\scrF,\bbP)\to(\bbR,\scrB(\bbR))$ be a rv. Then its induced measure on $\bbR$ is called the \red{probability distribution} of $X$, i.e., $\bbP(X\in B):=\bbP(X^{-1}(B))$, $\forall B\in\scrB(\bbR)$. The \red{distribution function} (df) of $X$ is defined to be $F_X(x)=\bbP(X\leq x)$, $\forall x\in\bbR$. The properties in Theorem \ref{thm:df-prop} hold.
+\begin{itemize}
+	\item (Fact) If $X$ has cdf $F$, $F$ is cts, then $Y=F(X)\sim\mathrm{Unif}(0,1)$.    
+\end{itemize}
+\begin{thmbox}
+	\begin{theorem}\label{thm:dist-coupling}\rm
+		Let $\Omega=(0,1)$, $\scrF=\scrB((0,1))$, and $\bbP$ is the Lebesgue measure on $(0,1)$. Let $F$ be an arbitrary distribution function. 
+		Define $X(\omega)=F^{-1}(\omega)$, $\omega\in(0,1)$, where 
+		\begin{sequation*}
+			F^{-1}(\omega):=\inf\{y\in\bbR:F(y)\geq \omega\} (=\sup\{y\in\bbR:F(y)<\omega\}).
+		\end{sequation*}
+		Then $X$ is regarded as a rv in $\Omega$ having df $F$.            
+	\end{theorem}
+\end{thmbox}
+It is useful to define several rvs on the same probability space, called \red{coupling}.
+
+\subsection{Statistical independence}\label{sec:independence}
+
+
+
 \subsection{Expectation}\label{sec:measure-expectation}
 \begin{lemma}\label{lamma:measure-expectation-expInt}
-	Let $X\geq 0$, $p>0$, we have $\bbE X^p=\int_{0}^{\infty }px^{p-1}\bbP(X>x) \rmd x$.
+	Let $X\geq 0$, $p>0$, we have $\bbE X^p=\int_{0}^{\infty }px^{p-1}\Unif(X>x) \rmd x$.
 \end{lemma}
+
 
 
 \section{Law of Large Numbers}\label{sec:LLN}

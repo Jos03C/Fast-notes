@@ -207,6 +207,8 @@ citecolor=pink}
 \newcommand{\Cov}{{\bf Cov}}
 \newcommand{\Covx}{\mathop{\bf Cov\/}}
 
+\newcommand{\Unif}{\mathrm{Unif}}
+
 % shortcuts for symbol names that are too long to type
 \newcommand{\eps}{\epsilon}
 \newcommand{\lam}{\lambda}
@@ -226,6 +228,7 @@ citecolor=pink}
 \newcommand{\bbR}{\mathbb R}
 \newcommand{\bbZ}{\mathbb Z}
 
+\newcommand{\balpha}{{\boldsymbol \alpha}}
 \newcommand{\bbeta}{{\boldsymbol \eta}}
 \newcommand{\bbtheta}{\boldsymbol \theta}
 
@@ -296,8 +299,16 @@ citecolor=pink}
 \newcommand{\calY}{{\cal Y}}
 \newcommand{\calZ}{{\cal Z}}
 
+\def\scrA{\mathscr{A}}
 \def\scrB{\mathscr{B}}
+\def\scrC{\mathscr{C}}
 \def\scrF{\mathscr{F}}
+\def\scrG{\mathscr{G}}
+\def\scrH{\mathscr{H}}
+\def\scrL{\mathscr{L}}
+\def\scrN{\mathscr{N}}
+\def\scrR{\mathscr{R}}
+\def\scrP{\mathscr{P}}
 \def\scrX{\mathscr{X}}
 
 % bold letters (useful for random variables)
@@ -348,6 +359,7 @@ citecolor=pink}
 \newcommand{\1}{{\boldsymbol 1}}
 
 \newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmC}{\mathrm{C}}
 \newcommand{\rmP}{\mathrm{P}}
 
 
@@ -386,6 +398,31 @@ citecolor=pink}
 
 \newcommand{\half}{{\textstyle \frac12}}
 \newcommand{\myfig}[4]{\begin{figure}[h] \begin{center} \includegraphics[width=#1\textwidth]{#2} \caption{#3} \label{#4} \end{center} \end{figure}} 
+
+%% envir
+\newenvironment{sequation*}
+  {\setlength\abovedisplayskip{0.15cm}
+             \setlength\belowdisplayskip{0.15cm}
+             \begin{equation*}}
+{\end{equation*}}
+
+\newenvironment{sequation}
+  {\setlength\abovedisplayskip{0.15cm}
+             \setlength\belowdisplayskip{0.15cm}
+             \begin{equation}}
+{\end{equation}}
+
+\newenvironment{salign*}
+  {\setlength\abovedisplayskip{0.15cm}
+   \setlength\belowdisplayskip{0.15cm}
+   \begin{align*}}
+{\end{align*}}
+
+\newenvironment{salign}
+  {\setlength\abovedisplayskip{0.15cm}
+   \setlength\belowdisplayskip{0.15cm}
+   \begin{align}}
+{\end{align}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Color boxes
@@ -508,6 +545,8 @@ citecolor=pink}
             fuzzy shadow = {0pt}{-2pt}{-0.5pt}{0.5pt}{black!35},
             breakable,
             pad at break*=1mm}{ex}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Feel free to ignore the rest of this file

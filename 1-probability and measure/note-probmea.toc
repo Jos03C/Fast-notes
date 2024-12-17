@@ -1,25 +1,36 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Measure Theory}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Expectation}{1}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Law of Large Numbers}{1}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Almost Surely Convergence}{1}{subsection.2.1}%
-\contentsline {section}{\numberline {3}Central Limit Theorem}{2}{section.3}%
-\contentsline {section}{\numberline {4}Random Walks}{2}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Stopping Times (\ref {sec:proof-stoppingTimes})}{2}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Recurrence vs. Transience (\ref {sec:proof-RecTrans})}{2}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Reflection Principle and Arcsine Distribution (\ref {sec:proof-ReflectionArcsine})}{3}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Martingales}{3}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Conditional expectation \ref {sec:proof-cond_exp}}{3}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Martingales}{4}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Martingale convergence}{4}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Doob's inequality; ${\cal L}^p$ convergence; CLT}{5}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Techniques}{5}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Convergence}{5}{subsection.6.1}%
-\contentsline {subsubsection}{\numberline {6.1.1}Convergence of random series}{5}{subsubsection.6.1.1}%
-\contentsline {section}{\numberline {A}Proofs}{5}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Proofs - \ref {sec:RW}}{5}{subsection.A.1}%
-\contentsline {subsubsection}{\numberline {A.1.1}Proofs - \ref {sec:stoppingTimes}}{5}{subsubsection.A.1.1}%
-\contentsline {subsubsection}{\numberline {A.1.2}Proofs - \ref {sec:RecTrans}}{6}{subsubsection.A.1.2}%
-\contentsline {subsubsection}{\numberline {A.1.3}Proofs - \ref {sec:ReflectionArcsine}}{7}{subsubsection.A.1.3}%
-\contentsline {subsection}{\numberline {A.2}Proofs - \ref {sec:martingales}}{8}{subsection.A.2}%
-\contentsline {subsubsection}{\numberline {A.2.1}Proofs - \ref {sec:cond_exp}}{8}{subsubsection.A.2.1}%
+\contentsline {section}{\numberline {1}Preliminary}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Riemann--Stieltjes integrals}{1}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Measure Theory}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Probability spaces}{2}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Measure extension theorem}{3}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Lebesgue--Stieltjes measures}{3}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Null sets and complete measures}{4}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}$\pi $-$\lambda $ theorem and uniqueness of measure extension}{4}{subsubsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.2}Measurable functions}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Operations of measurable functions}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Random variables and distributions}{6}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Statistical independence}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Expectation}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Law of Large Numbers}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Almost Surely Convergence}{6}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Central Limit Theorem}{6}{section.4}%
+\contentsline {section}{\numberline {5}Random Walks}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Stopping Times (\ref {sec:proof-stoppingTimes})}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Recurrence vs. Transience (\ref {sec:proof-RecTrans})}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Reflection Principle and Arcsine Distribution (\ref {sec:proof-ReflectionArcsine})}{7}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Martingales}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Conditional expectation \ref {sec:proof-cond_exp}}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Martingales}{9}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Martingale convergence}{9}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Doob's inequality; ${\cal L}^p$ convergence; CLT}{10}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Techniques}{10}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Convergence}{10}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {7.1.1}Convergence of random series}{10}{subsubsection.7.1.1}%
+\contentsline {section}{\numberline {A}Proofs}{10}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Proofs - \ref {sec:RW}}{10}{subsection.A.1}%
+\contentsline {subsubsection}{\numberline {A.1.1}Proofs - \ref {sec:stoppingTimes}}{10}{subsubsection.A.1.1}%
+\contentsline {subsubsection}{\numberline {A.1.2}Proofs - \ref {sec:RecTrans}}{11}{subsubsection.A.1.2}%
+\contentsline {subsubsection}{\numberline {A.1.3}Proofs - \ref {sec:ReflectionArcsine}}{12}{subsubsection.A.1.3}%
+\contentsline {subsection}{\numberline {A.2}Proofs - \ref {sec:martingales}}{12}{subsection.A.2}%
+\contentsline {subsubsection}{\numberline {A.2.1}Proofs - \ref {sec:cond_exp}}{12}{subsubsection.A.2.1}%
