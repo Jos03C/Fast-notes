@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,a4paper]{book}
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -25,6 +25,131 @@
 %#############################################################
 %#############################################################
 
+\chapter{Complex Analysis}\label{chap:complex}
+References: 
+\begin{itemize}
+	\item CUHKSZ: MAT3253 - Complex Variables notes by Kenneth Shum (Spring 2023)
+\end{itemize}
+
+\section{Complex Numbers}\label{sec:complex-num}
+\underline{\red{Polar form of complex numbers}} $z=x+iy=r(\cos\theta+i\sin\theta)$ for $r,\theta \geq 0$.
+\begin{itemize}
+	\item If $z_k=r_k(\cos\theta_k+i\sin\theta_k)$ for $k=1,2$, then $z_1z_2=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]$.   
+	\item If $z_1z_2z_3=0$, then at least one of the three factors is zero. 
+	\item If $\Re(z_1),\Re(z_2)>0$, then $\Arg(z_1z_2)=\Arg(z_1)+\Arg(z_2)$, where principal arguments in $(-\pi,\pi]$ are used.    
+\end{itemize}   
+\underline{\red{Properties of complex numbers}} (i) $(z^*)^*=z$; (ii) $z^*=z$ iff $z\in\bbR$; (iii) $zz^*=\abs{z}^2=x^2+y^2$; (iv) $z_1,z_2\in\bbC$, $(z_1+z_2)^*=z_1^*+z_2^*, (z_1z_2)^*=z_1^*z_2^*$; (v) $\Re(z)=(z+z^*)/2, \Im(z)=(z-z^*)/(2i)$; (vi) $\abs{z_1+z_2}\leq \abs{z_1}+\abs{z_2}$; (vii) $z_1\neq z_2$, then $\abs{z_2-z_1}^2 = r_1^2 + r_2^2 - 2r_1r_2\cos(\theta_1-\theta_2)$; (viii) $\abs{z_1+z_2}^2\leq \abs{z_1}^2 + 2\abs{\Re(z_1z_2^*)} + \abs{z_2}^2$, and $\abs{\Re (z_1z_2^*)}\leq\abs{z_1}\abs{z_2}$.
+\begin{itemize}
+	\item (\red{DeMoivre formula}) $\forall n\in\bbZ, \theta\in\bbR$, $(\cos\theta+i\sin\theta)^n=\cos(n\theta)+i\sin(n\theta)$ 
+	\item (\red{Binomial formula}) $(z_1+z_2)^m=\sum_{k=0}^{m}\binom{m}{k}z_1^kz_2^{m-k}$ for $m\in\bbN^+$, $z_1,z_2\in\bbC$.   
+	\item (Geometric series) $\sum_{k=0}^{n}z^k=(1-z^{n+1})/(1-z)$.
+\end{itemize}
+\underline{\red{$n$-th root of a complex number}} $w$ is the $n$-th root of $z_0$ if $w^n=z_0$.    
+\begin{itemize}
+	\item ($n$-th root of unity) $\forall n\in\bbN^+$, the solution of $z^n=1$ is $z=\cos(2\pi k/n)+i\sin(2\pi k/n)$, $k=0,\ldots,n-1$.
+	If we write $w=\cos(2\pi/n)+i\sin(2\pi/n)$, then the $n$-th root is $w^k$, $k=0,\ldots,n-1$.       
+\end{itemize}
+
+\begin{exbox}
+\begin{example}\
+	\begin{itemize}
+		\item (Summation of $\cos k\theta$)
+		\begin{sequation*}
+			1+\cos\theta+\cos 2\theta+\cdots+\cos n\theta=\frac{1}{2}+\frac{\sin((2n+1)\theta/2)}{2\sin(\theta/2)}, \quad 0<\theta<2\pi.
+		\end{sequation*}
+		\item (Chebyshev polynomials) Let $m=n/2$ if $n$ is even and $(n-1)/2$ if $n$ is odd, then    
+		\begin{sequation*}
+			\cos n\theta = \sum_{k=0}^{m} \binom{n}{2k}(-1)^k \cos^{n-2k}(\theta)\sin^{2k}(\theta), \quad n\in\bbN.
+		\end{sequation*}
+		 Write $x=\cos\theta$, the above becomes a polynomial $T_n(x)$ of degree $n$ in the variable $x$.   
+	\end{itemize}
+	
+\end{example}
+\end{exbox}
+
+\subsection{Transformation}\label{sec:complex-trans}
+\underline{\red{Linear fractional/Möbius/bilinear transformation}} 
+\begin{sequation*}
+	f(z)=\frac{az+b}{cz+d}=\frac{a}{c}+\frac{bc-ad}{c}\frac{1}{cz+d}, \quad a,b,c,d\in\bbC,\ ad-bc\neq 0.
+\end{sequation*}
+\begin{itemize}
+	\item $b=0,c=0,d=1$, rotation $f(z)=az=re^{i\theta}z$;
+	\item $a=1,c=0,d=1$, translation $f(z)=z+b$;
+	\item $a=0,b=1,c=1,d=0$, inversion function $f(z)=1/z$, that maps circles and straight lines to circles and straight lines;
+	\item $f(z)=rz$, $0<r\in\bbR$, scaling.  
+\end{itemize}  
+All four types of transformation maps circle/line to circle/line.
+If $ad-bc=0$, then $f(z)$ is a constant.
+
+When $z=-d/c$, $f(z)=\infty $, we extend the domain.
+The \red{Riemann sphere} is three-dimensional sphere with the south pole
+touching the origin of the complex plane. The \red{stereographic projection} s a function that
+maps a complex number $z=x+iy$ in the complex plane to the point $P(x,y)$ on the Riemann
+sphere such that $(x,y),P(x,y)$ and the north pole of the sphere are colinear. The north
+pole of the sphere does not correspond to any point on the complex plane and is called the \red{point at infinity}, and is denoted by the symbol $\infty $. The Riemann sphere is often called the \textit{one-point compactification} of the complex plane.
+
+\noindent\underline{\red{Extended complex number system/extended complex plane}} $\bar{\bbC}, \hat{\bbC}=\bbC\cup\{\infty \}$.  
+\begin{itemize}
+	\item Given complex numbers $a,b,c,d\in\bbC$ with $ad-bc\neq 0$, define a linear fractional transformation on $\bar{\bbC}$ by   
+	\begin{sequation*}
+		f(z)=\begin{cases}
+			\frac{az+b}{cz+d}&\mathrm{if }z\neq-d/c,z\neq\infty\\
+			\infty&\mathrm{if }z=-d/c\\
+			a/c&\mathrm{if }z=\infty
+		\end{cases}
+	\end{sequation*}
+	which is a bijection on the Riemann sphere.
+\end{itemize}
+
+\section{Complex functions}\label{sec:complex-fun}
+\subsubsection{Complex sequences}\label{sec:complex-seq}
+\begin{itemize}
+	\item Distance $d(z_1,z_2)=\abs{z_1-z_2}$.
+	\item \red{Open disc} of radius $r$ centered at $z_0$: $D(z_0,r)=\{z\in\bbC : \abs{z-z_0}<r\}$. Neighborhood of $\infty $ is $\{z\in\bbC:\abs{z}>R\}$ for some large $R$.   
+	\item \red{Convergence} of complex sequence $(z_n)_{n=1}^\infty $: converges to $L\in\bbC$ if $\forall \epsilon>0, \exists N\in\bbN $ s.t. $\abs{z_n-L}<\epsilon$, $\forall n>N$. We write $\lim_{n\to \infty }z_n=L$. $(z_n)_{n=1}^\infty$ converges to $\infty $ iff $1/\abs{z_n}\to 0$ as $n\to \infty $ ($\abs{z_n}\to \infty $). It \red{diverges} if $z_n$ does not converge to any $L\in\bbC$ ($\to \infty $ is also divergent for $\bbC$).
+	\item \red{Cauchy sequence} $\forall \epsilon>0,\exists N\in\bbN$ s.t. $\abs{z_m-z_n}\leq \epsilon$, $\forall m,n\geq N$.
+	\begin{itemize}
+		\item If $z_n=x_n+i y_n$, then $z_n$ is Cauchy iff $x_n,y_n$ Cauchy.
+		\item $z_n$ converges iff $z_n$ is Cauchy.     
+	\end{itemize}                
+	\item \red{Complex series} $\sum_{k=1}^{\infty }z_k :=\lim_{n} \sum_{k=1}^{n}z_k$ if the limit exists. We call it \red{converges absolutely} if $\sum_{k=1}^{\infty }\abs{z_k}$ converges. We call it \red{converges conditionally} if $\sum_{k=1}^{\infty }z_k$ converges but $\sum_{k=1}^{\infty }\abs{z_k}$ diverges.  
+	\begin{itemize}
+		\item \red{($n$-th term test)} If $\sum_{k=1}^{\infty }z_k$ converges, then $\lim_{n}\abs{z_n}=0$. If $\abs{z_n}\nrightarrow 0$, then $\sum_{k}z_k$ diverges.
+		\item \red{(Absolute convergence test)} $\sum_{k=1}^{\infty }\abs{z_k}$ converges, then $\sum_{k=1}^{\infty }z_k$ converges.     
+		\item \red{(Limit ratio test)} Assume $\lim_{n}\abs{a_{n+1}/a_n}$ exists and is equal to $L$. (a) $L>1\Rightarrow\sum_{k=1}^{\infty }a_n $ diverges, (b)  $L<1\Rightarrow\sum_{k=1}^{\infty }a_n $ converges absolutely, (c) $L=1$, no conclusion.
+		\item If $\sum_{k=0}^{\infty }a_k$ and $\sum_{k=0}^{\infty }b_k$ converges absolutely, then $(\sum_{k=0}^{\infty }a_k)(\sum_{k=0}^{\infty }b_k)=(\sum_{k=0}^{\infty }c_k)$, where $c_k=\sum_{j=0}^{k}a_j b_{k-j}$.
+		\item If a series converges absolutely, then a series obtained by rearranging the terms converges to the same limit.    
+	\end{itemize} 
+\end{itemize}
+
+\subsubsection{Complex functions defined by power series}
+\noindent\underline{\red{Power series}} A complex power series centered at the origin is a series in the form $\sum_{k=0}^{\infty }a_kz_k^k$, $\a_k\in\bbC$.
+\begin{defbox}
+\begin{definition}\label{def:complex-fun-power}
+	For $\z\in\bbC$, define 
+	\begin{itemize}
+		\item (\red{complex exponential function})
+		\begin{sequation*}
+			e^z :=\exp(z):=\sum_{n=0}^{\infty }\frac{z^n}{n!}, 
+		\end{sequation*}
+		we have $e^{z_1+z_2}=e^{z_1}e^{z_2}$, $e^{-z}=(e^{z})^{-1}$, $e^z\neq 0$, $\forall z\in\bbC$, and $e^{a+ib}=e^a e^{ib}$, $a,b\in\bbR$.      
+		\item (\red{complex trigonometric, hyperholic trigonometric})
+		\begin{sequation*}
+			\begin{aligned}
+				\sin(z)&:=\sum_{n=0}^\infty(-1)^n\frac{z^{2n+1}}{(2n+1)!}, \quad
+				\cos(z):=\sum_{n=0}^\infty(-1)^n\frac{z^{2n}}{(2n)!}, \quad \tan(z):=\frac{\sin(z)}{\cos(z)} \\
+				\sinh(z)&:=\sum_{n=0}^{\infty}\frac{z^{2n+1}}{(2n+1)!}, \qquad\quad
+				\cosh(z):=\sum_{n=0}^{\infty}\frac{z^{2n}}{(2n)!}.
+			\end{aligned}
+		\end{sequation*}
+	\end{itemize}
+	They are all converges absolutely. 
+\end{definition}
+\end{defbox} 
+
+
+\chapter{Optimization}\label{chap:opt}
+
 References: 
 \begin{itemize}
 	\item CUHKSZ: MAT3007 - Optimization I
@@ -36,8 +161,6 @@ References:
 		\item \textit{Nonlinear Programming}, D. Bertsekas.
 		\item \textit{First-Order Methods in Optimization}, Amir Beck
 	\end{enumerate}
-	
-	
 \end{itemize}
 
 \section{Nonlinear Optimization}\label{sec:nonlinearOPT}
@@ -49,7 +172,7 @@ References:
 		&\min\quad f(\x)\\
 		&s.t.\quad g_i(\x)\leq0,\quad i=1,2,\ldots,m
 		\end{align*}
-		where $f,g_1,\ldots,g_m\in C^1(\R^n)$. Then $\exists$ multipliers $\lambda_0,\ldots,\lambda_m\geq 0$, which are not all zeros, such that  
+		where $f,g_1,\ldots,g_m\in C^1(\bbR^n)$. Then $\exists$ multipliers $\lambda_0,\ldots,\lambda_m\geq 0$, which are not all zeros, such that  
 		\begin{align*}
 			\lambda_0\nabla f(\x^*)+\sum_{i=1}^m\lambda_i\nabla g_i(\x^*)& =\0 \\
 			\lambda_ig_i(\x^*)& =0, \quad i=1,2,\ldots,m.
@@ -68,7 +191,7 @@ A major drawback of the Fritz-John conditions is, they allow $\lambda_0=0$. Unde
 		&\min\quad f(\x)\\
 		&s.t.\quad g_i(\x)\leq0,\quad i=1,2,\ldots,m
 		\end{align*}
-		where $f,g_1,\ldots,g_m\in C^1(\R^n)$. If \blue{$\{\nabla g_i(\x^*)\}_{i\in I(\x^*)}$ are linearly independent}. Then $\exists \lambda_1,\ldots,\lambda_m\geq 0$ such that  
+		where $f,g_1,\ldots,g_m\in C^1(\bbR^n)$. If \blue{$\{\nabla g_i(\x^*)\}_{i\in I(\x^*)}$ are linearly independent}. Then $\exists \lambda_1,\ldots,\lambda_m\geq 0$ such that  
 		\begin{align*}
 			\nabla f(\x^*)+\sum_{i=1}^m\lambda_i\nabla g_i(\x^*)& =\0 \\
 			\lambda_ig_i(\x^*)& =0, \quad i=1,2,\ldots,m.
@@ -86,7 +209,7 @@ A major drawback of the Fritz-John conditions is, they allow $\lambda_0=0$. Unde
 				&\quad\quad\ h_j(\x)=0,\quad j=1,\ldots,p
 				\end{aligned}	
 		\end{equation}
-		where $f,g_1,\ldots,g_m,h_1,\ldots,h_p\in C^1(\R^n)$. If \blue{$\{\nabla g_i(\x^*),\nabla h_j(\x^*),i\in I(\x^*),j=1,\ldots,p\}$ are linearly independent}. Then $\exists \lambda_1,\ldots,\lambda_m\geq 0$, $\mu_1,\ldots,\mu_p\in\R$,  such that 
+		where $f,g_1,\ldots,g_m,h_1,\ldots,h_p\in C^1(\bbR^n)$. If \blue{$\{\nabla g_i(\x^*),\nabla h_j(\x^*),i\in I(\x^*),j=1,\ldots,p\}$ are linearly independent}. Then $\exists \lambda_1,\ldots,\lambda_m\geq 0$, $\mu_1,\ldots,\mu_p\in\bbR$,  such that 
 		\begin{equation}\label{eq:KKT-point}
 			\begin{aligned}
 				\nabla f(\x^*)+\sum_{i=1}^m\lambda_i\nabla g_i(\x^*) + \sum_{j=1}^{p}\mu_j\nabla h_j(\x^*)& =\0, \\
@@ -96,7 +219,7 @@ A major drawback of the Fritz-John conditions is, they allow $\lambda_0=0$. Unde
 	\end{theorem}	
 \end{thmbox}
 Consider problem (1), a feasible point $\x^*$ is called a \red{KKT point}
-if $\exists \lambda_1,\ldots,\lambda_m\geq 0$, $\mu_1,\ldots,\mu_p\in\R$, such that \eqref{eq:KKT-point} holds. $\x^*$ is called \blue{regular} if $\{\nabla g_i(\x^*),\nabla h_j(\x^*),i\in I(\x^*),j=1,\ldots,p\}$ are linearly independent.
+if $\exists \lambda_1,\ldots,\lambda_m\geq 0$, $\mu_1,\ldots,\mu_p\in\bbR$, such that \eqref{eq:KKT-point} holds. $\x^*$ is called \blue{regular} if $\{\nabla g_i(\x^*),\nabla h_j(\x^*),i\in I(\x^*),j=1,\ldots,p\}$ are linearly independent.
 \begin{itemize}
 	\item The additional requirement of regularity is not required in linearly
 	constrained problems in which no such assumption is needed.
