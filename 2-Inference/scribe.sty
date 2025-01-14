@@ -86,10 +86,11 @@ colorlinks=true,
 allcolors=blue,
 %linkcolor=blue,
 anchorcolor=blue,
-citecolor=blue}
+citecolor=pink}
 % packages for color boxes
 \usepackage{tikz,lipsum,lmodern}
 \usepackage[most]{tcolorbox}
+\usepackage{enumerate}
 %\usepackage{natbib}
 %\usepackage{url}
 
@@ -123,7 +124,11 @@ citecolor=blue}
 \setenumerate[1]{itemsep=2pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
 \setitemize[1]{itemsep=2pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
 \setdescription{itemsep=2pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
-\usepackage[margin=0.6in]{geometry}  % adjust the page margin
+
+% adjust the page margin
+\usepackage[margin=0.6in]{geometry}  
+
+
 
 % \setlength{\topmargin}{-1in}
 % \setlength{\textheight}{10.5in}
@@ -148,7 +153,7 @@ citecolor=blue}
       macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
       using,while},%
    sensitive=true,%
-   alsoother={$},%
+   alsoother={},%
    morecomment=[l]\#,%
    morecomment=[n]{\#=}{=\#},%
    morestring=[s]{"}{"},%
@@ -206,6 +211,13 @@ citecolor=blue}
 \newcommand{\Cov}{{\bf Cov}}
 \newcommand{\Covx}{\mathop{\bf Cov\/}}
 
+\newcommand{\Unif}{\mathrm{Unif}}
+
+\newcommand{\dto}{\xrightarrow{\mathrm{d}}}
+\newcommand{\pto}{\xrightarrow{\mathrm{p}}}
+\newcommand{\asto}{\xrightarrow{\mathrm{as}}}
+
+
 % shortcuts for symbol names that are too long to type
 \newcommand{\eps}{\epsilon}
 \newcommand{\lam}{\lambda}
@@ -216,13 +228,18 @@ citecolor=blue}
 \newcommand{\wt}{\widetilde}
 
 % "blackboard-fonted" letters for the reals, naturals etc.
-\newcommand{\C}{\mathbb C}
-\newcommand{\E}{\mathbb E}
-\newcommand{\F}{\mathbb F}
-\newcommand{\N}{\mathbb N}
-\newcommand{\Q}{\mathbb Q}
-\newcommand{\R}{\mathbb R}
-\newcommand{\Z}{\mathbb Z}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbE}{\mathbb E}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbZ}{\mathbb Z}
+
+\newcommand{\balpha}{{\boldsymbol \alpha}}
+\newcommand{\bbeta}{{\boldsymbol \eta}}
+\newcommand{\bbtheta}{\boldsymbol \theta}
 
 % operators that should be typeset in Roman font
 \newcommand{\poly}{\mathrm{poly}}
@@ -232,7 +249,7 @@ citecolor=blue}
 \newcommand{\val}{{\mathrm{val}}}
 
 % complexity classes
-\renewcommand{\P}{\mathrm{P}}
+\newcommand{\Arg}{\mathrm{Arg}}
 \newcommand{\NP}{\mathrm{NP}}
 \newcommand{\BPP}{\mathrm{BPP}}
 \newcommand{\DTIME}{\mathrm{DTIME}}
@@ -292,8 +309,16 @@ citecolor=blue}
 \newcommand{\calY}{{\cal Y}}
 \newcommand{\calZ}{{\cal Z}}
 
+\def\scrA{\mathscr{A}}
 \def\scrB{\mathscr{B}}
+\def\scrC{\mathscr{C}}
 \def\scrF{\mathscr{F}}
+\def\scrG{\mathscr{G}}
+\def\scrH{\mathscr{H}}
+\def\scrL{\mathscr{L}}
+\def\scrN{\mathscr{N}}
+\def\scrR{\mathscr{R}}
+\def\scrP{\mathscr{P}}
 \def\scrX{\mathscr{X}}
 
 % bold letters (useful for random variables)
@@ -343,8 +368,13 @@ citecolor=blue}
 \newcommand{\0}{{\boldsymbol 0}}
 \newcommand{\1}{{\boldsymbol 1}}
 
-\newcommand{\bbeta}{{\boldsymbol \eta}}
-\newcommand{\bbtheta}{\boldsymbol \theta}
+\newcommand{\bmu}{{\boldsymbol\mu}}
+
+
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmC}{\mathrm{C}}
+\newcommand{\rmN}{\mathrm{N}}
+\newcommand{\rmP}{\mathrm{P}}
 
 
 % useful for Fourier analysis
@@ -357,8 +387,6 @@ citecolor=blue}
 % my definitions
 \def\floor#1{\lfloor #1 \rfloor}
 \def\flwed#1#2{\lfloor #1 \wedge #2 \rfloor}
-\def\blue#1{\textcolor{blue}{#1}}
-\def\red#1{\textcolor{red}{#1}}
 \def\ceil#1{\lceil #1 \rceil}
 \def\sbk#1{\left( {#1}\right)}
 \def\mbk#1{\left[ {#1}\right]}
@@ -368,12 +396,47 @@ citecolor=blue}
 %% statistical inference 
 % \def\simiid{\stackrel{\mathrm{iid}}{\sim}}
 \def\simiid{{\sim}_{\mathrm{iid}}}
+\def\pto{\stackrel{\mathrm{p}}{\to}}
+\def\eqd{\stackrel{\mathrm{d}}{=}}
 \newcommand{\indep}{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern4mu{#1#2}}}
-\newcommand{\rmd}{\mathrm{d}}
+\def\diag{\mathrm{diag}}
+
+
+%% colors
+\def\blue#1{\textcolor{blue}{#1}}
+\def\red#1{\textcolor{red}{#1}}
+\def\yellow#1{\textcolor{yellow}{#1}}
+\def\pink#1{\textcolor{pink}{#1}}
+\def\brown#1{\textcolor{brown}{#1}}
 
 \newcommand{\half}{{\textstyle \frac12}}
 \newcommand{\myfig}[4]{\begin{figure}[h] \begin{center} \includegraphics[width=#1\textwidth]{#2} \caption{#3} \label{#4} \end{center} \end{figure}} 
+
+%% envir
+\newenvironment{sequation*}
+  {\setlength\abovedisplayskip{0.15cm}
+             \setlength\belowdisplayskip{0.15cm}
+             \begin{equation*}}
+{\end{equation*}}
+
+\newenvironment{sequation}
+  {\setlength\abovedisplayskip{0.15cm}
+             \setlength\belowdisplayskip{0.15cm}
+             \begin{equation}}
+{\end{equation}}
+
+% \newenvironment{salign*}
+%   {\setlength\abovedisplayskip{0.15cm}
+%              \setlength\belowdisplayskip{0.15cm}
+%              \begin{align*}}
+% {\end{align*}}
+
+% \newenvironment{salign}
+%   {\setlength\abovedisplayskip{0.15cm}
+%    \setlength\belowdisplayskip{0.15cm}
+%    \begin{align}}
+% {\end{align}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Color boxes
@@ -497,6 +560,8 @@ citecolor=blue}
             breakable,
             pad at break*=1mm}{ex}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Feel free to ignore the rest of this file
 
@@ -524,7 +589,7 @@ citecolor=blue}
     \vbox{
       \headerwidth=\textwidth
       \advance\headerwidth by -0.22in
-      \hbox to \headerwidth {\hfill Math Tools}
+      \hbox to \headerwidth {\hfill Math tools}
       \vspace{4mm}
       \hbox to \headerwidth {{\Large \hfill Note: \LecNum {\LecTitle} \hfill}}
       \vspace{2mm}

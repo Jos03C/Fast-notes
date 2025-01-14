@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  17 NOV 2024 23:12
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  15 JAN 2025 00:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -7,30 +7,31 @@ entering extended mode
 (./note-inference.tex
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
-(d:/texlive/2024/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
-(d:/texlive/2024/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+(d:/texlive/2024/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2024/06/29 v1.4n Standard LaTeX document class
+(d:/texlive/2024/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count192
-\c@section=\count193
-\c@subsection=\count194
-\c@subsubsection=\count195
-\c@paragraph=\count196
-\c@subparagraph=\count197
-\c@figure=\count198
-\c@table=\count199
+\c@chapter=\count193
+\c@section=\count194
+\c@subsection=\count195
+\c@subsubsection=\count196
+\c@paragraph=\count197
+\c@subparagraph=\count198
+\c@figure=\count199
+\c@table=\count266
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
 ) (d:/texlive/2024/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2024/11/08 v24.13 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
-\babel@savecnt=\count266
+\babel@savecnt=\count267
 \U@D=\dimen142
 \l@unhyphenated=\language89
  (d:/texlive/2024/texmf-dist/tex/generic/babel/xebabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count267
+\bbl@dirlevel=\count268
  (d:/texlive/2024/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
@@ -82,14 +83,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (d:/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count268
+\inf@bad=\count269
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count269
-\leftroot@=\count270
+\uproot@=\count270
+\leftroot@=\count271
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count271
-\DOTSCASE@=\count272
+\classnum@=\count272
+\DOTSCASE@=\count273
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -102,20 +103,20 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen145
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count273
+\macc@depth=\count274
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count274
+\c@MaxMatrixCols=\count275
 \dotsspace@=\muskip17
-\c@parentequation=\count275
-\dspbrk@lvl=\count276
+\c@parentequation=\count276
+\dspbrk@lvl=\count277
 \tag@help=\toks21
-\row@=\count277
-\column@=\count278
-\maxfields@=\count279
+\row@=\count278
+\column@=\count279
+\maxfields@=\count280
 \andhelp@=\toks22
 \eqnshift@=\dimen146
 \alignsep@=\dimen147
@@ -192,24 +193,24 @@ LaTeX Font Info:    Trying to load font information for T1+ptm on input line 116
  (d:/texlive/2024/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )) (d:/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count280
+\lst@mode=\count281
 \lst@gtempboxa=\box54
 \lst@token=\toks32
-\lst@length=\count281
+\lst@length=\count282
 \lst@currlwidth=\dimen156
-\lst@column=\count282
-\lst@pos=\count283
+\lst@column=\count283
+\lst@pos=\count284
 \lst@lostspace=\dimen157
 \lst@width=\dimen158
-\lst@newlines=\count284
-\lst@lineno=\count285
+\lst@newlines=\count285
+\lst@lineno=\count286
 \lst@maxwidth=\dimen159
  (d:/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (d:/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count286
-\lst@skipnumbers=\count287
+\c@lstnumber=\count287
+\lst@skipnumbers=\count288
 \lst@framebox=\box55
 ) (d:/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
@@ -252,22 +253,22 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (d:/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count288
+\c@section@level=\count289
 ) (d:/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count289
+\etb@tempcnta=\count290
 ) (d:/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen160
-\Hy@linkcounter=\count290
-\Hy@pagecounter=\count291
+\Hy@linkcounter=\count291
+\Hy@pagecounter=\count292
  (d:/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 ) (d:/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count292
+\Hy@SavedSpaceFactor=\count293
  (d:/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 )
@@ -292,7 +293,7 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 ))
-\c@Hy@tempcnt=\count293
+\c@Hy@tempcnt=\count294
  (d:/texlive/2024/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -302,7 +303,7 @@ LaTeX Info: Redefining \url on input line 4763.
  (d:/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 )
-\Fld@menulength=\count294
+\Fld@menulength=\count295
 \Field@Width=\dimen162
 \Fld@charsize=\dimen163
 Package hyperref Info: Hyper figures OFF on input line 6042.
@@ -316,18 +317,18 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count295
-\c@Item=\count296
-\c@Hfootnote=\count297
+\Hy@abspage=\count296
+\c@Item=\count297
+\c@Hfootnote=\count298
 )
 Package hyperref Info: Driver (autodetected): hxetex.
  (d:/texlive/2024/texmf-dist/tex/latex/hyperref/hxetex.def
 File: hxetex.def 2024-11-05 v7.01l Hyperref driver for XeTeX
 \pdfm@box=\box56
-\c@Hy@AnnotLevel=\count298
-\HyField@AnnotCount=\count299
-\Fld@listcount=\count300
-\c@bookmark@seq@number=\count301
+\c@Hy@AnnotLevel=\count299
+\HyField@AnnotCount=\count300
+\Fld@listcount=\count301
+\c@bookmark@seq@number=\count302
 \Hy@SectionHShift=\skip57
 )
 
@@ -365,14 +366,14 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yd=\dimen175
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count302
-\c@pgf@countb=\count303
-\c@pgf@countc=\count304
-\c@pgf@countd=\count305
+\c@pgf@counta=\count303
+\c@pgf@countb=\count304
+\c@pgf@countc=\count305
+\c@pgf@countd=\count306
 \t@pgf@toka=\toks37
 \t@pgf@tokb=\toks38
 \t@pgf@tokc=\toks39
-\pgf@sys@id@count=\count306
+\pgf@sys@id@count=\count307
  (d:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -384,11 +385,11 @@ File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 )
-\pgfsys@objnum=\count307
+\pgfsys@objnum=\count308
 ))) (d:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count308
-\pgfsyssoftpath@bigbuffer@items=\count309
+\pgfsyssoftpath@smallbuffer@items=\count309
+\pgfsyssoftpath@bigbuffer@items=\count310
 ) (d:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (d:/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -411,13 +412,13 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen176
-\pgfmath@count=\count310
+\pgfmath@count=\count311
 \pgfmath@box=\box58
 \pgfmath@toks=\toks40
 \pgfmath@stack@operand=\toks41
 \pgfmath@stack@operation=\toks42
 ) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count311
+\c@pgfmathroundto@lastzeros=\count312
 )) (d:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (d:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen177
@@ -447,7 +448,7 @@ File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box59
 \pgf@hbox=\box60
 \pgf@layerbox@main=\box61
-\pgf@picture@serial@count=\count312
+\pgf@picture@serial@count=\count313
 ) (d:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen195
@@ -468,8 +469,8 @@ File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (d:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen256
-\pgf@sys@shading@range@num=\count313
-\pgf@shadingcount=\count314
+\pgf@sys@shading@range@num=\count314
+\pgf@shadingcount=\count315
 ) (d:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (d:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
@@ -504,7 +505,7 @@ Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count315
+\pgf@plot@mark@count=\count316
 \pgfplotmarksize=\dimen261
 )
 \tikz@lastx=\dimen262
@@ -519,34 +520,34 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@figbox@bg=\box65
 \tikz@tempbox=\box66
 \tikz@tempbox@bg=\box67
-\tikztreelevel=\count316
-\tikznumberofchildren=\count317
-\tikznumberofcurrentchild=\count318
-\tikz@fig@count=\count319
+\tikztreelevel=\count317
+\tikznumberofchildren=\count318
+\tikznumberofcurrentchild=\count319
+\tikz@fig@count=\count320
  (d:/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count320
-\pgfmatrixcurrentcolumn=\count321
-\pgf@matrix@numberofcolumns=\count322
+\pgfmatrixcurrentrow=\count321
+\pgfmatrixcurrentcolumn=\count322
+\pgf@matrix@numberofcolumns=\count323
 )
-\tikz@expandcount=\count323
+\tikz@expandcount=\count324
  (d:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (d:/texlive/2024/texmf-dist/tex/latex/lipsum/lipsum.sty (d:/texlive/2024/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (d:/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2024-11-02 L3 programming layer (loader) 
  (d:/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
-\g__graphics_track_int=\count324
+\g__graphics_track_int=\count325
 \l__pdf_internal_box=\box68
-\g__pdf_backend_annotation_int=\count325
-\g__pdf_backend_link_int=\count326
+\g__pdf_backend_annotation_int=\count326
+\g__pdf_backend_link_int=\count327
 ))
 Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count327
-\l__lipsum_a_int=\count328
-\l__lipsum_b_int=\count329
+\g__lipsum_par_int=\count328
+\l__lipsum_a_int=\count329
+\l__lipsum_b_int=\count330
  (d:/texlive/2024/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (d:/texlive/2024/texmf-dist/tex/latex/lm/lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -597,9 +598,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box70
 \tcb@lowerbox=\box71
 \tcb@phantombox=\box72
-\c@tcbbreakpart=\count330
-\c@tcblayer=\count331
-\c@tcolorbox@number=\count332
+\c@tcbbreakpart=\count331
+\c@tcblayer=\count332
+\c@tcolorbox@number=\count333
 \l__tcobox_tmpa_box=\box73
 \l__tcobox_tmpa_dim=\dimen270
 \tcb@temp=\box74
@@ -608,10 +609,10 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@temp=\box77
  (d:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
 Library (tcolorbox): 'tcbraster.code.tex' version '6.4.1'
-\c@tcbrastercolumn=\count333
-\c@tcbrasterrow=\count334
-\c@tcbrasternum=\count335
-\c@tcbraster=\count336
+\c@tcbrastercolumn=\count334
+\c@tcbrasterrow=\count335
+\c@tcbrasternum=\count336
+\c@tcbraster=\count337
 ) (d:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
 Library (tcolorbox): 'tcbskins.code.tex' version '6.4.1'
 (d:/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
@@ -642,7 +643,7 @@ Library (tcolorbox): 'tcbfitting.code.tex' version '6.4.1'
 \tcbfitdim=\dimen271
 \tcb@lowerfitdim=\dimen272
 \tcb@upperfitdim=\dimen273
-\tcb@cur@hbadness=\count337
+\tcb@cur@hbadness=\count338
 ) (d:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
 Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.4.1'
 (d:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
@@ -652,7 +653,7 @@ Library (tcolorbox): 'tcblistingscore.code.tex' version '6.4.1'
 (d:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
 Library (tcolorbox): 'tcbprocessing.code.tex' version '6.4.1'
 )
-\c@tcblisting=\count338
+\c@tcblisting=\count339
 ))
 Package tcolorbox Info: Library `listingsutf8' is compatible with pdftex only. Library `listings` is loaded instead. on input line 29.
 ) (d:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
@@ -667,22 +668,25 @@ File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (d:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.4.1'
-)) (d:/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
+)) (d:/texlive/2024/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
+\@enLab=\toks47
+) (d:/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip58
 \enit@outerparindent=\dimen274
-\enit@toks=\toks47
+\enit@toks=\toks48
 \enit@inbox=\box82
-\enit@count@id=\count339
-\enitdp@description=\count340
+\enit@count@id=\count340
+\enitdp@description=\count341
 ) (d:/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (d:/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count341
-\Gm@cntv=\count342
-\c@Gm@tempcnt=\count343
+\Gm@cnth=\count342
+\Gm@cntv=\count343
+\c@Gm@tempcnt=\count344
 \Gm@bindingoffset=\dimen275
 \Gm@wd@mp=\dimen276
 \Gm@odd@mp=\dimen277
@@ -691,13 +695,13 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen280
 \Gm@layouthoffset=\dimen281
 \Gm@layoutvoffset=\dimen282
-\Gm@dimlist=\toks48
+\Gm@dimlist=\toks49
 )
-\c@theorem=\count344
-\c@tcb@cnt@defboxt=\count345
-\c@tcb@cnt@thmboxt=\count346
-\c@tcb@cnt@egboxt=\count347
-\c@tcb@cnt@exboxt=\count348
+\c@theorem=\count345
+\c@tcb@cnt@defboxt=\count346
+\c@tcb@cnt@thmboxt=\count347
+\c@tcb@cnt@egboxt=\count348
+\c@tcb@cnt@exboxt=\count349
 \headerwidth=\dimen283
 ) (d:/texlive/2024/texmf-dist/tex/latex/amsfonts/eufrak.sty
 
@@ -726,7 +730,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
-\c@lstlisting=\count349
+\c@lstlisting=\count350
 Package hyperref Info: Link coloring ON on input line 19.
  (./note-inference.out) (./note-inference.out)
 \@outlinefile=\write4
@@ -740,7 +744,7 @@ Package hyperref Info: Link coloring ON on input line 19.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
+* modes: twoside 
 * h-part:(L,W,R)=(43.36243pt, 510.78302pt, 43.36243pt)
 * v-part:(T,H,B)=(43.36243pt, 758.32199pt, 43.36243pt)
 * \paperwidth=597.50787pt
@@ -753,7 +757,7 @@ Package hyperref Info: Link coloring ON on input line 19.
 * \headheight=0.0pt
 * \headsep=0.0pt
 * \topskip=10.0pt
-* \footskip=30.0pt
+* \footskip=25.29494pt
 * \marginparwidth=40.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
@@ -762,85 +766,141 @@ Package hyperref Info: Link coloring ON on input line 19.
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
+* \@twosidetrue
+* \@mparswitchtrue
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./note-inference.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4.
+
+
+
+Overfull \vbox (6.29724pt too high) has occurred while \output is active []
+
+ [1
+
+]
+
+
+Overfull \vbox (6.29724pt too high) has occurred while \output is active []
+
+ [2
+
+] (./note-inference.toc
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3.
  (d:/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3.
  (d:/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 4.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 3.
  (d:/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 4.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 3.
  (d:/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 4.
+(Font)              <10> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 4.
+(Font)              <7> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 4.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+(Font)              <5> on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
  (d:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
  (d:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 4.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 3.
  (d:/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 4.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 3.
  (d:/texlive/2024/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 4.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 4.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
 )
 \tf@toc=\write5
 \openout5 = `note-inference.toc'.
 
 
 
-[1
+[3]
 
-] (./note-inference.bbl (./note-inference.brf)
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [4
+
+]
+Chapter 1.
+
+
+[5]
+
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [6
+
+]
+Chapter 2.
+
+
+[7]
+
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [8]
+Chapter 3.
+(./note-inference.bbl (./note-inference.brf)
 \tf@brf=\write6
 \openout6 = `note-inference.brf'.
 
-)
 
-[2] (./note-inference.aux)
+
+[9
+
+]
+
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [10
+
+])
+
+[11] (./note-inference.aux)
  ***********
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `note-inference.out' has not changed.
-(rerunfilecheck)             Checksum: 72B373A483687175CC8909949DD239BD;653.
+(rerunfilecheck)             Checksum: 74B06D4F9F45F332E9084B393D774166;1578.
 Package rerunfilecheck Info: File `note-inference.brf' has not changed.
-(rerunfilecheck)             Checksum: 96769AB69DD5E492CE5C6A86A906457A;117.
+(rerunfilecheck)             Checksum: 028D388D0E4864D9BEDB3F5806413A90;112.
  ) 
 Here is how much of TeX's memory you used:
- 29616 strings out of 473995
- 593388 string characters out of 5737702
- 1127463 words of memory out of 5000000
- 51995 multiletter control sequences out of 15000+600000
- 613413 words of font info for 84 fonts, out of 8000000 for 9000
+ 29744 strings out of 473995
+ 595198 string characters out of 5737702
+ 1126203 words of memory out of 5000000
+ 52119 multiletter control sequences out of 15000+600000
+ 628464 words of font info for 89 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,6n,110p,547b,696s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,12n,110p,547b,676s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on note-inference.pdf (2 pages).
+Output written on note-inference.pdf (11 pages).

@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,a4paper]{book}
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -25,11 +25,82 @@
 %#############################################################
 %#############################################################
 
-References: most of the contents are from the undergraduate course STA3020 (by Prof. Jianfeng Mao in 2022-2023 T1, and Prof. Jiasheng Shi in 2023-2024 T2) and postgraduate course STAT5010 (by Kin Wai Keith Chan in 2024-2025 T1), with main textbook \cite{casella2002statistical} 
+\chapter{Preliminary}\label{chap:premi}
+\section{Random vectors}\label{sec:random_vector}
+\begin{defbox}
+	\begin{definition}\label{def:random_vector_moments}
+		Let $\x=(x_1,\ldots, x_p)^T\in\bbR^p$ be a random vector, 
+		\begin{itemize}
+			\item $\bbE \x = \bmu=(\bbE x_1,\ldots,\bbE x_p)^T=(\mu_j)$.
+			\item $\Var(\x)=\Sigma=\bbE[(\x-\bbE\x)(\x-\bbE\x)^T]=\bbE \x\x^T - \bbE \x \bbE \x^T = (\sigma_{ij})$. $\Sigma \succeq \0$.
+			\item Correlation matrix $R=D^{-1/2}\Sigma D^{-1/2}$, where $D=\diag(\sigma_{11},\ldots,\sigma_{pp})$. We have $R_{ij}=\rho_{ij}=\sigma_{ij}/(\sqrt{\sigma_{ii}}\sqrt{\sigma_{jj}})$.
+			\item If $\y\in\bbR^{q}$ random vector, then $\Cov(\x,\y)=\bbE[(\x-\bbE\x)(\y-\bbE\y)^T]=\bbE\x\y^T-\bbE\x\bbE\y^T\in\bbR^{p\times q}$.  
+		\end{itemize} 
+	\end{definition}
+\end{defbox}
+
+\begin{thmbox}
+	\begin{proposition}\label{prop:random_vector_moments}
+		Let $\x\in\bbR^p$ be a random vector, $\a,\b\in\bbR^p$ be vectors, $A\in\bbR^{r_1\times p},B\in\bbR^{r_2\times p}$ be matrices,  
+		\begin{itemize}
+			\item $\bbE \a^T\x=\a^T \bbE\x$, $\Var(\a^T \x)=\a^T\Sigma\a$, and $\Cov(\a^T\x,\b^T\x)=\a^T \Sigma\b$.
+			\item $\bbE A\x=A\bbE \x$, $\Var(A\x)=A\Sigma A^T$, and $\Cov(A\x,B\x)=A\Sigma B^T$   
+		\end{itemize}  
+	\end{proposition}
+\end{thmbox}
+
+\begin{defbox}
+	\begin{definition}\label{def:sample_mean_etc}
+		Dataset contains $p$ variables and $n$ observations are represented by 
+		$X = (\x_{1},\ldots,\x_n)^T$, where the $i$th row $\x_i^T=(x_{i1},\ldots,x_{ip})$ is the $i$th observation vector, $i=1,\ldots,n$. 
+		\begin{itemize}
+			\item (Sample mean vector) $\bar{\x}=n^{-1}\sum_{i=1}^{n}\x_i=(\bar{x}_1,\ldots,\bar{x}_p)^T$, where $\bar{x}_j=n^{-1}\sum_{i=1}^{n}x_{ij}$.
+			\item (Sum of squares and cross product (SSCP) matrix) $A=\sum_{k=1}^{n}(\x_k-\bar{\x})(\x_k-\bar{\x})^T$.
+			\item (Sample covariance matrix) $S=(n-1)^{-1}A$.
+			\item (Sample correlation matrix) $R=D^{-1/2}S D^{-1/2}$, where $D^{-1/2}=\diag(1/\sqrt{s_{11}},\ldots,1/\sqrt{s_{pp}})$.
+		\end{itemize}
+	\end{definition}
+\end{defbox}
+\begin{itemize}
+	\item $\bar{\x}=n^{-1}X^T\1_n$, $A=(X-\1_n\bar{\x}^T)^T(X-\1_n\bar{\x}^T)\succeq \0$.
+	\item $\bbE\bar{\x}=\bmu$, $\Var(\bar{\x})=n^{-1}\Sigma$, $\bbE A=(n-1)\Sigma$, and $\bbE S=\Sigma$.
+\end{itemize}
+
+\subsection{Basic multivariate distributions}\label{sec:Basic-mult-dist}
+\begin{defbox}
+	\begin{definition}[$p$-variate normal]\label{def:multi_N} $\x\sim\rmN_p(\mu,\Sigma)$ ($\Sigma\succ \0$) has pdf
+			\begin{sequation*}
+				f(\boldsymbol{x})=\frac{1}{(2\pi)^{p/2}|{\Sigma}|^{1/2}}\exp\left\{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{T}{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})\right\}.
+			\end{sequation*}
+	\end{definition}
+\end{defbox}
+\begin{itemize}
+	\item (\red{Addition}) $\x\sim\rmN_p(\mu_1,\Sigma_1),\y\sim\rmN_p(\mu_y,\Sigma_y)$, $\x\indep \y$, then $\x+\y \sim \rmN_p(\bmu_1+\bmu_2,\Sigma_1+\Sigma_2)$. 
+	\item (\red{Linearity}) Let $B\in\bbR^{q\times p}, \b\in\bbR^{q}$ nonrandom, and $B\Sigma B^T\succ \0$, then $B\x+\b \sim \rmN_q (B\bmu+\b,B\Sigma B^T)$.  
+	\item (\red{Sample mean}) If $\x_{1:n}\simiid \rmN_p(\bmu,\Sigma)$, then $\bar{\x}\sim\rmN_p(\bmu,n^{-1}\Sigma)$, and $n(\bar{\x}-\bmu)^{T}\Sigma^{-1}(\bar{\x}-\bmu)\sim\chi_p^2$. The squared generalized distance (Mahalanobis distance) 
+	$d_i^2=(\boldsymbol{x}_i-\bar{\boldsymbol{x}})^{T}{S}^{-1}(\boldsymbol{x}_i-\bar{\boldsymbol{x}}) \dto \chi_p^2$.   
+	\item \red{MLE} of $(\mu,\Sigma)$ is $(\bar{\x},A/n)$.   
+	\item (\red{Representation}) Let $\Sigma=HDH^T$ be the spectral
+	decomposition, then $\x=HD^{1/2}\z+\bmu$, where $\z\sim\rmN_p(\0_p,I_p)$.
+	\item (\red{Marginal and conditional distribution}) Partition
+	\begin{sequation*}
+		\x=\left[{\begin{array}{c}x_{1}\\x_{2}\end{array}}\right],\quad\boldsymbol{\mu}=\left[{\begin{array}{c}\mu_{1}\\\mu_{2}\end{array}}\right],\quad\boldsymbol{\Sigma}=\left[{\begin{array}{cc}\Sigma_{11}&\Sigma_{12}\\\boldsymbol{\Sigma}_{21}&\boldsymbol{\Sigma}_{22}\end{array}}\right], \quad \x_1\in\bbR^{q}, \x_2\in\bbR^{p-q}, \Sigma_{12}\in\bbR^{q\times(p-q)}.
+	\end{sequation*}    
+	Then $\x_1\sim\rmN_q(\bmu_1,\Sigma_{11})$, $\x_1\indep\x_2$ iff $\Sigma_{12}=\0$, and $[\x_1\mid\x_2=\x_2^0]\sim\rmN_q(\boldsymbol{\mu}_1+{\Sigma}_{12}{\Sigma}_{22}^{-1}(\boldsymbol{x}_2^0-\boldsymbol{\mu}_2),\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21})$.
+\end{itemize}
+
+\begin{defbox}
+	\begin{definition}[Wishart distribution]\label{def:multi_Wishart} 
+	\end{definition}
+\end{defbox}
+
+\chapter{Statistical inference fundamentals}\label{chap:stat-inf}
+
+References: most of the contents are from the undergraduate course STA3020 (by Prof. Jianfeng Mao in 2022-2023 T1, and Prof. Jiasheng Shi in 2023-2024 T2) and postgraduate course STAT5010 (by Kin Wai Keith Chan in 2024-2025 T1), with main textbook Casella and Berger \cite{casella2002statistical} 
 
 
 \section{Statistical Models}
-See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \P_*$, where $\P_*$ refers to the unknown \red{data generating process} (DGPg), we find $\widehat{\P}\approx \P_*$. A \red{statistical model} is a set of distributions $\scrF=\{\P_{\theta}:\theta\in\Theta\}$, where $\Theta$ is the \red{parameter space}. A \red{parametric model} is the model with $\dim(\Theta)<\infty$, while a \red{nonparametric model} satisfies $\dim(\Theta)=\infty$. 
+See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \bbP_*$, where $\bbP_*$ refers to the unknown \red{data generating process} (DGPg), we find $\widehat{\bbP}\approx \bbP_*$. A \red{statistical model} is a set of distributions $\scrF=\{\bbP_{\theta}:\theta\in\Theta\}$, where $\Theta$ is the \red{parameter space}. A \red{parametric model} is the model with $\dim(\Theta)<\infty$, while a \red{nonparametric model} satisfies $\dim(\Theta)=\infty$. 
 
 \begin{defbox}
 	\begin{definition}[\textbf{Exponential family}]\label{def:exp-family}
@@ -46,13 +117,13 @@ See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \P_*$, where
 		\item $k$-dim \red{natural exponential family} (NEF): $\scrF'=\{f_{\eta}:\eta\in \Xi\}$; 
 		\item \red{natural parameter} $\eta=(\eta_1,\ldots,\eta_k)^T$;
 		\item \red{natural parameter space}: $\Xi=\{\eta\in\mathbb{R}^k:0<b(\eta)<\infty\}$; 
-		\item the NEF $\scrF'$ is of \red{full rank} if $\Xi$ contains an open set in $\R^k$;
+		\item the NEF $\scrF'$ is of \red{full rank} if $\Xi$ contains an open set in $\bbR^k$;
 		\item the EF is a \red{curved exponential family} if $p=\dim(\Theta)<k$.
 	\end{itemize}
 \end{defbox}
 \textbf{Properties of EF}:
 \begin{itemize}[itemsep=2pt,topsep=0pt,parsep=0pt]
-	\item Let $X\sim f_{\eta}$, where $\eta\in\Xi$ such that (i) $f_{\eta}$ is of the form \eqref{eq:exp-family-can} with $B(\eta)=-\log b(\eta)$, and (ii) $\Xi$ contains an open set in $\R^k$. Then, for $j,j'=1,\ldots,k$, $\E\{T_j(X)\}={\partial B(\eta)}/{\partial\eta_j}$ and $\Cov\{T_j(X),T_{j'}(X)\}={\partial^2B(\eta)}/\sbk{\partial\eta_j\partial\eta_{j'}}$.  
+	\item Let $X\sim f_{\eta}$, where $\eta\in\Xi$ such that (i) $f_{\eta}$ is of the form \eqref{eq:exp-family-can} with $B(\eta)=-\log b(\eta)$, and (ii) $\Xi$ contains an open set in $\bbR^k$. Then, for $j,j'=1,\ldots,k$, $\bbE\{T_j(X)\}={\partial B(\eta)}/{\partial\eta_j}$ and $\Cov\{T_j(X),T_{j'}(X)\}={\partial^2B(\eta)}/\sbk{\partial\eta_j\partial\eta_{j'}}$.  
 	\item \red{Stein's identity}:
 \end{itemize}
 
@@ -60,10 +131,10 @@ See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \P_*$, where
 	\begin{definition}[\textbf{Location-scale family}]\label{def:ls-family}
 		Let $f$ be a density. 
 		\begin{itemize}
-			\item A \red{location-scale family} is given by $\scrF=\{f_{\mu,\sigma}:\mu \in\R, \sigma\in\R^{++}\}$, where $f_{\mu,\sigma}(x)= f\left({(x-\mu)}/\sigma\right)/\sigma$.
+			\item A \red{location-scale family} is given by $\scrF=\{f_{\mu,\sigma}:\mu \in\bbR, \sigma\in\bbR^{++}\}$, where $f_{\mu,\sigma}(x)= f\left({(x-\mu)}/\sigma\right)/\sigma$.
 			\item \red{location parameter}: $\mu$; \red{scale parameter}: $\sigma$; \red{standard density}: $f$;
-			\item A \red{location family} is $\scrF=\{f_{\mu,1}:\mu\in\R\}$.
-			\item A \red{scale family} is $\scrF=\{f_{0,\sigma}:\sigma\in\R^{++}\}$ 
+			\item A \red{location family} is $\scrF=\{f_{\mu,1}:\mu\in\bbR\}$.
+			\item A \red{scale family} is $\scrF=\{f_{0,\sigma}:\sigma\in\bbR^{++}\}$ 
 		\end{itemize}
 	\end{definition}
 \end{defbox}
@@ -83,6 +154,7 @@ See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \P_*$, where
 		then $\scrF$ is said to be an \red{identifiable family}, or equivalently $\theta\in\Theta$ is \red{identifiable}. 
 	\end{definition}
 \end{defbox}
+
 A typical feature of non-identifiable EF is that $p=\dim(\Theta)>k$. Typically,
 \begin{itemize}
 	\item $p<k$, curved (must).
@@ -98,7 +170,7 @@ A typical feature of non-identifiable EF is that $p=\dim(\Theta)>k$. Typically,
 
 \begin{defbox}
 	\begin{definition}[\textbf{Sufficient, minimal sufficient, ancillary, and complete statistics}]\label{def:stat-SS-MSS-ANS-CS}
-		Suppose $X_{1:n}\simiid \P_{\theta}$, where $\theta\in\Theta$. Let $T=T(X_{1:n})$ be a statistic. Then $T$ is \red{sufficient} (SS) for $\theta$
+		Suppose $X_{1:n}\simiid \bbP_{\theta}$, where $\theta\in\Theta$. Let $T=T(X_{1:n})$ be a statistic. Then $T$ is \red{sufficient} (SS) for $\theta$
 		\begin{itemize}
 			\item[$\Leftrightarrow$] (def) $[X_{1:n}\mid T=t]$ is free of $\theta$ for each $t$.
 			\item[$\Leftrightarrow$] (technical lemma) $T(x_{1:n})=T(x_{1:n}')$ implies that $f_{\theta}(x_{1:n})/f_{\theta}(x_{1:n}')$ is free of $\theta$.
@@ -113,19 +185,19 @@ A typical feature of non-identifiable EF is that $p=\dim(\Theta)>k$. Typically,
 	\end{itemize}
 	$A=A(X_{1:n})$ is \red{ancillary} (ANS) if the distribution of $A$ does not depend on $\theta$. 
 
-	\noindent $T$ is \red{complete} (CS) if $\forall\theta\in\Theta$, $\Ex_{\theta}g(T)=0$ implies $\forall\theta\in\Theta$, $\P_{\theta}\{g(T)=0\}=1$. 
+	\noindent $T$ is \red{complete} (CS) if $\forall\theta\in\Theta$, $\Ex_{\theta}g(T)=0$ implies $\forall\theta\in\Theta$, $\bbP_{\theta}\{g(T)=0\}=1$. 
 	\end{definition}
 \end{defbox}
 \noindent\textbf{Properties}
 \begin{itemize}
 	\item (Transformation) If $T=r(T')$, then (i) $T$ is SS $\Rightarrow$ $T'$ is SS; (ii) $T'$ is CS $\Rightarrow$ $T$ is CS; (iii) $r$ is one-to-one, then if one is SS/MSS/CS, then the another is.    
-	\item (\red{Basu's Lemma}) $X_i\simiid\P_\theta$, $A$ is ANS and $T$ s CSS, then $A \indep T$.
-	\item (\red{Bahadur's theorem}) $X_i\simiid\P_\theta$, if an MSS exists, then any CSS is also an MSS.
+	\item (\red{Basu's Lemma}) $X_i\simiid\bbP_\theta$, $A$ is ANS and $T$ s CSS, then $A \indep T$.
+	\item (\red{Bahadur's theorem}) $X_i\simiid\bbP_\theta$, if an MSS exists, then any CSS is also an MSS.
 	\begin{itemize}
 		\item Then if a CSS exists, then any MSS is also a CSS $\Rightarrow$ CSS=MSS.
 		\item \red{All or nothing}: start with MSS $T$, check whether $T$ is CS. (i) Yes, it is both CSS and MSS, then the set of MSS=CSS; (ii) No, there is no CSS at all.  
 	\end{itemize}
-	\item (Exp-family) If $X_i\simiid f_{\eta}$ in \eqref{eq:exp-family-can}, then $T=(\sum_{i=1}^nT_1(X_i),\ldots,\sum_{i=1}^nT_k(X_i))$ is a SS, called \red{natural sufficient statistic}. If $\Xi$ contains an open set in $\R^k$ (i.e., $\scrF'$ is of full rank), then $T$ is MSS and CSS. 
+	\item (Exp-family) If $X_i\simiid f_{\eta}$ in \eqref{eq:exp-family-can}, then $T=(\sum_{i=1}^nT_1(X_i),\ldots,\sum_{i=1}^nT_k(X_i))$ is a SS, called \red{natural sufficient statistic}. If $\Xi$ contains an open set in $\bbR^k$ (i.e., $\scrF'$ is of full rank), then $T$ is MSS and CSS. 
 \end{itemize}
 
 \noindent\textbf{Proof techniques}
@@ -145,11 +217,16 @@ A typical feature of non-identifiable EF is that $p=\dim(\Theta)>k$. Typically,
 \begin{remark}\label{rmk:SS-MSS-ANS-CS}
 	\begin{itemize}
 		\item ANS $A$ is useless on its own, but useful together with other information. 
-		\item $\P(A(\X)\mid \theta)$ is free of $\theta$, but for non-SS $T$, $\P(A(\X)\mid T(\X))$ is not necessarily free of $\theta$. 
+		\item $\bbP(A(\X)\mid \theta)$ is free of $\theta$, but for non-SS $T$, $\bbP(A(\X)\mid T(\X))$ is not necessarily free of $\theta$. 
 	\end{itemize}
 \end{remark}
 
 \subsection{Likelihood principle}\label{sec:prin-data-reduce-lik}
+
+
+
+
+\chapter{Multivariate Inference Fundamentals}\label{chap:multi}
 
 
 

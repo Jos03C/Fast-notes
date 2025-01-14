@@ -1,5 +1,10 @@
 \babel@toc {english}{}\relax 
-\contentsline {section}{\numberline {1}Statistical Models}{1}{section.1}%
-\contentsline {section}{\numberline {2}Principles of Data Reduction}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Sufficiency Principle}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Likelihood principle}{2}{subsection.2.2}%
+\contentsline {chapter}{\numberline {1}Preliminary}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Random vectors}{5}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Basic multivariate distributions}{5}{subsection.1.1.1}%
+\contentsline {chapter}{\numberline {2}Statistical inference fundamentals}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Statistical Models}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Principles of Data Reduction}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Sufficiency Principle}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Likelihood principle}{8}{subsection.2.2.2}%
+\contentsline {chapter}{\numberline {3}Multivariate Inference Fundamentals}{9}{chapter.3}%
