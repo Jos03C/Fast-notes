@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  13 JAN 2025 00:34
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  17 JAN 2025 00:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -856,33 +856,43 @@ Overfull \hbox (16.56598pt too wide) in paragraph at lines 120--121
 Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
  [6]
+
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [7]
+
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [8
+
+]
 Chapter 2.
 
 
-[7
-
-]
+[9]
 No file note-math.bbl.
 
 
 
 Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
- [8] (./note-math.aux)
+ [10] (./note-math.aux)
  ***********
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
  ***********
 Package rerunfilecheck Info: File `note-math.out' has not changed.
-(rerunfilecheck)             Checksum: A881475C7C209F98F2C5C5C9F321DCA5;935.
+(rerunfilecheck)             Checksum: 2D681173B1CA956A970AA9BC6B3F6B34;1517.
  ) 
 Here is how much of TeX's memory you used:
- 29761 strings out of 473995
- 595630 string characters out of 5737702
- 1124266 words of memory out of 5000000
- 52147 multiletter control sequences out of 15000+600000
- 613670 words of font info for 84 fonts, out of 8000000 for 9000
+ 29778 strings out of 473995
+ 595824 string characters out of 5737702
+ 1129041 words of memory out of 5000000
+ 52162 multiletter control sequences out of 15000+600000
+ 619643 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,10n,110p,543b,1000s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on note-math.pdf (8 pages).
+Output written on note-math.pdf (10 pages).

@@ -3,8 +3,12 @@
 \contentsline {section}{\numberline {1.1}Complex Numbers}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Transformation}{5}{subsection.1.1.1}%
 \contentsline {section}{\numberline {1.2}Complex functions}{6}{section.1.2}%
-\contentsline {subsubsection}{Complex sequences}{6}{section*.2}%
-\contentsline {subsubsection}{Complex functions defined by power series}{6}{section*.3}%
-\contentsline {chapter}{\numberline {2}Optimization}{7}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Nonlinear Optimization}{7}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}KKT Conditions}{7}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {1.2.1}Complex sequences and series}{6}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Basic complex functions}{6}{subsection.1.2.2}%
+\contentsline {subsubsection}{Complex logarithm and complex power}{7}{section*.2}%
+\contentsline {subsubsection}{The angle function, parametric curve and winding number}{7}{section*.3}%
+\contentsline {subsection}{\numberline {1.2.3}Complex differentiability}{7}{subsection.1.2.3}%
+\contentsline {subsubsection}{Limit and continuity}{7}{section*.4}%
+\contentsline {chapter}{\numberline {2}Optimization}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Nonlinear Optimization}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}KKT Conditions}{9}{subsection.2.1.1}%

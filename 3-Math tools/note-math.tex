@@ -102,7 +102,7 @@ pole of the sphere does not correspond to any point on the complex plane and is 
 \end{itemize}
 
 \section{Complex functions}\label{sec:complex-fun}
-\subsubsection{Complex sequences}\label{sec:complex-seq}
+\subsection{Complex sequences and series}\label{sec:complex-seq}
 \begin{itemize}
 	\item Distance $d(z_1,z_2)=\abs{z_1-z_2}$.
 	\item \red{Open disc} of radius $r$ centered at $z_0$: $D(z_0,r)=\{z\in\bbC : \abs{z-z_0}<r\}$. Neighborhood of $\infty $ is $\{z\in\bbC:\abs{z}>R\}$ for some large $R$.   
@@ -122,7 +122,7 @@ pole of the sphere does not correspond to any point on the complex plane and is 
 	\end{itemize} 
 \end{itemize}
 
-\subsubsection{Complex functions defined by power series}
+\subsection{Basic complex functions}
 \noindent\underline{\red{Power series}} A complex power series centered at the origin is a series in the form $\sum_{k=0}^{\infty }a_kz_k^k$, $\a_k\in\bbC$.
 \begin{defbox}
 \begin{definition}\label{def:complex-fun-power}
@@ -139,7 +139,7 @@ pole of the sphere does not correspond to any point on the complex plane and is 
 				\sin(z)&:=\sum_{n=0}^\infty(-1)^n\frac{z^{2n+1}}{(2n+1)!}, \quad
 				\cos(z):=\sum_{n=0}^\infty(-1)^n\frac{z^{2n}}{(2n)!}, \quad \tan(z):=\frac{\sin(z)}{\cos(z)}, \\
 				\sinh(z)&:=\sum_{n=0}^{\infty}\frac{z^{2n+1}}{(2n+1)!}, \qquad\quad
-				\cosh(z):=\sum_{n=0}^{\infty}\frac{z^{2n}}{(2n)!}.
+				\cosh(z):=\sum_{n=0}^{\infty}\frac{z^{2n}}{(2n)!}, \qquad\ \  \tanh(z):=\frac{\sinh (z)}{\cosh (z)}.
 			\end{aligned}
 		\end{sequation*}
 	\end{itemize}
@@ -147,6 +147,58 @@ pole of the sphere does not correspond to any point on the complex plane and is 
 \end{definition}
 \end{defbox} 
 
+\begin{thmbox}
+	\begin{theorem}\label{thm:Euler_formula} $\forall z\in\bbC$, 
+		\begin{itemize}
+			\item (\red{Euler's formula}) $e^{iz} = \cos z + i\sin z$
+			\item \begin{sequation*}
+			\begin{aligned}
+				\cos z &= \frac{e^{iz}+e^{-iz}}{2}, \quad \sin z = \frac{e^{iz}-e^{-iz}}{2i}, \\
+				\cosh (z) &= \frac{e^z+e^{-z}}{2}, \quad \sinh (z) = \frac{e^{z}-e^{-z}}{2}, 
+			\end{aligned}  
+			\end{sequation*}
+			thus we have $\cosh(iz)=\cos z$, $\sinh(iz)=i \sin z$. 
+		\end{itemize}
+	\end{theorem}
+\end{thmbox}
+
+\subsubsection{Complex logarithm and complex power}
+Since $e^{z}=e^{z+2\pi ki}, k\in\bbZ$, the inverse function of $e^z$ is multi-valued. For $0\neq w\in\bbC$ , define the \red{complex log function} as 
+\begin{sequation*}
+	\log (w) := \log\abs{w} + i(\arg(w)+2\pi k), \ k\in\bbZ.
+\end{sequation*} 
+Define the \red{principal complex log function} as 
+\begin{sequation*}
+	\Log (w) := \log \abs{w} + i \arg(w), \ \arg(w)\in (-\pi,\pi] \text{ or } [0,2\pi).
+\end{sequation*}
+Given $0\neq z\in\bbC$, define the \red{complex power} by 
+\begin{sequation*}
+	z^w := \exp(w \log(z)).
+\end{sequation*} 
+
+\subsubsection{The angle function, parametric curve and winding number}
+Suppose $\theta(z)$ is continuous, $\theta(z_0)=0$, then as $z\to z_0$ from the right, $\theta(z)\to 2\pi\neq 0$. 
+To prevent closed cycle around the origin, let the domain of \red{angle function} be the half plane. 
+\begin{itemize}
+	\item If $H=\{x+iy:y>0\}$, the range is $(0,\pi)$, the for $z\in H$, define $F(x,y) := \cos^{-1}({x}/{\sqrt{x^2+y^2}})$.
+	\item If $H_\alpha=\{x+iy: y>\tan(\alpha) x\}$ for $\alpha>0$, define $F_\alpha := F(e^{-i\alpha}z)+\alpha$.     
+\end{itemize}    
+
+The \red{parametric curve} is a function $\gamma:[a,b]\to\bbC$ continuous, $\gamma(t)$ is the location at time $t$.
+If $\gamma(a)=\gamma(b)$, then we call it \red{closed curve}.    
+
+Given $\gamma:[a,b]\to \bbC\setminus\{0\}$, divide $[a,b]$ into $a=t_0<t_1<\cdots<t_{n-1}<t_n =b$ s.t. $\gamma(t)$, $t_k\leq t\leq t_{k+1}$, is inside $H_{\alpha(k)}$ for $k=0,\ldots,n-1$.
+Define 
+\begin{itemize}
+	\item \red{change in angle} in the $k$th part: $F_{\alpha(k)}(\gamma(t_{k+1}))-F_{\alpha(k)}(\gamma(t_k))$, 
+	\item \red{overall change of angle}: $\sum_{k=0}^{n-1}[F_{\alpha(k)}(\gamma(t_{k+1}))-F_{\alpha(k)}(\gamma(t_k))]$,
+	\item \red{branch}: A continuous angle function as a function of $t$. 
+\end{itemize}
+Note that it doesn't depend on the sub-division of the curve and how we parameterize the curve.
+The \red{winding number/index} of a closed parametric curve not passing through the origin is $(2\pi)^{-1}\dot(\text{change in angle})$. 
+
+\subsection{Complex differentiability}\label{sec:complex-diff}
+\subsubsection{Limit and continuity}
 
 \chapter{Optimization}\label{chap:opt}
 
