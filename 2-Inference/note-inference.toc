@@ -1,4 +1,4 @@
-\babel@toc {english}{}
+\babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Preliminary}{5}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Statistical inference fundamentals}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Statistical Models}{7}{section.2.1}%
@@ -9,3 +9,5 @@
 \contentsline {section}{\numberline {3.1}Random vectors and distributions}{9}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Multivariate normal distribution}{9}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}Basic multivariate distributions}{10}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Asymptotic properties}{10}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Asymptotic distributions of sample means and covariance matrices}{10}{subsection.3.2.1}%

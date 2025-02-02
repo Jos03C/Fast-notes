@@ -163,7 +163,7 @@ A typical feature of non-identifiable EF is that $p=\dim(\Theta)>k$. Typically,
 \chapter{Multivariate Inference Fundamentals}\label{chap:multi}
 Reference: 
 \begin{itemize}
-	\item Robb J. Muirhead - Aspects of multivariate statistical theory \cite{muirhead2009aspects}.
+	\item Robb J. Muirhead - Aspects of multivariate statistical theory \cite{muirhead1982aspects}.
 	\item CUHK STAT4002 - Applied Multivariate Analysis (2023 Spring), by Zhixiang Lin.
 \end{itemize}
 
@@ -211,7 +211,7 @@ Reference:
 		If $\x\in\bbR^p$ random, then its distribution is uniquely determined by the distributions of $\a^\TT \x$, $\forall \a\in\bbR^p$.  
 	\end{theorem}
 \end{thmbox}
-The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined by its ch.f., see Theorem 1.2.2. \cite{muirhead2009aspects}.
+The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined by its ch.f., see Theorem 1.2.2. \cite{muirhead1982aspects}.
 
 
 
@@ -221,7 +221,7 @@ The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined b
 		$X = (\x_{1},\ldots,\x_n)^\TT$, where the $i$th row $\x_i^\TT=(x_{i1},\ldots,x_{ip})$ is the $i$th observation vector, $i=1,\ldots,n$. 
 		\begin{itemize}
 			\item (Sample mean vector) $\bar{\x}=n^{-1}\sum_{i=1}^{n}\x_i=(\bar{x}_1,\ldots,\bar{x}_p)^\TT$, where $\bar{x}_j=n^{-1}\sum_{i=1}^{n}x_{ij}$.
-			\item (Sum of squares and cross product (SSCP) matrix) $A=\sum_{k=1}^{n}(\x_k-\bar{\x})(\x_k-\bar{\x})^\TT$.
+			\item (Sum of squares and cross product (SSCP) matrix) $A=\sum_{i=1}^{n}(\x_i-\bar{\x})(\x_i-\bar{\x})^\TT$.
 			\item (Sample covariance matrix) $S=(n-1)^{-1}A$.
 			\item (Sample correlation matrix) $R=D^{-1/2}S D^{-1/2}$, where $D^{-1/2}=\diag(1/\sqrt{s_{11}},\ldots,1/\sqrt{s_{pp}})$.
 		\end{itemize}
@@ -244,6 +244,10 @@ The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined b
 		\begin{enumerate}
 			\item Both $\bmu=\bbE\x$ and $\Sigma=\Cov(\x)$ exist and the distribution of $\x$ is determined by $\bmu$ and $\Sigma$. Write $\x\sim\rmN_p(\bmu,\Sigma)$. 
 			\item (\red{Representation}) Let $\Sigma\succeq\0_{p\times p}$, $\rmr(\Sigma)=r\leq p$, and $u_{1:r}\simiid\rmN(0,1)$, i.e., $\u\sim\rmN_r(\0_r,I_r)$, then if $C$ is the full rank decomposition of $\Sigma$ and $\bmu\in\bbR^p$, then $\x=C\u+\bmu\sim\rmN_p(\bmu,\Sigma)$.  
+			\begin{itemize}
+				\item Let $\Sigma=HDH^\TT$ be the spectral
+				decomposition, then $\x=HD^{1/2}\z+\bmu$, where $\z\sim\rmN_p(\0_p,I_p)$.
+			\end{itemize}
 			\item If $\x\sim\rmN_p(\bmu,\Sigma)$, then its \red{ch.f.} $\phi_\x(\t)=\exp(i\bmu^\TT\t-\t^\TT\Sigma\t/2)$.
 			\item (\red{Density}) $\x\sim\rmN_p(\bmu,\Sigma)$ with $\Sigma\succ \0$, then $\x$ has pdf
 			\begin{sequation}\label{eq:mult_normal_density}
@@ -252,29 +256,70 @@ The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined b
 		\end{enumerate}
 	\end{theorem}
 \end{thmbox}
+Note that we guarantee the existence of $\rmN_p(\bmu,\Sigma)$ by means of the representation in point 2. 
 
+\begin{thmbox}
+	\begin{theorem}[Properties of multivariate normal]\label{thm:multi_normal_prop}
+		If $\x\sim\rmN_p(\bmu,\Sigma)$, then we have 
+		\begin{enumerate}
+			\item (\red{Linearity}) Let $B\in\bbR^{q\times p}, \b\in\bbR^{q}$ nonrandom, and $B\Sigma B^\TT\succ \0$, then $B\x+\b \sim \rmN_q (B\bmu+\b,B\Sigma B^\TT)$.  
+			\item (\red{Linear combinations}) If $\x_k\sim\rmN_p(\bmu_k,\Sigma_k)\indep$ for $k=1,\ldots,N$, then for any fixed constants $\alpha_1,\ldots,\alpha_N$, $\sum_{k=1}^N\alpha_k\x_k\sim\rmN_p(\sum_{k=1}^{N}\alpha_k\bmu_k,\sum_{k=1}^{N}\alpha_k^2\Sigma_k)$.
+			\begin{itemize}
+				\item The sample mean $\bar{\x}\sim\rmN_p(\bmu,\Sigma/N)$. 
+			\end{itemize}
+			\item (\red{Subset}) The marginal distribution of any subset of $k(<p)$ components of $\x$ is $k$-variate normal.   
+			\item (\red{Marginal distribution}) Partition
+			\begin{sequation*}
+				\x=\left[{\begin{array}{c}\x_{1}\\\x_{2}\end{array}}\right],\quad\boldsymbol{\mu}=\left[{\begin{array}{c}\bmu_{1}\\\bmu_{2}\end{array}}\right],\quad\boldsymbol{\Sigma}=\left[{\begin{array}{cc}\Sigma_{11}&\Sigma_{12}\\ {\Sigma}_{21}& {\Sigma}_{22}\end{array}}\right], \quad \x_1\in\bbR^{q}, \x_2\in\bbR^{p-q}, \Sigma_{12}\in\bbR^{q\times(p-q)}.
+			\end{sequation*}    
+			Then $\x_1\sim\rmN_q(\bmu_1,\Sigma_{11})$, $\x_1\indep\x_2$ iff $\Sigma_{12}=\0$. 
+			\item (\red{Conditional distribution}) Let $\Sigma_{22}^{-}$ be a generalized inverse of $\Sigma_{22}$ (i.e., $\Sigma_{22}\Sigma_{22}^-\Sigma_{22}=\Sigma_{22}$), then 
+			\begin{itemize}
+				\item[(a)] $\x_1-\Sigma_{12}\Sigma_{22}^-\x_2\sim \rmN_q(\bmu_1-\Sigma_{12}\Sigma_{22}^-\bmu_2,\Sigma_{11}-\Sigma_{12}\Sigma_{22}^-\Sigma_{21})$, and $\indep \x_2$.
+				\item[(b)] $[\x_1\mid\x_2]\sim\rmN_q(\bmu_1+{\Sigma}_{12}{\Sigma}_{22}^-(\x_2-\bmu_2),\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-}\Sigma_{21})$. 
+			\end{itemize}  
+			\item (\red{Cramér}) If $p\times 1$ random vectors $\x\indep \y$ and $\x+\y\sim\rmN_p$, then both $\x,\y\sim\rmN_p$.     
+		\end{enumerate} 
+	\end{theorem}
+\end{thmbox}
+For point 3, each component of a random vector is (marginally) normal does not imply that the vector has a multivariate normal distribution. Counterexample: let $U_1,U_2,U_3\simiid\rmN(0,1)$, $Z\indep U_{1:3}$. Define 
+\begin{sequation*}
+	X_1 = \frac{U_1+ZU_3}{\sqrt{1+Z^2}},\quad X_2 = \frac{U_2+ZU_3}{\sqrt{1+Z^2}}.
+\end{sequation*}   
+Then $[X_1|Z]\sim\rmN(0,1)$, free of $Z$, so $X_1\sim\rmN(0,1)$, and $X_2\sim\rmN(0,1)$. But $(X_1,X_2)$ not normal.
+The converse is true if the components of $\x$ are all independent and normal, or if $\x$ consists of independent subvectors, each of which is normally distributed.
+
+For the proof of point 5, we use the lemma: if $\Sigma\succeq \0$, 
+then $\ker(\Sigma_{22})\subset \ker(\Sigma_{12})$, and $\im(\Sigma_{21})\subset\im(\Sigma_{22})$. 
+So $\exists B\in\bbR^{q\times(p-q)}$ satisfying $\Sigma_{12}=B\Sigma_{22}$.  
 
 \subsection{Basic multivariate distributions}\label{sec:Basic-mult-dist}
 
 \begin{itemize}
-	\item (\red{Addition}) $\x\sim\rmN_p(\mu_1,\Sigma_1),\y\sim\rmN_p(\mu_y,\Sigma_y)$, $\x\indep \y$, then $\x+\y \sim \rmN_p(\bmu_1+\bmu_2,\Sigma_1+\Sigma_2)$. 
-	\item (\red{Linearity}) Let $B\in\bbR^{q\times p}, \b\in\bbR^{q}$ nonrandom, and $B\Sigma B^\TT\succ \0$, then $B\x+\b \sim \rmN_q (B\bmu+\b,B\Sigma B^\TT)$.  
+ 
+	
 	\item (\red{Sample mean}) If $\x_{1:n}\simiid \rmN_p(\bmu,\Sigma)$, then $\bar{\x}\sim\rmN_p(\bmu,n^{-1}\Sigma)$, and $n(\bar{\x}-\bmu)^{T}\Sigma^{-1}(\bar{\x}-\bmu)\sim\chi_p^2$. The squared generalized distance (Mahalanobis distance) 
 	$d_i^2=(\boldsymbol{x}_i-\bar{\boldsymbol{x}})^{T}{S}^{-1}(\boldsymbol{x}_i-\bar{\boldsymbol{x}}) \dto \chi_p^2$.   
 	\item \red{MLE} of $(\mu,\Sigma)$ is $(\bar{\x},A/n)$.   
-	\item (\red{Representation}) Let $\Sigma=HDH^\TT$ be the spectral
-	decomposition, then $\x=HD^{1/2}\z+\bmu$, where $\z\sim\rmN_p(\0_p,I_p)$.
-	\item (\red{Marginal and conditional distribution}) Partition
-	\begin{sequation*}
-		\x=\left[{\begin{array}{c}x_{1}\\x_{2}\end{array}}\right],\quad\boldsymbol{\mu}=\left[{\begin{array}{c}\mu_{1}\\\mu_{2}\end{array}}\right],\quad\boldsymbol{\Sigma}=\left[{\begin{array}{cc}\Sigma_{11}&\Sigma_{12}\\\boldsymbol{\Sigma}_{21}&\boldsymbol{\Sigma}_{22}\end{array}}\right], \quad \x_1\in\bbR^{q}, \x_2\in\bbR^{p-q}, \Sigma_{12}\in\bbR^{q\times(p-q)}.
-	\end{sequation*}    
-	Then $\x_1\sim\rmN_q(\bmu_1,\Sigma_{11})$, $\x_1\indep\x_2$ iff $\Sigma_{12}=\0$, and $[\x_1\mid\x_2=\x_2^0]\sim\rmN_q(\boldsymbol{\mu}_1+{\Sigma}_{12}{\Sigma}_{22}^{-1}(\boldsymbol{x}_2^0-\boldsymbol{\mu}_2),\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21})$.
+
 \end{itemize}
 
 \begin{defbox}
 	\begin{definition}[Wishart distribution]\label{def:multi_Wishart} 
 	\end{definition}
 \end{defbox}
+
+\section{Asymptotic properties}\label{sec:asym_multi}
+\subsection{Asymptotic distributions of sample means and covariance matrices}\label{sec:asym_multi_sampleMeanCov}
+Refer to section 1.2.2, \cite{muirhead1982aspects}.
+\begin{thmbox}
+	\begin{theorem}[CLT for sample means]\label{thm:CLT_multi_sampleMean_iid}
+		Let $\x_{1:n}\simiid[\bmu,\Sigma]$, then 
+		\begin{sequation*}
+			\sqrt{n}(\bar{\x}_n-\bmu)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}(\x_i-\bmu)\dto \rmN_p(\0_p,\Sigma). 
+		\end{sequation*} 
+	\end{theorem}
+\end{thmbox}
 
 
 \bibliographystyle{abbrv}
