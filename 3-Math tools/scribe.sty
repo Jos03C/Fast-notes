@@ -124,7 +124,11 @@ citecolor=pink}
 \setenumerate[1]{itemsep=2pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
 \setitemize[1]{itemsep=2pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
 \setdescription{itemsep=2pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
-\usepackage[margin=0.6in]{geometry}  % adjust the page margin
+
+% adjust the page margin
+\usepackage[margin=0.6in]{geometry}  
+
+
 
 % \setlength{\topmargin}{-1in}
 % \setlength{\textheight}{10.5in}
@@ -201,11 +205,10 @@ citecolor=pink}
 \renewcommand{\Pr}{{\bf Pr}}
 \newcommand{\Prx}{\mathop{\bf Pr\/}}
 
-\newcommand{\Ex}{\mathop{\bf E\/}}
-\newcommand{\Var}{{\bf Var}}
-\newcommand{\Varx}{\mathop{\bf Var\/}}
-\newcommand{\Cov}{{\bf Cov}}
-\newcommand{\Covx}{\mathop{\bf Cov\/}}
+\newcommand{\Var}{\mathbb{V}\mathrm{ar}}
+% \newcommand{\Varx}{\mathop{\bf Var\/}}
+\newcommand{\Cov}{\mathbb{C}\mathrm{ov}}
+% \newcommand{\Covx}{\mathop{\bf Cov\/}}
 
 \newcommand{\Unif}{\mathrm{Unif}}
 
@@ -246,13 +249,13 @@ citecolor=pink}
 
 % complexity classes
 \newcommand{\Arg}{\mathrm{Arg}}
-\newcommand{\Log}{\mathrm{Log}}
 \newcommand{\NP}{\mathrm{NP}}
 \newcommand{\BPP}{\mathrm{BPP}}
 \newcommand{\DTIME}{\mathrm{DTIME}}
 \newcommand{\ZPTIME}{\mathrm{ZPTIME}}
 \newcommand{\BPTIME}{\mathrm{BPTIME}}
 \newcommand{\NTIME}{\mathrm{NTIME}}
+\newcommand{\Log}{\mathrm{Log}}
 
 % values associated to optimization algorithm instances
 \newcommand{\Opt}{{\mathsf{Opt}}}
@@ -344,6 +347,7 @@ citecolor=pink}
 \newcommand{\x}{{\boldsymbol x}}
 \newcommand{\y}{{\boldsymbol y}}
 \newcommand{\z}{{\boldsymbol z}}
+
 \newcommand{\A}{{\boldsymbol A}}
 \newcommand{\B}{{\boldsymbol B}}
 \newcommand{\D}{{\boldsymbol D}}
@@ -355,6 +359,7 @@ citecolor=pink}
 \renewcommand{\L}{{\boldsymbol L}}
 \newcommand{\M}{{\boldsymbol M}}
 \renewcommand{\O}{{\boldsymbol O}}
+\newcommand{\R}{{\boldsymbol R}}
 \renewcommand{\S}{{\boldsymbol S}}
 \newcommand{\T}{{\boldsymbol T}}
 \newcommand{\U}{{\boldsymbol U}}
@@ -362,6 +367,7 @@ citecolor=pink}
 \newcommand{\W}{{\boldsymbol W}}
 \newcommand{\X}{{\boldsymbol X}}
 \newcommand{\Y}{{\boldsymbol Y}}
+\newcommand{\Z}{{\boldsymbol Z}}
 \newcommand{\0}{{\boldsymbol 0}}
 \newcommand{\1}{{\boldsymbol 1}}
 
@@ -369,6 +375,7 @@ citecolor=pink}
 
 
 \newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmr}{\mathrm{r}}
 \newcommand{\rmC}{\mathrm{C}}
 \newcommand{\rmN}{\mathrm{N}}
 \newcommand{\rmP}{\mathrm{P}}
@@ -398,7 +405,11 @@ citecolor=pink}
 \newcommand{\indep}{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern4mu{#1#2}}}
 \def\diag{\mathrm{diag}}
-
+\def\TT{\top}
+\def\range{\mathrm{range}}
+\def\Col{\mathrm{Col}}
+\renewcommand{\vec}{{\mathrm{vec}}}
+\def\tr{\mathrm{tr}}
 
 %% colors
 \def\blue#1{\textcolor{blue}{#1}}
