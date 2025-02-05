@@ -246,7 +246,7 @@ If $A$ is full rank, then we use
 	\begin{theorem}[Rank-related factorization]\label{thm:mat_rank_fact}
 		\
 		\begin{enumerate}
-			\item (\red{Full rank factorization}) If $A\in\bbR^{n\times m}$ with $\rmr(A)=k$, then $A=BC$ for some full column rank $B\in\bbR^{n\times k}$ and full row rank $ C\in\bbR^{k\times m}$.    
+			\item (\red{Full-rank factorization}) If $A\in\bbR^{n\times m}$ with $\rmr(A)=k$, then $A=BC$ for some full column rank $B\in\bbR^{n\times k}$ and full row rank $ C\in\bbR^{k\times m}$.    
 			\item (\red{Non-negative definite}) If $n\times n$ $A\succeq \0$, $\rmr(A)=r$, then 
 			\begin{itemize}
 				\item $\exists B\in\bbR^{n\times r}$ of rank $r$ such that $A=BB^\TT$;
@@ -258,7 +258,91 @@ If $A$ is full rank, then we use
 	\end{theorem}
 \end{thmbox}
 
-\subsection{Idempotent matrices}\label{sec:idempotent}
+\subsection{Inversion}\label{sec:mat_inv}
+
+\subsubsection{Moore--Penrose inverse}\label{sec:MP_inv}
+\begin{defbox}
+	\begin{definition}[\href{https://en.wikipedia.org/wiki/Moore–Penrose_inverse}{Moore--Penrose inverse/pseudoinverse}]\label{def:MP_inv}
+		Let $A\in\bbR^{n\times m}$. $A^+\in\bbR^{m\times n}$ is defined as a Moore-Penrose (M-P) inverse of $A$ if
+		\begin{enumerate}
+			\item $A A^+$ and $A^+ A$ are symmetric;
+			\item $A A^+ A=A$;
+			\item $A^+ A A^+=A^+$.    
+		\end{enumerate}   
+	\end{definition}
+\end{defbox}
+
+\begin{thmbox}
+	\begin{theorem}\label{thm:exist_MP_inv}
+		Each matrix $A$ has an $A^+$.  
+	\end{theorem}
+\end{thmbox}
+If $A=\0$, then $A^+=\0$.  
+If $A\neq\0$, then full-rank factorization $A=B_{n\times r}C_{r\times m}$ of rank $r$. 
+We have 
+\begin{sequation*}
+	A^+=C^\top(CC^\top)^{-1}(B^\top B)^{-1}B^\top.
+\end{sequation*}  
+
+\begin{thmbox}
+	\begin{theorem}\label{thm:prop_MP_inv}
+		Let $A\in\bbR^{n\times m}$. 
+		\begin{enumerate}
+			\item The M-P inverse is unique.
+			\item $(A^{\top})^{+}=(A^{+})^{\top}$.
+			\item $\rmr(A^{+})=\rmr(A)$.
+			\item If $A$ is symmetric, then $A^{+}=(A^{+})^{\top}$.
+			\item If $A$ is nonsingular, then $A^{-1}=A^{+}$.
+			\item If $A$ is symmetric idempotent, then $A^{+}=A$.
+			\item If $r(A)=n$, then $A^{+}=A^{\top}(AA^{\top})^{-1},AA^{+}=I_n$.
+			\item If $r(A)=m$, then $A^{+}=(A^{\top}A)^{-1}A^{\top},A^{+}A=I_m$. 
+			\item The matrices $AA^{+},A^{+}A,I_n-AA^{+}$, and $I_m-A^{+}A$ are all symmetric idempotent.
+		\end{enumerate}
+	\end{theorem}
+\end{thmbox}
+
+\subsubsection{Generalized Inverse}\label{sec:gen_inv}
+\begin{defbox}
+	\begin{definition}[\href{https://en.wikipedia.org/wiki/Generalized_inverse}{Generalized inverse}]\label{def:gen_inv}
+		Let $A\in\bbR^{n\times m}$. The generalized inverse (G-inverse) $A^-\in\bbR^{m\times n}$ satisfies 
+		\begin{sequation*}
+			A A^- A = A.
+		\end{sequation*}
+	\end{definition}
+\end{defbox}
+It is obvious that the M-P inverse is also a G-inverse.
+
+\begin{thmbox}
+	\begin{theorem}\label{thm:gen_inv}
+		\
+		\begin{enumerate}
+			\item G-inverse may not be unique.
+			\item Let $A\in\bbR^{n\times m}$ with rank $k>0$.
+			\begin{enumerate}
+				\item $\rmr( A^- ) \geq k.$
+				\item $A^-A$ and $AA^-$ are idempotent.
+				\item $\rmr( A^- A) = \rmr( AA^- ) = k.$
+				\item $A^- A= I_m$ iff $\rmr(A)=m.$
+				\item $AA^-=I_n$ iff $\rmr(A)=n.$
+				\item $\tr(A^-A)=\tr(AA^-)=k=\rmr(A)$.
+				\item If $A^-$ is any G-inverse of $A$, then $(A^-)^\top$ is a G-inverse of $A^\top$.
+			\end{enumerate}
+			\item Let $K=A(A^\top A)^-A^\top\in\bbR^{n\times n}$,
+			\begin{enumerate}
+				\item $K$ is invariant for any G-inverse of $A^\top A.$
+				\item $K= AA^{+ }.$ 
+				\item $K$ is symmetric and idempotent. 
+				\item $\rmr(K)=\tr(K)=\rmr(A)$.
+				\item $KA=A;A^\top K=A^\top.$ 
+				\item $(A^\top A)^-A^\top$ is a G-inverse of $A$ for any G-inverse of $A^\top A.$ 
+				\item $A(A^\top A)^-$ is a G-inverse of $A^\top$ for any G-inverse of $A^\top A.$
+			\end{enumerate}
+		\end{enumerate} 
+	\end{theorem}
+\end{thmbox}
+
+\subsection{Special matrices}\label{sec:spec_mat}
+\subsubsection{Idempotent matrices}\label{sec:idempotent}
 \begin{defbox}
 	\begin{definition}[\href{https://en.wikipedia.org/wiki/Idempotent_matrix}{Idempotent matrices}]\label{def:idempotent}
 		$A\in\bbR^{n\times n}$ if $A^2=A$.  

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  4 FEB 2025 22:56
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  5 FEB 2025 23:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -877,12 +877,22 @@ Chapter 2.
 Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
  [10]
+
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [11]
+
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [12
+
+]
 Chapter 3.
 
 
-[11
-
-] (./note-math.bbl (./note-math.brf)
+[13] (./note-math.bbl (./note-math.brf)
 \tf@brf=\write6
 \openout6 = `note-math.brf'.
 
@@ -891,9 +901,9 @@ Chapter 3.
 
 Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
- [12])
+ [14])
 
-[13
+[15
 
 ] (./note-math.aux)
  ***********
@@ -901,17 +911,17 @@ LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
  ***********
 Package rerunfilecheck Info: File `note-math.out' has not changed.
-(rerunfilecheck)             Checksum: FA317461439D7A0BEE791FFFAC3B978F;2201.
+(rerunfilecheck)             Checksum: 5C95987B0E2D9B70E3F2F2D65F04295D;2293.
 Package rerunfilecheck Info: File `note-math.brf' has not changed.
 (rerunfilecheck)             Checksum: 62EE5C24814FB051205FD68DE2590AE0;51.
  ) 
 Here is how much of TeX's memory you used:
- 29821 strings out of 473995
- 596563 string characters out of 5737702
- 1130291 words of memory out of 5000000
- 52199 multiletter control sequences out of 15000+600000
+ 29833 strings out of 473995
+ 596719 string characters out of 5737702
+ 1130906 words of memory out of 5000000
+ 52211 multiletter control sequences out of 15000+600000
  619643 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,10n,110p,543b,1002s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,10n,110p,543b,1000s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on note-math.pdf (13 pages).
+Output written on note-math.pdf (15 pages).
