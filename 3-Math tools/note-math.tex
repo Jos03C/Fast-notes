@@ -217,7 +217,7 @@ References:
 	\item \red{Eigenvalues} of $A$ are $\lambda(A)$.  
 \end{itemize}
 
-\section{Basic properties}\label{sec:mat_basic}
+\section{Spaces}\label{sec:mat_space}
 \subsection{Spaces, rank, and related factorization}\label{sec:mat_space_rank_fact}
 \begin{thmbox}
 	\begin{theorem}[Rank]\label{thm:mat_rank}
@@ -234,13 +234,6 @@ References:
 	\end{theorem}
 \end{thmbox}
 Point 7 is proved by SVD.
-If $A$ is full rank, then we use 
-\begin{itemize}
-	\item \red{left inverse} if $n>m$: $A_{left}^{-1}=(A^\top A)^{-1}A^\top$, i.e., $A_{left}^{-1}A=I_m$
-	\item \red{right inverse} if $n<m$: $A_{right}^{-1}=A^{\top}(AA^{\top})^{-1}$, i.e., $A A_{right}^{-1}=I_n$. 
-\end{itemize}
-
-
 
 \begin{thmbox}
 	\begin{theorem}[Rank-related factorization]\label{thm:mat_rank_fact}
@@ -258,12 +251,28 @@ If $A$ is full rank, then we use
 	\end{theorem}
 \end{thmbox}
 
-\subsection{Inversion}\label{sec:mat_inv}
+\section{Inversion}\label{sec:mat_inv}
+
+\subsection{Types of inversion}\label{sec:mat_inv_types}
+\subsubsection{Left and right inverse}\label{sec:LR_inv}
+\begin{defbox}
+	\begin{definition}[Left/right inverse]\label{def:LR_inv}
+	Let $A\in\bbR^{n\times m}$. The \red{left inverse} $A_{left}^{-1}\in\bbR^{m\times n}$ satisfies $A_{left}^{-1} A = I_m$, and the \red{right inverse} $A_{right}^{-1}\in\bbR^{m\times n}$ satisfies $A A_{right}^{-1}=I_n$. 
+	\end{definition}
+	  
+\end{defbox}
+We can find these inverses by Theorem \ref{thm:mat_rank}: if 
+\begin{itemize}
+	\item $A$ full column rank $\rmr(A)=m$, then $A^\TT A$ nonsingular, and $A_{left}^{-1}=(A^\top A)^{-1}A^\top$;
+	\item $A$ full row rank $\rmr(A)=n$, then $AA^T$ nonsingular, and $A_{right}^{-1}=A^{\top}(AA^{\top})^{-1}$.
+\end{itemize}
+   
 
 \subsubsection{Moore--Penrose inverse}\label{sec:MP_inv}
+It is used when left/right inverse cannot be obtained.
 \begin{defbox}
 	\begin{definition}[\href{https://en.wikipedia.org/wiki/Moore–Penrose_inverse}{Moore--Penrose inverse/pseudoinverse}]\label{def:MP_inv}
-		Let $A\in\bbR^{n\times m}$. $A^+\in\bbR^{m\times n}$ is defined as a Moore-Penrose (M-P) inverse of $A$ if
+		Let $A\in\bbR^{n\times m}$. $A^+\in\bbR^{m\times n}$ is defined as a \red{Moore-Penrose (M-P) inverse} of $A$ if
 		\begin{enumerate}
 			\item $A A^+$ and $A^+ A$ are symmetric;
 			\item $A A^+ A=A$;
@@ -272,17 +281,26 @@ If $A$ is full rank, then we use
 	\end{definition}
 \end{defbox}
 
+\begin{exbox}
+	\begin{example}[M-P inverse of a diagonal matrix]
+		Let $D\in\bbR^{n\times m}$, WLOG, assume $n\geq m$. $D_{ii}=d_i$ for $i=1,\ldots,m$, while others are zero. Then $D^+\in\bbR^{m\times n}$ satisfies $D_{ii}^+=1/d_i$ if $d_i\neq 0$ and zero otherwise, $i=1,\ldots,m$.        
+	\end{example}
+\end{exbox}
+
 \begin{thmbox}
 	\begin{theorem}\label{thm:exist_MP_inv}
 		Each matrix $A$ has an $A^+$.  
 	\end{theorem}
 \end{thmbox}
-If $A=\0$, then $A^+=\0$.  
-If $A\neq\0$, then full-rank factorization $A=B_{n\times r}C_{r\times m}$ of rank $r$. 
-We have 
-\begin{sequation*}
-	A^+=C^\top(CC^\top)^{-1}(B^\top B)^{-1}B^\top.
-\end{sequation*}  
+If $A=\0$, then $A^+=\0$. If $A\neq\0$, two ways to construct $A^+$:
+\begin{enumerate}
+	\item Full-rank factorization $A=B_{n\times r}C_{r\times m}$ of rank $r$. We have 
+	\begin{sequation*}
+		A^+=C^\top(CC^\top)^{-1}(B^\top B)^{-1}B^\top.
+	\end{sequation*} 
+	\item SVD $A=UDV^\TT$, then $A^+=VD^+U^\TT$. 
+\end{enumerate}  
+ 
 
 \begin{thmbox}
 	\begin{theorem}\label{thm:prop_MP_inv}
@@ -294,8 +312,8 @@ We have
 			\item If $A$ is symmetric, then $A^{+}=(A^{+})^{\top}$.
 			\item If $A$ is nonsingular, then $A^{-1}=A^{+}$.
 			\item If $A$ is symmetric idempotent, then $A^{+}=A$.
-			\item If $r(A)=n$, then $A^{+}=A^{\top}(AA^{\top})^{-1},AA^{+}=I_n$.
-			\item If $r(A)=m$, then $A^{+}=(A^{\top}A)^{-1}A^{\top},A^{+}A=I_m$. 
+			\item If $r(A)=m$, then $A^{+}=A_{lrft}^{-1}=(A^{\top}A)^{-1}A^{\top}$.
+			\item If $r(A)=n$, then $A^{+}=A_{right}^{-1}=A^{\top}(AA^{\top})^{-1}$.
 			\item The matrices $AA^{+},A^{+}A,I_n-AA^{+}$, and $I_m-A^{+}A$ are all symmetric idempotent.
 		\end{enumerate}
 	\end{theorem}
@@ -304,7 +322,7 @@ We have
 \subsubsection{Generalized Inverse}\label{sec:gen_inv}
 \begin{defbox}
 	\begin{definition}[\href{https://en.wikipedia.org/wiki/Generalized_inverse}{Generalized inverse}]\label{def:gen_inv}
-		Let $A\in\bbR^{n\times m}$. The generalized inverse (G-inverse) $A^-\in\bbR^{m\times n}$ satisfies 
+		Let $A\in\bbR^{n\times m}$. The \red{generalized inverse (G-inverse)} $A^-\in\bbR^{m\times n}$ satisfies 
 		\begin{sequation*}
 			A A^- A = A.
 		\end{sequation*}
@@ -341,8 +359,8 @@ It is obvious that the M-P inverse is also a G-inverse.
 	\end{theorem}
 \end{thmbox}
 
-\subsection{Special matrices}\label{sec:spec_mat}
-\subsubsection{Idempotent matrices}\label{sec:idempotent}
+\section{Special matrices}\label{sec:spec_mat}
+\subsection{Idempotent matrices}\label{sec:idempotent}
 \begin{defbox}
 	\begin{definition}[\href{https://en.wikipedia.org/wiki/Idempotent_matrix}{Idempotent matrices}]\label{def:idempotent}
 		$A\in\bbR^{n\times n}$ if $A^2=A$.  
