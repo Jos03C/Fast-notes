@@ -1,4 +1,4 @@
-\babel@toc {english}{}
+\babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Complex Analysis}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Complex Numbers}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Transformation}{5}{subsection.1.1.1}%
@@ -9,16 +9,17 @@
 \contentsline {subsubsection}{The angle function, parametric curve and winding number}{7}{section*.3}%
 \contentsline {subsection}{\numberline {1.2.3}Complex differentiability}{7}{subsection.1.2.3}%
 \contentsline {subsubsection}{Limit and continuity}{7}{section*.4}%
-\contentsline {chapter}{\numberline {2}Matrix Algebra}{9}{chapter.2}%
+\contentsline {chapter}{\numberline {2}Linear Algebra}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Spaces}{9}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Spaces, rank, and related factorization}{9}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Inversion}{9}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Types of inversion}{9}{subsection.2.2.1}%
-\contentsline {subsubsection}{Left and right inverse}{9}{section*.5}%
+\contentsline {section}{\numberline {2.2}Inversion}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Types of inversion}{10}{subsection.2.2.1}%
+\contentsline {subsubsection}{Left and right inverse}{10}{section*.5}%
 \contentsline {subsubsection}{Moore--Penrose inverse}{10}{section*.6}%
 \contentsline {subsubsection}{Generalized Inverse}{10}{section*.7}%
 \contentsline {section}{\numberline {2.3}Special matrices}{11}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Idempotent matrices}{11}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Perpendicular projection matrices}{11}{subsection.2.3.2}%
 \contentsline {chapter}{\numberline {3}Optimization}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Nonlinear Optimization}{13}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}KKT Conditions}{13}{subsection.3.1.1}%

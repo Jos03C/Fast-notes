@@ -28,7 +28,7 @@
 \chapter{Complex Analysis}\label{chap:complex}
 References: 
 \begin{itemize}
-	\item CUHKSZ: MAT3253 - Complex Variables notes by Kenneth Shum (Spring 2023)
+	\item CUHKSZ: MAT3253 - Complex Variables notes by Kenneth Shum (2022-2023 Spring)
 \end{itemize}
 
 \section{Complex Numbers}\label{sec:complex-num}
@@ -200,9 +200,11 @@ The \red{winding number/index} of a closed parametric curve not passing through 
 \subsection{Complex differentiability}\label{sec:complex-diff}
 \subsubsection{Limit and continuity}
 
-\chapter{Matrix Algebra}\label{chap:mat}
+\chapter{Linear Algebra}\label{chap:linear_algebra}
 References: 
 \begin{itemize}
+	\item CUHKSZ: MAT2040 - Linear Algebra, by Dr. Dongxu Ji (2020-2021 Summer).
+	\item CUHK: STAT5030 - Linear Models, by Prof. Yuanyuan Lin (2024-2025 Spring)
 	\item Peng Ding - \textit{Linear Model and Extensions}: appendix A.
 	\item Robb J. Muirhead - \textit{Aspects of multivariate statistical theory} \cite{muirhead1982aspects}: appendix A.
 \end{itemize}
@@ -220,20 +222,21 @@ References:
 \section{Spaces}\label{sec:mat_space}
 \subsection{Spaces, rank, and related factorization}\label{sec:mat_space_rank_fact}
 \begin{thmbox}
-	\begin{theorem}[Rank]\label{thm:mat_rank}
+	\begin{theorem}[Properties of rank]\label{thm:mat_rank}
 		Let $A\in\bbR^{n\times m}$. 
 		\begin{enumerate}
 			\item $\rmr(A)=\rmr(A^\TT)$.
 			\item $\rmr(A)\leq\min(n,m)$.   
+			\item $\rmr(A)=\rmr(A^\TT A)$. 
 			\item $\rmr(AB)\leq \min\{\rmr(A),\rmr(B)\}$.
 			\item If $A,B$ have same size, then $\rmr(A+B)\leq\rmr(A)+\rmr(B)$.
 			\item If $A\in\bbR^{n\times n},B\in\bbR^{n\times m},C\in\bbR^{m\times m}$, and $A$ and $C$ are nonsingular, then $\rmr(ABC)=\rmr(B)$. 
 			\item If $B\in\bbR^{m\times p}$ such that $AB=\0$, then $\rmr(B)\leq m-\rmr(A)$.    
 			\item $A$ is full column/row rank iff $A^\TT A$/$AA^\TT$ is nonsingular.  
+			\item The system of equations $A\x=\c$ is consistent iff $\rmr(A)=\rmr([A,\c])$.  
 		\end{enumerate}
 	\end{theorem}
 \end{thmbox}
-Point 7 is proved by SVD.
 
 \begin{thmbox}
 	\begin{theorem}[Rank-related factorization]\label{thm:mat_rank_fact}
@@ -263,8 +266,8 @@ Point 7 is proved by SVD.
 \end{defbox}
 We can find these inverses by Theorem \ref{thm:mat_rank}: if 
 \begin{itemize}
-	\item $A$ full column rank $\rmr(A)=m$, then $A^\TT A$ nonsingular, and $A_{left}^{-1}=(A^\top A)^{-1}A^\top$;
-	\item $A$ full row rank $\rmr(A)=n$, then $AA^T$ nonsingular, and $A_{right}^{-1}=A^{\top}(AA^{\top})^{-1}$.
+	\item $A$ full column rank $\rmr(A)=m$, then $A^\TT A$ nonsingular, and $A_{left}^{-1}=(A^\top A)^{-1}A^\top$; $A^-$ is also a left inverse. 
+	\item $A$ full row rank $\rmr(A)=n$, then $AA^T$ nonsingular, and $A_{right}^{-1}=A^{\top}(AA^{\top})^{-1}$; $A^-$ is also a right inverse.
 \end{itemize}
    
 
@@ -282,7 +285,7 @@ It is used when left/right inverse cannot be obtained.
 \end{defbox}
 
 \begin{exbox}
-	\begin{example}[M-P inverse of a diagonal matrix]
+	\begin{example}[M-P inverse of a diagonal matrix]\label{ex:MP_diag}
 		Let $D\in\bbR^{n\times m}$, WLOG, assume $n\geq m$. $D_{ii}=d_i$ for $i=1,\ldots,m$, while others are zero. Then $D^+\in\bbR^{m\times n}$ satisfies $D_{ii}^+=1/d_i$ if $d_i\neq 0$ and zero otherwise, $i=1,\ldots,m$.        
 	\end{example}
 \end{exbox}
@@ -294,6 +297,7 @@ It is used when left/right inverse cannot be obtained.
 \end{thmbox}
 If $A=\0$, then $A^+=\0$. If $A\neq\0$, two ways to construct $A^+$:
 \begin{enumerate}
+	\item If $A$ is symmetric with eigendecomposition $A=P^\TT D P$, then $A^+=P^\TT D^+ P$, where $D^+$ is given in Ex. \ref{ex:MP_diag}.  
 	\item Full-rank factorization $A=B_{n\times r}C_{r\times m}$ of rank $r$. We have 
 	\begin{sequation*}
 		A^+=C^\top(CC^\top)^{-1}(B^\top B)^{-1}B^\top.
@@ -315,6 +319,7 @@ If $A=\0$, then $A^+=\0$. If $A\neq\0$, two ways to construct $A^+$:
 			\item If $r(A)=m$, then $A^{+}=A_{lrft}^{-1}=(A^{\top}A)^{-1}A^{\top}$.
 			\item If $r(A)=n$, then $A^{+}=A_{right}^{-1}=A^{\top}(AA^{\top})^{-1}$.
 			\item The matrices $AA^{+},A^{+}A,I_n-AA^{+}$, and $I_m-A^{+}A$ are all symmetric idempotent.
+			\item $AA^+$ ($A^+ A$) is a p.p.m. onto $\Col(A)$ ($\Col(A^\TT)$).  
 		\end{enumerate}
 	\end{theorem}
 \end{thmbox}
@@ -328,22 +333,41 @@ If $A=\0$, then $A^+=\0$. If $A\neq\0$, two ways to construct $A^+$:
 		\end{sequation*}
 	\end{definition}
 \end{defbox}
-It is obvious that the M-P inverse is also a G-inverse.
+It is obvious that the M-P inverse is also a G-inverse. 
+$\forall A$, G-inverse exists.
+\begin{enumerate}
+	\item If $A$ nonsingular, then only $A^-=A^{-1}$.
+	\item If $A=\0_{n\times m}$, then $A^{-}=\0$.
+	\item If $D$ is diagonal like Example \ref{ex:MP_diag}, then let $D^{-}=D^{+}$.
+	\item If $A$ is symmetric with eigendecomposition $A=P^\TT D P$, then let $A^-=A^+$, symmetric.    
+	\item If $\rmr(A)=r$, then by SVD, $A=U_{n\times n}\begin{bmatrix}
+		\Sigma_{r\times r} & \0 \\ \0 & \0
+	\end{bmatrix}V_{m\times m}^\TT$. Let $A^{-}=V\begin{bmatrix}
+		\Sigma^{-1} & B \\ C & D
+	\end{bmatrix}U^\TT$, $\forall B,C,D$. 
+	\item If $G_1,G_2$ are G-inverse of $A$, then so is $G_1AG_2$.   
+\end{enumerate}  
+Note that 
+\begin{itemize}
+	\item G-inverse may not be unique. 
+	\item $A$ is symmetric, $A^-$ may not be symmetric.   
+\end{itemize}
 
 \begin{thmbox}
 	\begin{theorem}\label{thm:gen_inv}
 		\
 		\begin{enumerate}
-			\item G-inverse may not be unique.
 			\item Let $A\in\bbR^{n\times m}$ with rank $k>0$.
 			\begin{enumerate}
 				\item $\rmr( A^- ) \geq k.$
 				\item $A^-A$ and $AA^-$ are idempotent.
+				\item $\ker(A^- A)=\ker(A)$ and $\Col(AA^-)=\Col(A)$. 
 				\item $\rmr( A^- A) = \rmr( AA^- ) = k.$
-				\item $A^- A= I_m$ iff $\rmr(A)=m.$
-				\item $AA^-=I_n$ iff $\rmr(A)=n.$
+				\item $A^- A= I_m$ (i.e., $A^-$ is a left inverse of $A$) iff $\rmr(A)=m$.  
+				\item $AA^-=I_n$ (i.e., $A^-$ is a right inverse of $A$) iff $\rmr(A)=n$.
 				\item $\tr(A^-A)=\tr(AA^-)=k=\rmr(A)$.
 				\item If $A^-$ is any G-inverse of $A$, then $(A^-)^\top$ is a G-inverse of $A^\top$.
+				\item The system of equations $A\x=\c$ is consistent iff $\forall A^-$ of $A$, $AA^-\c=\c$ (i.e. $A^-\c$ is a solution).    
 			\end{enumerate}
 			\item Let $K=A(A^\top A)^-A^\top\in\bbR^{n\times n}$,
 			\begin{enumerate}
@@ -379,13 +403,47 @@ It is obvious that the M-P inverse is also a G-inverse.
 	\end{theorem}
 \end{thmbox}
 
+\subsection{Perpendicular projection matrices}\label{sec:ppm}
+\begin{defbox}
+	\begin{definition}[Perpendicular projection matrices]\label{def:ppm}
+		$M\in\bbR^{n\times n}$ is a \red{perpendicular projection matrix (p.p.m.)} onto $\Col(X)$ ($X\in\bbR^{n\times m}$) iff 
+		\begin{enumerate}
+			\item $\forall \v\in\Col(X)$, $M\v=\v$. (Projection - Idempotent)
+			\item $\forall \w\in\Col(X)^{\perp}$, $M\w=\0$. (Perpendicularity - Symmetric)  
+		\end{enumerate}  
+	\end{definition}
+\end{defbox}
+
+\begin{thmbox}
+	\begin{theorem}[Properties of p.p.m.]\label{thm:prop_ppm}
+		Let $M$ be a p.p.m. onto $\Col(X)$ ($X\in\bbR^{n\times m}$). 
+		\begin{enumerate}
+			\item p.p.m.'s are unique.
+			\item $M$ is idempotent and symmetric.
+			\item $MX=X$. 
+			\item $M$ is a p.p.m. onto $\Col(M)$ iff $M$ is idempotent and symmetric.
+			\item Let $\o_1,\ldots,\o_r\in\bbR^{n}$ be orthonormal basis of $\Col(X)$. Let $O=\begin{bmatrix}
+				\o_1 & \cdots & \o_r
+			\end{bmatrix}$. Then $O O^\TT=\sum_{i=1}^{r}\o_i\o_i^\TT$ is the p.p.m. onto $\Col(X)$.        
+		\end{enumerate}
+	\end{theorem}
+\end{thmbox}
+
+\begin{exbox}
+	\begin{example}[Regression]\label{ex:ppm_reg}
+		Let $X\in\bbR^{n\times m}$. Then $X(X^\TT X)^{-}X^\TT$ is the p.p.m. onto $\Col(X)$. 
+		Hence
+	\end{example}
+\end{exbox}
+
+
 \chapter{Optimization}\label{chap:opt}
 
 References: 
 \begin{itemize}
-	\item CUHKSZ: MAT3007 - Optimization I
-	\item CUHKSZ: MAT3220 - Optimization II. Textbook: 
-	\item \begin{enumerate}
+	\item CUHKSZ: MAT3007 - Optimization I, by Prof. Junfeng Wu (2021-2022 Fall)
+	\item CUHKSZ: MAT3220 - Optimization II, by Prof. Shi Pu (2023-2024 Fall). Textbook: 
+	\begin{enumerate}
 		\item \textit{Introduction to Nonlinear Optimization: Theory, Algorithms, and
 		Applications with MATLAB}, Amir Beck.
 		\item \textit{Convex Optimization}, S. Boyd and L. Vandenberghe.
