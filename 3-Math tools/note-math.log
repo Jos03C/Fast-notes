@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  13 FEB 2025 00:12
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.17)  13 FEB 2025 23:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -889,13 +889,13 @@ Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
 Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
- [12
-
-]
+ [12]
 Chapter 3.
 
 
-[13] (./note-math.bbl (./note-math.brf)
+[13
+
+] (./note-math.bbl (./note-math.brf)
 \tf@brf=\write6
 \openout6 = `note-math.brf'.
 
@@ -919,12 +919,12 @@ Package rerunfilecheck Info: File `note-math.brf' has not changed.
 (rerunfilecheck)             Checksum: 62EE5C24814FB051205FD68DE2590AE0;51.
  ) 
 Here is how much of TeX's memory you used:
- 29851 strings out of 473995
- 597006 string characters out of 5737702
- 1131867 words of memory out of 5000000
- 52229 multiletter control sequences out of 15000+600000
+ 29852 strings out of 473995
+ 597022 string characters out of 5737702
+ 1131892 words of memory out of 5000000
+ 52230 multiletter control sequences out of 15000+600000
  619643 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,10n,110p,543b,1000s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,10n,110p,543b,1027s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on note-math.pdf (15 pages).

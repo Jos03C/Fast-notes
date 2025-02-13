@@ -349,15 +349,13 @@ $\forall A$, G-inverse exists.
 \end{enumerate}  
 Note that 
 \begin{itemize}
-	\item G-inverse may not be unique. 
-	\item $A$ is symmetric, $A^-$ may not be symmetric.   
+	\item G-inverse may not be unique by the above construction. 
+	\item $A$ is symmetric, $A^-$ may not be symmetric.
 \end{itemize}
 
 \begin{thmbox}
-	\begin{theorem}\label{thm:gen_inv}
-		\
-		\begin{enumerate}
-			\item Let $A\in\bbR^{n\times m}$ with rank $k>0$.
+	\begin{theorem}[Properties of G-inverse]\label{thm:gen_inv}
+		Let $A\in\bbR^{n\times m}$ with rank $k>0$.
 			\begin{enumerate}
 				\item $\rmr( A^- ) \geq k.$
 				\item $A^-A$ and $AA^-$ are idempotent.
@@ -368,18 +366,18 @@ Note that
 				\item $\tr(A^-A)=\tr(AA^-)=k=\rmr(A)$.
 				\item If $A^-$ is any G-inverse of $A$, then $(A^-)^\top$ is a G-inverse of $A^\top$.
 				\item The system of equations $A\x=\c$ is consistent iff $\forall A^-$ of $A$, $AA^-\c=\c$ (i.e. $A^-\c$ is a solution).    
+				\item If $G,H$ are G-inverses of $(A^\TT A)$, then 
+				\begin{enumerate}
+					\item $AGA^\TT A=AHA^\TT A=A$, i.e., $A(A^\TT A)^{-}A^\TT A=A$ for any G-inverse $(A^\TT A)^{-}$.
+					\begin{itemize}
+						\item $(A^\top A)^-A^\top$ is a G-inverse of $A$ for any G-inverse of $A^\top A.$
+						\item $A(A^\top A)^-$ is a G-inverse of $A^\top$ for any G-inverse of $A^\top A.$
+					\end{itemize}
+					\item $AGA^\TT=AHA^\TT$, i.e., $A(A^\TT A)^{-}A^\TT$ the same for any G-inverse $(A^\TT A)^{-}$.
+					\item Since $A^\TT A$ is symmetric, $\exists (A^\TT A)^{-}$ symmetric such that $A(A^\TT A)^{-}A^\TT$ symmetric. So by ii, $A(A^\TT A)^{-}A^\TT$ symmetric for all $(A^\TT A)^{-}$.      
+					\item $A(A^\TT A)^{-}A^\TT$ is the p.p.m. onto $\Col(A)$, see Example \ref{ex:ppm_reg}. 
+				\end{enumerate}  
 			\end{enumerate}
-			\item Let $K=A(A^\top A)^-A^\top\in\bbR^{n\times n}$,
-			\begin{enumerate}
-				\item $K$ is invariant for any G-inverse of $A^\top A.$
-				\item $K= AA^{+ }.$ 
-				\item $K$ is symmetric and idempotent. 
-				\item $\rmr(K)=\tr(K)=\rmr(A)$.
-				\item $KA=A;A^\top K=A^\top.$ 
-				\item $(A^\top A)^-A^\top$ is a G-inverse of $A$ for any G-inverse of $A^\top A.$ 
-				\item $A(A^\top A)^-$ is a G-inverse of $A^\top$ for any G-inverse of $A^\top A.$
-			\end{enumerate}
-		\end{enumerate} 
 	\end{theorem}
 \end{thmbox}
 
@@ -431,8 +429,14 @@ Note that
 
 \begin{exbox}
 	\begin{example}[Regression]\label{ex:ppm_reg}
-		Let $X\in\bbR^{n\times m}$. Then $X(X^\TT X)^{-}X^\TT$ is the p.p.m. onto $\Col(X)$. 
-		Hence
+		Let $X\in\bbR^{n\times m}$. Then by the property of $(A^\TT A)^{-}$ in Theorem \ref{thm:gen_inv}, $K=X(X^\TT X)^{-}X^\TT\in\bbR^{n\times n}$ is the p.p.m. (also unique) onto $\Col(X)$. 
+		We have
+		\begin{enumerate}
+			\item $K$ is idempotent and symmetric.
+			\item $\rmr(K)=\rmr(X)$.
+			\item $KX=X$ and $X^\TT K=X^\TT$.  
+			\item $K= XX^{+}.$ 
+		\end{enumerate}
 	\end{example}
 \end{exbox}
 
