@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.13)  3 FEB 2025 12:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.13)  21 FEB 2025 22:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -875,36 +875,32 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 304.
+(Font)              <12> on input line 308.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 304.
+(Font)              <8> on input line 308.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 304.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 308.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 304.
+(hyperref)                removing `math shift' on input line 308.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\chi' on input line 304.
+(hyperref)                removing `\chi' on input line 308.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 304.
+(hyperref)                removing `superscript' on input line 308.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 304.
+(hyperref)                removing `math shift' on input line 308.
 
 
 Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
- [10] (./note-inference.bbl (./note-inference.brf)
-\tf@brf=\write8
-\openout8 = `note-inference.brf'.
-
-
+ [10]
 Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
  [11]
@@ -912,25 +908,70 @@ Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
  [12
 
-]) [13] (./note-inference.aux)
+]
+Chapter 4.
+[13]
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [14
+
+]
+Chapter 5.
+
+Overfull \hbox (0.16104pt too wide) in paragraph at lines 404--407
+[]\T1/lmr/m/n/10 There is an iden-ti-fi-a-bil-ity is-sue rel-e-vant to all SEMs: The mea-sure-ment equa-tion is ident-fied if $\OMS/lmsy/m/n/10 8\OML/cmm/b/it/10 ^^R[]\OML/lmm/m/it/10 ; \OML/cmm/b/it/10 ^^R[]$\T1/lmr/m/n/10 , $[]\OT1/lmr/m/n/10 (\OML/cmm/b/it/10 ^^R[]\OT1/lmr/m/n/10 ) =
+ []
+
+[15]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (7.5pt too high) has occurred while \output is active []
+
+ [16]
+
+Package amsmath Warning: Bracket group [\bao _i\mid \baq ] at formula start!
+(amsmath)                It could be a misspelled positional argument.
+(amsmath)                If it belongs to the formula add a \relax in
+(amsmath)                front to hide it on input line 552.
+
+
+Overfull \hbox (50.83649pt too wide) in paragraph at lines 544--566
+[]\T1/lmr/m/n/10 Denote data $\OML/cmm/b/it/10 Y \OT1/lmr/m/n/10 = (\OML/cmm/b/it/10 y[]\OML/lmm/m/it/10 ; [] ; \OML/cmm/b/it/10 y[]\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 2 \U/msb/m/n/10 R[]$\T1/lmr/m/n/10 , ma-trix of la-tent vari-ables $\OT1/cmr/bx/n/10 
+ \OT1/lmr/m/n/10 = (\OML/cmm/b/it/10 ![]\OML/lmm/m/it/10 ; [] ; \OML/cmm/b/it/10 ![]\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 2 \U/msb/m/n/10 R[]$\T1/lmr/m/n/10 , and $\OML/cmm/b/it/10 ^^R \OT1/lmr/m/n/10 = (\OT1/cmr/bx/n/10 ^^C\OML/lmm/m/it/10 ; \OML/cmm/b/it/10 B\OML/lmm/m/it/10 ; \OT1/cmr/bx/n/10 ^^E\OML/lmm/m/it/10 ; \OT1/cmr/bx/n/10 ^^@\OML/lmm/m/it/10 ; \OT1/cmr/bx/n/10 ^^H\OML/lmm/m/it/10 ; \OT1/cmr/bx/n/10 	[]\OML/lmm/m/it/10 ; \OT1/cmr/bx/n/10 	[]\OT1/lmr/m/n/10 ) =
+ []
+
+(./note-inference.bbl (./note-inference.brf)
+\tf@brf=\write8
+\openout8 = `note-inference.brf'.
+
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [17]
+Overfull \vbox (7.5pt too high) has occurred while \output is active []
+
+ [18
+
+]) [19] (./note-inference.aux)
 Package rerunfilecheck Info: File `note-inference.out' has not changed.
-(rerunfilecheck)             Checksum: F5C0E10C7696426600415A359BE9BAB6;2497.
+(rerunfilecheck)             Checksum: A8E6796C52C28D63CB9307228C389B48;3419.
 Package rerunfilecheck Info: File `note-inference.brf' has not changed.
-(rerunfilecheck)             Checksum: 0B4CB34FF90C6A0D68D1DDC5235CB463;283.
+(rerunfilecheck)             Checksum: F9E3279DE7C093529516AD065DF87262;328.
  ) 
 Here is how much of TeX's memory you used:
- 29443 strings out of 478994
- 560380 string characters out of 5862207
- 1020810 words of memory out of 5000000
- 46251 multiletter control sequences out of 15000+600000
- 489325 words of font info for 118 fonts, out of 8000000 for 9000
+ 29583 strings out of 478994
+ 562273 string characters out of 5862207
+ 1020917 words of memory out of 5000000
+ 46367 multiletter control sequences out of 15000+600000
+ 495304 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,18n,116p,554b,889s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 113i,18n,116p,605b,936s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}<d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmex10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr8.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmro10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on note-inference.pdf (13 pages, 392897 bytes).
+Output written on note-inference.pdf (19 pages, 428779 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 279 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
- 253 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 424 PDF objects out of 1000 (max. 8388607)
+ 346 compressed objects within 4 object streams
+ 80 named destinations out of 1000 (max. 500000)
+ 293 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -184,7 +184,7 @@ citecolor=pink}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-
+\newtheorem{assumption}[theorem]{Assumption}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
@@ -215,7 +215,6 @@ citecolor=pink}
 \newcommand{\dto}{\xrightarrow{\mathrm{d}}}
 \newcommand{\pto}{\xrightarrow{\mathrm{p}}}
 \newcommand{\asto}{\xrightarrow{\mathrm{as}}}
-
 
 % shortcuts for symbol names that are too long to type
 \newcommand{\eps}{\epsilon}
@@ -263,6 +262,12 @@ citecolor=pink}
 \newcommand{\Lp}{{\mathsf{Lp}}}
 \newcommand{\Sdp}{{\mathsf{Sdp}}}
 \newcommand{\Exp}{{\mathsf{Exp}}}
+
+% Distributions
+\newcommand{\Normal}{{\mathrm{N}}}
+\newcommand{\Ga}{{\mathsf{Ga}}}
+\newcommand{\IG}{{\mathrm{IG}}}
+\newcommand{\IW}{{\mathrm{IW}}}
 
 % if you think the sum and product signs are too big in your math mode; x convention
 % as in the probability operators
@@ -351,6 +356,7 @@ citecolor=pink}
 \newcommand{\A}{{\boldsymbol A}}
 \newcommand{\B}{{\boldsymbol B}}
 \newcommand{\D}{{\boldsymbol D}}
+\newcommand{\F}{{\boldsymbol F}}
 \newcommand{\G}{{\boldsymbol G}}
 \renewcommand{\H}{{\boldsymbol H}}
 \newcommand{\I}{{\boldsymbol I}}
@@ -371,15 +377,27 @@ citecolor=pink}
 \newcommand{\0}{{\boldsymbol 0}}
 \newcommand{\1}{{\boldsymbol 1}}
 
-\newcommand{\bmu}{{\boldsymbol\mu}}
-
+\newcommand{\bam}{{\boldsymbol\mu}}
+\newcommand{\bao}{{\boldsymbol\omega}}
+\newcommand{\bae}{{\boldsymbol\epsilon}}
+\newcommand{\bet}{{\boldsymbol\eta}}
+\newcommand{\baq}{{\boldsymbol\theta}}
+\newcommand{\bax}{{\boldsymbol\xi}}
+\newcommand{\bad}{{\boldsymbol\delta}}
+\newcommand{\baL}{{\boldsymbol\Lambda}}
+\newcommand{\baG}{{\boldsymbol\Gamma}}
+\newcommand{\baP}{{\boldsymbol\Pi}}
+\newcommand{\baY}{{\boldsymbol\Psi}}
+\newcommand{\baF}{{\boldsymbol\Phi}}
+\newcommand{\baS}{{\boldsymbol\Sigma}}
+\newcommand{\baO}{{\boldsymbol\Omega}}
 
 \newcommand{\rmd}{\mathrm{d}}
 \newcommand{\rmr}{\mathrm{r}}
 \newcommand{\rmC}{\mathrm{C}}
 \newcommand{\rmN}{\mathrm{N}}
 \newcommand{\rmP}{\mathrm{P}}
-
+\newcommand{\rmW}{\mathrm{W}}
 
 % useful for Fourier analysis
 \newcommand{\bits}{\{-1,1\}}
@@ -412,10 +430,17 @@ citecolor=pink}
 
 %% colors
 \def\blue#1{\textcolor{blue}{#1}}
+\def\cyan#1{\textcolor{cyan}{#1}}
 \def\red#1{\textcolor{red}{#1}}
 \def\yellow#1{\textcolor{yellow}{#1}}
+\def\teal#1{\textcolor{teal}{#1}}
 \def\pink#1{\textcolor{pink}{#1}}
 \def\brown#1{\textcolor{brown}{#1}}
+\def\orange#1{\textcolor{orange}{#1}}
+\def\lime#1{\textcolor{lime}{#1}}
+\def\magenta#1{\textcolor{magenta}{#1}}
+\def\green#1{\textcolor{green}{#1}}
+\def\violet#1{\textcolor{violet}{#1}}
 
 \newcommand{\half}{{\textstyle \frac12}}
 \newcommand{\myfig}[4]{\begin{figure}[h] \begin{center} \includegraphics[width=#1\textwidth]{#2} \caption{#3} \label{#4} \end{center} \end{figure}} 
@@ -477,6 +502,20 @@ citecolor=pink}
     bottom=1pt
 }
 
+\newtcolorbox{assbox}{
+    colback=violet!5!white,
+    colframe = violet!75!black,
+    boxrule = 1.5pt,
+    rounded corners,
+    arc = 5pt,   
+    breakable,
+    pad at break*=1mm,
+    left=3pt,
+    right=3pt,
+    top=1pt,
+    bottom=1pt
+}
+
 \newtcolorbox{egbox}{
     colback=green!25!black!10!white,
     colframe = green!75!black,
@@ -518,8 +557,6 @@ citecolor=pink}
     top=1pt,
     bottom=1pt
 }
-
-
 
 
 \newtcbtheorem[auto counter,number within=section]{defboxt}%

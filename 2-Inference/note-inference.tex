@@ -172,7 +172,7 @@ Reference:
 	\begin{definition}\label{def:random_vector_moments}
 		Let $\x=(x_1,\ldots, x_p)^\TT\in\bbR^p$ be a random vector, 
 		\begin{itemize}
-			\item \red{Mean} $\bbE \x = \bmu=(\bbE x_1,\ldots,\bbE x_p)^\TT=(\mu_j)$.
+			\item \red{Mean} $\bbE \x = \bam=(\bbE x_1,\ldots,\bbE x_p)^\TT=(\mu_j)$.
 			\item \red{Covariance matrix} $\Var(\x)=\Cov(\x)=\Sigma=\bbE[(\x-\bbE\x)(\x-\bbE\x)^\TT]=\bbE \x\x^\TT - \bbE \x \bbE \x^\TT = (\sigma_{ij})$, $\Sigma\succeq \0$.
 			\item \red{Correlation matrix} $R=D^{-1/2}\Sigma D^{-1/2}$, where $D=\diag(\sigma_{11},\ldots,\sigma_{pp})$. We have $R_{ij}=\rho_{ij}=\sigma_{ij}/(\sqrt{\sigma_{ii}}\sqrt{\sigma_{jj}})$.
 			\item If $\y\in\bbR^{q}$ random vector, then $\Cov(\x,\y)=\bbE[(\x-\bbE\x)(\y-\bbE\y)^\TT]=\bbE\x\y^\TT-\bbE\x\bbE\y^\TT\in\bbR^{p\times q}$.  
@@ -190,7 +190,7 @@ Reference:
 		\begin{itemize}
 			\item $\bbE \a^\TT\x=\a^\TT \bbE\x$, $\Var(\a^\TT \x)=\a^\TT\Sigma\a$, and $\Cov(\a^\TT\x,\b^\TT\x)=\a^\TT \Sigma\b$.
 			\item $\bbE A\x=A\bbE \x$, $\Var(A\x)=A\Sigma A^\TT$, and $\Cov(A\x,B\x)=A\Sigma B^\TT$.
-			\item If $\y=A\x+\b$, where $A\in\bbR^{q\times p}$, $\b\in\bbR^{q}$, then $\bmu_\y=A \bmu_\x+\b$ and $\Sigma_\y=A\Sigma_\x A^\TT$.     
+			\item If $\y=A\x+\b$, where $A\in\bbR^{q\times p}$, $\b\in\bbR^{q}$, then $\bam_\y=A \bam_\x+\b$ and $\Sigma_\y=A\Sigma_\x A^\TT$.     
 		\end{itemize}  
 		Let $\Z\in\bbR^{p\times q}$ be a random matrix, $B\in\bbR^{m\times p}$, $C\in\bbR^{q\times n}$, and $D\in\bbR^{m\times n}$ constants, then 
 		\begin{itemize}
@@ -231,10 +231,10 @@ The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined b
 	\item $\bar{\x}=n^{-1}\X^\TT\1_n$, and
 	\begin{sequation*}
 		\begin{aligned}
-			\A&= \sum_{i=1}^{n}(\x_i-\bmu)(\x_i-\bmu)^\TT-n(\bar{\x}-\bmu)(\bar{\x}-\bmu)^\TT \\ & =(\X-\1_n\bar{\x}^\TT)^\TT(\X-\1_n\bar{\x}^\TT)\succeq \0.
+			\A&= \sum_{i=1}^{n}(\x_i-\bam)(\x_i-\bam)^\TT-n(\bar{\x}-\bam)(\bar{\x}-\bam)^\TT \\ & =(\X-\1_n\bar{\x}^\TT)^\TT(\X-\1_n\bar{\x}^\TT)\succeq \0.
 		\end{aligned}
 	\end{sequation*}
-	\item $\bbE\bar{\x}=\bmu$, $\Var(\bar{\x})=n^{-1}\Sigma$, $\bbE \A=(n-1)\Sigma$, and $\bbE \S=\Sigma$.
+	\item $\bbE\bar{\x}=\bam$, $\Var(\bar{\x})=n^{-1}\Sigma$, $\bbE \A=(n-1)\Sigma$, and $\bbE \S=\Sigma$.
 \end{itemize}
 
 \subsection{Multivariate normal distribution}\label{sec:mult_normal}
@@ -247,45 +247,49 @@ The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined b
 	\begin{theorem}[Fundamental properties]\label{thm:multi_normal}
 		Let $\x\sim\rmN_p$, we have
 		\begin{enumerate}
-			\item Both $\bmu=\bbE\x$ and $\Sigma=\Cov(\x)$ exist and the distribution of $\x$ is determined by $\bmu$ and $\Sigma$. Write $\x\sim\rmN_p(\bmu,\Sigma)$. 
-			\item (\red{Representation}) Let $\Sigma\succeq\0_{p\times p}$, $\rmr(\Sigma)=r\leq p$, and $u_{1:r}\simiid\rmN(0,1)$, i.e., $\u\sim\rmN_r(\0_r,I_r)$, then if $C$ is the full rank decomposition of $\Sigma$ and $\bmu\in\bbR^p$, then $\x=C\u+\bmu\sim\rmN_p(\bmu,\Sigma)$.  
+			\item Both $\bam=\bbE\x$ and $\Sigma=\Cov(\x)$ exist and the distribution of $\x$ is determined by $\bam$ and $\Sigma$. Write $\x\sim\rmN_p(\bam,\Sigma)$. 
+			\item (\red{Representation}) Let $\Sigma\succeq\0_{p\times p}$, $\rmr(\Sigma)=r\leq p$, and $u_{1:r}\simiid\rmN(0,1)$, i.e., $\u\sim\rmN_r(\0_r,I_r)$, then if $C$ is the full rank decomposition of $\Sigma$ and $\bam\in\bbR^p$, then $\x=C\u+\bam\sim\rmN_p(\bam,\Sigma)$.  
 			\begin{itemize}
 				\item Let $\Sigma=HDH^\TT$ be the spectral
-				decomposition, then $\x=HD^{1/2}\z+\bmu$, where $\z\sim\rmN_p(\0_p,I_p)$.
+				decomposition, then $\x=HD^{1/2}\z+\bam$, where $\z\sim\rmN_p(\0_p,I_p)$.
 			\end{itemize}
-			\item If $\x\sim\rmN_p(\bmu,\Sigma)$, then its \red{ch.f.} $\phi_\x(\t)=\exp(i\bmu^\TT\t-\t^\TT\Sigma\t/2)$.
-			\item (\red{Density}) $\x\sim\rmN_p(\bmu,\Sigma)$ with $\Sigma\succ \0$, then $\x$ has pdf
+			\item If $\x\sim\rmN_p(\bam,\Sigma)$, then its \red{ch.f.} $\phi_\x(\t)=\exp(i\bam^\TT\t-\t^\TT\Sigma\t/2)$.
+			\item (\red{Density}) $\x\sim\rmN_p(\bam,\Sigma)$ with $\Sigma\succ \0$, then $\x$ has pdf
 			\begin{sequation}\label{eq:mult_normal_density}
 				f(\boldsymbol{x})=\frac{1}{(2\pi)^{p/2}|{\Sigma}|^{1/2}}\exp\left\{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{T}{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})\right\}.
 			\end{sequation}
 		\end{enumerate}
 	\end{theorem}
 \end{thmbox}
-Note that we guarantee the existence of $\rmN_p(\bmu,\Sigma)$ by means of the representation in point 2. 
+Note that we guarantee the existence of $\rmN_p(\bam,\Sigma)$ by means of the representation in point 2. By its density, we have MVN kernel: If
+\begin{sequation*}
+	f(\x)\propto \exp\cbk{-\frac{1}{2}(\x^\TT A\x-2\x^\TT B)}=\exp\cbk{-\frac{1}{2}(\x-A^{-1}B)^\TT A (\x-A^{-1}B)-B^\TT A^{-1} B},
+\end{sequation*}
+then $\x\sim\rmN_p(A^{-1}B,A^{-1})$.
 
 \begin{thmbox}
 	\begin{theorem}[Properties of multivariate normal]\label{thm:multi_normal_prop}
-		If $\x\sim\rmN_p(\bmu,\Sigma)$, then we have 
+		If $\x\sim\rmN_p(\bam,\Sigma)$, then we have 
 		\begin{enumerate}
-			\item (\red{Linearity}) Let $B\in\bbR^{q\times p}, \b\in\bbR^{q}$ nonrandom, and $B\Sigma B^\TT\succ \0$, then $B\x+\b \sim \rmN_q (B\bmu+\b,B\Sigma B^\TT)$.  
-			\item (\red{Linear combinations}) If $\x_k\sim\rmN_p(\bmu_k,\Sigma_k)\indep$ for $k=1,\ldots,N$, then for any fixed constants $\alpha_1,\ldots,\alpha_N$, $\sum_{k=1}^N\alpha_k\x_k\sim\rmN_p(\sum_{k=1}^{N}\alpha_k\bmu_k,\sum_{k=1}^{N}\alpha_k^2\Sigma_k)$.
+			\item (\red{Linearity}) Let $B\in\bbR^{q\times p}, \b\in\bbR^{q}$ nonrandom, and $B\Sigma B^\TT\succ \0$, then $B\x+\b \sim \rmN_q (B\bam+\b,B\Sigma B^\TT)$.  
+			\item (\red{Linear combinations}) If $\x_k\sim\rmN_p(\bam_k,\Sigma_k)\indep$ for $k=1,\ldots,N$, then for any fixed constants $\alpha_1,\ldots,\alpha_N$, $\sum_{k=1}^N\alpha_k\x_k\sim\rmN_p(\sum_{k=1}^{N}\alpha_k\bam_k,\sum_{k=1}^{N}\alpha_k^2\Sigma_k)$.
 			\begin{itemize}
-				\item The sample mean $\bar{\x}\sim\rmN_p(\bmu,\Sigma/N)$. 
+				\item The sample mean $\bar{\x}\sim\rmN_p(\bam,\Sigma/N)$. 
 			\end{itemize}
 			\item (\red{Subset}) The marginal distribution of any subset of $k(<p)$ components of $\x$ is $k$-variate normal.   
 			\item (\red{Marginal distribution}) Partition
 			\begin{sequation*}
-				\x=\left[{\begin{array}{c}\x_{1}\\\x_{2}\end{array}}\right],\quad\boldsymbol{\mu}=\left[{\begin{array}{c}\bmu_{1}\\\bmu_{2}\end{array}}\right],\quad\boldsymbol{\Sigma}=\left[{\begin{array}{cc}\Sigma_{11}&\Sigma_{12}\\ {\Sigma}_{21}& {\Sigma}_{22}\end{array}}\right], \quad \x_1\in\bbR^{q}, \x_2\in\bbR^{p-q}, \Sigma_{12}\in\bbR^{q\times(p-q)}.
+				\x=\left[{\begin{array}{c}\x_{1}\\\x_{2}\end{array}}\right],\quad\boldsymbol{\mu}=\left[{\begin{array}{c}\bam_{1}\\\bam_{2}\end{array}}\right],\quad\boldsymbol{\Sigma}=\left[{\begin{array}{cc}\Sigma_{11}&\Sigma_{12}\\ {\Sigma}_{21}& {\Sigma}_{22}\end{array}}\right], \quad \x_1\in\bbR^{q}, \x_2\in\bbR^{p-q}, \Sigma_{12}\in\bbR^{q\times(p-q)}.
 			\end{sequation*}    
-			Then $\x_1\sim\rmN_q(\bmu_1,\Sigma_{11})$, $\x_1\indep\x_2$ iff $\Sigma_{12}=\0$. 
+			Then $\x_1\sim\rmN_q(\bam_1,\Sigma_{11})$, $\x_1\indep\x_2$ iff $\Sigma_{12}=\0$. 
 			\item (\red{Conditional distribution}) Let $\Sigma_{22}^{-}$ be a generalized inverse of $\Sigma_{22}$ (i.e., $\Sigma_{22}\Sigma_{22}^-\Sigma_{22}=\Sigma_{22}$), then 
 			\begin{itemize}
-				\item[(a)] $\x_1-\Sigma_{12}\Sigma_{22}^-\x_2\sim \rmN_q(\bmu_1-\Sigma_{12}\Sigma_{22}^-\bmu_2,\Sigma_{11}-\Sigma_{12}\Sigma_{22}^-\Sigma_{21})$, and $\indep \x_2$.
-				\item[(b)] $[\x_1\mid\x_2]\sim\rmN_q(\bmu_1+{\Sigma}_{12}{\Sigma}_{22}^-(\x_2-\bmu_2),\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-}\Sigma_{21})$. 
+				\item[(a)] $\x_1-\Sigma_{12}\Sigma_{22}^-\x_2\sim \rmN_q(\bam_1-\Sigma_{12}\Sigma_{22}^-\bam_2,\Sigma_{11}-\Sigma_{12}\Sigma_{22}^-\Sigma_{21})$, and $\indep \x_2$.
+				\item[(b)] $[\x_1\mid\x_2]\sim\rmN_q(\bam_1+{\Sigma}_{12}{\Sigma}_{22}^-(\x_2-\bam_2),\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-}\Sigma_{21})$. 
 			\end{itemize}  
 			\item (\red{Cramér}) If $p\times 1$ random vectors $\x\indep \y$ and $\x+\y\sim\rmN_p$, then both $\x,\y\sim\rmN_p$. 
 			\item (\red{MLE}) of $(\mu,\Sigma)$ is $(\bar{\x},A/n)$.    
-			\item (\red{Quadratic form})  If $\x_{1:n}\simiid \rmN_p(\bmu,\Sigma)$, then $n(\bar{\x}-\bmu)^{\TT}\Sigma^{-1}(\bar{\x}-\bmu)\sim\chi_p^2$. The squared generalized distance (Mahalanobis distance) 
+			\item (\red{Quadratic form})  If $\x_{1:n}\simiid \rmN_p(\bam,\Sigma)$, then $n(\bar{\x}-\bam)^{\TT}\Sigma^{-1}(\bar{\x}-\bam)\sim\chi_p^2$. The squared generalized distance (Mahalanobis distance) 
 			$d_i^2=(\boldsymbol{x}_i-\bar{\boldsymbol{x}})^{\TT}{\S}^{-1}(\boldsymbol{x}_i-\bar{\boldsymbol{x}}) \dto \chi_p^2$.  
 		\end{enumerate} 
 	\end{theorem}
@@ -310,16 +314,16 @@ So $\exists B\in\bbR^{q\times(p-q)}$ satisfying $\Sigma_{12}=B\Sigma_{22}$.
 Refer to section 1.2.2, \cite{muirhead1982aspects}.
 \begin{thmbox}
 	\begin{theorem}[CLT for sample means]\label{thm:CLT_multi_sampleMean_iid}
-		Let $\x_{1:n}\simiid[\bmu,\Sigma]$, then 
+		Let $\x_{1:n}\simiid[\bam,\Sigma]$, then 
 		\begin{sequation*}
-			\sqrt{n}(\bar{\x}_n-\bmu)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}(\x_i-\bmu)\dto \rmN_p(\0_p,\Sigma). 
+			\sqrt{n}(\bar{\x}_n-\bam)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}(\x_i-\bam)\dto \rmN_p(\0_p,\Sigma). 
 		\end{sequation*} 
 	\end{theorem}
 \end{thmbox}
 
 \begin{thmbox}
 	\begin{theorem}[CLT for sample covariance matrices]\label{thm:CLT_multi_sampleCov_iid}
-		Let $\x_{1:n}\simiid[\bmu,\Sigma]$ with finite fourth moments, SSCP matrix $\A=\sum_{i=1}^{n}(\x_i-\bar{\x})(\x_i-\bar{\x})^\TT$, and $\S=(n-1)^{-1}\A$. Let $V=\Cov[\vec((\x_1-\bmu)(\x_1-\bmu)^\TT)]$, then 
+		Let $\x_{1:n}\simiid[\bam,\Sigma]$ with finite fourth moments, SSCP matrix $\A=\sum_{i=1}^{n}(\x_i-\bar{\x})(\x_i-\bar{\x})^\TT$, and $\S=(n-1)^{-1}\A$. Let $V=\Cov[\vec((\x_1-\bam)(\x_1-\bam)^\TT)]$, then 
 		\begin{sequation*}
 			\begin{aligned}
 				\frac{1}{\sqrt{n}}(\vec(\A)-n\cdot\vec(\Sigma))&\dto \rmN_{p^2}(\0,V), \\
@@ -329,6 +333,237 @@ Refer to section 1.2.2, \cite{muirhead1982aspects}.
 	\end{theorem}
 \end{thmbox}
 Note that $V\in\bbR^{p^2\times p^2}$ is singular as the LHS vectors above have repeated elements. 
+
+
+\chapter{Bayesian Inference}\label{chap:bayes_inference}
+
+
+
+\chapter{Structural Equation Model (SEM)}\label{chap:SEM}
+Reference: 
+\begin{itemize}
+	\item CUHK STAT5020 - Topics in multivariate analysis (2025 Spring), by Xin Yuan SONG.
+	\item Sik-Yum Lee and Xin-Yuan Song - Basic and advanced
+	Bayesian structural equation modeling: With applications in the
+	medical and behavioral sciences \cite{lee2012basic}.
+\end{itemize}
+
+\section{SEM models}\label{sec:SEM_models}
+\textbf{\underline{Goal}}: to examine the relationships among the variables of interest.
+
+\noindent \textbf{\underline{Approach}}: group observed variables to form laten variables. Advantages:
+\begin{itemize}
+	\item Reduce the number of variables compared to direct regression.
+	\item As highly correlated observed variables are grouped into latent variables, the problem induced by multicollinearity is alleviated.
+	\item It gives better assessments on the interrelationships of latent constructs.
+\end{itemize}
+
+\begin{defbox}
+	\begin{definition}[Linear SEMs]\label{def:linearSEM}
+		Assume that the \brown{observed variables} $\brown{\y}_p\simiid \rmN_p$ with mean $\bam_p$. Let $\red{\bao}_q$ be \red{latent variables}. $\red{\bao}_q = (\pink{\bet}_{q_1}^\TT,\teal{\bax}_{q_2}^\TT)^\TT$, where $\pink{\bet}_{q_1}$ is the \pink{key outcome
+		latent variables}, and $\teal{\bax}_{q_2}$ is the \teal{explanatory latent variables}. Define 
+		\begin{equation}\label{eq:linearSEM}
+			\begin{aligned}
+			\text{(\textbf{Measurement equation} )}\qquad\qquad & \brown{\y}_p = \bam_p + \baL_{p\times q} \red{\bao}_q + \bae_p, \\
+			\text{(\textbf{Structural equation}) }\qquad\qquad &
+			\pink{\bet}_{q_1} = \baG_{q_1\times q_2} \teal{\bax}_{q_2} + \bad_{q_1},
+			\end{aligned}
+		\end{equation}
+		where $\baL$ is the unknown factor loading matrix, $\baG$ is the unknown matrix of regression
+		coeffcients, and $\bae$ and $\bad$ are measurement (residual) errors.   
+		An extension:
+		\begin{sequation*}
+			\pink{\bet}_{q_1}=\baP_{q_1\times q_1}\pink{\bet}_{q_1}+\baG_{q_1\times q_2}\teal{\bax}_{q_2}+\bad_{q_1},
+		\end{sequation*}
+		where $\baP$ is a matrix of unknown coeffcients such that $I_{q_1}-\baP$ is nonsingular and the diagonal elements of $\baP$ are zero. 
+	\end{definition}
+\end{defbox}
+
+\begin{assbox}
+\begin{assumption}[Standard linear SEMs]\label{ass:linearSEM}
+For $i=1,\ldots,n$, 
+\begin{itemize}
+	\item[(A1)] $\bae_i\simiid\rmN[\0_p,\baY_\bae]$, where $\baY_\bae\in\bbR^{p\times p}$
+	is diagonal.
+	\item[(A2)] $\teal{\bax}_i\simiid\rmN[\0_{q_2},\baF]$,
+	where $\baF$ is a general. 
+	\item[(A3)] $\bad_i\simiid\rmN[\0_{q_1},\baY_{\bad}]$, where $\baY_{\bad}$
+	is diagonal.
+	\item[(A4)] $\bad_i\indep\bax_i$, and $\bae_i\indep\bao_i,\bad_i.$
+\end{itemize} 
+\end{assumption}
+\end{assbox}
+These assumptions imply that 
+\begin{sequation*}
+	\pink{\bet}_i\simiid\rmN_{q_1}(\0_{q_1},\baG\baF\baG^\TT+\baY_{\bad}),\quad \red{\bao}_i\simiid\rmN_{q}\sbk{\0_{q},\baS_{\red{\bao}}=\begin{bmatrix}
+		\baG\baF\baG^\TT+\baY_{\bad} & \baG\baF \\
+		\baF\baG^\TT & \baF
+	\end{bmatrix}}, \quad \brown{\y}_i\simiid\rmN_{p}(\bam,\baS(\baq)=\baL\baS_{\red{\bao}}\baL^\TT+\baY_{\bae}). 
+\end{sequation*}
+
+There is an identifiability issue relevant to all SEMs:
+The measurement equation is identfied if $\forall \baq_1,\baq_2$, $\mathrm{MeaEq}(\baq_1)=\mathrm{MeaEq}(\baq_2)$ implies $\baq_1=\baq_2$. The structural equation is identfied if $\forall \baq_1,\baq_2$, $\mathrm{StEq}(\baq_1)=\mathrm{StEq}(\baq_2)$ implies $\baq_1=\baq_2$. The SEM is identified if both of its MeaEq and StEq are identfied.
+\begin{itemize}
+	\item A simple and common method is using a $\baL$ with the \red{non-overlapping structure}, e.g.,
+	\begin{sequation*}
+		\baL^{\TT}=\begin{bmatrix}1&\lambda_{21}&\lambda_{31}&\lambda_{41}&0&0&0&0&0&0\\0&0&0&0&1&\lambda_{62}&\lambda_{72}&0&0&0\\0&0&0&0&0&0&0&1&\lambda_{93}&\lambda_{10,3}\end{bmatrix}
+	\end{sequation*}  
+	where $1$'s are fixed to introduce a scale to latent variables.
+\end{itemize}
+
+
+\begin{exbox}
+	\begin{example}\label{ex:kidney}\rm
+		Study the kidney disease of type 2 diabetic patients. We observe: plasma creatine (PCr), urinary albumin creatinine ratio (ACR), systolic blood pressure (SBP), diastolic blood pressure (DBP), body mass index (BMI), waist hip ratio (WHR), glycated hemoglobin (HbAlc), fasting plasma glucose (FPG). Group 
+		\begin{itemize}
+			\item \{PCr, ACR\}: `kidney disease (KD)'
+			\item \{SBP, DBP\}: `blood pressure (BP)'
+			\item \{BMI, WHR\}: `obesity (OB)'
+			\item \{HbA1c, FPG\}: `glycemic control (GC)'
+		\end{itemize}
+		$\y=(\rm PCr, ACR, SBP, DBP, BMI, WHR)^\TT$, $\bao=(\rm KD,BP,OB)^\TT$, $\bet=\rm KD$, $\bax=(\rm BP,OB)^\TT$, $p=6$, $q=3,q_1=1,q_2=2$. Then the measurement equation is  
+		\begin{sequation*}
+			\begin{bmatrix}\mathrm{PCr}\\\mathrm{ACR}\\\mathrm{SBP}\\\mathrm{DBP}\\\mathrm{BMI}\\\mathrm{WHR}\end{bmatrix}=\begin{bmatrix}\mu_{1}\\\mu_{2}\\\mu_{3}\\\mu_{4}\\\mu_{5}\\\mu_{6}\end{bmatrix}+\begin{bmatrix}\lambda_{11}&0&0\\\lambda_{21}&0&0\\0&\lambda_{32}&0\\0&\lambda_{42}&0\\0&0&\lambda_{53}\\0&0&\lambda_{63}\end{bmatrix}\begin{bmatrix}\mathrm{KD}\\\mathrm{BP}\\\mathrm{OB}\end{bmatrix}+\begin{bmatrix}\epsilon_{1}\\\epsilon_{2}\\\epsilon_{3}\\\epsilon_{4}\\\epsilon_{5}\\\epsilon_{6}\end{bmatrix}.
+		\end{sequation*}
+		We know that KD is only linked with PCr and ACR, ...
+		The structural equation can be defined as:
+		\begin{sequation*}
+			\mathrm{KD}=\gamma_{1}\mathrm{BP}+\gamma_{2}\mathrm{OB}+\delta.
+		\end{sequation*}
+		Suppose we wish to study the effects of $\bax$ on $\bet=(\mathrm{KD},\eta_A)^\TT$, $q_1=2$,   
+		\begin{sequation*}
+			\begin{pmatrix}\mathrm{KD}\\\eta_{A}\end{pmatrix}=\begin{pmatrix}0&0\\\pi&0\end{pmatrix}\begin{pmatrix}\mathrm{KD}\\\eta_{A}\end{pmatrix}+\begin{pmatrix}\gamma_{1}&\gamma_{2}\\\gamma_{3}&\gamma_{4}\end{pmatrix}\begin{pmatrix}\mathrm{BP}\\\mathrm{OB}\end{pmatrix}+\begin{pmatrix}\delta\\\delta_{A}\end{pmatrix}.
+		\end{sequation*}
+	\end{example}
+\end{exbox} 
+
+\begin{defbox}
+	\begin{definition}[More SEM models]\label{def:moreSEM}\
+		\begin{itemize}
+			\item \red{SEMs with fixed covariates}
+			\begin{equation}\label{eq:linearSEM_cova}
+				\begin{aligned}
+				\y_{p}&=\A_{p\times r_1}\c_{r_1}+\baL_{p\times q}\bao_{q}+\bae_{p}, \\
+				\bet_{q_1}&=\B_{q_1\times r_2}\d_{r_2} + \baP_{q_1\times q_1}\bet_{q_1}+\baG_{q_1\times q_2}\bax_{q_2}+\bad_{q_1},
+				\end{aligned}
+			\end{equation}
+			where $\A,\B$ are a matrix of unknown coeffcients, $\c,\d$ are a vector of fixed covariates (known).  
+			\item \red{Nonlinear SEMs}
+			\begin{equation}\label{eq:nonlinearSEM}
+				\begin{aligned}
+				\y_{p}&=\bam_{p}+\baL_{p\times q}\bao_{q}+\bae_{p}, \\
+				\bet_{q_1}&= \baP_{q_1\times q_1}\bet_{q_1}+\baG_{q_1\times t}\F_{t}(\bax_{q_2})+\bad_{q_1},
+				\end{aligned}
+			\end{equation}
+			where $\F(\bax)=(f_1(\bax),\ldots,f_t(\bax))^\TT$ with nonzero, known, and linearly independent differentiable functions $f_1,\ldots,f_t$, $t\geq q_2$.  
+			\item \red{Nonlinear SEMs with fixed covariates}
+			\begin{equation}\label{eq:nonlinearSEM_cova}
+				\begin{aligned}
+				\y_{p}&=\A_{p\times r_1}\c_{r_1}+\baL_{p\times q}\bao_{q}+\bae_{p}, \\
+				\bet_{q_1}&=\B_{q_1\times r_2}\d_{r_2}+ \baP_{q_1\times q_1}\bet_{q_1}+\baG_{q_1\times t}\F_{t}(\bax_{q_2})+\bad_{q_1}.
+				\end{aligned}
+			\end{equation} 
+			A simple extension of the StEq is 
+			\begin{equation*}
+				\bet_{q_1}=\baP_{q_1\times q_1}\bet_{q_1}+\baL_\bao\G_t(\d,\bax)+\bad_{q_1}
+			\end{equation*}
+			where $\G(\d\bax)=(g_1(\d,\bax),\ldots,g_t(\d,\bax))^\TT$ is a vector-valued function with nonzero, known, and linearly independent differentiable functions. 
+		\end{itemize}
+	\end{definition}
+\end{defbox}
+Let $\baL_k^\TT$ be the kth row of $\baL$, and $\baL_k^\TT=(\baL_{k\bet}^\TT,\baL_{k\bax}^{\TT})$ be a partition correspondings to the partition of $\bao=(\bet^\TT,\bax^\TT)^\TT$. 
+For model \eqref{eq:nonlinearSEM},
+\begin{sequation*}
+	\begin{aligned}
+	\bbE(\bax)&=\0_{q_2},\quad \bbE(\bet)=[(I_{q_1}-\baP)^{-1}\baG]\bbE(\F(\bax)),\\
+	\bbE(y_k)&=\mu_k+\baL_{k\bet}^\TT[(I_{q_1}-\baP)^{-1}\baG]\bbE(\F(\bax)).
+	\end{aligned}
+\end{sequation*}   
+For model \eqref{eq:nonlinearSEM_cova}, let $\A_k^\TT$ be the kth row of $\A$,
+\begin{sequation*}
+	\bbE(y_k)=\A_k^\TT\c+\baL_{k\bet}^\TT\bbE(\bet)=\A_k^\TT\c+\baL_{k\bet}^\TT[(I_{q_1}-\baP)^{-1}\baL_{\bao}]\bbE(\G(\d,\bax)).
+\end{sequation*}  
+
+\section{Bayesian methods for estimating SEM}\label{sec:Bayes_est_SEM}
+In developing the Bayesian methods for analyzing SEMs, we usually assign fixed known values to the hyperparameters in the conjugate prior distributions.
+Consider the modified model \eqref{eq:nonlinearSEM_cova}:
+\begin{sequation*}
+		\begin{aligned}
+		\y_i&=\bam+\baL\bao_{i}+\bae_{i}, \\
+		\bet_{i}&=\B\d_{i}+ \baP\bet_{i}+\baG\F(\bax_{i})+\bad_{i}=\baL_{\bao}\G(\bao_i)+\bad_i,
+		\end{aligned}
+\end{sequation*}
+where $\baL_{\bao}=(\B,\baP,\baG)\in\bbR^{q_1\times (r_2+q_1+t)}$, and $\G(\bao_i)=(\d_i^\TT,\bet_i^\TT,\F(\bax_i)^\TT)^\TT\in\bbR^{r_2+q_1+t}$.    
+Assumption \ref{ass:linearSEM} is satisfied. ${\bax}_i\simiid\rmN[\0_{q_2},\baF]$, $\bae_i\simiid\rmN[\0_p,\baY_\bae=\diag(\psi_{\bae k})]$,and $\bad_i\simiid\rmN[\0_{q_1},\baY_{\bad}=\diag(\psi_{\bad k})]$.
+\begin{itemize}
+	\item Prior (conjugate) for $\baq_\y=(\bam,\baL,\baY_{\bae})$: let $\baL_k^\TT$ be the kth row of $\baL$, $\baY_\bae$,
+	\begin{equation*}
+		\begin{aligned}
+		\psi_{\bae k}&\sim\IG(\alpha_{0 \bae k}, \beta_{0 \bae k}), \quad [\baL_k\mid\psi_{\bae k}]\sim \rmN_q(\baL_{0k},\psi_{\bae k}\H_{0\y k}), \ k=1,\ldots,p,\\
+		\bam&\sim\rmN_p(\bam_0,\baS_0).
+		\end{aligned}
+	\end{equation*}
+	\item Prior (conjugate) for $\baq_\bao=(\baL_\bao,\baY_{\bad},\baF)$: let $\baL_{\bao k}^\TT$ be the kth row of $\baL_{\bao}$, $\baY_{\bad}$,
+	\begin{equation*}
+		\begin{aligned}
+			\baF&\sim \IW_{q_2}(\R_0^{-1},\rho_0), \\
+			\psi_{\bad k}&\sim \IG(\alpha_{0 \bad k},\beta_{0 \bad k}),\quad [\baL_{\bao k}\mid \psi_{\bad k}]\sim \rmN_{r_2+q_1+t}(\baL_{0\bao k},\psi_{\bad k}\H_{0\bao k}), \ k=1,\ldots,q_1.
+		\end{aligned}
+	\end{equation*} \
+	\item Assume the prior $\baq_\y\indep\baq_\bao$. 
+\end{itemize}
+
+\noindent\textbf{\underline{Hyperparameter selection}}: If we have good prior information about a parameter -- select the prior
+distribution with a small variance. E.g., 
+\begin{itemize}
+	\item if $\baL_k\approx\baL_{0k}$, then $\H_{0yk}=0.5 I_q$. If not, select the prior with a larger variance;
+	\item since $\epsilon_{ik}\sim \rmN(0,\psi_{\bae k})$, if the variation is small, $\psi_{\bae k}$ is small, then choose small $\bbE(\psi_{\bae k})=\beta_{0\bae k}/(\alpha_{0\bae k}-1)$ and $\Var(\psi_{\bae k})=\beta_{0\bae k}^2/\{(\alpha_{0\bae k}-1)^2(\alpha_{0\bae k}-2)\}$;
+	\item if $\baF\approx \baF_{0}$, since $\bbE(\baF)=\R_0^{-1}/(\rho_0-q_2-1)$, choose $\R_0^{-1}=(\rho_0-q_2-1)\baF_0$.   
+\end{itemize}
+If the sample size is large, can use a portion of the data to estimate $\baL_{0k}$, $\baL_{0\bao k}$ and $\baF_0$. If the sample size is moderate, can use the same data twice.  
+
+\noindent\textbf{\underline{Noninformative prior (Jeffrey)}}: If information is not available and the sample size is small, 
+\begin{sequation*}
+	\begin{aligned}
+		&\bbP(\baL,\baY_{\bae})\propto \bbP(\psi_{\bae1},\cdots,\psi_{\bae p})\propto\prod_{k=1}^{p}\psi_{\bae k}^{-1},\quad 
+		\bbP(\baL_{\bao},\baY_{\bad})\propto \bbP(\psi_{\bad1},\cdots,\psi_{\bad q_{1}})\propto\prod_{k=1}^{q_{1}}\psi_{\bad k}^{-1},\\
+		&\bbP(\baF)\propto|\baF|^{-(q_2+1)/2}.\end{aligned}
+\end{sequation*}
+
+\subsection{Bayesian estimation using MCMC}
+\textbf{\underline{Model}}: Linear SEM with fixed covariates \eqref{eq:linearSEM_cova} without intercept:
+\begin{equation*}
+	\begin{aligned}
+		\y_i&=\baL\bao_i+\bae_i, \\
+		\bet_i&=\B\d_i+\baP\bet_i+\baG\bax_i+\bad_i=\baL_{\bao}\v_i+\bad_i,
+	\end{aligned}
+\end{equation*}
+where $\baL_{\bao}=(\B,\baP,\baG)\in\bbR^{q_1\times (r_2+q_1+q_2)}$, and $\v_i=(\d_i^\TT,\bet_i^\TT,\bax_i^\TT)^\TT\in\bbR^{r_2+q_1+q_2}$. 
+That is, assume $\bam=\0_p$ and $\F(\bax_i)-\bax_i$. 
+
+Denote data $\Y=(\y_1,\ldots,\y_n)\in\bbR^{p\times n}$, matrix of latent variables $\baO=(\bao_1,\ldots,\bao_n)\in\bbR^{q\times n}$, and $\baq=(\baL,\B,\baP,\baG,\baF,\baY_\bae,\baY_\bad)=(\baL,\baL_\bao,\baF,\baY_\bae,\baY_\bad)$.   
+\begin{thmbox}
+	\begin{proposition}\label{prop:post_linearSEM}
+		The above model has the following posterior distributions:
+		\begin{enumerate} 
+			\item Conditional distribution $\red{\bbP(\baO\mid\Y,\baq)}=\prod_{i=1}^n\bbP(\bao_i\mid\y_i,\baq)\propto\prod_{i=1}^{n}\bbP(\bao_i\mid\baq)\bbP(\y_i\mid\bao_i,\baq)$, where 
+			\begin{equation*}
+				\begin{aligned}
+					[\bao_i\mid\baq]&\sim\rmN_q(\bam_{\bao_i},\baS_\bao), \quad 
+					[\y_i\mid\bao_i,\baq]\sim\rmN_{p}(\baL\bao_i,\baY_\bae),\\
+					[\bao_i\mid\y_i,\baq]&\sim\rmN_q({\baS^{*}}^{-1}(\baS_{\bao}^{-1}\bam_{\bao_i}+\baL^\TT\baY_{\bae}^{-1}\y_i),{\baS^{*}}^{-1})
+				\end{aligned}
+			\end{equation*}
+			where 
+			\begin{equation*}
+				\begin{aligned}
+					\baP_0&=I_{q_1}-\baP, \ \bam_{\bao_i}=\begin{pmatrix}\baP_0^{-1}\B \d_i\\\0_{q_2}\end{pmatrix}, \ \baS_\bao=\begin{bmatrix}\baP_0^{-1}(\baG\baF\baG^\TT+\baY_\bad)\baP_0^{-\TT}&&\baP_0^{-1}\baG\baF\\\baF\baG^\TT\baP_0^{-\TT}&&\baF\end{bmatrix},\\
+					\baS^{*}&=\baS_{\bao}^{-1}+\baL^\TT \baY_{\bae}^{-1}\baL.
+				\end{aligned}
+			\end{equation*}
+		\end{enumerate}
+	\end{proposition}
+\end{thmbox}
 
 \bibliographystyle{abbrv}
 \bibliography{mybib}

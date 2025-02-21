@@ -1,4 +1,4 @@
-\babel@toc {english}{}\relax 
+\babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Complex Analysis}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Complex Numbers}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Transformation}{5}{subsection.1.1.1}%
@@ -12,11 +12,12 @@
 \contentsline {chapter}{\numberline {2}Linear Algebra}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Spaces}{9}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Spaces, rank, and related factorization}{9}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Inversion}{10}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Types of inversion}{10}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.2}Inversion}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Matrix inverse}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Types of inversion}{10}{subsection.2.2.2}%
 \contentsline {subsubsection}{Left and right inverse}{10}{section*.5}%
 \contentsline {subsubsection}{Moore--Penrose inverse}{10}{section*.6}%
-\contentsline {subsubsection}{Generalized Inverse}{10}{section*.7}%
+\contentsline {subsubsection}{Generalized Inverse}{11}{section*.7}%
 \contentsline {section}{\numberline {2.3}Special matrices}{11}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Idempotent matrices}{11}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Perpendicular projection matrices}{11}{subsection.2.3.2}%
