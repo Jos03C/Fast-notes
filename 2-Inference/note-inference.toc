@@ -8,9 +8,10 @@
 \contentsline {chapter}{\numberline {3}Multivariate Inference Fundamentals}{9}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Random vectors and distributions}{9}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Multivariate normal distribution}{10}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}The noncentral $\chi ^2$ and F distributions}{10}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Asymptotic properties}{10}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Asymptotic distributions of sample means and covariance matrices}{10}{subsection.3.2.1}%
+\contentsline {subsubsection}{Quadratic form of MVN}{10}{section*.2}%
+\contentsline {subsection}{\numberline {3.1.2}The noncentral $\chi ^2$ and F distribution}{11}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Asymptotic properties}{11}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Asymptotic distributions of sample means and covariance matrices}{11}{subsection.3.2.1}%
 \contentsline {chapter}{\numberline {4}Bayesian Inference}{13}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Structural Equation Model (SEM)}{15}{chapter.5}%
 \contentsline {section}{\numberline {5.1}SEM models}{15}{section.5.1}%

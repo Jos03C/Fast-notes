@@ -165,6 +165,9 @@ Reference:
 \begin{itemize}
 	\item Robb J. Muirhead - Aspects of multivariate statistical theory \cite{muirhead1982aspects}.
 	\item CUHK STAT4002 - Applied Multivariate Analysis (2023 Spring), by Zhixiang Lin.
+	\item Peng DING - Linear Model and Extensions.
+	\item Ronald Christensen - Plane answers to
+	complex questions: the theory of linear models \cite{christensen2002plane}.
 \end{itemize}
 
 \section{Random vectors and distributions}\label{sec:random_vector}
@@ -190,7 +193,8 @@ Reference:
 		\begin{itemize}
 			\item $\bbE \a^\TT\x=\a^\TT \bbE\x$, $\Var(\a^\TT \x)=\a^\TT\Sigma\a$, and $\Cov(\a^\TT\x,\b^\TT\x)=\a^\TT \Sigma\b$.
 			\item $\bbE A\x=A\bbE \x$, $\Var(A\x)=A\Sigma A^\TT$, and $\Cov(A\x,B\x)=A\Sigma B^\TT$.
-			\item If $\y=A\x+\b$, where $A\in\bbR^{q\times p}$, $\b\in\bbR^{q}$, then $\bam_\y=A \bam_\x+\b$ and $\Sigma_\y=A\Sigma_\x A^\TT$.     
+			\item If $\y=A\x+\b$, where $A\in\bbR^{q\times p}$, $\b\in\bbR^{q}$, then $\bam_\y=A \bam_\x+\b$ and $\Sigma_\y=A\Sigma_\x A^\TT$.    
+			\item $\bbE(\x^\TT A\x)=\tr(A\Sigma)+\bam^\TT A\bam$.  
 		\end{itemize}  
 		Let $\Z\in\bbR^{p\times q}$ be a random matrix, $B\in\bbR^{m\times p}$, $C\in\bbR^{q\times n}$, and $D\in\bbR^{m\times n}$ constants, then 
 		\begin{itemize}
@@ -261,7 +265,7 @@ The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined b
 		\end{enumerate}
 	\end{theorem}
 \end{thmbox}
-Note that we guarantee the existence of $\rmN_p(\bam,\Sigma)$ by means of the representation in point 2. By its density, we have MVN kernel: If
+Note that we guarantee the existence of $\rmN_p(\bam,\Sigma)$ by means of the representation in point 2. By its density, we have \underline{MVN kernel}: If
 \begin{sequation*}
 	f(\x)\propto \exp\cbk{-\frac{1}{2}(\x^\TT A\x-2\x^\TT B)}=\exp\cbk{-\frac{1}{2}(\x-A^{-1}B)^\TT A (\x-A^{-1}B)-B^\TT A^{-1} B},
 \end{sequation*}
@@ -289,8 +293,7 @@ then $\x\sim\rmN_p(A^{-1}B,A^{-1})$.
 			\end{itemize}  
 			\item (\red{Cramér}) If $p\times 1$ random vectors $\x\indep \y$ and $\x+\y\sim\rmN_p$, then both $\x,\y\sim\rmN_p$. 
 			\item (\red{MLE}) of $(\mu,\Sigma)$ is $(\bar{\x},A/n)$.    
-			\item (\red{Quadratic form})  If $\x_{1:n}\simiid \rmN_p(\bam,\Sigma)$, then $n(\bar{\x}-\bam)^{\TT}\Sigma^{-1}(\bar{\x}-\bam)\sim\chi_p^2$. The squared generalized distance (Mahalanobis distance) 
-			$d_i^2=(\boldsymbol{x}_i-\bar{\boldsymbol{x}})^{\TT}{\S}^{-1}(\boldsymbol{x}_i-\bar{\boldsymbol{x}}) \dto \chi_p^2$.  
+			\item (\red{Inverse of $\Sigma$ and conditional independence}) Denote $\Sigma^{-1}=(\nu^{jk})_{1\leq j,k\leq p}$. Then $\forall j\neq k$, $v^{jk}=0\Leftrightarrow  x_j\indep x_k \mid \x\setminus\{x_j,x_k\}$.    
 		\end{enumerate} 
 	\end{theorem}
 \end{thmbox}
@@ -305,7 +308,85 @@ For the proof of point 5, we use the lemma: if $\Sigma\succeq \0$,
 then $\ker(\Sigma_{22})\subset \ker(\Sigma_{12})$, and $\range(\Sigma_{21})\subset\range(\Sigma_{22})$. 
 So $\exists B\in\bbR^{q\times(p-q)}$ satisfying $\Sigma_{12}=B\Sigma_{22}$.  
 
-\subsection{The noncentral $\chi^2$ and F distributions}\label{sec:multi_dist_noncenchi2_F}
+\subsubsection{Quadratic form of MVN}\label{sec:quad_MVN}
+\begin{thmbox}
+	\begin{proposition}[Variance]\label{prop:var_MVN_quad}
+		If $\x\sim\rmN(\bam,\Sigma)$, then 
+		\begin{sequation*}
+			\begin{aligned}
+			\Var(\x^\TT A \x)&=2\tr(A\Sigma A\Sigma)+4\bam^\TT A\Sigma A \bam, \\
+			\Cov(\x^\TT A_1\x,\x^\TT A_2\x)&=2\tr(A_1\Sigma A_2 \Sigma)+4\bam^\TT A_1 \Sigma A_2 \bam.
+			\end{aligned}
+		\end{sequation*} 
+	\end{proposition}
+\end{thmbox}
+See Problem B 2.14 in Peng DING. 
+
+\begin{thmbox}
+	\begin{theorem}[Independence of quadratic form]\label{thm:MVN_quad_indep}
+		Assume $\x\sim N_p(\mu,\Sigma)$. 
+		\begin{enumerate}
+			\item 		For two symmetric matrix $A,B\in\bbR^{p\times p}$, $\x^\TT A \x\indep \x^\TT B\x$ iff  
+			\begin{equation*}
+				\Sigma A\Sigma B\Sigma=\0,\quad\Sigma A\Sigma B\bam=\Sigma B\Sigma A\bam=\0,\quad\bam^\TT A\Sigma B\bam=0.
+			\end{equation*}	
+			If $\Sigma\succ \0$, then iff $A\Sigma B=\0$.  
+			\item If $\Sigma\succ \0$, $A\in\bbR^{p\times p}$ symmetric, and $B\in\bbR^{r\times p}$, then $\x^\TT A\x \indep B\x$ iff $B\Sigma A=\0$.    
+		\end{enumerate}
+	\end{theorem}
+\end{thmbox}
+See Theorem B.11 in Peng DING, and Problem 1.22--1.23 in \cite{muirhead1982aspects}.
+
+\begin{thmbox}
+	\begin{theorem}\label{thm:quad_MVN}
+		If $\x,\x_{1:N}\simiid\rmN_p(\bam,\Sigma)$, where $\Sigma$ is nonsingular, then 
+		\begin{itemize}
+			\item $(\x-\bam)^\TT \Sigma^{-1}(\x-\bam)\sim\chi_p^2$,
+			\item $\x^\TT \Sigma^{-1}\x\sim\chi_p^2(\bam^\TT\Sigma^{-1}\bam)$,
+			\item partition
+			\begin{sequation*}
+				\x = \begin{bmatrix}
+					\x_1 \\ \x_2
+				\end{bmatrix},\ \bam=\begin{bmatrix}
+					\bam_1 \\ \bam_2
+				\end{bmatrix},\ \Sigma=\begin{bmatrix}
+					\Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22}
+				\end{bmatrix}, \quad \x_1,\bam_1\in\bbR^{k}, \ \Sigma_{11}\in\bbR^{k\times k}, \text{ then }
+			\end{sequation*} 
+			\begin{sequation*}
+				Q=(\x-\bam)^\TT \Sigma^{-1}(\x-\bam)-(\x_1-\bam_1)^\TT \Sigma_{11}^{-1}(\x_1-\bam_1) \sim \chi_{p-k}^2.
+			\end{sequation*}
+			\item $N(\bar{\x}_N-\bam)^{\TT}\Sigma^{-1}(\bar{\x}_N-\bam)\sim\chi_p^2$,
+			\item the Mahalanobis distance
+			$d_i^2=(\boldsymbol{x}_i-\bar{\boldsymbol{x}}_N)^{\TT}{\S}^{-1}(\boldsymbol{x}_i-\bar{\boldsymbol{x}}_N) \dto \chi_p^2$.
+		\end{itemize} 
+		If $\rmr(\Sigma)=k\leq p$, then 
+		\begin{enumerate}
+			\item 
+			\begin{sequation*}
+				\begin{aligned}
+					(\x-\bam)^\TT \Sigma^{-}(\x-\bam)&\sim\chi_{k}^2,\\
+					(\x-\bam)^\TT \Sigma^{+}(\x-\bam)&\sim\chi_{k}^2.
+				\end{aligned}
+			\end{sequation*}
+			\item If $\Sigma$ is idempotent with $r(\Sigma)=k$, then $(\x-\bam)^\TT  (\x-\bam)\sim\chi_k^2$.  
+			\begin{itemize}
+				\item If $\bam\in\Col(\Sigma)$, then $\x^\TT \x\sim\chi_k^2(\bam^\TT \bam)$.  
+			\end{itemize}
+		\end{enumerate}
+	\end{theorem}
+	\begin{theorem}\label{thm:quad_MVN_general}If $\x\sim\rmN_p(\bam,\Sigma)$,
+		\begin{enumerate}
+			\item if $\Sigma$ is nonsingular, $B\in\bbR^{p\times p}$ is symmetric, then $\x^\TT B\x\sim\chi_{k}^2(\delta)$ iff $B\Sigma$ is idempotent (equiv., $B\Sigma B=B$), in which case $k=\rmr(B)$ and $\delta=\bam^\TT B\bam$;
+			\item for $A\in\bbR^{p\times p}$, $\x^\TT A \x\sim\chi_{\rmr(A\Sigma)}^2(\bam^\TT A\bam)$ if 
+			\begin{sequation*}
+				(1) \Sigma A\Sigma A\Sigma=\Sigma A\Sigma,\quad (2)\bam^\TT A \Sigma A \bam=\bam^\TT A \bam, \quad (3) \Sigma A\Sigma A\bam=\Sigma A\bam.
+			\end{sequation*} 
+		\end{enumerate}      
+	\end{theorem}
+\end{thmbox}
+
+\subsection{The noncentral $\chi^2$ and F distribution}\label{sec:noncen_chi2_F}
 
 
 
@@ -496,7 +577,7 @@ Consider the modified model \eqref{eq:nonlinearSEM_cova}:
 where $\baL_{\bao}=(\B,\baP,\baG)\in\bbR^{q_1\times (r_2+q_1+t)}$, and $\G(\bao_i)=(\d_i^\TT,\bet_i^\TT,\F(\bax_i)^\TT)^\TT\in\bbR^{r_2+q_1+t}$.    
 Assumption \ref{ass:linearSEM} is satisfied. ${\bax}_i\simiid\rmN[\0_{q_2},\baF]$, $\bae_i\simiid\rmN[\0_p,\baY_\bae=\diag(\psi_{\bae k})]$,and $\bad_i\simiid\rmN[\0_{q_1},\baY_{\bad}=\diag(\psi_{\bad k})]$.
 \begin{itemize}
-	\item Prior (conjugate) for $\baq_\y=(\bam,\baL,\baY_{\bae})$: let $\baL_k^\TT$ be the kth row of $\baL$, $\baY_\bae$,
+	\item Prior (conjugate) for $\baq_\y=(\bam,\baL,\baY_{\bae})$: let $\baL_k^\TT$ be the kth row of $\baL$,
 	\begin{equation*}
 		\begin{aligned}
 		\psi_{\bae k}&\sim\IG(\alpha_{0 \bae k}, \beta_{0 \bae k}), \quad [\baL_k\mid\psi_{\bae k}]\sim \rmN_q(\baL_{0k},\psi_{\bae k}\H_{0\y k}), \ k=1,\ldots,p,\\
@@ -506,7 +587,7 @@ Assumption \ref{ass:linearSEM} is satisfied. ${\bax}_i\simiid\rmN[\0_{q_2},\baF]
 	\item Prior (conjugate) for $\baq_\bao=(\baL_\bao,\baY_{\bad},\baF)$: let $\baL_{\bao k}^\TT$ be the kth row of $\baL_{\bao}$, $\baY_{\bad}$,
 	\begin{equation*}
 		\begin{aligned}
-			\baF&\sim \IW_{q_2}(\R_0^{-1},\rho_0), \\
+			\baF&\sim \IW_{q_2}(\R_0^{-1},\rho_0), \text{ or } \baF^{-1}\sim\mathrm{W}_{q_2}(\R_0,\rho_0)  \\
 			\psi_{\bad k}&\sim \IG(\alpha_{0 \bad k},\beta_{0 \bad k}),\quad [\baL_{\bao k}\mid \psi_{\bad k}]\sim \rmN_{r_2+q_1+t}(\baL_{0\bao k},\psi_{\bad k}\H_{0\bao k}), \ k=1,\ldots,q_1.
 		\end{aligned}
 	\end{equation*} \
@@ -541,7 +622,10 @@ If the sample size is large, can use a portion of the data to estimate $\baL_{0k
 where $\baL_{\bao}=(\B,\baP,\baG)\in\bbR^{q_1\times (r_2+q_1+q_2)}$, and $\v_i=(\d_i^\TT,\bet_i^\TT,\bax_i^\TT)^\TT\in\bbR^{r_2+q_1+q_2}$. 
 That is, assume $\bam=\0_p$ and $\F(\bax_i)-\bax_i$. 
 
-Denote data $\Y=(\y_1,\ldots,\y_n)\in\bbR^{p\times n}$, matrix of latent variables $\baO=(\bao_1,\ldots,\bao_n)\in\bbR^{q\times n}$, and $\baq=(\baL,\B,\baP,\baG,\baF,\baY_\bae,\baY_\bad)=(\baL,\baL_\bao,\baF,\baY_\bae,\baY_\bad)$.   
+Denote data $\Y=(\y_1,\ldots,\y_n)=(\Y_1,\ldots,\Y_p)^\TT\in\bbR^{p\times n}$, $\V=(\v_1,\ldots,\v_n)=(\V_1,\ldots,\V_{r_2+q_1+q_2})^\TT$, $\baX_{k}=(\eta_{1k},\cdots,\eta_{nk})^\TT$ for $k=1,\ldots,q_1$, matrix of latent variables $\baO=(\bao_1,\ldots,\bao_n)\in\bbR^{q\times n}$, $\baO_1=(\bet_1,\ldots,\bet_n)$, $\baO_2=(\bax_1,\ldots,\bax_n)$, and 
+\begin{sequation*}
+	\baq=(\baL,\B,\baP,\baG,\baF,\baY_\bae,\baY_\bad)=(\underbrace{\baL,\baY_\bae}_{\baq_\y},\underbrace{\baL_\bao,\baF,\baY_\bad}_{\baq_{\bao}}).
+\end{sequation*}   
 \begin{thmbox}
 	\begin{proposition}\label{prop:post_linearSEM}
 		The above model has the following posterior distributions:
@@ -559,6 +643,30 @@ Denote data $\Y=(\y_1,\ldots,\y_n)\in\bbR^{p\times n}$, matrix of latent variabl
 				\begin{aligned}
 					\baP_0&=I_{q_1}-\baP, \ \bam_{\bao_i}=\begin{pmatrix}\baP_0^{-1}\B \d_i\\\0_{q_2}\end{pmatrix}, \ \baS_\bao=\begin{bmatrix}\baP_0^{-1}(\baG\baF\baG^\TT+\baY_\bad)\baP_0^{-\TT}&&\baP_0^{-1}\baG\baF\\\baF\baG^\TT\baP_0^{-\TT}&&\baF\end{bmatrix},\\
 					\baS^{*}&=\baS_{\bao}^{-1}+\baL^\TT \baY_{\bae}^{-1}\baL.
+				\end{aligned}
+			\end{equation*}
+			\item Assume all elements of $\baL_k$ and $\baL_\bao$ are unknown, conditional distribution $\red{\bbP(\baq\mid\Y,\baO)}=\bbP(\baq_\y\mid\Y,\baO)\bbP(\baq_\bao\mid\Y,\baO)$, where 
+			\begin{sequation*}
+				\begin{aligned}
+					\bbP(\baq_\y\mid\Y,\baO)&\propto \prod_{k=1}^{p} \bbP(\baL_k,\psi_{\bae k}\mid \Y,\baO),\\
+					\bbP(\baq_\bao\mid\Y,\baO)&\propto \mbk{\prod_{k=1}^{q_1}\bbP(\baL_{\bao k},\psi_{\delta k}\mid \baO)}\bbP(\baF\mid\baO_2)
+				\end{aligned}
+			\end{sequation*} 
+			where 
+			\begin{sequation*}
+				\begin{aligned}
+					\bbP(\baL_k,\psi_{\bae k}^{-1}\mid\Y,\baO)&\propto \rmN_q(\a_k,\psi_{\bae k}\A_k)\cdot\Ga(n/2+\alpha_{0\bae k},\beta_{\bae k}), \\
+					\bbP(\baL_{\bao k},\psi_{\delta k}^{-1}\mid \baO)&\propto\rmN_{r_2+q_1+q_2}(\a_{\bao k},\psi_{\delta k}\A_{\bao k})\cdot\Ga(n/2+\alpha_{0\delta k}, \beta_{\delta k}),\\
+					[\baF\mid\baO_2]&\sim \IW_{q_2}[(\baO_2\baO_2^\TT+\R_0^{-1}),n+\rho_0].
+				\end{aligned}
+			\end{sequation*}
+			where 
+			\begin{equation*}
+				\begin{aligned}
+					\A_k&=(\H_{0yk}^{-1}+\baO\baO^\TT)^{-1}, \ \a_k=\A_k(\H_{0yk}^{-1}\baL_{0k}+\baO\Y_k), \\
+					\beta_{\bae k}&=\beta_{0\bae k}+\frac{1}{2}(\Y_k^{\TT}\Y_{k}-\a_{k}^{\TT}\A_{k}^{-1}\a_{k}+\baL_{0k}^{\TT}\H_{0yk}^{-1}\baL_{0k}), \\
+					\A_{\bao k}&=(\H_{0\bao k}^{-1}+\V_k\V_k^\TT)^{-1},\ \a_{\bao k}=\A_{\bao k}(\H_{0\bao k}^{-1}\baL_{0\bao k}+\V_k\baX_k), \\
+					\beta_{\delta k}&=\beta_{0\delta k}+\frac{1}{2}(\baX_{k}^{\TT}\baX_{k}-\a_{\bao k}^{\TT}\A_{\bao k}^{-1}\a_{\bao k}+\baL_{0\bao k}^{\TT}\H_{0\bao k}^{-1}\baL_{0\bao k}).
 				\end{aligned}
 			\end{equation*}
 		\end{enumerate}
