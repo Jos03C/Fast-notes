@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.13)  1 MAR 2025 16:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.13)  3 MAR 2025 15:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -951,21 +951,21 @@ Overfull \vbox (7.5pt too high) has occurred while \output is active []
 Package rerunfilecheck Info: File `note-inference.out' has not changed.
 (rerunfilecheck)             Checksum: D729DCEEA8C3F8F8E3E2E2187598FEC4;3414.
 Package rerunfilecheck Info: File `note-inference.brf' has not changed.
-(rerunfilecheck)             Checksum: 00DB0A8C4F4C97BE833A8AEEF553C221;434.
+(rerunfilecheck)             Checksum: 33453C8F44D0090B62FC4F090BA3140C;545.
  ) 
 Here is how much of TeX's memory you used:
- 29621 strings out of 478994
- 562881 string characters out of 5862207
- 1023239 words of memory out of 5000000
- 46391 multiletter control sequences out of 15000+600000
+ 29628 strings out of 478994
+ 563012 string characters out of 5862207
+ 1023310 words of memory out of 5000000
+ 46396 multiletter control sequences out of 15000+600000
  503840 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,18n,116p,605b,996s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}<d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmex10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr8.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmro10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on note-inference.pdf (19 pages, 448708 bytes).
+Output written on note-inference.pdf (19 pages, 449884 bytes).
 PDF statistics:
- 447 PDF objects out of 1000 (max. 8388607)
- 368 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
+ 454 PDF objects out of 1000 (max. 8388607)
+ 375 compressed objects within 4 object streams
+ 95 named destinations out of 1000 (max. 500000)
  293 words of extra memory for PDF output out of 10000 (max. 10000000)
 

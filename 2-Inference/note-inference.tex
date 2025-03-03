@@ -645,18 +645,18 @@ Denote data $\Y=(\y_1,\ldots,\y_n)=(\Y_1,\ldots,\Y_p)^\TT\in\bbR^{p\times n}$, $
 					\baS^{*}&=\baS_{\bao}^{-1}+\baL^\TT \baY_{\bae}^{-1}\baL.
 				\end{aligned}
 			\end{equation*}
-			\item Assume all elements of $\baL_k$ and $\baL_\bao$ are unknown, conditional distribution $\red{\bbP(\baq\mid\Y,\baO)}=\bbP(\baq_\y\mid\Y,\baO)\bbP(\baq_\bao\mid\Y,\baO)$, where 
+			\item Assume all elements of $\baL_k$ and $\baL_\bao$ are unknown, conditional distribution $\red{\bbP(\baq\mid\Y,\baO)}=\bbP(\baq_\y\mid\Y,\baO)\bbP(\baq_\bao\mid\Y,\baO)$, where we can show $[\baL_k,\psi_{\bae k}\mid \Y,\baO] \indep$ and $[\baL_{\bao k},\psi_{\bad k}\mid \baO]\indep$, and  
 			\begin{sequation*}
 				\begin{aligned}
 					\bbP(\baq_\y\mid\Y,\baO)&\propto \prod_{k=1}^{p} \bbP(\baL_k,\psi_{\bae k}\mid \Y,\baO),\\
-					\bbP(\baq_\bao\mid\Y,\baO)&\propto \mbk{\prod_{k=1}^{q_1}\bbP(\baL_{\bao k},\psi_{\delta k}\mid \baO)}\bbP(\baF\mid\baO_2)
+					\bbP(\baq_\bao\mid\Y,\baO)&\propto \mbk{\prod_{k=1}^{q_1}\bbP(\baL_{\bao k},\psi_{\bad k}\mid \baO)}\bbP(\baF\mid\baO_2)
 				\end{aligned}
 			\end{sequation*} 
 			where 
 			\begin{sequation*}
 				\begin{aligned}
 					\bbP(\baL_k,\psi_{\bae k}^{-1}\mid\Y,\baO)&\propto \rmN_q(\a_k,\psi_{\bae k}\A_k)\cdot\Ga(n/2+\alpha_{0\bae k},\beta_{\bae k}), \\
-					\bbP(\baL_{\bao k},\psi_{\delta k}^{-1}\mid \baO)&\propto\rmN_{r_2+q_1+q_2}(\a_{\bao k},\psi_{\delta k}\A_{\bao k})\cdot\Ga(n/2+\alpha_{0\delta k}, \beta_{\delta k}),\\
+					\bbP(\baL_{\bao k},\psi_{\bad k}^{-1}\mid \baO)&\propto\rmN_{r_2+q_1+q_2}(\a_{\bao k},\psi_{\bad k}\A_{\bao k})\cdot\Ga(n/2+\alpha_{0\bad k}, \beta_{\bad k}),\\
 					[\baF\mid\baO_2]&\sim \IW_{q_2}[(\baO_2\baO_2^\TT+\R_0^{-1}),n+\rho_0].
 				\end{aligned}
 			\end{sequation*}
@@ -666,12 +666,19 @@ Denote data $\Y=(\y_1,\ldots,\y_n)=(\Y_1,\ldots,\Y_p)^\TT\in\bbR^{p\times n}$, $
 					\A_k&=(\H_{0yk}^{-1}+\baO\baO^\TT)^{-1}, \ \a_k=\A_k(\H_{0yk}^{-1}\baL_{0k}+\baO\Y_k), \\
 					\beta_{\bae k}&=\beta_{0\bae k}+\frac{1}{2}(\Y_k^{\TT}\Y_{k}-\a_{k}^{\TT}\A_{k}^{-1}\a_{k}+\baL_{0k}^{\TT}\H_{0yk}^{-1}\baL_{0k}), \\
 					\A_{\bao k}&=(\H_{0\bao k}^{-1}+\V_k\V_k^\TT)^{-1},\ \a_{\bao k}=\A_{\bao k}(\H_{0\bao k}^{-1}\baL_{0\bao k}+\V_k\baX_k), \\
-					\beta_{\delta k}&=\beta_{0\delta k}+\frac{1}{2}(\baX_{k}^{\TT}\baX_{k}-\a_{\bao k}^{\TT}\A_{\bao k}^{-1}\a_{\bao k}+\baL_{0\bao k}^{\TT}\H_{0\bao k}^{-1}\baL_{0\bao k}).
+					\beta_{\bad k}&=\beta_{0\bad k}+\frac{1}{2}(\baX_{k}^{\TT}\baX_{k}-\a_{\bao k}^{\TT}\A_{\bao k}^{-1}\a_{\bao k}+\baL_{0\bao k}^{\TT}\H_{0\bao k}^{-1}\baL_{0\bao k}).
 				\end{aligned}
 			\end{equation*}
 		\end{enumerate}
 	\end{proposition}
 \end{thmbox}
+
+\begin{remark}\label{rmk:post_SEM}
+	For general nonlinear SEMs with fixed covariates \eqref{eq:nonlinearSEM_cova}, we can defind $\u=[\c^\TT, \bao^{\TT}]^\TT\in\bbR^{r_1+q}$ and use similar procedure to derive the full conditional distributions. 
+	But by the nonlinear structure $\G(\bao)$, $\bbP(\baO\mid\Y,\baq)$ may not have closed form like normal, while $\bbP(\baq\mid\Y,\baO)$ is not affected and keeps normal-Gamma.
+	To handle fixed parameters, see Appendix 3.3 in \cite{lee2012basic} and Sec 4.3.1 and Appendix 4.3 in \cite{lee2007structural}. Also see STAT5020 HW1 Q3.
+\end{remark}
+
 
 \bibliographystyle{abbrv}
 \bibliography{mybib}
