@@ -165,6 +165,7 @@ Reference:
 \begin{itemize}
 	\item Robb J. Muirhead - Aspects of multivariate statistical theory \cite{muirhead1982aspects}.
 	\item CUHK STAT4002 - Applied Multivariate Analysis (2023 Spring), by Zhixiang Lin.
+	\item CUHK STAT5030 - Linear Models (2025 Spring), by Yuanyuan Lin.
 	\item Peng DING - Linear Model and Extensions.
 	\item Ronald Christensen - Plane answers to
 	complex questions: the theory of linear models \cite{christensen2002plane}.
@@ -310,6 +311,16 @@ So $\exists B\in\bbR^{q\times(p-q)}$ satisfying $\Sigma_{12}=B\Sigma_{22}$.
 
 \subsubsection{Quadratic form of MVN}\label{sec:quad_MVN}
 \begin{thmbox}
+	\begin{proposition}[MGF]\label{prop:MVN_MGF_quad}
+		If $\x\sim\rmN(\bam,\Sigma)$, $A$ is symmetric and $\sigma$ IS non-singular, then 
+		\begin{equation*}
+			M_{\x^\TT\A\x}(t)=|I-2tA\Sigma|^{-\frac{1}{2}}\exp\cbk{-\frac{1}{2}\bam^\TT[I-(I-2t\A\Sigma)^{-1}]{\Sigma}^{-1}\bam}.
+		\end{equation*}
+	\end{proposition}
+\end{thmbox}
+
+
+\begin{thmbox}
 	\begin{proposition}[Variance]\label{prop:var_MVN_quad}
 		If $\x\sim\rmN(\bam,\Sigma)$, then 
 		\begin{sequation*}
@@ -338,7 +349,7 @@ See Problem B 2.14 in Peng DING.
 See Theorem B.11 in Peng DING, and Problem 1.22--1.23 in \cite{muirhead1982aspects}.
 
 \begin{thmbox}
-	\begin{theorem}\label{thm:quad_MVN}
+	\begin{theorem}[Quadratic form of $\Sigma$]\label{thm:quad_MVN}
 		If $\x,\x_{1:N}\simiid\rmN_p(\bam,\Sigma)$, where $\Sigma$ is nonsingular, then 
 		\begin{itemize}
 			\item $(\x-\bam)^\TT \Sigma^{-1}(\x-\bam)\sim\chi_p^2$,
@@ -375,13 +386,29 @@ See Theorem B.11 in Peng DING, and Problem 1.22--1.23 in \cite{muirhead1982aspec
 			\end{itemize}
 		\end{enumerate}
 	\end{theorem}
-	\begin{theorem}\label{thm:quad_MVN_general}If $\x\sim\rmN_p(\bam,\Sigma)$,
+\end{thmbox}
+\begin{thmbox}
+	\begin{theorem}[Quadratic form of any matrices]\label{thm:quad_MVN_general}If $\x\sim\rmN_p(\bam,\Sigma)$,
 		\begin{enumerate}
 			\item if $\Sigma$ is nonsingular, $B\in\bbR^{p\times p}$ is symmetric, then $\x^\TT B\x\sim\chi_{k}^2(\delta)$ iff $B\Sigma$ is idempotent (equiv., $B\Sigma B=B$), in which case $k=\rmr(B)$ and $\delta=\bam^\TT B\bam$;
+			
 			\item for $A\in\bbR^{p\times p}$, $\x^\TT A \x\sim\chi_{\rmr(A\Sigma)}^2(\bam^\TT A\bam)$ if 
 			\begin{sequation*}
-				(1) \Sigma A\Sigma A\Sigma=\Sigma A\Sigma,\quad (2)\bam^\TT A \Sigma A \bam=\bam^\TT A \bam, \quad (3) \Sigma A\Sigma A\bam=\Sigma A\bam.
+				(1) \Sigma A\Sigma A\Sigma=\Sigma A\Sigma,\quad (2)\bam^\TT A \Sigma A \bam=\bam^\TT A \bam, \quad (3) \Sigma A\Sigma A\bam=\Sigma A\bam;
 			\end{sequation*} 
+
+			\item let $A_i\in\bbR^{p\times p}$ be symmetric with rank $k_i$ for $i=1,\ldots,m$.   
+			Denote $A=\sum_{i=1}^m A_i$, which is symmetric with rank $k$.
+			Then $\x^\TT A_i \x\sim\chi_{k_i}^2 (\bam^\TT A_i\bam)$, 
+			$\x^\TT A_i\x$ are pairwise independent and $\x^\TT A \x\sim\chi_{k}^2 (\bam^\TT A \bam)$, iff 
+			\begin{enumerate}
+				\item[(I)] any two of the following are true: (a) $A_i\Sigma$ idempotent, $\forall i$; (b) $A_i\Sigma A_j=0$, $\forall i<j$; and (c) $A\Sigma$ idempotent; \textbf{OR}
+				\item[(II)] (c) is true and (d) $k=\sum_{i=1}^{m}k_i$; \textbf{OR}
+				\item[(III)] (c) is true and (e) $A_1\Sigma,\ldots,A_{m-1}\Sigma$ are idempotent and $A_m \Sigma\succeq \0$.    
+			\end{enumerate}    
+			
+			\item (Cochran's theorem) $\x\sim \rmN_p(\0_p,I_p)$ and $A_i$ is symmetric of rank $k_i$, for $i=1,\ldots,m$ with $\sum_{i=1}^{m}A_i=I_p$,
+			then $\x^\TT A_i \x \sim \chi_{k_i}^2$ independently iff $\sum_{i=1}^{m}k_i=p$.       
 		\end{enumerate}      
 	\end{theorem}
 \end{thmbox}
@@ -414,6 +441,18 @@ Refer to section 1.2.2, \cite{muirhead1982aspects}.
 	\end{theorem}
 \end{thmbox}
 Note that $V\in\bbR^{p^2\times p^2}$ is singular as the LHS vectors above have repeated elements. 
+
+
+\chapter{Linear Models}\label{chap:linear_models}
+\section{Linear regression for the full-rank model}\label{sec:LR_full_rank}
+Consider the linear model 
+\begin{equation}\label{eq:LR_mat}
+	\Y_{n}=\X_{n\times p}\bab_{p}+\bave_n, \quad \rmr(\X)=p.
+\end{equation}
+
+
+\chapter{Generalized Linear Models}\label{chap:GLM}
+
 
 
 \chapter{Bayesian Inference}\label{chap:bayes_inference}
@@ -678,6 +717,28 @@ Denote data $\Y=(\y_1,\ldots,\y_n)=(\Y_1,\ldots,\Y_p)^\TT\in\bbR^{p\times n}$, $
 	But by the nonlinear structure $\G(\bao)$, $\bbP(\baO\mid\Y,\baq)$ may not have closed form like normal, while $\bbP(\baq\mid\Y,\baO)$ is not affected and keeps normal-Gamma.
 	To handle fixed parameters, see Appendix 3.3 in \cite{lee2012basic} and Sec 4.3.1 and Appendix 4.3 in \cite{lee2007structural}. Also see STAT5020 HW1 Q3.
 \end{remark}
+
+
+\section{Hierarchical and Multisample
+Data}
+\begin{defbox}
+	\begin{definition}[Two-level nonlinear SEM with mixed type variables]
+	Consider a collection of $p$-variate random vectors $\u_{gi}$, $i=1,\ldots,N_g$, nested within groups $g=1,\ldots,G$.   
+	\begin{align*}
+		\text{(Within-groups) }\u_{gi}&=\v_{g}+\baL_{1g}\bao_{1gi}+\bae_{1gi},\quad g=1,\cdots,G,\quad i=1,\cdots,N_{g},\\
+		\text{(Between-groups) }\v_g&=\bam+\baL_2\bao_{2g}+\bae_{2g},\quad g=1,\ldots,G
+	\end{align*}
+	where $\baL_{1g}\in\bbR^{p\times q_1}$, $\bae_{1gi}\in\bbR^{q_1}$, $\bae_{1gi}\in\bbR^{p}\sim\rmN(\0,\baY_{1g})$ independent of $\bao_{1gi}$, where $\baY_{1g}$ is diagonal. Then 
+	\begin{equation*}
+		\mathbf{u}_{\mathrm{gi}}=\mathbf{\mu}+\mathbf{\Lambda}_{2}\mathbf{\omega}_{2\mathrm{g}}+\mathbf{\epsilon}_{2\mathrm{g}}+\mathbf{\Lambda}_{1\mathrm{g}}\mathbf{\omega}_{1\mathrm{gi}}+\mathbf{\epsilon}_{1\mathrm{gi}}.
+	\end{equation*}  
+	The SEM is 
+	\begin{equation*}
+		\begin{aligned}&\eta_{1gi}=\Pi_{1g}\eta_{1gi}+\Gamma_{1g}\mathbf{F}_1(\xi_{1gi})+\delta_{1gi},\\&\eta_{2g}=\Pi_2\eta_{2g}+\Gamma_2\mathbf{F}_2(\xi_{2g})+\delta_{2g},\end{aligned}
+	\end{equation*}
+	\end{definition}
+\end{defbox}
+
 
 
 \bibliographystyle{abbrv}
