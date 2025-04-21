@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.13)  2 APR 2025 10:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.13)  19 APR 2025 15:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -931,55 +931,62 @@ Overfull \vbox (6.88875pt too high) has occurred while \output is active []
 
 ]
 Chapter 7.
-
-Overfull \hbox (0.16104pt too wide) in paragraph at lines 524--527
-[]\T1/lmr/m/n/10 There is an iden-ti-fi-a-bil-ity is-sue rel-e-vant to all SEMs: The mea-sure-ment equa-tion is ident-fied if $\OMS/lmsy/m/n/10 8\OML/cmm/b/it/10 ^^R[]\OML/lmm/m/it/10 ; \OML/cmm/b/it/10 ^^R[]$\T1/lmr/m/n/10 , $[]\OT1/lmr/m/n/10 (\OML/cmm/b/it/10 ^^R[]\OT1/lmr/m/n/10 ) =
- []
-
 [19]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \vbox (7.5pt too high) has occurred while \output is active []
 
  [20]
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [21]
 
 Package amsmath Warning: Bracket group [\bao _i\mid \baq ] at formula start!
 (amsmath)                It could be a misspelled positional argument.
 (amsmath)                If it belongs to the formula add a \relax in
-(amsmath)                front to hide it on input line 675.
-
-
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [21] (./note-inference.bbl (./note-inference.brf)
-\tf@brf=\write8
-\openout8 = `note-inference.brf'.
+(amsmath)                front to hide it on input line 749.
 
 
 Overfull \vbox (7.5pt too high) has occurred while \output is active []
 
- [22]) [23
+ [22] (./note-inference.bbl (./note-inference.brf)
+\tf@brf=\write8
+\openout8 = `note-inference.brf'.
 
-] (./note-inference.aux)
-Package rerunfilecheck Info: File `note-inference.out' has not changed.
-(rerunfilecheck)             Checksum: 261EA86A22A21BE61834D69F016930C0;4205.
+
+Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+
+ [23]
+Overfull \vbox (7.5pt too high) has occurred while \output is active []
+
+ [24
+
+]) [25] (./note-inference.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `note-inference.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `note-inference.out':
+(rerunfilecheck)             Before: E2A6819DC59CE393417756C6698FEC3F;4561
+(rerunfilecheck)             After:  D05E3BC30896432E51EFD4D53C14C5D7;4747.
 Package rerunfilecheck Info: File `note-inference.brf' has not changed.
-(rerunfilecheck)             Checksum: BEC50C38AB78597BAED2EABD0AE4A215;545.
+(rerunfilecheck)             Checksum: 1E7A81BC0E83CD4B8892979F39B4EB95;545.
  ) 
 Here is how much of TeX's memory you used:
- 29663 strings out of 478994
- 563409 string characters out of 5862207
- 1022710 words of memory out of 5000000
- 46414 multiletter control sequences out of 15000+600000
+ 29685 strings out of 478994
+ 563531 string characters out of 5862207
+ 1024338 words of memory out of 5000000
+ 46418 multiletter control sequences out of 15000+600000
  516932 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,18n,116p,605b,996s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 113i,18n,116p,632b,922s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}<d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmex10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr8.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmro10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on note-inference.pdf (23 pages, 469074 bytes).
+Output written on note-inference.pdf (25 pages, 476827 bytes).
 PDF statistics:
- 504 PDF objects out of 1000 (max. 8388607)
- 419 compressed objects within 5 object streams
- 108 named destinations out of 1000 (max. 500000)
- 325 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 550 PDF objects out of 1000 (max. 8388607)
+ 463 compressed objects within 5 object streams
+ 126 named destinations out of 1000 (max. 500000)
+ 349 words of extra memory for PDF output out of 10000 (max. 10000000)
 

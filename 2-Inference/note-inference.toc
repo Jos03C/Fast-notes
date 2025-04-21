@@ -14,10 +14,14 @@
 \contentsline {subsection}{\numberline {3.2.1}Asymptotic distributions of sample means and covariance matrices}{12}{subsection.3.2.1}%
 \contentsline {chapter}{\numberline {4}Linear Models}{13}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Linear regression for the full-rank model}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Ridge regression}{13}{section.4.2}%
+\contentsline {section}{\numberline {4.3}LASSO}{13}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Generalized Linear Models}{15}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Bayesian Inference}{17}{chapter.6}%
 \contentsline {chapter}{\numberline {7}Structural Equation Model (SEM)}{19}{chapter.7}%
 \contentsline {section}{\numberline {7.1}SEM models}{19}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Bayesian methods for estimating SEM}{21}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Bayesian estimation using MCMC}{21}{subsection.7.2.1}%
-\contentsline {section}{\numberline {7.3}Hierarchical and Multisample Data}{22}{section.7.3}%
+\contentsline {subsection}{\numberline {7.2.1}Priors for SEM}{21}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Bayesian estimation using MCMC}{22}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Bayesian model comparison}{22}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Hierarchical and Multisample Data}{23}{section.7.4}%

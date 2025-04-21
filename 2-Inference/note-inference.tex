@@ -451,6 +451,16 @@ Consider the linear model
 \end{equation}
 
 
+
+\section{Ridge regression}\label{sec:ridge_reg}
+
+
+
+\section{LASSO}\label{sec:lasso}
+
+
+
+
 \chapter{Generalized Linear Models}\label{chap:GLM}
 
 
@@ -469,9 +479,10 @@ Reference:
 \end{itemize}
 
 \section{SEM models}\label{sec:SEM_models}
-\textbf{\underline{Goal}}: to examine the relationships among the variables of interest.
 
-\noindent \textbf{\underline{Approach}}: group observed variables to form laten variables. Advantages:
+\noindent \textbf{\underline{Goal}}: to examine the relationships among the variables of interest.
+
+\noindent \textbf{\underline{Approach}}: group observed variables to form \red{\textit{latent variables}} (a combination of several observed variables).
 \begin{itemize}
 	\item Reduce the number of variables compared to direct regression.
 	\item As highly correlated observed variables are grouped into latent variables, the problem induced by multicollinearity is alleviated.
@@ -479,34 +490,42 @@ Reference:
 \end{itemize}
 
 \begin{defbox}
-	\begin{definition}[Linear SEMs]\label{def:linearSEM}
+	\begin{definition}[\textbf{Linear SEMs}]\label{def:linearSEM}
 		Assume that the \brown{observed variables} $\brown{\y}_p\simiid \rmN_p$ with mean $\bam_p$. Let $\red{\bao}_q$ be \red{latent variables}. $\red{\bao}_q = (\pink{\bet}_{q_1}^\TT,\teal{\bax}_{q_2}^\TT)^\TT$, where $\pink{\bet}_{q_1}$ is the \pink{key outcome
 		latent variables}, and $\teal{\bax}_{q_2}$ is the \teal{explanatory latent variables}. Define 
 		\begin{equation}\label{eq:linearSEM}
 			\begin{aligned}
-			\text{(\textbf{Measurement equation} )}\qquad\qquad & \brown{\y}_p = \bam_p + \baL_{p\times q} \red{\bao}_q + \bae_p, \\
-			\text{(\textbf{Structural equation}) }\qquad\qquad &
+			\text{(\textbf{Measurement equation} (MeaEq))}\qquad\qquad & \brown{\y}_p = \bam_p + \baL_{p\times q} \red{\bao}_q + \bae_p, \\
+			\text{(\textbf{Structural equation} (StEq))}\qquad\qquad &
 			\pink{\bet}_{q_1} = \baG_{q_1\times q_2} \teal{\bax}_{q_2} + \bad_{q_1},
 			\end{aligned}
 		\end{equation}
-		where $\baL$ is the unknown factor loading matrix, $\baG$ is the unknown matrix of regression
+		where $\baL$ is the unknown \textit{factor loading matrix}, $\baG$ is the unknown matrix of regression
 		coeffcients, and $\bae$ and $\bad$ are measurement (residual) errors.   
-		An extension:
-		\begin{sequation*}
-			\pink{\bet}_{q_1}=\baP_{q_1\times q_1}\pink{\bet}_{q_1}+\baG_{q_1\times q_2}\teal{\bax}_{q_2}+\bad_{q_1},
-		\end{sequation*}
-		where $\baP$ is a matrix of unknown coeffcients such that $I_{q_1}-\baP$ is nonsingular and the diagonal elements of $\baP$ are zero. 
 	\end{definition}
 \end{defbox}
+The basic SEM is formulated by two components:
+\begin{enumerate}
+	\item (MeaEq) \red{\textit{Confirmatory factor analysis (CFA)}} model groups the highly correlated observed variables into latent variables. 
+	We know the information/structure of $\baL$ (e.g., know $y_1,y_2$ are only affected by $\eta$ and $y_3,y_4$ are affected by $\xi$). 
+	\begin{itemize}
+		\item \red{\textit{Exploratory factor analysis (EFA)}}: we have $\y$ and just know they have lower-dimensional structure, but don't know the structure of $\baL$ and $q$.   
+	\end{itemize}
+	It regresses $\y$ on a smaller number of latent variables. 
+	\item (StEq) A regression type model, in which $\bet$ is regressed on $\bax$. 
+\end{enumerate}
+
+
+
 
 \begin{assbox}
-\begin{assumption}[Standard linear SEMs]\label{ass:linearSEM}
+\begin{assumption}[\textbf{Standard linear SEMs}]\label{ass:linearSEM}
 For $i=1,\ldots,n$, 
 \begin{itemize}
 	\item[(A1)] $\bae_i\simiid\rmN[\0_p,\baY_\bae]$, where $\baY_\bae\in\bbR^{p\times p}$
 	is diagonal.
 	\item[(A2)] $\teal{\bax}_i\simiid\rmN[\0_{q_2},\baF]$,
-	where $\baF$ is a general. 
+	where $\baF$ is a general (we can evaluate the correlations of the latent variables). 
 	\item[(A3)] $\bad_i\simiid\rmN[\0_{q_1},\baY_{\bad}]$, where $\baY_{\bad}$
 	is diagonal.
 	\item[(A4)] $\bad_i\indep\bax_i$, and $\bae_i\indep\bao_i,\bad_i.$
@@ -521,14 +540,20 @@ These assumptions imply that
 	\end{bmatrix}}, \quad \brown{\y}_i\simiid\rmN_{p}(\bam,\baS(\baq)=\baL\baS_{\red{\bao}}\baL^\TT+\baY_{\bae}). 
 \end{sequation*}
 
-There is an identifiability issue relevant to all SEMs:
+\noindent\underline{\textbf{Identifiability issue}}: 
 The measurement equation is identfied if $\forall \baq_1,\baq_2$, $\mathrm{MeaEq}(\baq_1)=\mathrm{MeaEq}(\baq_2)$ implies $\baq_1=\baq_2$. The structural equation is identfied if $\forall \baq_1,\baq_2$, $\mathrm{StEq}(\baq_1)=\mathrm{StEq}(\baq_2)$ implies $\baq_1=\baq_2$. The SEM is identified if both of its MeaEq and StEq are identfied.
+For example, consider \eqref{eq:linearSEM} MeaEq:
+\begin{sequation*}
+	\y=\bam + (\baL \M) (\M^{-1}\bao) + \bae = \bam + \baL^* \bao^* + \bae, \quad \bao^*\sim\rmN(\0_{q},\M^{-1}\Cov(\bao)\M^{-\TT}).
+\end{sequation*}
+We have to impose restrictions on $\baL$ and/or $\Cov(\bao)$ such that the only nonsingular $\M=I_q$.    
 \begin{itemize}
-	\item A simple and common method is using a $\baL$ with the \red{non-overlapping structure}, e.g.,
+	\item A simple and common method is using a $\baL$ with the \red{\textit{non-overlapping structure}}, e.g.,
 	\begin{sequation*}
 		\baL^{\TT}=\begin{bmatrix}1&\lambda_{21}&\lambda_{31}&\lambda_{41}&0&0&0&0&0&0\\0&0&0&0&1&\lambda_{62}&\lambda_{72}&0&0&0\\0&0&0&0&0&0&0&1&\lambda_{93}&\lambda_{10,3}\end{bmatrix}
 	\end{sequation*}  
 	where $1$'s are fixed to introduce a scale to latent variables.
+	\item We can also allow $\lambda_{11}$, $\lambda_{52}$, and/or $\lambda_{83}$ to be unknowns, and fix $\diag(\Cov(\bao))=I_q$, such that $\Cov(\bao)$ is a correlation matrix. But it is not convenient for identifying an SEM with StEq, and induces complication in the Bayesian analysis.  
 \end{itemize}
 
 
@@ -541,14 +566,13 @@ The measurement equation is identfied if $\forall \baq_1,\baq_2$, $\mathrm{MeaEq
 			\item \{BMI, WHR\}: `obesity (OB)'
 			\item \{HbA1c, FPG\}: `glycemic control (GC)'
 		\end{itemize}
-		$\y=(\rm PCr, ACR, SBP, DBP, BMI, WHR)^\TT$, $\bao=(\rm KD,BP,OB)^\TT$, $\bet=\rm KD$, $\bax=(\rm BP,OB)^\TT$, $p=6$, $q=3,q_1=1,q_2=2$. Then the measurement equation is  
+		$\y=(\rm PCr, ACR, SBP, DBP, BMI, WHR)^\TT$, $\bao=(\rm KD,BP,OB)^\TT$, $\bet=\rm KD$, $\bax=(\rm BP,OB)^\TT$, $p=6$, $q=3,q_1=1,q_2=2$. Then 
 		\begin{sequation*}
-			\begin{bmatrix}\mathrm{PCr}\\\mathrm{ACR}\\\mathrm{SBP}\\\mathrm{DBP}\\\mathrm{BMI}\\\mathrm{WHR}\end{bmatrix}=\begin{bmatrix}\mu_{1}\\\mu_{2}\\\mu_{3}\\\mu_{4}\\\mu_{5}\\\mu_{6}\end{bmatrix}+\begin{bmatrix}\lambda_{11}&0&0\\\lambda_{21}&0&0\\0&\lambda_{32}&0\\0&\lambda_{42}&0\\0&0&\lambda_{53}\\0&0&\lambda_{63}\end{bmatrix}\begin{bmatrix}\mathrm{KD}\\\mathrm{BP}\\\mathrm{OB}\end{bmatrix}+\begin{bmatrix}\epsilon_{1}\\\epsilon_{2}\\\epsilon_{3}\\\epsilon_{4}\\\epsilon_{5}\\\epsilon_{6}\end{bmatrix}.
+			\text{(MeaEq)}\qquad\qquad \begin{bmatrix}\mathrm{PCr}\\\mathrm{ACR}\\\mathrm{SBP}\\\mathrm{DBP}\\\mathrm{BMI}\\\mathrm{WHR}\end{bmatrix}=\begin{bmatrix}\mu_{1}\\\mu_{2}\\\mu_{3}\\\mu_{4}\\\mu_{5}\\\mu_{6}\end{bmatrix}+\begin{bmatrix}\lambda_{11}&0&0\\\lambda_{21}&0&0\\0&\lambda_{32}&0\\0&\lambda_{42}&0\\0&0&\lambda_{53}\\0&0&\lambda_{63}\end{bmatrix}\begin{bmatrix}\mathrm{KD}\\\mathrm{BP}\\\mathrm{OB}\end{bmatrix}+\begin{bmatrix}\epsilon_{1}\\\epsilon_{2}\\\epsilon_{3}\\\epsilon_{4}\\\epsilon_{5}\\\epsilon_{6}\end{bmatrix}.
 		\end{sequation*}
-		We know that KD is only linked with PCr and ACR, ...
-		The structural equation can be defined as:
+		We know that KD is only linked with PCr and ACR.
 		\begin{sequation*}
-			\mathrm{KD}=\gamma_{1}\mathrm{BP}+\gamma_{2}\mathrm{OB}+\delta.
+			\text{(StEq)}\qquad\qquad \mathrm{KD}=\gamma_{1}\mathrm{BP}+\gamma_{2}\mathrm{OB}+\delta.
 		\end{sequation*}
 		Suppose we wish to study the effects of $\bax$ on $\bet=(\mathrm{KD},\eta_A)^\TT$, $q_1=2$,   
 		\begin{sequation*}
@@ -558,89 +582,137 @@ The measurement equation is identfied if $\forall \baq_1,\baq_2$, $\mathrm{MeaEq
 \end{exbox} 
 
 \begin{defbox}
-	\begin{definition}[More SEM models]\label{def:moreSEM}\
-		\begin{itemize}
-			\item \red{SEMs with fixed covariates}
-			\begin{equation}\label{eq:linearSEM_cova}
-				\begin{aligned}
-				\y_{p}&=\A_{p\times r_1}\c_{r_1}+\baL_{p\times q}\bao_{q}+\bae_{p}, \\
-				\bet_{q_1}&=\B_{q_1\times r_2}\d_{r_2} + \baP_{q_1\times q_1}\bet_{q_1}+\baG_{q_1\times q_2}\bax_{q_2}+\bad_{q_1},
-				\end{aligned}
-			\end{equation}
-			where $\A,\B$ are a matrix of unknown coeffcients, $\c,\d$ are a vector of fixed covariates (known).  
-			\item \red{Nonlinear SEMs}
-			\begin{equation}\label{eq:nonlinearSEM}
-				\begin{aligned}
-				\y_{p}&=\bam_{p}+\baL_{p\times q}\bao_{q}+\bae_{p}, \\
-				\bet_{q_1}&= \baP_{q_1\times q_1}\bet_{q_1}+\baG_{q_1\times t}\F_{t}(\bax_{q_2})+\bad_{q_1},
-				\end{aligned}
-			\end{equation}
-			where $\F(\bax)=(f_1(\bax),\ldots,f_t(\bax))^\TT$ with nonzero, known, and linearly independent differentiable functions $f_1,\ldots,f_t$, $t\geq q_2$.  
-			\item \red{Nonlinear SEMs with fixed covariates}
-			\begin{equation}\label{eq:nonlinearSEM_cova}
-				\begin{aligned}
-				\y_{p}&=\A_{p\times r_1}\c_{r_1}+\baL_{p\times q}\bao_{q}+\bae_{p}, \\
-				\bet_{q_1}&=\B_{q_1\times r_2}\d_{r_2}+ \baP_{q_1\times q_1}\bet_{q_1}+\baG_{q_1\times t}\F_{t}(\bax_{q_2})+\bad_{q_1}.
-				\end{aligned}
-			\end{equation} 
-			A simple extension of the StEq is 
-			\begin{equation*}
-				\bet_{q_1}=\baP_{q_1\times q_1}\bet_{q_1}+\baL_\bao\G_t(\d,\bax)+\bad_{q_1}
-			\end{equation*}
-			where $\G(\d\bax)=(g_1(\d,\bax),\ldots,g_t(\d,\bax))^\TT$ is a vector-valued function with nonzero, known, and linearly independent differentiable functions. 
-		\end{itemize}
+	\begin{definition}[More SEM models]\label{def:moreSEM}  
+	Extensions of StEq:
+	\begin{itemize}
+		\item \red{Basic} StEq: ${\bet}_{q_1} = \baG_{q_1\times q_2} {\bax}_{q_2} + \bad_{q_1}$.
+		
+		\item \red{An extension}: 
+		\begin{sequation*}
+			{\bet}_{q_1}=\baP_{q_1\times q_1}{\bet}_{q_1}+\baG_{q_1\times q_2} {\bax}_{q_2}+\bad_{q_1},
+		\end{sequation*}
+		where $\baP$ is a matrix of unknown coeffcients such that $I_{q_1}-\baP$ is nonsingular and the diagonal elements of $\baP$ are zero. 
+
+		\item Add \red{fixed known covariates} $\d$: 
+		\begin{sequation*}
+			\bet_{q_1}=\B_{q_1\times r_2}\d_{r_2} + \baP_{q_1\times q_1}\bet_{q_1}+\baG_{q_1\times q_2}\bax_{q_2}+\bad_{q_1}.
+		\end{sequation*}
+		\item Add \red{nonlinear structure}: 
+		\begin{sequation}\label{eq:nonlinearStEq}
+			\bet_{q_1}=\B_{q_1\times r_2}\d_{r_2}+ \baP_{q_1\times q_1}\bet_{q_1}+\baG_{q_1\times t}\F_{t}(\bax_{q_2})+\bad_{q_1},
+		\end{sequation}
+		where $\F(\bax)=(f_1(\bax),\ldots,f_t(\bax))^\TT$ with nonzero, known, and linearly independent differentiable functions $f_1,\ldots,f_t$, $t\geq q_2$. 
+		To identity StEq, structures like $\F_1(\bax)=(\xi_1,\xi_2,\xi_1^2,\xi_1^2)^\TT$ and $\F_2(\bax)=(\xi_1,\xi_2,\xi_1\xi_2,0)^\TT$ are not allowed.
+		
+		\item \red{Combine $\d$ and $\F$}: 
+		\begin{sequation}\label{eq:nonlinearStEq_comb}
+			\bet_{q_1}=\baP_{q_1\times q_1}\bet_{q_1}+\baL_{\bao,q_1\times t}\G_t(\d,\bax)+\bad_{q_1},
+		\end{sequation}
+		where $\G(\d\bax)=(g_1(\d,\bax),\ldots,g_t(\d,\bax))^\TT$ is a vector-valued function with nonzero, known, and linearly independent differentiable functions.  
+		\eqref{eq:nonlinearStEq} can be obtained by letting $\baL_\bao=(\B,\baG)$ and $\G(\d,\bax)=(\d^\TT,\F(\bax)^\TT)^\TT$.  
+	\end{itemize}
+
+	An Extension of MeaEq:
+	\begin{itemize}
+		\item Add fixed known covariates $\c$ (If $\bam_p$ is included, then $\c=[1,\c_2]^\TT$.)
+		\begin{sequation}\label{eq:covaMeaEq}
+			\y_{p}=\A_{p\times r_1}\c_{r_1}+\baL_{p\times q}\bao_{q}+\bae_{p}.
+		\end{sequation}
+	\end{itemize}
 	\end{definition}
 \end{defbox}
 Let $\baL_k^\TT$ be the kth row of $\baL$, and $\baL_k^\TT=(\baL_{k\bet}^\TT,\baL_{k\bax}^{\TT})$ be a partition correspondings to the partition of $\bao=(\bet^\TT,\bax^\TT)^\TT$. 
-For model \eqref{eq:nonlinearSEM},
+For StEq \eqref{eq:nonlinearStEq} with $r_2=0$ and MeaEq \eqref{eq:linearSEM},
 \begin{sequation*}
 	\begin{aligned}
 	\bbE(\bax)&=\0_{q_2},\quad \bbE(\bet)=[(I_{q_1}-\baP)^{-1}\baG]\bbE(\F(\bax)),\\
 	\bbE(y_k)&=\mu_k+\baL_{k\bet}^\TT[(I_{q_1}-\baP)^{-1}\baG]\bbE(\F(\bax)).
 	\end{aligned}
 \end{sequation*}   
-For model \eqref{eq:nonlinearSEM_cova}, let $\A_k^\TT$ be the kth row of $\A$,
+For StEq \eqref{eq:nonlinearStEq_comb} and MeaEq \eqref{eq:covaMeaEq}, let $\A_k^\TT$ be the kth row of $\A$,
 \begin{sequation*}
 	\bbE(y_k)=\A_k^\TT\c+\baL_{k\bet}^\TT\bbE(\bet)=\A_k^\TT\c+\baL_{k\bet}^\TT[(I_{q_1}-\baP)^{-1}\baL_{\bao}]\bbE(\G(\d,\bax)).
 \end{sequation*}  
 
-\section{Bayesian methods for estimating SEM}\label{sec:Bayes_est_SEM}
-In developing the Bayesian methods for analyzing SEMs, we usually assign fixed known values to the hyperparameters in the conjugate prior distributions.
-Consider the modified model \eqref{eq:nonlinearSEM_cova}:
-\begin{sequation*}
-		\begin{aligned}
-		\y_i&=\bam+\baL\bao_{i}+\bae_{i}, \\
-		\bet_{i}&=\B\d_{i}+ \baP\bet_{i}+\baG\F(\bax_{i})+\bad_{i}=\baL_{\bao}\G(\bao_i)+\bad_i,
-		\end{aligned}
-\end{sequation*}
-where $\baL_{\bao}=(\B,\baP,\baG)\in\bbR^{q_1\times (r_2+q_1+t)}$, and $\G(\bao_i)=(\d_i^\TT,\bet_i^\TT,\F(\bax_i)^\TT)^\TT\in\bbR^{r_2+q_1+t}$.    
-Assumption \ref{ass:linearSEM} is satisfied. ${\bax}_i\simiid\rmN[\0_{q_2},\baF]$, $\bae_i\simiid\rmN[\0_p,\baY_\bae=\diag(\psi_{\bae k})]$,and $\bad_i\simiid\rmN[\0_{q_1},\baY_{\bad}=\diag(\psi_{\bad k})]$.
-\begin{itemize}
-	\item Prior (conjugate) for $\baq_\y=(\bam,\baL,\baY_{\bae})$: let $\baL_k^\TT$ be the kth row of $\baL$,
-	\begin{equation*}
-		\begin{aligned}
-		\psi_{\bae k}&\sim\IG(\alpha_{0 \bae k}, \beta_{0 \bae k}), \quad [\baL_k\mid\psi_{\bae k}]\sim \rmN_q(\baL_{0k},\psi_{\bae k}\H_{0\y k}), \ k=1,\ldots,p,\\
-		\bam&\sim\rmN_p(\bam_0,\baS_0).
-		\end{aligned}
-	\end{equation*}
-	\item Prior (conjugate) for $\baq_\bao=(\baL_\bao,\baY_{\bad},\baF)$: let $\baL_{\bao k}^\TT$ be the kth row of $\baL_{\bao}$, $\baY_{\bad}$,
-	\begin{equation*}
-		\begin{aligned}
-			\baF&\sim \IW_{q_2}(\R_0^{-1},\rho_0), \text{ or } \baF^{-1}\sim\mathrm{W}_{q_2}(\R_0,\rho_0)  \\
-			\psi_{\bad k}&\sim \IG(\alpha_{0 \bad k},\beta_{0 \bad k}),\quad [\baL_{\bao k}\mid \psi_{\bad k}]\sim \rmN_{r_2+q_1+t}(\baL_{0\bao k},\psi_{\bad k}\H_{0\bao k}), \ k=1,\ldots,q_1.
-		\end{aligned}
-	\end{equation*} \
-	\item Assume the prior $\baq_\y\indep\baq_\bao$. 
-\end{itemize}
+\noindent\underline{\textbf{Issues of developing a comprehensive SEM}}:
+\begin{enumerate}
+	\item Make sure the sample size of $\y$ is large enough to achieve accurate statistical results.
+	\item If the size of the proposed SEM and the number of parameters are large, we may encounter diffculties in achieving convergence of the related computing algorithm for obtaining statistical results.
+	\item So far, the most general SEM is MeaEq \eqref{eq:covaMeaEq} and StEq \eqref{eq:nonlinearStEq_comb}:
+	\begin{sequation*}
+		\y=\A\c+\baL\bao+\bae,\qquad \bet=\baP\bet+\baL_{\bao}\G(\d,\bax)+\bad.
+	\end{sequation*} 
+	It has limitations. As $\G(\d,\bax)$ does not involve any $\eta_k$ in $\bet$, nonlinear terms related to $\eta_k$ cannot be used to predict the other $\eta_{k'}$'s, i.e., $\eta_k$ cannot be accommodated in $\G(\d,\bax)$ and nonlinear effects of $\eta_k$ on $\eta_{k'}$ cannot be assessed.         
+	
+\end{enumerate}
 
-\noindent\textbf{\underline{Hyperparameter selection}}: If we have good prior information about a parameter -- select the prior
+\section{Bayesian methods for estimating SEM}\label{sec:Bayes_est_SEM}
+\underline{\textbf{Motivation}}:
+A traditional method is the \textit{covariance structure approach}, which focuses on fitting the covariance structure under the proposed model to the sample covariance matrix $\S$.
+\begin{itemize}
+	\item In many complex situations, deriving the explicit covariance structure $\Sigma=\Cov(\y)$ or obtaining an appropriate $\S$ is difficult (e.g., when $\exists$ missing data).
+\end{itemize}
+\underline{\textbf{Advarntages of Bayesian estimates (BE)}}: $\log\bbP(\baq\mid\Y)=\log\bbP(\Y\mid\baq)+\log\bbP(\baq)+\mathrm{const}$
+\begin{enumerate}
+	\item Methods are based on the first moment properties of $\y$ which are simpler than the second moment properties of $\S$. 
+	Hence, it has potential to be applied to more complex situations.
+
+	\item It estimates $\bao$ directly, which cannot be obtained with classical methods.
+	
+	\item As $n\to \infty$, $\log\bbP(\Y\mid\baq)$ could dominate $\log\bbP(\baq)$, hence the BE have the same optimal properties
+	as the MLE. 
+
+	\item It allows the use of genuine prior information for producing better results. 
+	With small or moderate sample sizes, $\bbP(\baq)$ plays a more substantial role in BE than $\bbP(\Y\mid\baq)$, and is useful for achieving better results. 
+	
+	\item It provides more easily assessable statistics for goodness-of-fit and model comparison, and also other useful statistics such as the posterior mean and percentiles. (Don't need to derive the asymptotic distributions.)
+	\item It can give more reliable results for small samples.
+\end{enumerate}
+
+\subsection{Priors for SEM}\label{sec:prior_SEM}
+\noindent \underline{\textbf{Informative prior}}:
+\begin{assbox}
+	\begin{assumption}[\textbf{Conjugate prior for SEMs}]\label{ass:conj_prior_SEM}
+		In developing the Bayesian methods for analyzing SEMs, we usually assign fixed known values to the hyperparameters in the conjugate prior distributions.
+		Consider
+		\begin{sequation*}
+			\begin{aligned}
+			\y_i&=\bam+\baL\bao_{i}+\bae_{i}, \\
+			\bet_{i}&=\B\d_{i}+ \baP\bet_{i}+\baG\F(\bax_{i})+\bad_{i}=\baL_{\bao}\G(\bao_i)+\bad_i,
+			\end{aligned}
+	\end{sequation*}
+	where $\baL_{\bao}=(\B,\baP,\baG)\in\bbR^{q_1\times (r_2+q_1+t)}$, and $\G(\bao_i)=(\d_i^\TT,\bet_i^\TT,\F(\bax_i)^\TT)^\TT\in\bbR^{r_2+q_1+t}$.     
+	Assumption \ref{ass:linearSEM} is satisfied.
+	${\bax}_i\simiid\rmN[\0_{q_2},\baF]$, $\bae_i\simiid\rmN[\0_p,\baY_\bae=\diag(\psi_{\bae k})]$,and $\bad_i\simiid\rmN[\0_{q_1},\baY_{\bad}=\diag(\psi_{\bad k})]$.
+	\begin{itemize}
+		\item Prior (conjugate) for $\baq_\y=(\bam,\baL,\baY_{\bae})$: let $\baL_k^\TT$ be the kth row of $\baL$,
+		\begin{equation*}
+			\begin{aligned}
+			\psi_{\bae k}&\sim\IG(\alpha_{0 \bae k}, \beta_{0 \bae k}), \quad [\baL_k\mid\psi_{\bae k}]\sim \rmN_q(\baL_{0k},\psi_{\bae k}\H_{0\y k}), \ k=1,\ldots,p,\\
+			\bam&\sim\rmN_p(\bam_0,\baS_0).
+			\end{aligned}
+		\end{equation*}
+		\item Prior (conjugate) for $\baq_\bao=(\baL_\bao,\baY_{\bad},\baF)$: let $\baL_{\bao k}^\TT$ be the kth row of $\baL_{\bao}$, $\baY_{\bad}$,
+		\begin{equation*}
+			\begin{aligned}
+				\baF&\sim \IW_{q_2}(\R_0^{-1},\rho_0), \text{ or } \baF^{-1}\sim\mathrm{W}_{q_2}(\R_0,\rho_0)  \\
+				\psi_{\bad k}&\sim \IG(\alpha_{0 \bad k},\beta_{0 \bad k}),\quad [\baL_{\bao k}\mid \psi_{\bad k}]\sim \rmN_{r_2+q_1+t}(\baL_{0\bao k},\psi_{\bad k}\H_{0\bao k}), \ k=1,\ldots,q_1.
+			\end{aligned}
+		\end{equation*} \
+		\item Assume the prior $\baq_\y\indep\baq_\bao$. 
+	\end{itemize}
+	\end{assumption}
+\end{assbox}
+
+
+
+{{Hyperparameter selection}}: If we have good prior information about a parameter, select the prior
 distribution with a small variance. E.g., 
 \begin{itemize}
 	\item if $\baL_k\approx\baL_{0k}$, then $\H_{0yk}=0.5 I_q$. If not, select the prior with a larger variance;
 	\item since $\epsilon_{ik}\sim \rmN(0,\psi_{\bae k})$, if the variation is small, $\psi_{\bae k}$ is small, then choose small $\bbE(\psi_{\bae k})=\beta_{0\bae k}/(\alpha_{0\bae k}-1)$ and $\Var(\psi_{\bae k})=\beta_{0\bae k}^2/\{(\alpha_{0\bae k}-1)^2(\alpha_{0\bae k}-2)\}$;
 	\item if $\baF\approx \baF_{0}$, since $\bbE(\baF)=\R_0^{-1}/(\rho_0-q_2-1)$, choose $\R_0^{-1}=(\rho_0-q_2-1)\baF_0$.   
 \end{itemize}
-If the sample size is large, can use a portion of the data to estimate $\baL_{0k}$, $\baL_{0\bao k}$ and $\baF_0$. If the sample size is moderate, can use the same data twice.  
 
 \noindent\textbf{\underline{Noninformative prior (Jeffrey)}}: If information is not available and the sample size is small, 
 \begin{sequation*}
@@ -649,9 +721,11 @@ If the sample size is large, can use a portion of the data to estimate $\baL_{0k
 		\bbP(\baL_{\bao},\baY_{\bad})\propto \bbP(\psi_{\bad1},\cdots,\psi_{\bad q_{1}})\propto\prod_{k=1}^{q_{1}}\psi_{\bad k}^{-1},\\
 		&\bbP(\baF)\propto|\baF|^{-(q_2+1)/2}.\end{aligned}
 \end{sequation*}
+If the sample size is large, can use a portion of the data to estimate $\baL_{0k}$, $\baL_{0\bao k}$ and $\baF_0$ with noninformative priors. If the sample size is moderate, can use the same data twice.  
+
 
 \subsection{Bayesian estimation using MCMC}
-\textbf{\underline{Model}}: Linear SEM with fixed covariates \eqref{eq:linearSEM_cova} without intercept:
+\textbf{\underline{Model}}: Linear SEM with fixed covariates without intercept:
 \begin{equation*}
 	\begin{aligned}
 		\y_i&=\baL\bao_i+\bae_i, \\
@@ -713,10 +787,14 @@ Denote data $\Y=(\y_1,\ldots,\y_n)=(\Y_1,\ldots,\Y_p)^\TT\in\bbR^{p\times n}$, $
 \end{thmbox}
 
 \begin{remark}\label{rmk:post_SEM}
-	For general nonlinear SEMs with fixed covariates \eqref{eq:nonlinearSEM_cova}, we can defind $\u=[\c^\TT, \bao^{\TT}]^\TT\in\bbR^{r_1+q}$ and use similar procedure to derive the full conditional distributions. 
+	For general nonlinear SEMs with MeaEq \eqref{eq:covaMeaEq} and StEq \eqref{eq:nonlinearStEq_comb}, we can defind $\u=[\c^\TT, \bao^{\TT}]^\TT\in\bbR^{r_1+q}$ and use similar procedure to derive the full conditional distributions. 
 	But by the nonlinear structure $\G(\bao)$, $\bbP(\baO\mid\Y,\baq)$ may not have closed form like normal, while $\bbP(\baq\mid\Y,\baO)$ is not affected and keeps normal-Gamma.
 	To handle fixed parameters, see Appendix 3.3 in \cite{lee2012basic} and Sec 4.3.1 and Appendix 4.3 in \cite{lee2007structural}. Also see STAT5020 HW1 Q3.
 \end{remark}
+
+
+\section{Bayesian model comparison}\label{sec:SEM_model_comp}
+
 
 
 \section{Hierarchical and Multisample
