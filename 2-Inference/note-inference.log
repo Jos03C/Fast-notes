@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.13)  19 APR 2025 15:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.13)  25 APR 2025 18:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -676,8 +676,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \c@theorem=\count323
 \c@tcb@cnt@defboxt=\count324
 \c@tcb@cnt@thmboxt=\count325
-\c@tcb@cnt@egboxt=\count326
-\c@tcb@cnt@exboxt=\count327
+\c@tcb@cnt@assboxt=\count326
+\c@tcb@cnt@egboxt=\count327
+\c@tcb@cnt@exboxt=\count328
 \headerwidth=\dimen279
 ) (d:/texlive/2021/texmf-dist/tex/latex/amsfonts/eufrak.sty
 
@@ -712,16 +713,16 @@ LaTeX Font Info:    ... okay on input line 19.
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 ) (d:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count328
+\scratchcounter=\count329
 \scratchdimen=\dimen280
 \scratchbox=\box76
-\nofMPsegments=\count329
-\nofMParguments=\count330
+\nofMPsegments=\count330
+\nofMParguments=\count331
 \everyMPshowfont=\toks51
-\MPscratchCnt=\count331
+\MPscratchCnt=\count332
 \MPscratchDim=\dimen281
-\MPnumerator=\count332
-\makeMPintoPDFobject=\count333
+\MPnumerator=\count333
+\makeMPintoPDFobject=\count334
 \everyMPtoPDFconversion=\toks52
 ) (d:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -729,7 +730,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (d:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count334
+\c@lstlisting=\count335
 Package hyperref Info: Link coloring ON on input line 19.
  (d:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -738,7 +739,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (d:/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count335
+\c@section@level=\count336
 )
 LaTeX Info: Redefining \ref on input line 19.
 LaTeX Info: Redefining \pageref on input line 19.
@@ -764,9 +765,9 @@ LaTeX Info: Redefining \nameref on input line 19.
 * \textheight=758.32199pt
 * \oddsidemargin=-28.90756pt
 * \evensidemargin=-28.90756pt
-* \topmargin=-28.90756pt
-* \headheight=0.0pt
-* \headsep=0.0pt
+* \topmargin=-58.90756pt
+* \headheight=15.0pt
+* \headsep=15.0pt
 * \topskip=10.0pt
 * \footskip=25.29494pt
 * \marginparwidth=40.0pt
@@ -782,211 +783,175 @@ LaTeX Info: Redefining \nameref on input line 19.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+[1{d:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-Overfull \vbox (6.29724pt too high) has occurred while \output is active []
-
- [1{d:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-]
-Overfull \vbox (6.29724pt too high) has occurred while \output is active []
-
- [2
+] [2
 
 ] (./note-inference.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3.
  (d:/texlive/2021/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3.
  (d:/texlive/2021/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 4.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 3.
  (d:/texlive/2021/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 4.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 3.
  (d:/texlive/2021/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 4.
+(Font)              <10> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 4.
+(Font)              <7> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 4.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+(Font)              <5> on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
  (d:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
  (d:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 4.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 3.
  (d:/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 4.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 3.
  (d:/texlive/2021/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 4.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 4.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
 )
 \tf@toc=\write7
 \openout7 = `note-inference.toc'.
 
- [3]
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [4
+ [3] [4
 
 ]
 Chapter 1.
-[5]
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 30.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 30.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 30.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 30.
 
- [6
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 30.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\chi' on input line 30.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 30.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 30.
+
+[5] [6
 
 ]
 Chapter 2.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 51.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 57.
 (d:/texlive/2021/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [7] (d:/texlive/2021/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-)
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [8]
+) [8]
 Chapter 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 209.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 209.
+(Font)              <9> on input line 215.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 209.
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 209.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 215.
 [9
 
-]
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+] [10] [11]
 
- [10]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 416.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 416.
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 416.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 422.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 416.
+(hyperref)                removing `\chi' on input line 422.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\chi' on input line 416.
+(hyperref)                removing `superscript' on input line 422.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 416.
+(hyperref)                removing `math shift' on input line 422.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 416.
-
-
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [11]
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [12]
+[12]
 Chapter 4.
 [13
 
 ]
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
+Underfull \vbox (badness 5036) has occurred while \output is active []
 
- [14
+ [14]
+Underfull \vbox (badness 5133) has occurred while \output is active []
+
+ [15] [16] [17] [18
 
 ]
 Chapter 5.
-[15]
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [16
+[19] [20
 
 ]
 Chapter 6.
-[17]
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [18
+[21] [22
 
 ]
 Chapter 7.
-[19]
-Overfull \vbox (7.5pt too high) has occurred while \output is active []
-
- [20]
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [21]
+[23] [24] [25]
 
 Package amsmath Warning: Bracket group [\bao _i\mid \baq ] at formula start!
 (amsmath)                It could be a misspelled positional argument.
 (amsmath)                If it belongs to the formula add a \relax in
-(amsmath)                front to hide it on input line 749.
+(amsmath)                front to hide it on input line 1117.
 
-
-Overfull \vbox (7.5pt too high) has occurred while \output is active []
-
- [22] (./note-inference.bbl (./note-inference.brf)
+[26] (./note-inference.bbl (./note-inference.brf)
 \tf@brf=\write8
 \openout8 = `note-inference.brf'.
 
+ [27] [28
 
-Overfull \vbox (6.88875pt too high) has occurred while \output is active []
-
- [23]
-Overfull \vbox (7.5pt too high) has occurred while \output is active []
-
- [24
-
-]) [25] (./note-inference.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `note-inference.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `note-inference.out':
-(rerunfilecheck)             Before: E2A6819DC59CE393417756C6698FEC3F;4561
-(rerunfilecheck)             After:  D05E3BC30896432E51EFD4D53C14C5D7;4747.
+]) [29] (./note-inference.aux)
+Package rerunfilecheck Info: File `note-inference.out' has not changed.
+(rerunfilecheck)             Checksum: D5F21AD040AC51040E42676DE97F5D15;6064.
 Package rerunfilecheck Info: File `note-inference.brf' has not changed.
-(rerunfilecheck)             Checksum: 1E7A81BC0E83CD4B8892979F39B4EB95;545.
+(rerunfilecheck)             Checksum: EAF25E4640FC48E0C2241B779360DB28;545.
  ) 
 Here is how much of TeX's memory you used:
- 29685 strings out of 478994
- 563531 string characters out of 5862207
- 1024338 words of memory out of 5000000
- 46418 multiletter control sequences out of 15000+600000
+ 29885 strings out of 478994
+ 566432 string characters out of 5862207
+ 1049421 words of memory out of 5000000
+ 46564 multiletter control sequences out of 15000+600000
  516932 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,18n,116p,632b,922s stack positions out of 5000i,500n,10000p,200000b,80000s
-{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}<d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmex10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr8.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmro10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on note-inference.pdf (25 pages, 476827 bytes).
+ 113i,18n,116p,632b,1321s stack positions out of 5000i,500n,10000p,200000b,80000s
+{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{d:/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}<d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmex10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmmi9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr12.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr8.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmr9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmri10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmro10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy5.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/lm/lmsy9.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb><d:/texlive/2021/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on note-inference.pdf (29 pages, 524153 bytes).
 PDF statistics:
- 550 PDF objects out of 1000 (max. 8388607)
- 463 compressed objects within 5 object streams
- 126 named destinations out of 1000 (max. 500000)
- 349 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 687 PDF objects out of 1000 (max. 8388607)
+ 594 compressed objects within 6 object streams
+ 180 named destinations out of 1000 (max. 500000)
+ 413 words of extra memory for PDF output out of 10000 (max. 10000000)
 

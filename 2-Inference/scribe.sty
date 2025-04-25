@@ -62,7 +62,7 @@
 
 
 \oddsidemargin 0in \evensidemargin 0in \marginparwidth 40pt
-\marginparsep 10pt \topmargin 0pt \headsep 0in \headheight 0in
+\marginparsep 10pt \topmargin 0pt \headsep 15pt \headheight 15pt
 \textheight 8.5in \textwidth 6.5in \brokenpenalty=10000
 
 \usepackage{amssymb}
@@ -93,7 +93,7 @@ citecolor=pink}
 \usepackage{enumerate}
 %\usepackage{natbib}
 %\usepackage{url}
-
+\usepackage{environ} % for salign
  
 \definecolor{codegreen}{rgb}{0.3,0.6,0.4}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -262,6 +262,8 @@ citecolor=pink}
 \newcommand{\Lp}{{\mathsf{Lp}}}
 \newcommand{\Sdp}{{\mathsf{Sdp}}}
 \newcommand{\Exp}{{\mathsf{Exp}}}
+\def\argmin#1{\mathop{\arg\min}\limits_{#1}}
+\def\argmax#1{\mathop{\arg\max}\limits_{#1}}
 
 % Distributions
 \newcommand{\Normal}{{\mathrm{N}}}
@@ -386,6 +388,7 @@ citecolor=pink}
 \newcommand{\baq}{{\boldsymbol\theta}}
 \newcommand{\bax}{{\boldsymbol\xi}}
 \newcommand{\bad}{{\boldsymbol\delta}}
+\newcommand{\bal}{{\boldsymbol\lambda}}
 \newcommand{\baL}{{\boldsymbol\Lambda}}
 \newcommand{\baG}{{\boldsymbol\Gamma}}
 \newcommand{\baP}{{\boldsymbol\Pi}}
@@ -418,6 +421,7 @@ citecolor=pink}
 \def\mbk#1{\left[ {#1}\right]}
 \def\cbk#1{\left\{ {#1}\right\}}
 \def\abs#1{\left\lvert#1\right\rvert}
+\newcommand\littlenorm[1]{\lVert#1\rVert}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 %% statistical inference 
 % \def\simiid{\stackrel{\mathrm{iid}}{\sim}}
@@ -432,8 +436,10 @@ citecolor=pink}
 \def\Col{\mathrm{Col}}
 \renewcommand{\vec}{{\mathrm{vec}}}
 \def\tr{\mathrm{tr}}
-
-
+\def\RSS{\mathrm{RSS}}
+\def\WLS{\mathrm{WLS}}
+\def\MLE{\mathrm{MLE}}
+\def\SSE{\mathrm{SSE}}
 
 %% colors
 \def\blue#1{\textcolor{blue}{#1}}
@@ -465,105 +471,221 @@ citecolor=pink}
              \begin{equation}}
 {\end{equation}}
 
-% \newenvironment{salign*}
-%   {\setlength\abovedisplayskip{0.15cm}
-%              \setlength\belowdisplayskip{0.15cm}
-%              \begin{align*}}
-% {\end{align*}}
+\NewEnviron{salign}{%
+  {%
+    \setlength{\abovedisplayskip}{0.15cm}%
+    \setlength{\belowdisplayskip}{0.15cm}%
+    \setlength{\jot}{0.2cm}%
+    \begin{align}
+      \BODY
+    \end{align}%
+  }%
+}
 
-% \newenvironment{salign}
-%   {\setlength\abovedisplayskip{0.15cm}
-%    \setlength\belowdisplayskip{0.15cm}
-%    \begin{align}}
-% {\end{align}}
+\NewEnviron{salign*}{%
+  {%
+    \setlength{\abovedisplayskip}{0.15cm}%
+    \setlength{\belowdisplayskip}{0.15cm}%
+    \setlength{\jot}{0.2cm}%
+    \begin{align*}
+      \BODY
+    \end{align*}%
+  }%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Color boxes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtcolorbox{defbox}{
+\newtcolorbox{defbox}[2][]{%
+    enhanced,
+    breakable,
     colback = blue!5!white,
     colframe = blue!75!black,
-    boxrule = 1.5pt,
+    boxrule=1.5pt,
     rounded corners,
-    arc = 5pt,   % corners roundness
-    breakable,
-    pad at break*=1mm,
-    % boxsep=1pt,
+    arc=5pt,
     left=3pt,
     right=3pt,
     top=1pt,
-    bottom=1pt
+    bottom=1pt,
+    % Settings for the header (title)
+    attach boxed title to top left={xshift=0mm,yshift=-2mm},
+    boxed title style={%
+        colback=blue!75!black,  % Header background color
+        colframe=blue!75!black,
+        boxrule=0pt,
+        sharp corners,
+        rounded corners,
+        left=3pt,
+        right=3pt,
+        top=0pt,
+        bottom=0pt,
+        boxsep=1.3pt
+    },
+    title={#2},
+    before upper=\vspace{1.5mm},
+    #1
 }
 
-\newtcolorbox{thmbox}{
+\newtcolorbox{thmbox}[2][]{%
+    enhanced,
+    breakable,
     colback=red!5!white,
-    colframe = red!75!black,
-    boxrule = 1.5pt,
+    colframe=red!75!black,
+    boxrule=1.5pt,
     rounded corners,
-    arc = 5pt,   
-    breakable,
-    pad at break*=1mm,
+    arc=5pt,
     left=3pt,
     right=3pt,
     top=1pt,
-    bottom=1pt
+    bottom=1pt,
+    % Settings for the header (title)
+    attach boxed title to top left={xshift=0mm,yshift=-2mm},
+    boxed title style={%
+        colback=red!75!black,  % Header background color
+        colframe=red!75!black,
+        boxrule=0pt,
+        sharp corners,
+        rounded corners,
+        left=3pt,
+        right=3pt,
+        top=0pt,
+        bottom=0pt,
+        boxsep=1.3pt
+    },
+    title={#2},
+    before upper=\vspace{1.5mm},
+    #1
 }
 
-\newtcolorbox{assbox}{
-    colback=violet!5!white,
-    colframe = violet!75!black,
-    boxrule = 1.5pt,
+\newtcolorbox{assbox}[2][]{%
+  enhanced,
+  breakable,
+  colback=violet!5!white,
+  colframe=violet!75!black,
+  boxrule=1.5pt,
+  rounded corners,
+  arc=5pt,   
+  left=3pt,
+  right=3pt,
+  top=1pt,
+  bottom=1pt,
+  % Header (title) settings
+  attach boxed title to top left={xshift=0mm,yshift=-2mm},
+  boxed title style={%
+    colback=violet!75!black, % header background
+    colframe=violet!75!black,
+    boxrule=0pt,
+    sharp corners,
     rounded corners,
-    arc = 5pt,   
-    breakable,
-    pad at break*=1mm,
     left=3pt,
     right=3pt,
-    top=1pt,
-    bottom=1pt
+    top=0pt,
+    bottom=0pt,
+    boxsep=1.3pt
+  },
+  title={#2},
+  before upper=\vspace{1.5mm},
+  #1
 }
 
-\newtcolorbox{egbox}{
-    colback=green!25!black!10!white,
-    colframe = green!75!black,
-    drop fuzzy shadow,
-    boxrule = 1.5pt,
+
+\newtcolorbox{egbox}[2][]{%
+  enhanced,
+  breakable,
+  colback=green!25!black!10!white,
+  colframe=green!75!black,
+  drop fuzzy shadow,
+  boxrule=1.5pt,
+  rounded corners,
+  arc=5pt,
+  left=3pt,
+  right=3pt,
+  top=1pt,
+  bottom=1pt,
+  % Header (title) settings
+  attach boxed title to top left={xshift=0mm,yshift=-2mm},
+  boxed title style={%
+    colback=green!75!black, % header background
+    colframe=green!75!black,
+    boxrule=0pt,
+    sharp corners,
     rounded corners,
-    arc = 5pt,
-    breakable,
-    pad at break*=1mm,
     left=3pt,
     right=3pt,
-    top=1pt,
-    bottom=1pt
+    top=0pt,
+    bottom=0pt,
+    boxsep=1.3pt
+  },
+  title={#2},
+  before upper=\vspace{1.5mm},
+  #1
 }
 
-\newtcolorbox{exbox}{
-    sharpish corners, % better drop shadow
-    boxrule = 0pt,
-    toprule = 4.5pt, % top rule weight
-    enhanced,
-    fuzzy shadow = {0pt}{-2pt}{-0.5pt}{0.5pt}{black!35},
-    breakable,
-    pad at break*=1mm,
+
+\newtcolorbox{exbox}[2][]{%
+  enhanced,
+  breakable,
+  sharpish corners,
+  boxrule=0pt,
+  toprule=4.5pt, % if you want to retain this for the body
+  fuzzy shadow = {0pt}{-2pt}{-0.5pt}{0.5pt}{black!35},
+  pad at break*=1mm,
+  left=3pt,
+  right=3pt,
+  top=1pt,
+  bottom=1pt,
+  coltitle=black, % set title text color to black
+  % Header (title) settings
+  attach boxed title to top left={xshift=0mm,yshift=-2mm},
+  boxed title style={%
+    colback=gray!20, 
+    colframe=gray!20,
+    boxrule=0pt,
+    sharp corners,
     left=3pt,
     right=3pt,
-    top=1pt,
-    bottom=1pt
+    top=0pt,
+    bottom=0pt,
+    boxsep=1.3pt
+  },
+  title={#2},
+  before upper=\vspace{1.5mm},
+  #1
 }
 
-\newtcolorbox{pfbox}{
-    sharpish corners, % better drop shadow
-    boxrule = 0pt,
-    enhanced,
-    fuzzy shadow = {0pt}{-2pt}{-0.5pt}{0.5pt}{black!35},
-    breakable,
-    pad at break*=1mm,
+\newtcolorbox{pfbox}[2][]{%
+  enhanced,
+  breakable,
+  sharpish corners,
+  boxrule=0pt,
+  fuzzy shadow={0pt}{-2pt}{-0.5pt}{0.5pt}{black!35},
+  pad at break*=1mm,
+  left=3pt,
+  right=3pt,
+  top=1pt,
+  bottom=1pt,
+  coltitle=black,
+  % Header (title) settings
+  attach boxed title to top left={xshift=0mm,yshift=-2mm},
+  boxed title style={%
+    colback=gray!20,
+    colframe=gray!20,
+    boxrule=0pt,
+    sharp corners,
     left=3pt,
     right=3pt,
-    top=1pt,
-    bottom=1pt
+    top=0pt,
+    bottom=0pt,
+    boxsep=1.3pt
+  },
+  title={#2},
+  before upper=\vspace{1.5mm}, % add vertical space before the content
+  #1
 }
+
+\newcommand{\bg}[1]{\begin{tcolorbox}[boxrule=0pt]
+  #1 \end{tcolorbox}}
 
 
 \newtcbtheorem[auto counter,number within=section]{defboxt}%
@@ -587,6 +709,17 @@ citecolor=pink}
             arc = 5pt,
             breakable,
             pad at break*=1mm}{thm}
+
+\newtcbtheorem[auto counter,number within=section]{assboxt}%
+{Theorem}{fonttitle=\bfseries\upshape, 
+          fontupper=\slshape,
+          colback=violet!5!white,
+          colframe=violet!75!black,
+          boxrule = 1.5pt,
+          rounded corners,
+          arc = 5pt,
+          breakable,
+          pad at break*=1mm}{thm}
 
 \newtcbtheorem[auto counter,number within=section]{egboxt}%
   {Example}{fonttitle=\bfseries\upshape, 

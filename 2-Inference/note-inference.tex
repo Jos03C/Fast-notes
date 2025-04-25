@@ -26,7 +26,13 @@
 %#############################################################
 
 \chapter{Preliminary}\label{chap:premi}
-
+\section{Distributions}
+\subsection{$\chi^2$ distribution}
+Let $X\sim\chi_k^2$, then if $m>-k/2$, the moment $\bbE(X^m)$ exists and is equal to:
+\begin{sequation}\label{eq:chi2_moment}
+	\bbE(X^m)=2^m\frac{\Gamma\left(\frac{k}{2}+m\right)}{\Gamma\left(\frac{k}{2}\right)}.
+\end{sequation}  
+See \href{https://statproofbook.github.io/P/chi2-mom.html}{[link]} for the proof.
 
 \chapter{Statistical inference fundamentals}\label{chap:stat-inf}
 
@@ -36,8 +42,8 @@ References: most of the contents are from the undergraduate course STA3020 (by P
 \section{Statistical Models}
 See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \bbP_*$, where $\bbP_*$ refers to the unknown \red{data generating process} (DGPg), we find $\widehat{\bbP}\approx \bbP_*$. A \red{statistical model} is a set of distributions $\scrF=\{\bbP_{\theta}:\theta\in\Theta\}$, where $\Theta$ is the \red{parameter space}. A \red{parametric model} is the model with $\dim(\Theta)<\infty$, while a \red{nonparametric model} satisfies $\dim(\Theta)=\infty$. 
 
-\begin{defbox}
-	\begin{definition}[\textbf{Exponential family}]\label{def:exp-family}
+\begin{defbox}{Exponential family}
+	\begin{definition}\label{def:exp-family}
 		A k-dimensional \red{exponential family} (EF) $\scrF=\{f_\theta:\theta\in\Theta\}$ is a model consisting of pdfs of the form
 		\begin{equation}\label{eq:exp-family-pdf}
 			f_\theta(x)=c(\theta)h(x)\exp\left\{\sum_{j=1}^k\eta_j(\theta)T_j(x)\right\}
@@ -61,8 +67,8 @@ See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \bbP_*$, whe
 	\item \red{Stein's identity}:
 \end{itemize}
 
-\begin{defbox}
-	\begin{definition}[\textbf{Location-scale family}]\label{def:ls-family}
+\begin{defbox}{Location-scale family}
+	\begin{definition}\label{def:ls-family}
 		Let $f$ be a density. 
 		\begin{itemize}
 			\item A \red{location-scale family} is given by $\scrF=\{f_{\mu,\sigma}:\mu \in\bbR, \sigma\in\bbR^{++}\}$, where $f_{\mu,\sigma}(x)= f\left({(x-\mu)}/\sigma\right)/\sigma$.
@@ -79,8 +85,8 @@ See Chapter 3 of \cite{casella2002statistical}. Suppose $X_i\simiid \bbP_*$, whe
 \end{itemize}
 
 
-\begin{defbox}
-	\begin{definition}[\textbf{Identifiable family}]\label{def:id-family}
+\begin{defbox}{Identifiable family}
+	\begin{definition}\label{def:id-family}
 		If $\forall \theta_1,\theta_2\in\Theta$ that    
 		\begin{equation*}
 			\theta_1\neq\theta_2\quad\Rightarrow\quad f_{\theta_1}(\cdot)\neq f_{\theta_2}(\cdot),
@@ -102,8 +108,8 @@ A typical feature of non-identifiable EF is that $p=\dim(\Theta)>k$. Typically,
 \subsection{Sufficiency Principle}\label{sec:prin-data-reduce-suff}
 \textbf{Sufficiency principle}: If $T=T(X_{1:n})$ is a ``sufficient statistics'' for $\theta$, then any inference on $\theta$ will depend on $X_{1:n}$ only through $T$.
 
-\begin{defbox}
-	\begin{definition}[\textbf{Sufficient, minimal sufficient, ancillary, and complete statistics}]\label{def:stat-SS-MSS-ANS-CS}
+\begin{defbox}{Sufficient, minimal sufficient, ancillary, and complete statistics}
+	\begin{definition}\label{def:stat-SS-MSS-ANS-CS}
 		Suppose $X_{1:n}\simiid \bbP_{\theta}$, where $\theta\in\Theta$. Let $T=T(X_{1:n})$ be a statistic. Then $T$ is \red{sufficient} (SS) for $\theta$
 		\begin{itemize}
 			\item[$\Leftrightarrow$] (def) $[X_{1:n}\mid T=t]$ is free of $\theta$ for each $t$.
@@ -166,13 +172,13 @@ Reference:
 	\item Robb J. Muirhead - Aspects of multivariate statistical theory \cite{muirhead1982aspects}.
 	\item CUHK STAT4002 - Applied Multivariate Analysis (2023 Spring), by Zhixiang Lin.
 	\item CUHK STAT5030 - Linear Models (2025 Spring), by Yuanyuan Lin.
-	\item Peng DING - Linear Model and Extensions.
+	\item Peng Ding - Linear Model and Extensions.
 	\item Ronald Christensen - Plane answers to
 	complex questions: the theory of linear models \cite{christensen2002plane}.
 \end{itemize}
 
 \section{Random vectors and distributions}\label{sec:random_vector}
-\begin{defbox}
+\begin{defbox}{}
 	\begin{definition}\label{def:random_vector_moments}
 		Let $\x=(x_1,\ldots, x_p)^\TT\in\bbR^p$ be a random vector, 
 		\begin{itemize}
@@ -188,7 +194,7 @@ Reference:
 	\end{definition}
 \end{defbox}
 
-\begin{thmbox}
+\begin{thmbox}{}
 	\begin{proposition}\label{prop:random_vector_moments}
 		Let $\x\in\bbR^p$ be a random vector, $\a,\b\in\bbR^p$ be vectors, $A\in\bbR^{r_1\times p},B\in\bbR^{r_2\times p}$ be matrices,  
 		\begin{itemize}
@@ -211,7 +217,7 @@ Reference:
 	\item If $\Sigma$ is not PD, then $\exists \a\neq\0_p$ s.t. $\Var(\a^\TT \x)=0$ so w.p.1., $\a^\TT \x=k$, i.e., $\x$ lies in a hyperplane.     
 \end{itemize}
 
-\begin{thmbox}
+\begin{thmbox}{}
 	\begin{theorem}\label{thm:rv_uni_linearFun}
 		If $\x\in\bbR^p$ random, then its distribution is uniquely determined by the distributions of $\a^\TT \x$, $\forall \a\in\bbR^p$.  
 	\end{theorem}
@@ -220,7 +226,7 @@ The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined b
 
 
 
-\begin{defbox}
+\begin{defbox}{}
 	\begin{definition}\label{def:sample_mean_etc}
 		Dataset contains $p$ variables and $n$ observations are represented by 
 		$\X = (\x_{1},\ldots,\x_n)^\TT$, where the $i$th row $\x_i^\TT=(x_{i1},\ldots,x_{ip})$ is the $i$th observation vector, $i=1,\ldots,n$. 
@@ -243,13 +249,13 @@ The proof uses the fact that a distribution in $\bbR^p$ is uniquely determined b
 \end{itemize}
 
 \subsection{Multivariate normal distribution}\label{sec:mult_normal}
-\begin{defbox}
-	\begin{definition}[Original definition of multivariate normal]\label{def:oridef_multi_normal}
+\begin{defbox}{Original definition of multivariate normal}
+	\begin{definition}\label{def:oridef_multi_normal}
 		The random vector $\x\in\bbR^p$ is said to have an $p$-variate normal distribution ($\x\sim\rmN_p$) if $\forall \a\in\bbR^p$, the distribution of $\a^\TT\x$ is univariate normal.  
 	\end{definition}
 \end{defbox}
-\begin{thmbox}
-	\begin{theorem}[Fundamental properties]\label{thm:multi_normal}
+\begin{thmbox}{Fundamental properties}
+	\begin{theorem}\label{thm:multi_normal}
 		Let $\x\sim\rmN_p$, we have
 		\begin{enumerate}
 			\item Both $\bam=\bbE\x$ and $\Sigma=\Cov(\x)$ exist and the distribution of $\x$ is determined by $\bam$ and $\Sigma$. Write $\x\sim\rmN_p(\bam,\Sigma)$. 
@@ -272,8 +278,8 @@ Note that we guarantee the existence of $\rmN_p(\bam,\Sigma)$ by means of the re
 \end{sequation*}
 then $\x\sim\rmN_p(A^{-1}B,A^{-1})$.
 
-\begin{thmbox}
-	\begin{theorem}[Properties of multivariate normal]\label{thm:multi_normal_prop}
+\begin{thmbox}{Properties of multivariate normal}
+	\begin{theorem}\label{thm:multi_normal_prop}
 		If $\x\sim\rmN_p(\bam,\Sigma)$, then we have 
 		\begin{enumerate}
 			\item (\red{Linearity}) Let $B\in\bbR^{q\times p}, \b\in\bbR^{q}$ nonrandom, and $B\Sigma B^\TT\succ \0$, then $B\x+\b \sim \rmN_q (B\bam+\b,B\Sigma B^\TT)$.  
@@ -310,8 +316,8 @@ then $\ker(\Sigma_{22})\subset \ker(\Sigma_{12})$, and $\range(\Sigma_{21})\subs
 So $\exists B\in\bbR^{q\times(p-q)}$ satisfying $\Sigma_{12}=B\Sigma_{22}$.  
 
 \subsubsection{Quadratic form of MVN}\label{sec:quad_MVN}
-\begin{thmbox}
-	\begin{proposition}[MGF]\label{prop:MVN_MGF_quad}
+\begin{thmbox}{MGF}
+	\begin{proposition}\label{prop:MVN_MGF_quad}
 		If $\x\sim\rmN(\bam,\Sigma)$, $A$ is symmetric and $\sigma$ IS non-singular, then 
 		\begin{equation*}
 			M_{\x^\TT\A\x}(t)=|I-2tA\Sigma|^{-\frac{1}{2}}\exp\cbk{-\frac{1}{2}\bam^\TT[I-(I-2t\A\Sigma)^{-1}]{\Sigma}^{-1}\bam}.
@@ -320,8 +326,8 @@ So $\exists B\in\bbR^{q\times(p-q)}$ satisfying $\Sigma_{12}=B\Sigma_{22}$.
 \end{thmbox}
 
 
-\begin{thmbox}
-	\begin{proposition}[Variance]\label{prop:var_MVN_quad}
+\begin{thmbox}{Variance}
+	\begin{proposition}\label{prop:var_MVN_quad}
 		If $\x\sim\rmN(\bam,\Sigma)$, then 
 		\begin{sequation*}
 			\begin{aligned}
@@ -333,8 +339,8 @@ So $\exists B\in\bbR^{q\times(p-q)}$ satisfying $\Sigma_{12}=B\Sigma_{22}$.
 \end{thmbox}
 See Problem B 2.14 in Peng DING. 
 
-\begin{thmbox}
-	\begin{theorem}[Independence of quadratic form]\label{thm:MVN_quad_indep}
+\begin{thmbox}{Independence of quadratic form}
+	\begin{theorem}\label{thm:MVN_quad_indep}
 		Assume $\x\sim N_p(\mu,\Sigma)$. 
 		\begin{enumerate}
 			\item 		For two symmetric matrix $A,B\in\bbR^{p\times p}$, $\x^\TT A \x\indep \x^\TT B\x$ iff  
@@ -348,8 +354,8 @@ See Problem B 2.14 in Peng DING.
 \end{thmbox}
 See Theorem B.11 in Peng DING, and Problem 1.22--1.23 in \cite{muirhead1982aspects}.
 
-\begin{thmbox}
-	\begin{theorem}[Quadratic form of $\Sigma$]\label{thm:quad_MVN}
+\begin{thmbox}{Quadratic form of $\Sigma$}
+	\begin{theorem}\label{thm:quad_MVN}
 		If $\x,\x_{1:N}\simiid\rmN_p(\bam,\Sigma)$, where $\Sigma$ is nonsingular, then 
 		\begin{itemize}
 			\item $(\x-\bam)^\TT \Sigma^{-1}(\x-\bam)\sim\chi_p^2$,
@@ -387,8 +393,8 @@ See Theorem B.11 in Peng DING, and Problem 1.22--1.23 in \cite{muirhead1982aspec
 		\end{enumerate}
 	\end{theorem}
 \end{thmbox}
-\begin{thmbox}
-	\begin{theorem}[Quadratic form of any matrices]\label{thm:quad_MVN_general}If $\x\sim\rmN_p(\bam,\Sigma)$,
+\begin{thmbox}{Quadratic form of any matrices}
+	\begin{theorem}\label{thm:quad_MVN_general}If $\x\sim\rmN_p(\bam,\Sigma)$,
 		\begin{enumerate}
 			\item if $\Sigma$ is nonsingular, $B\in\bbR^{p\times p}$ is symmetric, then $\x^\TT B\x\sim\chi_{k}^2(\delta)$ iff $B\Sigma$ is idempotent (equiv., $B\Sigma B=B$), in which case $k=\rmr(B)$ and $\delta=\bam^\TT B\bam$;
 			
@@ -420,8 +426,8 @@ See Theorem B.11 in Peng DING, and Problem 1.22--1.23 in \cite{muirhead1982aspec
 \section{Asymptotic properties}\label{sec:asym_multi}
 \subsection{Asymptotic distributions of sample means and covariance matrices}\label{sec:asym_multi_sampleMeanCov}
 Refer to section 1.2.2, \cite{muirhead1982aspects}.
-\begin{thmbox}
-	\begin{theorem}[CLT for sample means]\label{thm:CLT_multi_sampleMean_iid}
+\begin{thmbox}{CLT for sample means}
+	\begin{theorem}\label{thm:CLT_multi_sampleMean_iid}
 		Let $\x_{1:n}\simiid[\bam,\Sigma]$, then 
 		\begin{sequation*}
 			\sqrt{n}(\bar{\x}_n-\bam)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}(\x_i-\bam)\dto \rmN_p(\0_p,\Sigma). 
@@ -429,8 +435,8 @@ Refer to section 1.2.2, \cite{muirhead1982aspects}.
 	\end{theorem}
 \end{thmbox}
 
-\begin{thmbox}
-	\begin{theorem}[CLT for sample covariance matrices]\label{thm:CLT_multi_sampleCov_iid}
+\begin{thmbox}{CLT for sample covariance matrices}
+	\begin{theorem}\label{thm:CLT_multi_sampleCov_iid}
 		Let $\x_{1:n}\simiid[\bam,\Sigma]$ with finite fourth moments, SSCP matrix $\A=\sum_{i=1}^{n}(\x_i-\bar{\x})(\x_i-\bar{\x})^\TT$, and $\S=(n-1)^{-1}\A$. Let $V=\Cov[\vec((\x_1-\bam)(\x_1-\bam)^\TT)]$, then 
 		\begin{sequation*}
 			\begin{aligned}
@@ -444,14 +450,376 @@ Note that $V\in\bbR^{p^2\times p^2}$ is singular as the LHS vectors above have r
 
 
 \chapter{Linear Models}\label{chap:linear_models}
+Reference:
+\begin{enumerate}
+	\item CUHK STAT5030 - Linear Models (2025 Spring), by Yuanyuan Lin.
+	\item CUHKSZ STA3001 - Linear Models (2022 Fall), by Zhou Zhou.
+	\item Peng Ding - Linear Model and Extensions.
+\end{enumerate}
 \section{Linear regression for the full-rank model}\label{sec:LR_full_rank}
-Consider the linear model 
-\begin{equation}\label{eq:LR_mat}
-	\Y_{n}=\X_{n\times p}\bab_{p}+\bave_n, \quad \rmr(\X)=p.
-\end{equation}
+\begin{defbox}{Full-rank linear model (fixed design $\X$)}
+	\begin{definition}\label{def:LR_full_rank}
+		\begin{equation}\label{eq:LR_mat}
+			\Y_{n}=\X_{n\times p}\bab_{p}+\bave_n, \quad \rmr(\X)=p,
+		\end{equation}
+		where $(\Y,X)$ is a pair of response, $\X$ is fixed and determistic, $\bab$ is a vector of covariates, and $\bave$ is unobservable error term.   
+		\begin{sequation*}
+			\Y=\begin{pmatrix}
+				y_1 \\ y_2 \\ \vdots \\ y_n
+			\end{pmatrix}, \ 
+			\X=\begin{pmatrix}
+				\x_1^\TT \\ \x_2^\TT \\ \vdots \\ \x_n^\TT
+			\end{pmatrix}=\begin{pmatrix}
+				\X_1 & \ldots & \X_p
+			\end{pmatrix}.
+		\end{sequation*}
+	\end{definition}
+\end{defbox}
+
+\subsection{Ordinary least squares (OLS) estimation}\label{sec:LR_full_rank_OLS}
+
+The \red{\textit{least squares estimate (LSE)}} minimizes 
+\begin{salign*}
+	\hat{\bab}=\argmin{\bab\in\bbR^p}\ L(\bab)\equiv \sum_{i=1}^{n}(y_i-\x_i^\TT\bab)^2 = (\Y-\X\bab)^\TT (\Y-\X\bab),
+\end{salign*}
+which satisfies 
+\begin{salign*}
+	\text{(FONC)} \qquad {\partial L(\bab)}/{\partial\bab}&=-2\X^\TT\Y+2X^\TT X\bab=\0_p, \\ 
+	\textit{(\red{Normal equation})} \qquad \X^\TT \Y&=\X^\TT \X\hat{\bab}.
+\end{salign*}
+As $\X^\TT\X$ has full rank,
+\begin{salign}\label{eq:LR_OLSE}
+	\hat{\bab} = (\X^\TT\X)^{-1}\X^\TT \Y = \sbk{\sum_{i=1}^{n}\x_i\x_i^\TT}^{-1}\sbk{\sum_{i=1}^{n}\x_i y_i}.
+\end{salign} 
+We decompose
+\begin{salign*}
+	\Y=\hat{\Y}+\hat{\bave}, \quad
+	\text{(fitted vector)} \ \hat{\Y}=\X\hat{\bab}, \quad
+	\text{(residual)} \ \hat{\bave}=\Y-\hat{\Y}=\Y-\X\hat{\bab}
+\end{salign*}
 
 
 
+\begin{thmbox}{The geometry of LSE}
+	\begin{proposition}\label{prop:geo_LSE}
+		The OLS problem is to find the vector in $\Col(\X)$ that is the closest to $\Y$.
+		So $\hat{\Y}$ is the projection of $\Y\in\Col(\X)$ onto $\Col(X)$, and the residual $\hat{\bave}\perp\Col(\X)$ algebraically. 
+		\begin{enumerate}
+			\item $\X_j^\TT\hat{\bave}=0 \Longleftrightarrow \X^\TT\hat{\bave}=\0_p \Longleftrightarrow \X^\TT (\Y-\hat{\Y})=\0_p $.
+			\item $\hat{\Y}^\TT\hat{\bave}=0$, the Pythagorean Theorem implies that $\norm{\Y}^2=\littlenorm{\hat{\Y}}^2+\norm{\hat{\bave}}^2$. 
+			\item If $\X$ contains $\1_n$, then $\1_n^\TT \hat{\bave}=0 \Rightarrow n^{-1}\sum_{i=1}^{n}\hat{\varepsilon_i}=0$.
+			\item $\forall \b\in\bbR^{p}$, $(\X\hat{\bab}-\X\b)^\TT \hat{\bave}=0$, we have the following decomposition
+			\begin{sequation*}
+				\|\Y-\X\b\|^2=\|\Y-\X\hat{\bab}\|^2+\|\X(\hat{\bab}-\b)\|^2,
+			\end{sequation*} 
+			which implies that $\|\Y-\X\b\|^2\geq\|\Y-\X\hat{\bab}\|^2$ with equality holding iff $\b=\hat{\bab}$. 
+		\end{enumerate}
+		
+	\end{proposition}
+\end{thmbox}
+Let $\H=\X(\X^\TT \X)^{-1}\X^\TT=(h_{ij})_{1\leq i,j\leq n}$ be the so-called \red{\textit{hat matrix}}.
+
+\begin{salign*}
+	\hat{\bave}= (I_n-\H)\Y, \qquad
+	\hat{\Y}=\H\Y, \qquad \hat{y}_i=h_{ii}y_i+\sum_{j\neq i}h_{ij}y_j.
+\end{salign*}
+$h_{ii}$ is called the \textit{leverage score}. 
+ 
+\begin{thmbox}{Properties of hat matrix $\H$}
+\begin{proposition}\label{prop:OLS_H}\
+	\begin{enumerate}
+		\item $\H$ is symmetric idempotent (projection matrix), so $\H\X=\X$, $(I_n-\H)\X=\0_n$, and $\rmr(\H)=p$.   
+		\item $I_n-\H$ is symmetric idempotent, so $\tr(I_n-\H)=n-p$. 
+		\item $\hat{\bave}^\TT\hat{\bave}=\Y^\TT(I_n-\H)\Y=\Y^\TT\Y-\hat{\bab}^\TT \X^\TT \Y=\tr(\Y\Y^\TT(I_n-\H))$. 
+	\end{enumerate}
+	If $\X=(\1_n,\X_1)^\TT\in\bbR^{n\times (p+1)}$, then 
+	\begin{enumerate}
+		\item $\H\1_n=\1_n\Rightarrow \sum_{j=1}^{n}h_{ij}=1$, $\forall i=1,\ldots,n$.  
+	\end{enumerate}
+\end{proposition}
+\end{thmbox}
+
+\subsubsection{Gauss-Markov model}
+\begin{assbox}{Gauss-Markov model assumption}
+	\begin{assumption}\label{ass:GM_ass}
+		For the linear model in Definition \ref{def:LR_full_rank}, we assume 
+		\begin{sequation}\label{eq:GM_ass_diag}
+			\bbE(\bave)=\0_n, \qquad \Cov(\bave)=\sigma^2 I_n. 
+		\end{sequation}
+		The unknown parameters are $(\bab,\sigma^2)$. 
+	\end{assumption}
+\end{assbox}
+The mean-zero condition is an identifiability condition for the intercept component of $\bab$. 
+\begin{thmbox}{Statistical properties of LSE}
+	\begin{proposition}\label{prop:LR_LSE}
+		Under Assumption \ref{ass:GM_ass}, for the LSE $\hat{\bab}$ in \eqref{eq:LR_OLSE}, we have 
+		\begin{enumerate}
+			\item (Unbiased estimate) $\bbE(\hat{\bab})=\bab$. 
+			\item $\Cov(\hat{\bab})=\sigma^2(\X^\TT\X)^{-1}$.
+			\item $\hat{\Y}$ and $\hat{\bave}$ are uncorrealted:   
+			\begin{sequation*}
+				\bbE \begin{pmatrix}
+					\hat{\Y} \\ \hat{\bave}
+				\end{pmatrix} = \begin{pmatrix}
+					\X\bab \\ \0_n
+				\end{pmatrix}, \qquad \Cov\begin{pmatrix}
+					\hat{\Y} \\ \hat{\bave}
+				\end{pmatrix} = \sigma^2 \begin{pmatrix}
+					\H & \0_{n\times n} \\ \0_{n\times n} & I_n-\H
+				\end{pmatrix} 
+			\end{sequation*}
+			\begin{itemize}
+				\item $\Cov(\hat{y}_i,\hat{y}_j)=\sigma^2 h_{ij}$ and $\Cov(\hat{\varepsilon}_i,\hat{\varepsilon}_j)=-\sigma^2 h_{ij}$ for $i\neq j$.   
+			\end{itemize}
+			\item Let the \red{\textit{residual error sum of squares(RSS)/sum of squares due to error(SSE)}} be
+			\begin{sequation}\label{eq:LR_LSE_SSE}
+				\SSE=\RSS=\hat{\bave}^\TT\hat{\bave}=\sum_{i=1}^n \hat{\varepsilon}_i^2,
+			\end{sequation}
+			then
+			\begin{sequation}\label{eq:LR_LSE_varest}
+				\bbE(\hat{\varepsilon}_i)=\sigma^2(1-h_{ii}), \quad
+				\bbE(\hat{\sigma}^2):=\bbE \cbk{\frac{\RSS}{n-\rmr(\X)}}=\sigma^2. 
+			\end{sequation}  
+		\end{enumerate}
+	\end{proposition}
+\end{thmbox}
+
+\begin{thmbox}{Gauss-Markov theorem}
+	\begin{theorem}\label{thm:GM_OLS}
+		Under Assumption \ref{ass:GM_ass}, the LSE $\hat{\bab}$ for $\bab$ is the \red{best linear unbiased estimator (BLUE)} in the sense that 
+		\begin{sequation*}
+			\Cov(\tilde{\bab})\succeq\Cov(\hat{\bab})
+		\end{sequation*}
+		for $\forall \tilde{\bab}$ satisfying: (C1) $\tilde{\bab}=A\Y$ for some $A\in\bbR^{p\times n}$ not depending on $\Y$; and (C2) $\bbE\tilde{\bab}=\bab$ for any $\bab$.     
+		In the process of the proof, we have that for all such $\tilde{\bab}$, 
+		\begin{salign*}
+			\Cov(\tilde{\bab}-\hat{\bab},\hat{\bab})=\0_p, \qquad \Cov(\tilde{\bab}-\hat{\bab})=\Cov(\tilde{\bab})-\Cov(\hat{\bab}).
+		\end{salign*}
+	\end{theorem}
+\end{thmbox}
+It implies that 
+\begin{salign*}
+	\c^\TT \Cov(\tilde{\bab})\c \geq \c^\TT \Cov(\hat{\bab})\c \quad  \Leftrightarrow \quad & \Var(\c^\TT \tilde{\bab}) \geq \Var(\c^\TT \hat{\bab}),\\
+	& \Var(\tilde{\beta}_j)\geq \Var(\hat{\beta}_j), \ j=1,\ldots,p.
+\end{salign*}
+
+\subsection{Weighted least square (WLS) estimation}\label{sec:LR_full_rank_WLS}
+\begin{assbox}{WLS assumption}
+	\begin{assumption}\label{ass:GM_ass_WLS}
+		For the linear model in Definition \ref{def:LR_full_rank}, we assume 
+		\begin{sequation}\label{eq:GM_ass_WLS}
+			\bbE(\bave)=\0_n, \qquad \Cov(\bave)=\Sigma, 
+		\end{sequation}
+		where $\Sigma\succ\0$ is known. 
+	\end{assumption}
+\end{assbox}
+The \red{\textit{weighted least squares estimator} (WLSE)} or \red{\textit{generalized least squares estimator} (GLSE)} is defined as the minimizer 
+\begin{salign*}
+	\hat{\bab}^{\WLS}=\argmin{\bab\in\bbR^p}\ S(\bab)\equiv (\Y-\X\bab)^\TT\Sigma^{-1}(\Y-\X\bab),
+\end{salign*}
+which satisfies 
+\begin{salign*}
+	\text{(FONC)} \qquad {\partial S(\bab)}/{\partial\bab}&=-2\X^\TT\Sigma^{-1}\Y+2\X^\TT \Sigma^{-1} \X\bab=\0_p, \\ 
+	\textit{({Normal equation})} \qquad \X^\TT\Sigma^{-1} \Y&=\X^\TT\Sigma^{-1}\X\hat{\bab}^{\WLS}.
+\end{salign*}
+As $\X^\TT\Sigma^{-1}\X$ has full rank since $\X$ and $\Sigma^{-1}$ have full rank,
+\begin{salign}\label{eq:LR_WLSE}
+	\hat{\bab}^{\WLS} = (\X^\TT\Sigma^{-1}\X)^{-1}\X^\TT\Sigma^{-1}\Y, \qquad \bbE\hat{\bab}^{\WLS}=\bab.
+\end{salign} 
+
+
+\bg{
+	\begin{remark}
+		\begin{enumerate}
+			\item Another aspect to motivate the WLS: Since $\Sigma\succ\0$, $\Sigma^{-1/2}$ exists and thus 
+			\begin{sequation}\label{eq:LR_WLSE_OLS}
+				\underbrace{\Sigma^{-\frac{1}{2}}\Y}_{\tilde{\Y}}=\underbrace{\Sigma^{-\frac{1}{2}}\X}_{\tilde{\X}}\bab+\underbrace{\Sigma^{-\frac{1}{2}}\bave}_{\tilde{\bave}}., \qquad \hat{\bab}^{\WLS}=(\tilde{\X}^\TT\tilde{\X})^{-1}\tilde{\X}\tilde{\Y}.
+			\end{sequation}  
+			Now $\bbE(\tilde{\bave})=\0_n$ and $\Cov(\tilde{\bave})=I_n$ satisfy Assumption \ref{ass:GM_ass} of the OLS.  
+			
+			\item Theorem \ref{thm:GM_OLS} states that the LSE with $\Sigma=I_n$ has the smallest covariance matrix under the Gauss-Markov model.
+		\end{enumerate}
+	\end{remark}
+}
+
+\begin{thmbox}{WLS version of Gauss-Markov theorem}
+	\begin{corollary}\label{cor:GM_WLS}
+		Under Assumption \ref{ass:GM_ass_WLS}, the WLSE $\hat{\bab}^{\WLS}$ for $\bab$ is the BLUE: 
+		\begin{sequation*}
+			\Cov(\tilde{\bab})\succeq\Cov(\hat{\bab}^{\WLS})
+		\end{sequation*}
+		for $\forall \tilde{\bab}$ satisfying: (C1) $\tilde{\bab}=A\Y$ for some $A\in\bbR^{p\times n}$ not depending on $\Y$; and (C2) $\bbE\tilde{\bab}=\bab$ for any $\bab$.     
+		For all such $\tilde{\bab}$, 
+		\begin{salign*}
+			\Cov(\tilde{\bab}-\hat{\bab}^{\WLS},\hat{\bab}^{\WLS})=\0_p, \qquad \Cov(\tilde{\bab}-\hat{\bab}^{\WLS})=\Cov(\tilde{\bab})-\Cov(\hat{\bab}^{\WLS}).
+		\end{salign*}
+	\end{corollary}
+\end{thmbox}
+\bg{
+	\begin{remark}
+		Let $\t\in\bbR^p$, by similar technique, the BLUE of $\t^\TT \bab$ is $\t^\TT \hat{\bab}^{\WLS}$, i.e., for any ${\bal}\in\bbR^{p}$ satisfies $\bbE(\bal^\TT\Y)=\t^\TT\bab$, we have 
+		\begin{sequation*}
+			\Var(\bal^\TT\Y)\geq \Var(\t^\TT\hat{\bab}^{\WLS})=\Var(\t^\TT (\X^\TT\Sigma^{-1}\X)^{-1}\X^\TT\Sigma^{-1}\Y).
+		\end{sequation*} 
+	\end{remark}
+}
+    
+
+\subsection{LS theory of random-effect model}
+\begin{defbox}{Full-rank linear model (random effect)}
+	\begin{definition}\label{def:LR_full_rank_random_effect}
+		\begin{equation}\label{eq:LR_mat_random_effect}
+			\underset{n}{\Y}=\underset{n\times k}{\X} \underset{k}{\b} +\underset{n}{\e},
+		\end{equation}
+		where $\{Y_i,b_i,e_i\}_{i=1}^n$ are iid copies of $(Y,b,e)$,
+		and $\bbE\b=\baq$ and $\Cov(\b)=\F$, $baq\in\bbR^k$ and $\F\in\bbR^{k\times k}$ PD. Also assume  
+		\begin{sequation*}
+			\bbE(\e\mid\b)=\0, \quad \Cov(\e\mid\b)=\V.
+		\end{sequation*}    
+	\end{definition}
+\end{defbox}
+We want to find the BLUE of $\p^\TT\b$ where $\p\in\bbR^k$ is given.
+\begin{salign*}
+	\bbE\Y &= \bbE\{\bbE(\Y\mid\b)\}=\X\baq,\\
+	\Var(\Y) &= \bbE\{\Var(\boldsymbol{Y}\mid\boldsymbol{b})\}+\Var\{\bbE(\boldsymbol{Y}|\boldsymbol{b})\}=\V+\boldsymbol{X}\boldsymbol{F}\boldsymbol{X}^\top, \\
+	\Cov(\boldsymbol{Y},\boldsymbol{p}^\top\boldsymbol{b})&=\bbE\{\Cov(\boldsymbol{Y},\boldsymbol{p}^\top\boldsymbol{b}|\boldsymbol{b})\}+\Cov[\bbE(\boldsymbol{Y}|\boldsymbol{b}),\boldsymbol{p}^\top\boldsymbol{b}]=\boldsymbol{X}\boldsymbol{F}\boldsymbol{p}.
+\end{salign*}  
+
+\subsection{Normal linear model: MLE}\label{sec:LR_full_rank_normal}
+\begin{assbox}{Normal linear model}
+	\begin{assumption}\label{ass:normal_linear}
+		For the linear model in Definition \ref{def:LR_full_rank}, we assume $\bave\sim\rmN_n(\0_n,\sigma^2 I_n)$. 
+		The unknown parameters are $(\bab,\sigma^2)$.  
+	\end{assumption}
+\end{assbox}
+By Assumption \ref{ass:normal_linear}, we have 
+\begin{salign*}
+	\Y\sim\rmN_n(\X\bab,\sigma^2 I_n)\qquad \Longleftrightarrow\qquad y_i\simiid \rmN(\x_i^\TT\bab,\sigma^2),\ i=1,\ldots,n.
+\end{salign*}
+The likelihood function is 
+\begin{sequation*}
+	L(\bab,\sigma^2)=\left(\frac{1}{2\pi\sigma^2}\right)^{\frac{n}{2}}\exp\cbk{-\frac{1}{2\sigma^2}(\Y-\X\bab)^\top(\Y-\X\bab)}.
+\end{sequation*}
+By setting
+\begin{salign*}
+	\frac{\partial\log L}{\partial\bab}&=\frac{1}{\sigma^2}(\boldsymbol{X}^\top\boldsymbol{Y}-\boldsymbol{X}^\top\boldsymbol{X}\boldsymbol{\beta})=\0_p, \qquad \frac{\partial\log L}{\partial\sigma^2}=-\frac{n}{2\sigma^2}+\frac{1}{2\sigma^4}(\Y-\X\bab)^\top(\Y-\X\bab)=0,
+\end{salign*}
+the MLE of $\bab$ and $\sigma^2$ are 
+\begin{salign}\label{eq:LR_full_rank_MLE}
+	\hat{\bab}=\hat{\bab}^{\MLE}&=(\X^\TT\X)^{-1}\X^\TT\Y, \qquad {\hat{\sigma}^{2\MLE}}=\frac{1}{n}(\Y-\X\hat{\bab}^{\MLE})^{\TT}(\Y-\X\hat{\bab}^{\MLE})=\frac{1}{n}\Y^{\TT}(I_n-\H)\Y,
+\end{salign}  
+that is, LSE is the MLE.
+Note that ${\hat{\sigma}^{2\MLE}}$ is biased for finite $n$. 
+\begin{thmbox}{Properties under normal assumption}
+	\begin{proposition}\label{prop:LR_full_rank_normal_prop} The MLE \eqref{eq:LR_full_rank_MLE} has the following properties:
+		\begin{enumerate}
+			\item $\hat{\bab}^{\MLE}\sim\rmN_p(\bab,(\X^\TT\X)^{-1}\sigma^2)$. 
+			\item The MLE/LSE $\hat{\bab}$ and SSE \eqref{eq:LR_LSE_SSE} are independent.
+			\item Recall the variance estimator $\hat{\sigma}=\SSE/(n-\rmr(\X))$ in \eqref{eq:LR_LSE_varest}, we have \begin{salign*}
+				\frac{\SSE}{\sigma^2}\sim\chi_{n-\rmr(\X)}^2, \quad \text{ or } \quad \frac{(n-\rmr(\X))\hat{\sigma}^2}{\sigma^2}\sim\chi_{n-\rmr(\X)}^2.
+			\end{salign*}
+			\begin{itemize}
+				\item $\bbE\hat{\sigma}=\sqrt{\frac{2\sigma^2}{n-p}}\frac{\Gamma((n-p+1)/2)}{\Gamma((n-p)/2)}$, and $\bbE(\hat{\sigma}^{-2})=\frac{n-p}{2\sigma^2}\frac{\Gamma((n-p-2)/2)}{\Gamma((n-p)/2)}$.
+			\end{itemize}
+		\end{enumerate}
+	\end{proposition}
+\end{thmbox}
+
+\subsection{Proofs}\label{sec:LR_full_rank_proof}
+\begin{pfbox}{Proof of Proposition \ref{prop:LR_LSE}}
+	\begin{proof}
+		1.
+		\begin{salign*}
+			\bbE(\hat{\bab})=\bbE((\X^\TT\X)^{-1}\X^\TT\Y)=(\X^\TT\X)^{-1}\X^\TT \bbE(\Y)=(\X^\TT\X)^{-1}\X^\TT\X\bab=\bab.
+		\end{salign*}
+
+		2.
+		\begin{salign*}
+			\Cov(\hat{\bab})&=\Cov((\boldsymbol{X}^\top\boldsymbol{X})^{-1}\boldsymbol{X}^\top\boldsymbol{Y})=(\boldsymbol{X}^\top\boldsymbol{X})^{-1}\boldsymbol{X}^\top \Cov(\boldsymbol{Y})\boldsymbol{X}(\boldsymbol{X}^\top\boldsymbol{X})^{-1}\\
+			&=\sigma^2(\X^\top \X)^{-1}\X^\top I_n \X(\X^\top \X)^{-1}=\sigma^2(\X^\top \X)^{-1}.
+		\end{salign*}
+
+		3. 
+			\begin{salign*}
+				\bbE\begin{pmatrix}\hat{\Y}\\\hat{\bave}\end{pmatrix}&= \begin{pmatrix}\H\\I_n-\H\end{pmatrix}\bbE(\Y)
+				=\begin{pmatrix}\H\\I_n-\H\end{pmatrix}\X\bab
+				=\begin{pmatrix}\H\X\bab\\(I_n-\H)\X\bab\end{pmatrix}=\begin{pmatrix}\X\bab\\\0_{n}\end{pmatrix}.
+			\end{salign*}
+			\begin{salign*}\Cov\begin{pmatrix}{\hat{\Y}}\\{\hat{\bave}}\end{pmatrix}
+				&=\begin{pmatrix}
+					\H\\I_n-\H
+				\end{pmatrix}\Cov(\Y)\begin{pmatrix}\H^\TT&(I_n-\H)^\TT\end{pmatrix}
+				=\sigma^2\begin{pmatrix}\H\\I_n-\H\end{pmatrix}
+				\begin{pmatrix}\H&I_n-\H\end{pmatrix}
+				\\
+				&\left.=\sigma^2\left(\begin{array}{cc}\H^2&\H(I_n-\H)\\(I_n-\H)\H&(I_n-\H)^2\end{array}\right.\right)=\sigma^2\begin{pmatrix}\H&\0\\\0 &I_n-\H\end{pmatrix},\end{salign*}
+
+		4. By item 3, $\bbE(\hat{\varepsilon}_i)=\sigma^2(1-h_{ii})$, hence $\bbE(\RSS)=\sum_{i=1}^{n}\sigma^2(1-h_{ii})=\sigma^2\{n-\tr(H)\}=\sigma^2(n-p)$. Alternatively, we can directly show  
+			\begin{salign*}
+				\bbE(\hat{\boldsymbol{\varepsilon}}^\top\hat{\boldsymbol{\varepsilon}})=\bbE(\boldsymbol{Y}^\top(I_n-\boldsymbol{H})\boldsymbol{Y})
+				=\tr((\I_n-\boldsymbol{H}){\Sigma})+\boldsymbol{\beta}^\top\boldsymbol{X}^\top(I_n-\boldsymbol{H})\boldsymbol{X}\bab
+				=\sigma^2\tr(I_n-\H)=\sigma^2(n-p).
+			\end{salign*}
+	\end{proof}
+\end{pfbox}
+
+\begin{pfbox}{Proof of Theorem \ref{thm:GM_OLS}}
+	\begin{proof}
+		We must verify that the OLS estimator itself satisfies (C1) and (C2). We have $\hat{\bab} = \hat{A}\Y$ with $\hat{A} = (\X^\TT \X)^{-1}\X^\TT$, and it is unbiased by Proposition \ref{prop:LR_LSE}.
+
+		First, the unbiasedness requirement implies that
+		\begin{salign*}
+			\bbE(\tilde{\bab}) = \bab \implies \bbE({A}\Y) = A \bbE(\Y) = A\X\bab = \bab \implies  A\X\bab=\bab, \quad \forall \bab.
+		\end{salign*}
+		So $A\X=I_p$ must hold.
+		In particular, the OLS estimator satisfies $\hat{A}\X = (\X^\TT\X)^{-1}\X^\TT\X = I_p$.
+
+		Second, we can decompose the covariance of $\tilde{\bab}$ as
+		\begin{salign*}
+			\Cov(\tilde{\bab})&=\Cov(\hat{\bab}+\tilde{\bab}-\hat{\bab})\\
+			&=\Cov(\hat{\bab})+\Cov(\tilde{\bab}-\hat{\bab})+\Cov(\hat{\bab},\tilde{\bab}-\hat{\bab})+\Cov(\tilde{\bab}-\hat{\bab},\hat{\bab}).
+		\end{salign*}
+		The last two terms are in fact zero. By symmetry, we only need to show that the third term is zero:
+		\begin{salign*}
+			\Cov(\hat{\bab},\tilde{\bab}-\hat{\bab}) &= \Cov\{\hat{A}\Y,(A-\hat{A})\Y\}=\sigma^2 \hat{A}(A-\hat{A})^{\TT}\\
+			&=\sigma^2(\hat{A}A^\TT-\hat{A} \hat{A}^\TT)\\
+			&=\sigma^2\left\{(\X^\TT\X)^{-1}\X^\TT A^\TT-(\X^\TT\X)^{-1}\X^\TT\X(\X^\TT\X)^{-1}\right\}\\
+			&=\sigma^2\{(\X^\TT \X)^{-1} I_p - (\X^\TT\X)^{-1}\}=\0_p.
+		\end{salign*}
+		The above covariance decomposition simplifies to
+		\begin{sequation*}
+			\Cov(\tilde{\bab})=\Cov(\hat{\bab})+\Cov(\tilde{\bab}-\hat{\bab}),
+		\end{sequation*}
+		which implies 
+		\begin{sequation*}
+			\Cov(\tilde{\bab})-\Cov(\hat{\bab})=\Cov(\tilde{\bab}-\hat{\bab})\succeq \0.
+		\end{sequation*}
+	\end{proof}
+\end{pfbox}
+
+\begin{pfbox}{Proof of Corollary \ref{cor:GM_WLS}}
+	\begin{proof}
+		The WLSE satisfies conditions (C1)--(C2).
+		We write WLS in the form of OLS \eqref{eq:LR_WLSE_OLS} such that $\hat{\bab}^{\WLS}=(\tilde{\X}^\TT\tilde{\X})^{-1}\tilde{\X}\tilde{\Y}$. 
+		Then by Theorem \ref{thm:GM_OLS}, 
+		\begin{sequation*}
+			\Cov(\tilde{\bab}')\succeq \Cov(\hat{\bab}^{\WLS})
+		\end{sequation*}
+		for all $\tilde{\bab}'$ satisfying: (1) $\tilde{\bab}'=\tilde{A}\tilde{\Y}$ for some $\tilde{A}\in\bbR^{p\times n}$ not depending on $\tilde{\Y}$; and (2) $\bbE\tilde{\bab}'=\bab$.
+		Suppose $\tilde{\bab}$ satisfies: (C1) $\tilde{\bab}=A\Y$ for some $A\in\bbR^{p\times n}$ not depending on $\Y$; and (C2) $\bbE\tilde{\bab}=\bab$.
+		Then $\tilde{\bab}=(A\Sigma^{1/2})\Sigma^{-1/2}\Y=(A\Sigma^{1/2})\tilde{\Y}$, i.e. satisfying (1); and (2) is satisfied by definition. 
+		So 
+		\begin{sequation*}
+			\Cov(\tilde{\bab})\succeq \Cov(\hat{\bab}^{\WLS}).
+		\end{sequation*}
+	\end{proof}
+\end{pfbox}
+
+\begin{pfbox}{Proof of Proposition \ref{prop:LR_full_rank_normal_prop}}
+	\begin{proof}
+		Item 1 is obvious. Item 2 applies Theorem \ref{thm:MVN_quad_indep}. Item 3 uses Theorem \ref{thm:quad_MVN_general} to show the $\chi^2$ distribution and \eqref{eq:chi2_moment} to show the moments. 
+	\end{proof}
+\end{pfbox}
 \section{Ridge regression}\label{sec:ridge_reg}
 
 
@@ -489,8 +857,8 @@ Reference:
 	\item It gives better assessments on the interrelationships of latent constructs.
 \end{itemize}
 
-\begin{defbox}
-	\begin{definition}[\textbf{Linear SEMs}]\label{def:linearSEM}
+\begin{defbox}{Linear SEMs}
+	\begin{definition}\label{def:linearSEM}
 		Assume that the \brown{observed variables} $\brown{\y}_p\simiid \rmN_p$ with mean $\bam_p$. Let $\red{\bao}_q$ be \red{latent variables}. $\red{\bao}_q = (\pink{\bet}_{q_1}^\TT,\teal{\bax}_{q_2}^\TT)^\TT$, where $\pink{\bet}_{q_1}$ is the \pink{key outcome
 		latent variables}, and $\teal{\bax}_{q_2}$ is the \teal{explanatory latent variables}. Define 
 		\begin{equation}\label{eq:linearSEM}
@@ -518,8 +886,8 @@ The basic SEM is formulated by two components:
 
 
 
-\begin{assbox}
-\begin{assumption}[\textbf{Standard linear SEMs}]\label{ass:linearSEM}
+\begin{assbox}{Standard linear SEMs}
+\begin{assumption}\label{ass:linearSEM}
 For $i=1,\ldots,n$, 
 \begin{itemize}
 	\item[(A1)] $\bae_i\simiid\rmN[\0_p,\baY_\bae]$, where $\baY_\bae\in\bbR^{p\times p}$
@@ -557,7 +925,7 @@ We have to impose restrictions on $\baL$ and/or $\Cov(\bao)$ such that the only 
 \end{itemize}
 
 
-\begin{exbox}
+\begin{exbox}{}
 	\begin{example}\label{ex:kidney}\rm
 		Study the kidney disease of type 2 diabetic patients. We observe: plasma creatine (PCr), urinary albumin creatinine ratio (ACR), systolic blood pressure (SBP), diastolic blood pressure (DBP), body mass index (BMI), waist hip ratio (WHR), glycated hemoglobin (HbAlc), fasting plasma glucose (FPG). Group 
 		\begin{itemize}
@@ -581,8 +949,8 @@ We have to impose restrictions on $\baL$ and/or $\Cov(\bao)$ such that the only 
 	\end{example}
 \end{exbox} 
 
-\begin{defbox}
-	\begin{definition}[More SEM models]\label{def:moreSEM}  
+\begin{defbox}{More SEM models}
+	\begin{definition}\label{def:moreSEM}  
 	Extensions of StEq:
 	\begin{itemize}
 		\item \red{Basic} StEq: ${\bet}_{q_1} = \baG_{q_1\times q_2} {\bax}_{q_2} + \bad_{q_1}$.
@@ -671,8 +1039,8 @@ A traditional method is the \textit{covariance structure approach}, which focuse
 
 \subsection{Priors for SEM}\label{sec:prior_SEM}
 \noindent \underline{\textbf{Informative prior}}:
-\begin{assbox}
-	\begin{assumption}[\textbf{Conjugate prior for SEMs}]\label{ass:conj_prior_SEM}
+\begin{assbox}{Conjugate prior for SEMs}
+	\begin{assumption}\label{ass:conj_prior_SEM}
 		In developing the Bayesian methods for analyzing SEMs, we usually assign fixed known values to the hyperparameters in the conjugate prior distributions.
 		Consider
 		\begin{sequation*}
@@ -739,7 +1107,7 @@ Denote data $\Y=(\y_1,\ldots,\y_n)=(\Y_1,\ldots,\Y_p)^\TT\in\bbR^{p\times n}$, $
 \begin{sequation*}
 	\baq=(\baL,\B,\baP,\baG,\baF,\baY_\bae,\baY_\bad)=(\underbrace{\baL,\baY_\bae}_{\baq_\y},\underbrace{\baL_\bao,\baF,\baY_\bad}_{\baq_{\bao}}).
 \end{sequation*}   
-\begin{thmbox}
+\begin{thmbox}{}
 	\begin{proposition}\label{prop:post_linearSEM}
 		The above model has the following posterior distributions:
 		\begin{enumerate} 
@@ -799,8 +1167,8 @@ Denote data $\Y=(\y_1,\ldots,\y_n)=(\Y_1,\ldots,\Y_p)^\TT\in\bbR^{p\times n}$, $
 
 \section{Hierarchical and Multisample
 Data}
-\begin{defbox}
-	\begin{definition}[Two-level nonlinear SEM with mixed type variables]
+\begin{defbox}{Two-level nonlinear SEM with mixed type variables}
+	\begin{definition}
 	Consider a collection of $p$-variate random vectors $\u_{gi}$, $i=1,\ldots,N_g$, nested within groups $g=1,\ldots,G$.   
 	\begin{align*}
 		\text{(Within-groups) }\u_{gi}&=\v_{g}+\baL_{1g}\bao_{1gi}+\bae_{1gi},\quad g=1,\cdots,G,\quad i=1,\cdots,N_{g},\\
