@@ -163,8 +163,78 @@ A typical feature of non-identifiable EF is that $p=\dim(\Theta)>k$. Typically,
 
 \subsection{Likelihood principle}\label{sec:prin-data-reduce-lik}
 
+\section{M-estimation}\label{sec:M_est}
 
+\begin{defbox}{Estimating equation}
+	\begin{definition}\label{def:est_eq}
+		Let the unknown $\b\in\bbR^p$. Define the \red{\textit{estimating equation}}
+		\begin{sequation}\label{eq:est_eq}
+			\bar{\m}(W,\b)=\frac{1}{n}\sum_{i=1}^n \m(w_i,\b)=\0_p,
+		\end{sequation}
+		where $\m(\cdot,\cdot)\in\bbR^p$, and $W=\{w_i\}_{i=1}^n$ are the observed data. Denote $\hat{\bab}$ and $\bab$ the solution of $\bar{\m}(W,\b)=\0_p$ and $\bbE\{\bar{\m}(W,\b)\}=\0_p$, respectively:
+		\begin{salign*}
+			\bar{\m}(W,\hat{\bab})&=\0_p,\\
+			\bbE\{\bar{\m}(W,\bab)\}&=\0_p.
+		\end{salign*}  
+	\end{definition}
+\end{defbox}
+Under mild regularity conditions, $\hat{\bab}\pto\bab$ and $\sqrt{n}(\hat{\bab}-\bab)\dto\rmN_p(\0_p,\Sigma)$.  
 
+\subsection{Asymptotic properties}\label{sec:M_est_asym}
+\begin{thmbox}{Asymptotic properties of M-estimator under with iid data}
+	\begin{theorem}\label{thm:M_est_asym_iid}
+		Assume that $W=\{w_i\}_{i=1}^{n}$ are iid with the same distribution as $w$. The true parameter $\bab\in\mathbb{R}^p$ is the unique solution of
+		$$\bbE\{\m(w,\b)\}=\0_p,$$
+		and the estimator $\hat{\bab}\in\mathbb{R}^p$ is the solution of
+		$$
+		\bar{\m}(W,\b)=\0_p.$$
+		Under some regularity conditions,
+		$$\sqrt{n}\left(\hat{\bab}-\bab\right)\dto \rmN_p(\0_p,B^{-1}MB^{-\mathrm{T}}),$$
+		where
+		$$
+		B=-\frac{\partial \bbE\{\m(w,\bab)\}}{\partial \b^\TT},\quad M=\bbE\{\m(w,\bab)\m(w,\bab)^\TT\}.$$
+	\end{theorem}
+\end{thmbox}
+
+\begin{thmbox}{Asymptotic properties of M-estimator under with independent data}
+	\begin{theorem}\label{thm:M_est_asym_indpt}
+		Assume that $W=\{w_i\}_{i=1}^{n}$ are independent observations. The true parameter $\bab\in\mathbb{R}^p$ is the unique solution of
+		$$\bbE\{\bar{\m}(W,\b)\}=\0_p,$$
+		and the estimator $\hat{\bab}\in\mathbb{R}^p$ is the solution of
+		$$
+		\bar{\m}(W,\b)=\0_p.$$
+		Under some regularity conditions,
+		$$\sqrt{n}\left(\hat{\bab}-\bab\right)\dto \rmN_p(\0_p,B^{-1}MB^{-\mathrm{T}}),$$
+		where
+		$$
+		B=-\lim_{n\to \infty}\frac{1}{n}\sum_{i=1}^{n}\frac{\partial \bbE\{\m(w_i,\bab)\}}{\partial \b^\TT},\quad M=\lim_{n\to \infty}\frac{1}{n}\sum_{i=1}^{n}\Cov\{\m(w_i,\bab)\}.$$
+	\end{theorem}
+\end{thmbox}
+
+\begin{egbox}{MLE}
+	\begin{example}\label{eg:M_est_MLE}
+		Suppose $y_1,\ldots,y_n\simiid f(y\mid\baq)$, $\baq\in\bbR^p$. 
+		The MLE satisfies the following estimating equation 
+		\begin{sequation*}
+			\bbE\cbk{
+				\frac{\partial \log f(y\mid\baq)}{\partial \baq}
+			}=\0_p,
+		\end{sequation*}
+		which is Bartlett's first identity. Under regularity conditions, $\sqrt{n}(\hat{\baq}-\baq)\dto\rmN_p(\0_p,B^{-1}MB^{-1})$, where
+		\begin{salign*}
+			B&=I(\baq)=-\frac{\partial}{\partial\baq^\TT}\bbE\sbk{
+				\frac{\partial \log f(y\mid\baq)}{\partial \baq}
+			}=\bbE\cbk{
+				-\frac{\partial^2 \log f(y\mid\baq)}{\partial \baq \partial \baq^\TT}
+			}, \\
+			M&=J(\baq)=\bbE\cbk{
+				\frac{\partial \log f(y\mid\baq)}{\partial \baq}
+				\frac{\partial \log f(y\mid\baq)}{\partial \baq^\TT}
+			}.
+		\end{salign*} 
+		If the model is correct, Bartlett’s second identity ensures that $I(\baq)=J(\baq)$, and therefore $\sqrt{n}(\hat{\baq}-\baq)\dto\rmN_p(\0_p,I(\baq)^{-1})$  
+	\end{example}
+\end{egbox}
 
 \chapter{Multivariate Inference Fundamentals}\label{chap:multi}
 Reference: 
@@ -186,6 +256,7 @@ Reference:
 			\item \red{Covariance matrix} $\Var(\x)=\Cov(\x)=\Sigma=\bbE[(\x-\bbE\x)(\x-\bbE\x)^\TT]=\bbE \x\x^\TT - \bbE \x \bbE \x^\TT = (\sigma_{ij})$, $\Sigma\succeq \0$.
 			\item \red{Correlation matrix} $R=D^{-1/2}\Sigma D^{-1/2}$, where $D=\diag(\sigma_{11},\ldots,\sigma_{pp})$. We have $R_{ij}=\rho_{ij}=\sigma_{ij}/(\sqrt{\sigma_{ii}}\sqrt{\sigma_{jj}})$.
 			\item If $\y\in\bbR^{q}$ random vector, then $\Cov(\x,\y)=\bbE[(\x-\bbE\x)(\y-\bbE\y)^\TT]=\bbE\x\y^\TT-\bbE\x\bbE\y^\TT\in\bbR^{p\times q}$.  
+			\item \red{MSE} $\MSE(\hat{\bab};\bab)=\bbE \littlenorm{\hat{\bab}-\bab}^2=\littlenorm{\bbE\hat{\bab}-\bab}^2+\tr[\Var(\hat{\bab})]$. 
 		\end{itemize} 
 		If $\Z=(z_{ij})\in\bbR^{p\times q}$ is a random matrix,
 		\begin{itemize}
@@ -624,8 +695,6 @@ Note that
 	\end{proposition}
 \end{thmbox}
 
-
-
 \subsection{Weighted least square (WLS) estimation}\label{sec:LR_full_rank_WLS}
 \begin{assbox}{WLS assumption}
 	\begin{assumption}\label{ass:GM_ass_WLS}
@@ -708,7 +777,7 @@ We want to find the BLUE of $\p^\TT\b$ where $\p\in\bbR^k$ is given.
 	\Cov(\boldsymbol{Y},\boldsymbol{p}^\top\boldsymbol{b})&=\bbE\{\Cov(\boldsymbol{Y},\boldsymbol{p}^\top\boldsymbol{b}|\boldsymbol{b})\}+\Cov[\bbE(\boldsymbol{Y}|\boldsymbol{b}),\boldsymbol{p}^\top\boldsymbol{b}]=\boldsymbol{X}\boldsymbol{F}\boldsymbol{p}.
 \end{salign*}  
 
-\subsection{Normal linear model: MLE}\label{sec:LR_full_rank_normal}
+\subsection{Normal linear model}\label{sec:LR_full_rank_normal}
 \begin{assbox}{Normal linear model}
 	\begin{assumption}\label{ass:normal_linear}
 		For the linear model in Definition \ref{def:LR_full_rank}, we assume $\bave\sim\rmN_n(\0_n,\sigma^2 I_n)$. 
@@ -734,7 +803,7 @@ the MLE of $\bab$ and $\sigma^2$ are
 that is, LSE is the MLE.
 Note that ${\hat{\sigma}^{2\MLE}}$ is biased for finite $n$. 
 \begin{thmbox}{Properties under normal assumption}
-	\begin{proposition}\label{prop:LR_full_rank_normal_prop} \
+	\begin{proposition}\label{prop:LR_full_rank_normal_prop} The MLE \eqref{eq:LR_full_rank_MLE} has the following properties:
 		\begin{enumerate}
 			\item $\hat{\bab}^{\MLE}\sim\rmN_p(\bab,(\X^\TT\X)^{-1}\sigma^2)$. 
 			\item The MLE/LSE $\hat{\bab}$ and SSE \eqref{eq:LR_LSE_SSE} are independent.
@@ -747,6 +816,97 @@ Note that ${\hat{\sigma}^{2\MLE}}$ is biased for finite $n$.
 		\end{enumerate}
 	\end{proposition}
 \end{thmbox}
+
+\subsubsection{ANOVA}\label{sec:LR_full_rank_normal_ANOVA}
+
+The \red{\textit{total sum of squares (SST)}}, \red{\textit{sum of squares due to regression (SSR)/reduction in sum of squares}}, and SSE are 
+\begin{salign*}
+	\SST&=\Y^\TT\Y,\\
+	\SSE&=\Y^\TT\Y-\hat{\bab}^\TT\X^\TT\Y=\Y^\TT (I_n-\H)\Y,\\
+	\SSR=\SST-\SSE&=\hat{\bab}^\TT\X^\TT\Y= \Y^\TT\H\Y,
+\end{salign*}
+which have the following distributions
+\begin{salign*}
+	\frac{\SST}{\sigma^2}\sim\chi_{n}^2\sbk{\frac{\bab^\TT \X^\TT\X\bab}{\sigma^2}}, \quad 
+	\frac{\SSE}{\sigma^2}\sim\chi_{n-\rmr(\X)}^2, \quad
+	\frac{\SSR}{\sigma^2}\sim\chi_{\rmr(\X)}^2\sbk{\frac{\bab^\TT \X^\TT\X\bab}{\sigma^2}}, 
+\end{salign*}
+we can show $\SSR\indep\SSE$, thus
+\begin{salign*}
+	F(R)=\frac{\MSR}{\MSE}=\frac{\SSR/\rmr(\X)}{\SSE/(n-\rmr(\X))}=\frac{\SSR/\rmr(\X)}{\hat{\sigma}^2} \sim \textsc{F}_{[\rmr(\X),\n-\rmr(\X)]}\sbk{\frac{\bab^\TT\X^\TT\X\bab}{\sigma^2}}.
+\end{salign*}
+
+\begin{defbox}{$\SSM$, $\SST_m$, $\SSR_m$}
+	\begin{definition}\label{def:LR_SSM}
+		For the model without predictors $y_i=c_0+\varepsilon_i$, the LSE of $c_0$ is $\hat{c}_0=n^{-1}\1_n^\TT\Y=\bar{y}$.  
+		Define the SSM to be the SSR without $x$:
+		\begin{salign*}
+			\SSM&=\hat{c}_0\1_n^\TT\Y=\Y^\TT \sbk{\frac{\1_n\1_n^\TT}{n}}\Y = n\bar{y}^2.
+		\end{salign*} 
+		The \red{\textit{total sum of squares corrected for the mean}} and the \red{\textit{sum of squares of regression corrected for the mean}} are 
+		\begin{salign*}
+			\SST_m&=\SST-\SSM=\Y(\I_n-\frac{1}{n}\1_n\1_n^\TT)\Y, \\
+			\SSR_m&=\SSR-\SSM=\hat{\bab}^\TT\X^\TT\Y-\Y^\TT \1_n\1_n^\TT \Y = \hat{\b}^\TT \Z^\TT \Y=\hat{\b}^\TT (\Z^\TT\Z)\hat{\b}.
+		\end{salign*} 
+	\end{definition}
+\end{defbox}
+
+\begin{thmbox}{Distributions of $\SSM$, $\SST_m$, and $\SSR_m$}
+\begin{proposition}\label{prop:LR_SSM_dist}
+	Under model \eqref{eq:LR_mat} and normal assumption \ref{ass:normal_linear},
+	\begin{salign*}
+		\frac{\SSM}{\sigma^2}&\sim\chi_1^2\sbk{\frac{(\1_n^\TT\X\bab)^2}{n\sigma^2}},\quad 
+		\frac{\SST_m}{\sigma^2}\sim\chi_{n-1}^2\sbk{\frac{\bab^\TT\X^\TT\X\bab-n^{-1}(\1_n^\TT\X\bab)^2}{\sigma^2}},
+	\end{salign*}
+	and if the model has intercept,
+	\begin{salign*}
+		\frac{\SSR_m}{\sigma^2}&\sim\chi_{\rmr(\X)-1}^2\sbk{\frac{\b^\TT(\Z^\TT\Z)\b}{\sigma^2}}.
+	\end{salign*}
+	Note that $\SST=(\SSM+\SSR_m)+\SSE$, each terms are mutually independent. 
+\end{proposition}	
+\end{thmbox}
+Construct F-statistics:
+\begin{salign*}
+	F(M)&=\frac{\MSM}{\MSE}=\frac{\SSM/1}{\SSE/(n-\rmr(\X))}\sim \textsc{F}_{[1,n-\rmr(\X)]}\sbk{\frac{(\1_n^\TT\X\bab)^2}{n\sigma^2}},\\
+	F(R_m)&=\frac{\MSR_m}{\MSE}=\frac{\SSR_m/(\rmr(\X)-1)}{\SSE/(n-\rmr(\X))}\sim\textsc{F}_{[\rmr(\X)-1,n-\rmr(\X)]}\sbk{\frac{\b^\TT(\Z^\TT\Z)\b}{\sigma^2}}
+\end{salign*}
+
+\subsubsection{General linear hypothesis and constrained LSE}\label{sec:LR_full_rank_normal_general_linear_hypo}
+The general hypothesis we consider is
+\begin{sequation*}
+	H_0:\ \K^\TT \bab=\m, \quad \K^\TT\in\bbR^{s\times (k+1)},\ \bab\in\bbR^{k+1},\ \m\in\bbR^s,
+\end{sequation*}
+where $\K$ and $\m$ are specified constants, and $\K^\TT$ is assumed to be of full row rank to guarantee that the linear function of $\bab$ must be linearly independent.
+\begin{thmbox}{Distribution of test statistics}
+	\begin{proposition}\label{prop:LR_full_rank_normal_general_linear_hypo}
+		Under Assumption \ref{ass:normal_linear}, 
+		\begin{sequation*}
+			\K^\TT\hat{\bab}-\m\sim\rmN_s[\K^\TT\bab-\m,\sigma^2\K^\TT(\X^\TT\X)^{-1}\K].
+		\end{sequation*}
+		Define 
+		\begin{sequation*}
+			Q=(\K^\TT\hat{\bab}-\m)^\TT [\K^\TT(\X^\TT\X)^{-1}\K]^{-1}(\K^\TT\hat{\bab}-\m).
+		\end{sequation*}
+		Then $Q\indep\SSE$, and 
+		\begin{sequation*}
+			\frac{Q}{\sigma^2}\sim\chi_{s}^2 \cbk{\sigma^{-2}(\K^\TT{\bab}-\m)^\TT [\K^\TT(\X^\TT\X)^{-1}\K]^{-1}(\K^\TT{\bab}-\m)}.
+		\end{sequation*}
+		Thus we have the test statistics 
+		\begin{sequation*}
+			F(H)=\frac{Q/s}{\SSE/[n-\rmr(\X)]}=\frac{Q}{s\hat{\sigma}^2}\sim\textsc{F}_{[s,n-\rmr(\X)]}\cbk{\sigma^{-2}(\K^\TT{\bab}-\m)^\TT [\K^\TT(\X^\TT\X)^{-1}\K]^{-1}(\K^\TT{\bab}-\m)}.
+		\end{sequation*}
+	\end{proposition}
+\end{thmbox}
+When $H_0$ is true, the solution of the constrained LSE $\mathrm{minimize}_{\bab}\norm{\Y-\X\bab}^2$ subject to $\K^\TT\bab=\m$ is 
+\begin{salign*}
+	\tilde{\bab}&=(\X^\top \X)^{-1}[\X^\top \Y-\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}(\K^\top(\X^\top \X)^{-1}\X^\top \Y-\m)]\\
+	&=\hat{\bab}-(\X^\top \X)^{-1}\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}(\K^\top\hat{\bab}-\m).
+\end{salign*}   
+Under the reduced model ($H_0$), the SSE is 
+\begin{salign*}
+	\SSE_{H_0}=(\Y-\X\tilde{\bab})^\TT (\Y-\X\tilde{\bab}) 
+	=\SSE + Q
+\end{salign*}
 
 \subsection{Proofs}\label{sec:LR_full_rank_proof}
 \begin{pfbox}{Proof of Proposition \ref{prop:LR_LSE}}
@@ -843,6 +1003,117 @@ Note that ${\hat{\sigma}^{2\MLE}}$ is biased for finite $n$.
 		Item 1 is obvious. Item 2 applies Theorem \ref{thm:MVN_quad_indep}. Item 3 uses Theorem \ref{thm:quad_MVN_general} to show the $\chi^2$ distribution and \eqref{eq:chi2_moment} to show the moments. 
 	\end{proof}
 \end{pfbox}
+
+
+\section{Linear regression for the non full-rank models}\label{sec:LR_nonfull_rank}
+
+\section{Quantile Regression}\label{sec:qt_reg}
+For a random variable $y$, we can define its distribution function as $F(c)=\bbP(y\leq c)$ and its $\tau$th quantile as 
+\begin{sequation*}
+	F^{-1}(\tau)=\inf\{q:F(q)\geq \tau\}.
+\end{sequation*}  
+\begin{thmbox}{Check function and quantile}
+	\begin{proposition}\label{prop:check_function_qt}
+		With a monotone distribution function and positive density at the $\tau$th quantile, we have  
+		\begin{sequation}\label{eq:qt}
+			F^{-1}(\tau)=\arg\min_{q\in\bbR}\bbE\left\{\rho_{\tau}(y-q)\right\},
+		\end{sequation}
+		where 
+		\begin{sequation*}
+			\rho_\tau(u)=u\left\{\tau-\1_{(u<0)}\right\}=\begin{cases}
+				u\tau,& if\ u\geq0,\\
+				-u(1-\tau),& if\ u<0,
+			\end{cases}
+		\end{sequation*}
+		is the check function. In particular, the median of $y$ is  
+		\begin{sequation*}
+			\operatorname{median}(y)=F^{-1}(0.5)=\operatorname{arg}\operatorname*{min}_{q\in\mathbb{R}}\bbE\left\{|y-q|\right\}.
+		\end{sequation*}
+	\end{proposition}
+\end{thmbox}
+
+The empirical distribution function is $\hat{F}(c)=n^{-1}\sum_{i=1}^{n}\1_{(y_i\leq c)}$, which is a step function,
+increasing but not strictly monotone.
+\begin{defbox}{Sample quantile}
+	\begin{definition}\label{def:sample_qt}
+		We define the \red{\textit{sample quantile}} as 
+		\begin{sequation}\label{eq:sample_qt}
+			\hat{F}^{-1}(\tau)=\arg\min_{q\in\mathbb{R}}n^{-1}\sum_{i=1}^n\rho_\tau(y_i-q).
+		\end{sequation}
+	\end{definition}
+\end{defbox}
+$\hat{F}^{-1}(\tau)$ may not be unique even though the population quantile is. We can view $\hat{F}^{-1}(\tau)$ as a set containing all minimizers, and with large samples the values in the set do not differ much.
+
+\begin{thmbox}{Sample quantile CLT}
+	\begin{theorem}\label{thm:CLT_qt}
+		Assume that $(y_i)_{i=1}^n\simiid y$ with distribution function $F(\cdot)$ that is strictly increasing and density function $f(\cdot)$ that is positive at the $\tau$th quantile. 
+		The sample quantile is consistent for the true quantile and is asymptotically Normal:
+		\begin{sequation*}
+			\sqrt{n}\left\{\hat{F}^{-1}(\tau)-F^{-1}(\tau)\right\} \dto \rmN\left(0,\frac{\tau(1-\tau)}{\left[f\left\{F^{-1}(\tau)\right\}\right]^{2}}\right).
+		\end{sequation*}
+		In particular, the sample median satisfies 
+		\begin{sequation*}
+			\sqrt{n}\left\{\hat{F}^{-1}(0.5)-\operatorname{median}(y)\right\} \dto \rmN\left(0,\frac{1}{4\left[f\left\{\operatorname{median}(y)\right\}\right]^{2}}\right).
+		\end{sequation*}
+	\end{theorem}
+\end{thmbox}
+
+\subsection{Linear regression quantile}
+
+
+\subsection{Proofs}
+\begin{pfbox}{Proof of Proposition \ref{prop:check_function_qt}}
+	\begin{proof}
+		We use Leibniz's integral rule. Write 
+		\begin{salign*}
+			\bbE\{\rho_{\tau}(y-q)\}=\bbE\{(y-q)(\tau-\1_{(y<q)})\}=\int_{-\infty }^{q}(\tau-1)(c-q)\rmd F(c) + \int_{q}^{\infty }\tau (c-q)\rmd F(c).
+		\end{salign*}
+		To minimize it over $q$, we can solve the FONC by assuming that the derivative and integral can be exchanged:
+		\begin{salign*}
+			\frac{\rmd \bbE\{\rho_{\tau}(y-q)\}}{\rmd q} &= (1-\tau)\int_{-\infty }^{q}\rmd F(c) - \tau \int_{q}^{\infty }\rmd F(c)=(1-\tau)F(q)-\tau\{1-F(q)\}=0,\\
+			& \Rightarrow \tau=F(q).
+		\end{salign*} 
+		So the $\tau$th quantile satisfies the FONC.
+		If $y$ has density $f(\cdot)$, the second-order condition ensures it is the minimizer:
+		\begin{sequation*}
+			\frac{\rmd^2\bbE\{\rho_{\tau}(y-q)\}}{\rmd q^2}\bigg|_{q=F^{-1}(\tau)}=f\{F^{-1}(\tau)\}>0,
+		\end{sequation*}   
+		by Leibniz's integral rule again.
+	\end{proof}
+\end{pfbox}
+
+\begin{pfbox}{Proof of Theorem \ref{thm:CLT_qt}}
+	\begin{proof}
+		Recall the definition \eqref{eq:sample_qt} of sample quantile
+		\begin{sequation*}
+			\hat{F}^{-1}(\tau)=\arg\min_{q\in\mathbb{R}}n^{-1}\sum_{i=1}^n\rho_\tau(y_i-q).
+		\end{sequation*}
+		Since 
+		\begin{sequation*}
+			\frac{\rmd \rho_\tau(y_i-q)}{\rmd q}= -\tau + \1_{(y_i<q)} = \begin{cases}
+				-\tau &\text{ if } y>q,\\
+				1-\tau &\text{ if } y<q,
+			\end{cases}
+		\end{sequation*} 
+		FONC gives the estimating equation \eqref{eq:est_eq} 
+		\begin{salign*}
+			\bar{m}(y_{1:n},q)=\frac{1}{n}\sum_{i=1}^{n}\frac{\rmd \rho_\tau(y_i-q)}{\rmd q}=\frac{1}{n}\sum_{i=1}^{n}\underbrace{\{-\tau+\1_{(y_i<q)}\}}_{m(y_i,q)}=0.
+		\end{salign*}
+		As $F(\cdot)$ is strictly increasing, and $\bbE\{m(y,q)\}=-\tau+F(q)$,  the unique solution $q_0$ of $\bbE\{m(y,q)\}=0$ is $q_0=F^{-1}(\tau)$, the unique true $\tau$th quantile.
+		Besides, the solution $\hat{q}$ of $\bar{m}(y_{1:n},q)=0$ is the sample quantile $\hat{q}=\hat{F}^{-1}(\tau)$ by definition.
+		
+		Now we find $B$ and $M$ in Theorem \ref{thm:M_est_asym_iid}:
+		\begin{salign*}
+			\frac{\rmd\bbE m(y,q)}{\rmd q}=F'(q)=f(q) \ &\Rightarrow \ B=-\frac{\rmd\bbE m(y,q_0)}{\rmd q}=-f(F^{-1}(\tau)), \\
+			\bbE m(y,q)^2=\tau^2-2\tau F(q) + F(q) \ & \Rightarrow \ M=\bbE m(y,q_0)^2=\tau(1-\tau).
+		\end{salign*}  
+		By Theorem \ref{thm:M_est_asym_iid},
+		\begin{sequation*}
+			\sqrt{n}(\hat{q}-q_0)=\sqrt{n}(\hat{F}^{-1}(\tau)-F^{-1}(\tau))\dto \rmN\left(0,\frac{\tau(1-\tau)}{\left[f\left\{F^{-1}(\tau)\right\}\right]^{2}}\right).
+		\end{sequation*}
+	\end{proof}
+\end{pfbox}
+
 \section{Ridge regression}\label{sec:ridge_reg}
 
 
