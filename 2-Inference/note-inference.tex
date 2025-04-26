@@ -674,6 +674,27 @@ It implies that
 	& \Var(\tilde{\beta}_j)\geq \Var(\hat{\beta}_j), \ j=1,\ldots,p.
 \end{salign*}
 
+\subsubsection{Model with intercept}\label{sec:LR_full_rank_OLS_intercept}
+Consider the linear model in Definition \ref{def:LR_full_rank} with intercept
+\begin{sequation}\label{eq:LR_mat_intercept}
+	\underset{n}{\Y}=\X \underset{k+1}{\bab} +{\bave},
+\end{sequation}
+where $\X=(\1_n,\X_c)$, $\bab^\TT=(\beta_0,\b^\TT)$, and $\b^\TT=(\beta_1,\ldots,\beta_k)$.
+Let $\bar{\X}_c^\TT=(\bar{x}_{.1},\ldots,\bar{x}_{.k})$.
+Note that
+\begin{sequation*}
+	\1_n^\TT \Y=n\bar{y}, \qquad \1_n^\TT \X_c=n\bar{\X}_c^\TT.
+\end{sequation*}
+\begin{thmbox}{Properties of LSE with intercept}
+	\begin{proposition}\label{prop:LR_LSE_intercept}
+		For the LSE $\hat{\bab}^\TT=(\hat{\beta}_0,\hat{\b}^\TT)$ in \eqref{eq:LR_OLSE}, we have let $\Z=\X_c-\1_n\bar{\X}_c^\TT$ 
+		\begin{salign*}
+			\hat{\beta}_0&=\bar{y}-\bar{\X}_c^\TT\hat{\b}=\frac{1}{n}\1_n^\TT \Y - \bar{\X}_c^\TT \hat{\b},\\
+			\hat{\b}&=(\Z^\TT\Z)^{-1}\Z^\TT\Y.
+		\end{salign*}
+	\end{proposition}
+\end{thmbox}
+
 \subsection{Weighted least square (WLS) estimation}\label{sec:LR_full_rank_WLS}
 \begin{assbox}{WLS assumption}
 	\begin{assumption}\label{ass:GM_ass_WLS}
