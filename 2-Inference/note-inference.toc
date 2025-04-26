@@ -1,4 +1,4 @@
-\babel@toc {english}{}
+\babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Preliminary}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Distributions}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}$\chi ^2$ distribution}{5}{subsection.1.1.1}%
@@ -18,6 +18,7 @@
 \contentsline {section}{\numberline {4.1}Linear regression for the full-rank model}{13}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Ordinary least squares (OLS) estimation}{13}{subsection.4.1.1}%
 \contentsline {subsubsection}{Gauss-Markov model}{14}{section*.3}%
+\contentsline {subsubsection}{Model with intercept}{14}{section*.4}%
 \contentsline {subsection}{\numberline {4.1.2}Weighted least square (WLS) estimation}{15}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}LS theory of random-effect model}{15}{subsection.4.1.3}%
 \contentsline {subsection}{\numberline {4.1.4}Normal linear model: MLE}{16}{subsection.4.1.4}%
