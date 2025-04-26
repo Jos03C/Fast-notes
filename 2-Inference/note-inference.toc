@@ -1,4 +1,4 @@
-\babel@toc {english}{}
+\babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Preliminary}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Distributions}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}$\chi ^2$ distribution}{5}{subsection.1.1.1}%
@@ -27,18 +27,22 @@
 \contentsline {subsubsection}{ANOVA}{18}{section*.5}%
 \contentsline {subsubsection}{General linear hypothesis and constrained LSE}{19}{section*.6}%
 \contentsline {subsection}{\numberline {4.1.5}Proofs}{19}{subsection.4.1.5}%
-\contentsline {section}{\numberline {4.2}Linear regression for the non full-rank models}{20}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Quantile Regression}{20}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Linear regression quantile}{21}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Proofs}{21}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Ridge regression}{22}{section.4.4}%
-\contentsline {section}{\numberline {4.5}LASSO}{22}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Generalized Linear Models}{23}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Bayesian Inference}{25}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Structural Equation Model (SEM)}{27}{chapter.7}%
-\contentsline {section}{\numberline {7.1}SEM models}{27}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Bayesian methods for estimating SEM}{29}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Priors for SEM}{29}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Bayesian estimation using MCMC}{30}{subsection.7.2.2}%
-\contentsline {section}{\numberline {7.3}Bayesian model comparison}{31}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Hierarchical and Multisample Data}{31}{section.7.4}%
+\contentsline {section}{\numberline {4.2}Linear regression for the non full-rank models}{21}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Quantile Regression}{21}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Sample quantile}{21}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Linear regression quantile}{21}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Proofs}{22}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Regularization}{23}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Ridge regression}{23}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}LASSO}{23}{subsection.4.4.2}%
+\contentsline {chapter}{\numberline {5}Generalized Linear Models}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Logistic regression}{25}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Logistic regression for binary outcomes}{25}{subsection.5.1.1}%
+\contentsline {chapter}{\numberline {6}Bayesian Inference}{27}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Structural Equation Model (SEM)}{29}{chapter.7}%
+\contentsline {section}{\numberline {7.1}SEM models}{29}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Bayesian methods for estimating SEM}{31}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Priors for SEM}{31}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Bayesian estimation using MCMC}{32}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Bayesian model comparison}{33}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Hierarchical and Multisample Data}{33}{section.7.4}%

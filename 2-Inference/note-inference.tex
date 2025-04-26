@@ -1008,6 +1008,7 @@ Under the reduced model ($H_0$), the SSE is
 \section{Linear regression for the non full-rank models}\label{sec:LR_nonfull_rank}
 
 \section{Quantile Regression}\label{sec:qt_reg}
+\subsection{Sample quantile}\label{sec:sample_qt}
 For a random variable $y$, we can define its distribution function as $F(c)=\bbP(y\leq c)$ and its $\tau$th quantile as 
 \begin{sequation*}
 	F^{-1}(\tau)=\inf\{q:F(q)\geq \tau\}.
@@ -1044,7 +1045,7 @@ increasing but not strictly monotone.
 \end{defbox}
 $\hat{F}^{-1}(\tau)$ may not be unique even though the population quantile is. We can view $\hat{F}^{-1}(\tau)$ as a set containing all minimizers, and with large samples the values in the set do not differ much.
 
-\begin{thmbox}{Sample quantile CLT}
+\begin{thmbox}{CLT for sample quantile}
 	\begin{theorem}\label{thm:CLT_qt}
 		Assume that $(y_i)_{i=1}^n\simiid y$ with distribution function $F(\cdot)$ that is strictly increasing and density function $f(\cdot)$ that is positive at the $\tau$th quantile. 
 		The sample quantile is consistent for the true quantile and is asymptotically Normal:
@@ -1058,7 +1059,49 @@ $\hat{F}^{-1}(\tau)$ may not be unique even though the population quantile is. W
 	\end{theorem}
 \end{thmbox}
 
-\subsection{Linear regression quantile}
+\subsection{Linear regression quantile}\label{sec:linear_reg_qt}
+\begin{defbox}{Conditional quantile function}
+	\begin{definition}\label{def:cond_qt}
+		Let $\x\in\bbR^p$. The \red{\textit{conditional quantile function}} is defined as 
+		\begin{sequation*}
+			F^{-1}(\tau\mid\x)=\argmin{q(\cdot)} \bbE[\rho_\tau\{y-q(\x)\}].
+		\end{sequation*} 
+		We can use a linear function $\x^\TT\bab(\tau)$ to approximate the conditional quantile function with 
+		\begin{sequation*}
+			\bab(\tau)=\argmin{\b\in\bbR^p}\bbE\{\rho_\tau(y-\x^\TT \b)\}
+		\end{sequation*}
+		called the $\tau$th \red{\textit{population regression quantile}}, and 
+		\begin{sequation*}
+			\hat{\bab}(\tau)=\argmin{\b\in\bbR^p}\frac{1}{n}\sum_{i=1}^{n}\{\rho_\tau(y_i-\x_i^\TT \b)\}
+		\end{sequation*}
+		called the $\tau$th \red{\textit{sample regression quantile}}.
+		As a special case, when $\tau=0.5$, we have the
+		\red{\textit{regression median/least absolute deviations (LAD)}}:
+		\begin{sequation*}
+			\hat{\bab}(0.5)=\argmin{\b\in\bbR^p}\frac{1}{n}\sum_{i=1}^{n}\abs{y_i-\x_i^\TT \b}.
+		\end{sequation*} 
+	\end{definition}
+\end{defbox}
+Conditional quantile model: $F^{-1}(\tau\mid\x)=\x^\TT\bab(\tau)$, where $\beta_j(\tau)$ is the partial influence of $x_{ij}$ on the $\tau$th conditional quantile of $y_i$ given $\x_i$.
+
+\begin{thmbox}{CLT for regression quantiles}
+	\begin{theorem}\label{thm:CLT_reg_qt}
+		Assume $(y_i,\x_i)_{i=1}^n\simiid(y,\x)$, under some regularity conditions, we have 
+		\begin{sequation*}
+			\sqrt{n}\{\hat{\bab}(\tau)-\bab(\tau)\}\dto \rmN_p(\0_p,B^{-1}MB^{-1}),
+		\end{sequation*}
+		where 
+		\begin{sequation*}
+			B=\bbE\mbk{
+				f_{y\mid\x}\{\x^\TT \bab(\tau)\}\x\x^\TT
+			}, \qquad 
+			M = \bbE\mbk{
+				\{\tau-\1_{(y-\x^\TT\bab(\tau)\leq 0)}\}^{2}\x\x^\TT
+			}.
+		\end{sequation*}
+	\end{theorem}
+\end{thmbox}
+
 
 
 \subsection{Proofs}
@@ -1114,18 +1157,78 @@ $\hat{F}^{-1}(\tau)$ may not be unique even though the population quantile is. W
 	\end{proof}
 \end{pfbox}
 
-\section{Ridge regression}\label{sec:ridge_reg}
+\begin{pfbox}{Proof of Theorem \ref{thm:CLT_reg_qt}}
+	\begin{proof}
+	\end{proof}
+\end{pfbox}
+
+\section{Regularization}\label{sec:regularization}
+\subsection{Ridge regression}\label{sec:ridge_reg}
 
 
 
-\section{LASSO}\label{sec:lasso}
+\subsection{LASSO}\label{sec:lasso}
 
 
 
 
 \chapter{Generalized Linear Models}\label{chap:GLM}
+\section{Logistic regression}\label{sec:logistic_reg}
+\subsection{Logistic regression for binary outcomes}\label{sec:logistic_reg_binary}
+\begin{defbox}{Logistic model}
+	\begin{definition}\label{def:logistic_model}
+		Let the binary outcomes $y_i\in\{0,1\}$ and $p$-dim covariates $\x_i\sim f_\x$ for $i=1,\ldots,n$. 
+		Model 
+		\begin{sequation*}
+			\bbP(y_i=1\mid \x_i) = g(\x_i^\TT\bab),
+		\end{sequation*}  
+		where $g(\cdot):\bbR\to [0,1]$ is the link function. 
+		We have:
+		\begin{enumerate}
+			\item (\red{\textit{Logit model}}) $g(z)={e^z}/\sbk{1+e^z}$. It is the distribution function of the standard logistic distribution with density $g'(z)=e^z/(1+e^z)^2=g(z)\{1-g(z)\}$. 
+			\item ({\textit{Probit model}}) $g(z)=\Phi(z)$. 
+			\item (\textit{Cauchit model}) $g(z)=\pi^{-1}\arctan(z)+1/2$. It is the distribution function of the standard Cauchy
+			distribution with density $g'(z)=\pi^{-1}(1+z^2)^{-1}$. 
+			\item (\textit{Cloglog model}) $g(z)=1-\exp(-e^{z})$. It is the distribution function of the standard log-Weilbull distribution with density $g'(z)=\exp(z-e^z)$. 
+		\end{enumerate} 
+	\end{definition}
+\end{defbox}
 
+We mainly focus on the logit model:
+\begin{sequation*}
+	\bbP(y_i=1\mid \x_i) = g(\x_i^\TT\bab)=\frac{e^{\x_i^\TT\bab}}{1+e^{\x_i^\TT\bab}},
+\end{sequation*} 
+with likelihood, log-likelihood, and MLE are
+\begin{salign*}
+	L(\bab,f_\x\mid y_{1:n},\x_{1:n})&=\prod_{i=1}^{n}\{g(\x_i^\TT\bab)\}^{y_i}\{1-g(\x_i^\TT\bab)\}^{1-y_i} f_\x(\x_i), \\
+	\ell(\bab,f_\x\mid y_{1:n},\x_{1:n})&=\sum_{i=1}^{n}\mbk{
+		y_i\log g(\x_i^\TT\bab)+(1-y_i)\log\{1-g(\x_i^\TT\bab)\}
+	}+\sum_{i=1}^{n}\log f_\x(\x_i),\\
+	\hat{\bab}&=\argmax{\bab\in\bbR^p}\ell(\bab,f_\x\mid y_{1:n},\x_{1:n}).
+\end{salign*}
 
+\begin{thmbox}{Properties of logit model by M-estimation}
+\begin{proposition}\label{prop:logit_model}\
+	\begin{enumerate}
+		\item (FONC and estimating equation for $\hat{\bab}$)
+		\begin{sequation*}
+			\bar{\m}((y_{1:n},\x_{1:n}),\bab)=\frac{\partial \ell(\bab,f_\x\mid \cdot)}{\partial \bab} =
+			\sum_{i=1}^{n} \underbrace{\{y_i-g(\x_i^\TT\bab)\}\x_i}_{\m((y_i,\x_i),\bab)}.
+		\end{sequation*}
+
+		\item (Second-order derivative)
+		\begin{sequation*}
+			\frac{\partial \m((y,\x),\bab)}{\partial \bab^\TT} = -g(\x^\TT\bab)\{1-g(\x^\TT\bab)\}\x\x^\TT.
+		\end{sequation*}
+
+		\item (CLT for $\hat{\bab}$) Suppose $\bab_0$ is the true parameter, then  
+		\begin{salign*}
+			& \sqrt{n}(\hat{\bab}-\bab_0)\dto\rmN_p(\0_p,A^{-1}BA^{-\TT})=\rmN_p(\0_p,B^{-1}),\\
+			 A&=\bbE g(\x^\TT\bab_0)\{1-g(\x^\TT\bab_0)\}\x\x^\TT,  \quad B=-A=I(\bab_0).
+		\end{salign*}
+	\end{enumerate}
+\end{proposition}
+\end{thmbox}
 
 \chapter{Bayesian Inference}\label{chap:bayes_inference}
 
