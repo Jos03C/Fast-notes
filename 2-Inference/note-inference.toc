@@ -6,30 +6,38 @@
 \contentsline {section}{\numberline {2.1}Statistical Models}{7}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Principles of Data Reduction}{8}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Sufficiency Principle}{8}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Likelihood principle}{8}{subsection.2.2.2}%
-\contentsline {chapter}{\numberline {3}Multivariate Inference Fundamentals}{9}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Random vectors and distributions}{9}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Multivariate normal distribution}{10}{subsection.3.1.1}%
-\contentsline {subsubsection}{Quadratic form of MVN}{11}{section*.2}%
-\contentsline {subsection}{\numberline {3.1.2}The noncentral $\chi ^2$ and F distribution}{12}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Asymptotic properties}{12}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Asymptotic distributions of sample means and covariance matrices}{12}{subsection.3.2.1}%
-\contentsline {chapter}{\numberline {4}Linear Models}{13}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Linear regression for the full-rank model}{13}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Ordinary least squares (OLS) estimation}{13}{subsection.4.1.1}%
-\contentsline {subsubsection}{Gauss-Markov model}{14}{section*.3}%
-\contentsline {subsection}{\numberline {4.1.2}Weighted least square (WLS) estimation}{15}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}LS theory of random-effect model}{15}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Normal linear model: MLE}{16}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Proofs}{16}{subsection.4.1.5}%
-\contentsline {section}{\numberline {4.2}Ridge regression}{17}{section.4.2}%
-\contentsline {section}{\numberline {4.3}LASSO}{17}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Generalized Linear Models}{19}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Bayesian Inference}{21}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Structural Equation Model (SEM)}{23}{chapter.7}%
-\contentsline {section}{\numberline {7.1}SEM models}{23}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Bayesian methods for estimating SEM}{25}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Priors for SEM}{25}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Bayesian estimation using MCMC}{26}{subsection.7.2.2}%
-\contentsline {section}{\numberline {7.3}Bayesian model comparison}{27}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Hierarchical and Multisample Data}{27}{section.7.4}%
+\contentsline {subsection}{\numberline {2.2.2}Likelihood principle}{9}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}M-estimation}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Asymptotic properties}{9}{subsection.2.3.1}%
+\contentsline {chapter}{\numberline {3}Multivariate Inference Fundamentals}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Random vectors and distributions}{11}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Multivariate normal distribution}{12}{subsection.3.1.1}%
+\contentsline {subsubsection}{Quadratic form of MVN}{13}{section*.2}%
+\contentsline {subsection}{\numberline {3.1.2}The noncentral $\chi ^2$ and F distribution}{14}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Asymptotic properties}{14}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Asymptotic distributions of sample means and covariance matrices}{14}{subsection.3.2.1}%
+\contentsline {chapter}{\numberline {4}Linear Models}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Linear regression for the full-rank model}{15}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Ordinary least squares (OLS) estimation}{15}{subsection.4.1.1}%
+\contentsline {subsubsection}{Gauss-Markov model}{16}{section*.3}%
+\contentsline {subsection}{\numberline {4.1.2}Weighted least square (WLS) estimation}{17}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}LS theory of random-effect model}{17}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Normal linear model}{18}{subsection.4.1.4}%
+\contentsline {subsubsection}{ANOVA}{18}{section*.4}%
+\contentsline {subsubsection}{General linear hypothesis and constrained LSE}{19}{section*.5}%
+\contentsline {subsection}{\numberline {4.1.5}Proofs}{19}{subsection.4.1.5}%
+\contentsline {section}{\numberline {4.2}Linear regression for the non full-rank models}{20}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Quantile Regression}{20}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Linear regression quantile}{21}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Proofs}{21}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Ridge regression}{22}{section.4.4}%
+\contentsline {section}{\numberline {4.5}LASSO}{22}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Generalized Linear Models}{23}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Bayesian Inference}{25}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Structural Equation Model (SEM)}{27}{chapter.7}%
+\contentsline {section}{\numberline {7.1}SEM models}{27}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Bayesian methods for estimating SEM}{29}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Priors for SEM}{29}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Bayesian estimation using MCMC}{30}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Bayesian model comparison}{31}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Hierarchical and Multisample Data}{31}{section.7.4}%
