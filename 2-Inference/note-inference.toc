@@ -1,4 +1,4 @@
-\babel@toc {english}{}
+\babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Preliminary}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Distributions}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}$\chi ^2$ distribution}{5}{subsection.1.1.1}%
@@ -27,12 +27,12 @@
 \contentsline {subsubsection}{ANOVA}{18}{section*.4}%
 \contentsline {subsubsection}{General linear hypothesis and constrained LSE}{19}{section*.5}%
 \contentsline {subsection}{\numberline {4.1.6}Proofs}{19}{subsection.4.1.6}%
-\contentsline {section}{\numberline {4.2}Linear regression for the non full-rank models}{20}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Linear regression for the non full-rank models}{21}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Quantile Regression}{21}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Sample quantile}{21}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Linear regression quantile}{21}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Proofs}{22}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Regularization}{22}{section.4.4}%
+\contentsline {section}{\numberline {4.4}Regularization}{23}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Motivation}{23}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Ridge regression}{23}{subsection.4.4.2}%
 \contentsline {subsection}{\numberline {4.4.3}LASSO}{24}{subsection.4.4.3}%

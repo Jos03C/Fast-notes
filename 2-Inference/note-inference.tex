@@ -1298,16 +1298,16 @@ Conversely, the solution $\hat{\bab}_{\lambda}^{\lasso}$ solves the bound proble
 		where $s_j=\sign(\beta_j)$ if $\beta_j\neq 0$, and $s_j\in[-1,1]$ if $\beta_j=0$.   
 	\end{proposition}
 \end{thmbox}
-In particular, for a single predictor setting based on $\{Z_i,y_i\}_{i=1}^n$, the problem is to solve
+In particular, for a single predictor setting based on $\{x_i,y_i\}_{i=1}^n$, the problem is to solve
 \begin{sequation*}
 	\minimize{\beta\in\bbR}\ \frac{1}{2n}\sum_{i=1}^{n}(y_i-x_i\beta)^2+\lambda\abs{\beta}, \qquad \y=(y_1,\ldots,y_n)^\TT, \ \x=(x_1,\ldots,x_n)^\TT.
 \end{sequation*}
 The solution is 
 \begin{sequation*}
 	\hat{\beta}_{\lambda}^{\lasso}=\calS_{\lambda}\sbk{\frac{1}{n}\langle \y,\z \rangle} =\begin{cases}
-		\frac{1}{n} \langle \y,\z \rangle - \lambda, & \text{ if } \frac{1}{n}\langle \y,\z \rangle>\lambda, \\
-		0, & \text{ if } \frac{1}{n}\abs{\langle \y,\z \rangle}\leq\lambda, \\
-		\frac{1}{n}\langle \y,\z \rangle + \lambda, & \text{ if } \frac{1}{n}\langle \y,\z \rangle<-\lambda,
+		\frac{1}{n} \langle \y,\x \rangle - \lambda, & \text{ if } \frac{1}{n}\langle \y,\x \rangle>\lambda, \\
+		0, & \text{ if } \frac{1}{n}\abs{\langle \y,\x \rangle}\leq\lambda, \\
+		\frac{1}{n}\langle \y,\x \rangle + \lambda, & \text{ if } \frac{1}{n}\langle \y,\x \rangle<-\lambda,
 	\end{cases}
 \end{sequation*}
 where $\calS_{\lambda}(x)=\sign(x)(\abs{x}-\lambda)_+$ is the \red{\textit{soft-thresholding operator}}.
