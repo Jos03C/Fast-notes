@@ -415,7 +415,7 @@ Note that
 					\item $AGA^\TT A=AHA^\TT A=A$, i.e., $A(A^\TT A)^{-}A^\TT A=A$ for any G-inverse $(A^\TT A)^{-}$.
 					\begin{itemize}
 						\item $(A^\top A)^-A^\top$ is a G-inverse of $A$ for any G-inverse of $A^\top A.$
-						\item $A(A^\top A)^-$ is a G-inverse of $A^\top$ for any G-inverse of $A^\top A.$
+						% \item $A(A^\top A)^-$ is a G-inverse of $A^\top$ for any G-inverse of $A^\top A.$
 					\end{itemize}
 					\item $AGA^\TT=AHA^\TT$, i.e., $A(A^\TT A)^{-}A^\TT$ the same for any G-inverse $(A^\TT A)^{-}$.
 					\item Since $A^\TT A$ is symmetric, $\exists (A^\TT A)^{-}$ symmetric such that $A(A^\TT A)^{-}A^\TT$ symmetric. So by ii, $A(A^\TT A)^{-}A^\TT$ symmetric for all $(A^\TT A)^{-}$.      
@@ -434,13 +434,12 @@ Note that
 \end{defbox}
 
 \begin{thmbox}
-	\begin{theorem}\label{thm:idempotent}
-		$A$ is idempotent.  
+	\begin{theorem}\label{thm:idempotent}\
 		\begin{enumerate}
 			\item All idempotent matrices(except $I$) are singular.
-			\item $\rmr(A)=\tr(A)$. 
-			\item $\lambda(A)$ is either 0 or 1. 
+			\item If $A$ is idempotent, then $\rmr(A)=\tr(A)$, and $\lambda(A)$ is either 0 or 1. 
 			\item If $A$ symmetric, all $\lambda(A)$'s are 0 or 1, then $A$ is idempotent. 
+			\item If $A$ and $V$ are symmetric and $V\succ\0$, then $AV$ has eigenvalues 0 and 1 implies that $AV$ is idempotent.     
 		\end{enumerate}
 	\end{theorem}
 \end{thmbox}

@@ -578,7 +578,6 @@ We decompose
 		\begin{enumerate}
 			\item $\X_j^\TT\hat{\bave}=0 \Longleftrightarrow \X^\TT\hat{\bave}=\0_p \Longleftrightarrow \X^\TT (\Y-\hat{\Y})=\0_p $.
 			\item $\hat{\Y}^\TT\hat{\bave}=0$, the Pythagorean Theorem implies that $\norm{\Y}^2=\littlenorm{\hat{\Y}}^2+\norm{\hat{\bave}}^2$. 
-			\item If $\X$ contains $\1_n$, then $\1_n^\TT \hat{\bave}=0 \Rightarrow n^{-1}\sum_{i=1}^{n}\hat{\varepsilon_i}=0$.
 			\item $\forall \b\in\bbR^{p}$, $(\X\hat{\bab}-\X\b)^\TT \hat{\bave}=0$, we have the following decomposition
 			\begin{sequation*}
 				\|\Y-\X\b\|^2=\|\Y-\X\hat{\bab}\|^2+\|\X(\hat{\bab}-\b)\|^2,
@@ -594,18 +593,16 @@ Let $\H=\X(\X^\TT \X)^{-1}\X^\TT=(h_{ij})_{1\leq i,j\leq n}$ be the so-called \r
 	\hat{\bave}= (I_n-\H)\Y, \qquad
 	\hat{\Y}=\H\Y, \qquad \hat{y}_i=h_{ii}y_i+\sum_{j\neq i}h_{ij}y_j.
 \end{salign*}
-$h_{ii}$ is called the \textit{leverage score}. 
+$h_{ii}$ is called the \red{\textit{leverage score}}. 
  
 \begin{thmbox}{Properties of hat matrix $\H$}
 \begin{proposition}\label{prop:OLS_H}\
 	\begin{enumerate}
-		\item $\H$ is symmetric idempotent (projection matrix), so $\H\X=\X$, $(I_n-\H)\X=\0_n$, and $\rmr(\H)=p$.   
-		\item $I_n-\H$ is symmetric idempotent, so $\tr(I_n-\H)=n-p$. 
+		\item $\H$ is symmetric idempotent (projection matrix), so $\H\X=\X$, $(I_n-\H)\X=\0_n$, and $\rmr(\H)=\rmr(\X)$.   
+		\item $I_n-\H$ is symmetric idempotent, so $\tr(I_n-\H)=n-\rmr(\X)$. 
+		\item $h_{ii}=h_{ii}^2+\sum_{j\neq i}h_{ij}^2$, so $0\leq h_{ii}\leq 1$.  
+		\item $h_{ij}^2\leq 1/4$, $\forall j\neq i$.  
 		\item $\hat{\bave}^\TT\hat{\bave}=\Y^\TT(I_n-\H)\Y=\Y^\TT\Y-\hat{\bab}^\TT \X^\TT \Y=\tr(\Y\Y^\TT(I_n-\H))$. 
-	\end{enumerate}
-	If $\X=(\1_n,\X_1)^\TT\in\bbR^{n\times (p+1)}$, then 
-	\begin{enumerate}
-		\item $\H\1_n=\1_n\Rightarrow \sum_{j=1}^{n}h_{ij}=1$, $\forall i=1,\ldots,n$.  
 	\end{enumerate}
 \end{proposition}
 \end{thmbox}
@@ -674,26 +671,51 @@ It implies that
 	& \Var(\tilde{\beta}_j)\geq \Var(\hat{\beta}_j), \ j=1,\ldots,p.
 \end{salign*}
 
-\subsubsection{Model with intercept}\label{sec:LR_full_rank_OLS_intercept}
-Consider the linear model in Definition \ref{def:LR_full_rank} with intercept
-\begin{sequation}\label{eq:LR_mat_intercept}
-	\underset{n}{\Y}=\X \underset{k+1}{\bab} +{\bave},
-\end{sequation}
-where $\X=(\1_n,\X_c)$, $\bab^\TT=(\beta_0,\b^\TT)$, and $\b^\TT=(\beta_1,\ldots,\beta_k)$.
-Let $\bar{\X}_c^\TT=(\bar{x}_{.1},\ldots,\bar{x}_{.k})$.
-Note that
-\begin{sequation*}
-	\1_n^\TT \Y=n\bar{y}, \qquad \1_n^\TT \X_c=n\bar{\X}_c^\TT.
-\end{sequation*}
-\begin{thmbox}{Properties of LSE with intercept}
-	\begin{proposition}\label{prop:LR_LSE_intercept}
-		For the LSE $\hat{\bab}^\TT=(\hat{\beta}_0,\hat{\b}^\TT)$ in \eqref{eq:LR_OLSE}, we have let $\Z=\X_c-\1_n\bar{\X}_c^\TT$ 
-		\begin{salign*}
-			\hat{\beta}_0&=\bar{y}-\bar{\X}_c^\TT\hat{\b}=\frac{1}{n}\1_n^\TT \Y - \bar{\X}_c^\TT \hat{\b},\\
-			\hat{\b}&=(\Z^\TT\Z)^{-1}\Z^\TT\Y.
-		\end{salign*}
+\subsection{Model with intercept}\label{sec:LR_full_rank_intercept}
+\begin{thmbox}{Model with intercept}
+	\begin{proposition}\label{prop:LR_full_rank_intercept}
+		Consider the linear model in Definition \ref{def:LR_full_rank} with intercept $\Y_{n}=\X\bab_{k+1}+\bave_n$, where $\X=(\1_n,\X_1)$, $\bab^\TT=(\beta_0,\b^\TT)$, and $\b^\TT=(\beta_1,\ldots,\beta_k)$.
+		Let 
+		\begin{sequation*}
+			\bar{\X}=(\bar{x}_{.1},\ldots,\bar{x}_{.k})^\TT\in\bbR^k, \quad \X_c=\X_1-\1_n\bar{\X}^\TT\in\bbR^{n\times k}, \quad \hat{\bab}=(\hat{\beta}_0,\hat{\b}^\TT)^\TT\in\bbR^{k+1}.
+		\end{sequation*} 
+		Then we have the following facts:
+		\begin{enumerate}
+			\item $\1_n^\TT \Y=n\bar{y}$, $\1_n^\TT \X_1=n\bar{\X}^\TT$, and $\X_1^\TT\X_1-n\bar{\X}\bar{\X}^\TT=\X_c^\TT\X_c$. 
+			\item (The geometry of LSE)  $\1_n^\TT \hat{\bave}=0 \Rightarrow n^{-1}\sum_{i=1}^{n}\hat{\varepsilon}_i=0$.
+			\item (Hat matrix) 
+			\begin{itemize}
+				\item $\H\1_n=\1_n\Rightarrow \sum_{j=1}^{n}h_{ij}=1$, $\forall i=1,\ldots,n$.
+				\item $\H=n^{-1}\1_n\1_n^\TT+\X_c(\X_c^\TT\X_c)^{-1}\X_c$.
+				\item $h_{ii}\geq n^{-1}$. Hence $n^{-1}\leq h_{ii}\leq 1$.   
+			\end{itemize}  
+			\item (LSE decomposition)
+			\begin{sequation*}
+				\begin{pmatrix}
+					\hat{\beta}_0 \\ \hat{\b}
+				\end{pmatrix} = \begin{bmatrix}
+					\bar{y}-\bar{\X}^\TT\hat{\b} \\ (\X_c^\TT\X_c)^{-1}\X_c^\TT\Y
+				\end{bmatrix} = 
+				\begin{bmatrix}
+					n^{-1}\1_n^\TT \Y - \bar{\X}^\TT \hat{\b} \\ (\X_c^\TT\X_c)^{-1}\X_c^\TT\Y
+				\end{bmatrix}.
+			\end{sequation*}
+			\item (Variance) Suppose Assumption \ref{ass:GM_ass} holds, then 
+			\begin{salign*}
+				\Var \begin{pmatrix}
+					\hat{\beta}_0 \\ \hat{\b}
+				\end{pmatrix} &=\sigma^{2}
+				\begin{bmatrix}
+					\frac{1}{n}+\bar{\X}^\TT(\X_c^\TT\X_c)^{-1}\bar{\X} & -\bar{\X}^\TT(\X_c^\TT\X_c)^{-1} \\ -(\X_c^\TT\X_c)^{-1}\bar{\X} & (\X_c^\TT\X_c)^{-1}
+				\end{bmatrix}, \\
+				\Var(\hat{\b}) = \sigma^2(\X_c^\TT\X_c)^{-1}, & \quad 
+				\Var(\hat{\beta}_0)=\frac{\sigma^2}{n}+\bar{\X}^\TT \Var(\hat{\b})\bar{\X}, \quad
+				\Cov(\hat{\beta}_0,\hat{\b}^\TT)=-\bar{\X}^\TT\Var(\hat{\b}).
+			\end{salign*}
+		\end{enumerate}
 	\end{proposition}
 \end{thmbox}
+
 
 \subsection{Weighted least square (WLS) estimation}\label{sec:LR_full_rank_WLS}
 \begin{assbox}{WLS assumption}
@@ -803,7 +825,7 @@ the MLE of $\bab$ and $\sigma^2$ are
 that is, LSE is the MLE.
 Note that ${\hat{\sigma}^{2\MLE}}$ is biased for finite $n$. 
 \begin{thmbox}{Properties under normal assumption}
-	\begin{proposition}\label{prop:LR_full_rank_normal_prop} The MLE \eqref{eq:LR_full_rank_MLE} has the following properties:
+	\begin{proposition}\label{prop:LR_full_rank_normal_prop} Under Assumption \ref{ass:normal_linear}, we have:
 		\begin{enumerate}
 			\item $\hat{\bab}^{\MLE}\sim\rmN_p(\bab,(\X^\TT\X)^{-1}\sigma^2)$. 
 			\item The MLE/LSE $\hat{\bab}$ and SSE \eqref{eq:LR_LSE_SSE} are independent.
@@ -845,8 +867,8 @@ we can show $\SSR\indep\SSE$, thus
 		\end{salign*} 
 		The \red{\textit{total sum of squares corrected for the mean}} and the \red{\textit{sum of squares of regression corrected for the mean}} are 
 		\begin{salign*}
-			\SST_m&=\SST-\SSM=\Y(\I_n-\frac{1}{n}\1_n\1_n^\TT)\Y, \\
-			\SSR_m&=\SSR-\SSM=\hat{\bab}^\TT\X^\TT\Y-\Y^\TT \1_n\1_n^\TT \Y = \hat{\b}^\TT \Z^\TT \Y=\hat{\b}^\TT (\Z^\TT\Z)\hat{\b}.
+			\SST_m&=\SST-\SSM=\Y^\TT(\I_n-\frac{1}{n}\1_n\1_n^\TT)\Y, \\
+			\SSR_m&=\SSR-\SSM=\hat{\bab}^\TT\X^\TT\Y-\Y^\TT n^{-1}\1_n\1_n^\TT \Y = \hat{\b}^\TT \X_c^\TT \Y=\hat{\b}^\TT (\X_c^\TT\X_c)\hat{\b}.
 		\end{salign*} 
 	\end{definition}
 \end{defbox}
@@ -1163,14 +1185,132 @@ Conditional quantile model: $F^{-1}(\tau\mid\x)=\x^\TT\bab(\tau)$, where $\beta_
 \end{pfbox}
 
 \section{Regularization}\label{sec:regularization}
+\subsection{Motivation}
 \subsection{Ridge regression}\label{sec:ridge_reg}
+Consider the linear regression model 
+\begin{sequation*}
+	\Y=\X\bab+\bave, \qquad \X=(\x_1,\ldots,\x_n)^\TT\in\bbR^{n\times p}.
+\end{sequation*} 
+Ridge regression shrinks the regression coeffcients by imposing a penalty on their size
+\begin{defbox}{Ridge regression}
+	\begin{definition}\label{def:ridge_reg}
+		The \red{\textit{ridge regression}} is 
+		\begin{sequation}\label{eq:ridge_reg_opt}
+			\minimize{\bab\in\bbR^p} \ \norm{\Y-\X\bab}^2 \qquad \mathrm{s.t.} \qquad \norm{\bab}^2\leq t,
+		\end{sequation}where by convention, $\Z$ is assumed to be standardized and $\Y$ is assumed to be centered.
+		Equivalently, we can write the ridge coeffcients as the minimizer of the following \red{\textit{penalized
+		residual sum of square (PRSS)}}:
+		\begin{sequation}\label{eq:ridge_sol}
+			\begin{aligned}
+				\hat{\bab}_{\lambda}^{\ridge}&=\argmin{\bab\in\bbR^p}\ \PRSS(\bab)_{\ell_2}=\argmin{\bab\in\bbR^p} \ 
+			\norm{\Y-\X\bab}^2 + \lambda\norm{\bab}^2 \\
+			&=(\X^\TT\X+\lambda I_p)^{-1}\X^\TT\Y,
+			\end{aligned}
+		\end{sequation}
+		where $\lambda\geq 0$ is the tunning parameter. 
+	\end{definition}
+\end{defbox}
+For a given $\lambda$, we can always find a $t$ such that the solutions from \eqref{eq:ridge_reg_opt} and \eqref{eq:ridge_sol} are identical. 
+The corresponding $t$ and $\lambda$ satisfy $t=\littlenorm{\hat{\bab}_{\lambda}^{\ridge}}^2$.   
+
+\bg{
+	\begin{remark}
+			Ridge regression can be translated into the LS problem alike
+			with the data augmentation approach. The $\ell_2$-PRSS can be written as 
+			\begin{salign*}
+				\PRSS(\bab)_{\ell_2}&=\sum_{i=1}^{n}(y_i-\x_i^\TT\bab)^2+\sum_{j=1}^{p}(0-\sqrt{\lambda}\beta_j)^2=\norm{\Y_{\lambda}-\X_{\lambda}\bab}^2,
+			\end{salign*} 
+			where 
+			\begin{sequation*}
+				\Y_{\lambda}=\begin{pmatrix}
+					\Y \\ \0_p
+				\end{pmatrix},\qquad 
+				\X_{\lambda}=\begin{pmatrix}
+					\X \\ \sqrt{\lambda} I_p.
+				\end{pmatrix}
+			\end{sequation*}
+			The LSE for the augmented data set is $(\X_{\lambda}^\TT\X_{\lambda})^{-1}\X_{\lambda}^\TT\Y_{\lambda}=\hat{\bab}_{\lambda}^{\ridge}$. 
+	\end{remark}
+}
+
+We can compute the ridge solutions via the SVD of $\X=U D V^\TT$, where $U=(\u_1,\ldots,\u_p)\in\bbR^{n\times p}$ is orthogonal, $D=\diag(d_1,\ldots,d_p)$ consisting of the singular values $d_1\geq d_2\geq \cdots\geq d_p\geq 0$, and $V=(\v_1,\ldots,\v_p)\in\bbR^{p\times p}$ is orthogonal.
+We can show 
+\begin{salign*}
+	\hat{\bab}_{\lambda}^{\ridge}&=V\diag\sbk{\frac{d_j}{d_j^2+\lambda}}U^\TT \Y=\sbk{\sum_{j=1}^{p}\frac{d_j}{d_j^2+\lambda}\v_j\u_j^\TT}\Y,\\
+	\hat{\Y}^{\ridge}=\X\hat{\bab}_{\lambda}^{\ridge}&=\underbrace{U\diag\sbk{\frac{d_j^2}{d_j^2+\lambda}}U^\TT}_{\H_\lambda=\X(\X^\TT\X+\lambda I_p)^{-1}\X^\TT}\Y=
+	\sbk{\sum_{j=1}^{p} \frac{d_j^2}{d_j^2+\lambda} \u_j\u_j^\TT}\Y.
+\end{salign*}       
+The \red{\textit{effective degrees of freedom}} for $\H_\lambda$ is 
+\begin{sequation*}
+	\df(\H_\lambda)=\tr(\H_\lambda)=\sum_{j=1}^{p}\frac{d_j^2}{d_j^2+\lambda}.
+\end{sequation*} 
+
+\bg{
+	\begin{remark}
+		Ridge regression also has a relationship with PCA. $d_j\u_j$ is the $j$th PC of $\X$, hence, ridge regression projects $\X$ onto these components with large $d_j$.     
+		Ridge regression shrinks the coeffcients of low-variance (small singular value) components.
+	\end{remark}
+}
+
+\begin{thmbox}{MSE of $\hat{\bab}_{\lambda}^{\ridge}$}
+	\begin{proposition}\label{prop:ridge_sol_MSE}
+		Suppose Assumption \ref{ass:GM_ass} holds. Then 
+		\begin{salign*}
+			\bbE \hat{\bab}_{\lambda}^{\ridge} &= V\diag\sbk{\frac{d_j^2}{d_j^2+\lambda}}V^\TT \bab,\\
+			\bbE \hat{\bab}_{\lambda}^{\ridge} - \bab &= -\lambda(\X^\TT\X+\lambda I_p)^{-1}\bab = -\lambda V(D^2+\lambda I_p)^{-1}V^\TT\bab, \\
+			\Var(\hat{\bab}_{\lambda}^{\ridge}) &= \sigma^2 (\X^\TT\X +\lambda I_p)^{-1}\X^\TT\X(\X^\TT\X+\lambda I_p)^{-1}=\sigma^2 V\diag\sbk{\frac{d_j^2}{(d_j^2+\lambda)^2}}V^\TT,\\
+			\MSE(\hat{\bab}_{\lambda}^{\ridge})&=\lambda^2\sum_{j=1}^{p}\frac{\gamma_j^2}{(d_j^2+\lambda)^2}+\sigma^2\sum_{j=1}^{p}\frac{d_j^2}{(d_j^2+\lambda)^2},\ \gamma_j=\v_j^\TT\bab.
+		\end{salign*}
+		We can show $\frac{\rmd\MSE(\hat{\bab}_{\lambda}^{\ridge})}{\rmd\lambda}\mid_{\lambda=0}<0$, hence $\exists \lambda>0$ such that $\MSE(\hat{\bab}_{\lambda}^{\ridge}) < \MSE(\hat{\bab}_{0}^{\ridge}) = \MSE(\hat{\bab}^{\LSE})$   
+	\end{proposition}
+\end{thmbox}
 
 
 
 \subsection{LASSO}\label{sec:lasso}
 
-
-
+Consider the linear regression model 
+\begin{sequation*}
+	\Y=\X\bab+\bave, \qquad \X=(\X_1,\ldots,\X_p)=(\x_1,\ldots,\x_n)^\TT\in\bbR^{n\times p}.
+\end{sequation*} 
+\begin{defbox}{LASSO}
+	\begin{definition}\label{def:lasso_reg}
+		The \red{\textit{least absolute shrinkage and selection operator (LASSO)}} is defined as the $\ell_1$ optimization problem:
+		\begin{sequation}\label{eq:lasso_reg_opt}
+			\minimize{\bab\in\bbR^p} \ \frac{1}{2n}\norm{\Y-\X\bab}^2, \quad \text{ s.t. } \quad \norm{\bab}_1\leq t.
+		\end{sequation}
+		The Lagrangian form is
+		\begin{sequation}\label{eq:lasso_reg_lag}
+			\minimize{\bab\in\bbR^p} \ \frac{1}{2n}\norm{\Y-\X\bab}^2 + \lambda\norm{\bab}_1, \ \lambda\geq 0.
+		\end{sequation}
+		Denote $\hat{\bab}_{\lambda}^{\lasso}$ the resulting LASSO estimate of \eqref{eq:lasso_reg_lag}. 
+	\end{definition}
+\end{defbox}
+There is an one-to-one correspondence between the constrained problem \eqref{eq:lasso_reg_opt} and the Lagrangian form \eqref{eq:lasso_reg_lag}: for each value of $t$ in the range where the constraint $\norm{\bab}_1\leq t$ is active, there is a corresponding value of $\lambda$ that yields the same solution from \eqref{eq:lasso_reg_lag}.
+Conversely, the solution $\hat{\bab}_{\lambda}^{\lasso}$ solves the bound problem with $t=\littlenorm{\hat{\bab}_{\lambda}^{\lasso}}_1$. 
+\begin{thmbox}{LASSO solution}
+	\begin{proposition}\label{prop:lasso_sol}
+		Necessary and suffcient conditions for a
+		solution to problem \eqref{eq:lasso_reg_lag} take the form 
+		\begin{sequation}\label{eq:lasso_sol_FONC}
+		-\frac{1}{n}\langle \X_j, \Y-\X\bab \rangle + \lambda s_j = 0,\quad j=1,\ldots,p, 
+		\end{sequation}
+		where $s_j=\sign(\beta_j)$ if $\beta_j\neq 0$, and $s_j\in[-1,1]$ if $\beta_j=0$.   
+	\end{proposition}
+\end{thmbox}
+In particular, for a single predictor setting based on $\{Z_i,y_i\}_{i=1}^n$, the problem is to solve
+\begin{sequation*}
+	\minimize{\beta\in\bbR}\ \frac{1}{2n}\sum_{i=1}^{n}(y_i-x_i\beta)^2+\lambda\abs{\beta}, \qquad \y=(y_1,\ldots,y_n)^\TT, \ \x=(x_1,\ldots,x_n)^\TT.
+\end{sequation*}
+The solution is 
+\begin{sequation*}
+	\hat{\beta}_{\lambda}^{\lasso}=\calS_{\lambda}\sbk{\frac{1}{n}\langle \y,\z \rangle} =\begin{cases}
+		\frac{1}{n} \langle \y,\z \rangle - \lambda, & \text{ if } \frac{1}{n}\langle \y,\z \rangle>\lambda, \\
+		0, & \text{ if } \frac{1}{n}\abs{\langle \y,\z \rangle}\leq\lambda, \\
+		\frac{1}{n}\langle \y,\z \rangle + \lambda, & \text{ if } \frac{1}{n}\langle \y,\z \rangle<-\lambda,
+	\end{cases}
+\end{sequation*}
+where $\calS_{\lambda}(x)=\sign(x)(\abs{x}-\lambda)_+$ is the \red{\textit{soft-thresholding operator}}.
 
 \chapter{Generalized Linear Models}\label{chap:GLM}
 \section{Logistic regression}\label{sec:logistic_reg}
