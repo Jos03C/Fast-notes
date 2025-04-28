@@ -599,10 +599,10 @@ $h_{ii}$ is called the \red{\textit{leverage score}}.
 \begin{proposition}\label{prop:OLS_H}\
 	\begin{enumerate}
 		\item $\H$ is symmetric idempotent (projection matrix), so $\H\X=\X$, $(I_n-\H)\X=\0_n$, and $\rmr(\H)=\rmr(\X)$.   
-		\item $I_n-\H$ is symmetric idempotent, so $\tr(I_n-\H)=n-\rmr(\X)$. 
+		\item $I_n-\H$ is symmetric idempotent, so $\tr(I_n-\H)=n-\rmr(\X)$.
+		\item $\hat{\bave}^\TT\hat{\bave}=\Y^\TT(I_n-\H)\Y=\Y^\TT\Y-\hat{\bab}^\TT \X^\TT \Y=\tr(\Y\Y^\TT(I_n-\H))$.  
 		\item $h_{ii}=h_{ii}^2+\sum_{j\neq i}h_{ij}^2$, so $0\leq h_{ii}\leq 1$.  
 		\item $h_{ij}^2\leq 1/4$, $\forall j\neq i$.  
-		\item $\hat{\bave}^\TT\hat{\bave}=\Y^\TT(I_n-\H)\Y=\Y^\TT\Y-\hat{\bab}^\TT \X^\TT \Y=\tr(\Y\Y^\TT(I_n-\H))$. 
 	\end{enumerate}
 \end{proposition}
 \end{thmbox}
@@ -671,7 +671,7 @@ It implies that
 	& \Var(\tilde{\beta}_j)\geq \Var(\hat{\beta}_j), \ j=1,\ldots,p.
 \end{salign*}
 
-\subsection{Model with intercept}\label{sec:LR_full_rank_intercept}
+\subsubsection{Model with intercept}\label{sec:LR_full_rank_intercept}
 \begin{thmbox}{Model with intercept}
 	\begin{proposition}\label{prop:LR_full_rank_intercept}
 		Consider the linear model in Definition \ref{def:LR_full_rank} with intercept $\Y_{n}=\X\bab_{k+1}+\bave_n$, where $\X=(\1_n,\X_1)$, $\bab^\TT=(\beta_0,\b^\TT)$, and $\b^\TT=(\beta_1,\ldots,\beta_k)$.
@@ -857,6 +857,19 @@ we can show $\SSR\indep\SSE$, thus
 \begin{salign*}
 	F(R)=\frac{\MSR}{\MSE}=\frac{\SSR/\rmr(\X)}{\SSE/(n-\rmr(\X))}=\frac{\SSR/\rmr(\X)}{\hat{\sigma}^2} \sim \textsc{F}_{[\rmr(\X),\n-\rmr(\X)]}\sbk{\frac{\bab^\TT\X^\TT\X\bab}{\sigma^2}}.
 \end{salign*}
+See Table~\ref{tab:LR_ANOVA}.
+
+\begin{table}\label{tab:LR_ANOVA}
+	\centering
+	\caption{Traditional ANOVA table}
+	\begin{tabular}{ccccc}\hline
+	Source & df & SS & MS & F-statistics \\ \hline
+	Regression & $\rmr(\X)$ & $\hat{\bab}\X^\TT\Y$ & $\SSR/\rmr(\X)$ & $F(R)=\MSR/\MSE$  \\
+	Error & $n-\rmr(\X)$ & $\Y^\TT\Y-\hat{\bab}^\TT\X^\TT\Y$ & $\SSE/(n-\rmr(\X))$ & \\ \hline
+	Total & $n$ & $\Y^\TT\Y$  &  &  \\ \hline
+	\end{tabular}
+\end{table}
+
 
 \begin{defbox}{$\SSM$, $\SST_m$, $\SSR_m$}
 	\begin{definition}\label{def:LR_SSM}
@@ -892,6 +905,19 @@ Construct F-statistics:
 	F(M)&=\frac{\MSM}{\MSE}=\frac{\SSM/1}{\SSE/(n-\rmr(\X))}\sim \textsc{F}_{[1,n-\rmr(\X)]}\sbk{\frac{(\1_n^\TT\X\bab)^2}{n\sigma^2}},\\
 	F(R_m)&=\frac{\MSR_m}{\MSE}=\frac{\SSR_m/(\rmr(\X)-1)}{\SSE/(n-\rmr(\X))}\sim\textsc{F}_{[\rmr(\X)-1,n-\rmr(\X)]}\sbk{\frac{\b^\TT(\Z^\TT\Z)\b}{\sigma^2}}
 \end{salign*}
+See Table~\ref{tab:LR_ANOVA_mean_correct}.
+
+\begin{table}\label{tab:LR_ANOVA_mean_correct}
+	\centering
+	\caption{ANOVA table corrected for the mean}
+	\begin{tabular}{ccccc}\hline
+	Source & df & SS & MS & F-statistics \\ \hline
+	Mean & 1 & $n^{-1}\Y^\TT\1_n\1_n^\TT\Y$ & $\MSS/1$ & $F(M)=\MSM/\MSE$ \\ \hline  
+	Regression & $\rmr(\X)-1$ & $\hat{\b}\Z^\TT\Y$ & $\SSR_m/(\rmr(\X)-1)$ & $F(R)=\MSR_m/\MSE$  \\
+	Error & $n-\rmr(\X)$ & $\Y^\TT\Y-\hat{\bab}^\TT\X^\TT\Y$ & $\SSE/(n-\rmr(\X))$ & \\ \hline
+	Total & $n$ & $\Y^\TT\Y$  &  &  \\ \hline
+	\end{tabular}
+\end{table}
 
 \subsubsection{General linear hypothesis and constrained LSE}\label{sec:LR_full_rank_normal_general_linear_hypo}
 The general hypothesis we consider is
@@ -919,18 +945,44 @@ where $\K$ and $\m$ are specified constants, and $\K^\TT$ is assumed to be of fu
 		\end{sequation*}
 	\end{proposition}
 \end{thmbox}
-When $H_0$ is true, the solution of the constrained LSE $\mathrm{minimize}_{\bab}\norm{\Y-\X\bab}^2$ subject to $\K^\TT\bab=\m$ is 
+When $H_0$ is true or we make such constraint, by FONC, the solution of the constrained LSE $\mathrm{minimize}_{\bab}\norm{\Y-\X\bab}^2$ subject to $\K^\TT\bab=\m$ is 
 \begin{salign*}
 	\tilde{\bab}&=(\X^\top \X)^{-1}[\X^\top \Y-\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}(\K^\top(\X^\top \X)^{-1}\X^\top \Y-\m)]\\
 	&=\hat{\bab}-(\X^\top \X)^{-1}\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}(\K^\top\hat{\bab}-\m).
 \end{salign*}   
-Under the reduced model ($H_0$), the SSE is 
+We can derive the following equations: let $\SSE_{H_0}=(\Y-\X\tilde{\bab})^\TT (\Y-\X\tilde{\bab})$, 
 \begin{salign*}
-	\SSE_{H_0}=(\Y-\X\tilde{\bab})^\TT (\Y-\X\tilde{\bab}) 
-	=\SSE + Q
+	(\tilde{\bab}-\hat{\bab})^\TT (\X^\TT\X) (\tilde{\bab}-\hat{\bab}) &=Q,\\
+	(\text{Under $H_0$}) \qquad \SSE_{H_0}-\SSE&=Q.
 \end{salign*}
+Besides, suppose the constraint is true, by $\hat{\bab}=\bab+(\X^\TT\X)^{-1}\X^\TT\bave$,
+\begin{salign*}
+	\tilde{\bab}-\bab&=(\X^\TT\X)^{-1}\X^\TT\bave + (\X^\top \X)^{-1}\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}(\m-\K^\top(\bab+(\X^\TT\X)^{-1}\X^\TT\bave))\\
+	&=M^r(\X^\TT\X)^{-1}\X^\TT\bave=M^\textsc{r}(\hat{\bab}-\bab),
+\end{salign*} 
+where $M^r=I-(\X^\top \X)^{-1}\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}\K^\TT$.
+By $\bbE\tilde{\bab}=\0$,  
+\begin{salign*}
+	\Var(\tilde{\bab})&=\bbE\{(\tilde{\bab}-\bab)(\tilde{\bab}-\bab)^\TT\}=\sigma^2 (M^r (\X^\TT\X)^{-1} {M^r}^\TT)\\
+	&=\Var(\hat{\bab})-\underbrace{\sigma^2 (\X^\TT\X)^{-1}\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}\K^\TT(\X^\TT\X)^{-1}}_{\succeq \0}.
+\end{salign*}
+So under the constraint, the restricted LSE $\tilde{\bab}$ attains smaller variance than LSE $\hat{\bab}$.  
+
+Suppose we have the constraint $\C\bab=\r$ where $\C\in\bbR^{c\times (k+1)}$  and want to test $H_0:\K^\TT\bab=\m$ where $\K^\TT\in\bbR^{s\times (k+1)}$.
+Let $\tilde{\bab}$ be the restricted LSE with $\SSE$ having df $n-\rmr(\X)+c$, and define $Q$ but replace $\hat{\bab}$ by $\tilde{\bab}$ having df $s$.
+Then $F=(Q/s)/[\SSE/(n-\rmr(\X)+c)]$ has F distribution.
+
+
 
 \subsection{Proofs}\label{sec:LR_full_rank_proof}
+\begin{pfbox}{Proof of Proposition \ref{prop:OLS_H}}
+	\begin{proof}
+		Items 1--3 are obvious.
+		For item 4, note that $H=H^2$ and hence $h_{ii}=(H^2)_{ii}$. So $h_{ii}\geq 0$. Divide both sides by $h_{ii}$ then $1=h_{ii}+\sum_{j\neq i} h_{ij}^2/h_{ii}$ where the last term is nonnegative to get $h_{ii}\leq 1$. For any $i\neq j$, By $h_{ii}=h_{ii}^2 + h_{ij}^2 + \sum_{k\neq i,j}h_{ik}^2$, we have $h_{ii}-h_{ii}^2=h_{ij}^2+\sum_{k\neq i,j}h_{ik}^2$, so $h_{ij}^2\leq h_{ii} - h_{ii}^2 \leq 1/4$.      
+	\end{proof}
+\end{pfbox}
+
+
 \begin{pfbox}{Proof of Proposition \ref{prop:LR_LSE}}
 	\begin{proof}
 		1.
@@ -1002,6 +1054,57 @@ Under the reduced model ($H_0$), the SSE is
 	\end{proof}
 \end{pfbox}
 
+\begin{pfbox}{Proof of Proposition \ref{prop:LR_full_rank_intercept}}
+	\begin{proof}\
+		\begin{enumerate}
+			\item Obvious.
+			\item Obvious.
+			\item The first item is obvious. Since $\X=(\1_n,\X_1)$, by the inversion formula for block matrices, we partition 
+			\begin{salign*}
+				(\X^\TT\X)^{-1}=\begin{pmatrix}
+					n & n\bar{\X}^\TT \\ n\bar{\X} & \X_1^\TT\X_1
+				\end{pmatrix}^{-1}
+				=\begin{pmatrix}
+					\frac{1}{n}+\bar{\X}^\TT(\X_c\X_c)^{-1}\bar{\X} & -\bar{\X}^\TT (\X_c\X_c)^{-1} \\ -(\X_c\X_c)^{-1}\bar{\X} & (\X_c\X_c)^{-1}
+				\end{pmatrix}.
+			\end{salign*}
+			Then 
+			\begin{salign*}
+				(\X^\TT\X)^{-1}\X^\TT &= \begin{pmatrix}
+					\frac{1}{n}\1_n^\TT + \bar{\X}^\TT (\X_c\X_c)^{-1}\bar{\X}\1_n^\TT -\bar{\X}^\TT (\X_c\X_c)^{-1} \X_1^\TT \\
+					-(\X_c\X_c)^{-1}\bar{\X}\1_n^\TT + (\X_c\X_c)^{-1} \X_1^\TT
+				\end{pmatrix},\\
+				H=\X(\X^\TT\X)^{-1}\X^\TT &=\frac{1}{n}\1_n\1_n^\TT-(\X_1-\1_n\bar{\X}^\TT)(\X_c\X_c)^{-1}\bar{\X}\1_n^\TT + (\X_1-\1_n\bar{\X}^\TT)(\X_c\X_c)^{-1}\X_1^\TT\\
+				&=\frac{1}{n}\1_n\1_n^\TT+\X_c(\X_c\X_c)^{-1}\X_c.
+			\end{salign*}
+			Since $\X_c(\X_c\X_c)^{-1}\X_c\succeq\0$, $h_{ii}=\e_i^\TT \H \e_i =n^{-1}+\e_i^\TT \X_c(\X_c^\TT\X_c)^{-1}\X_c\e_i\geq n^{-1}$.  
+
+			\item By the above partition,
+			\begin{salign*}
+				\hat{\bab}&=\begin{pmatrix}
+					\frac{1}{n}+\bar{\X}^\TT(\X_c\X_c)^{-1}\bar{\X} & -\bar{\X}^\TT (\X_c\X_c)^{-1} \\ -(\X_c\X_c)^{-1}\bar{\X} & (\X_c\X_c)^{-1}
+				\end{pmatrix}\begin{pmatrix}
+					n\hat{y} \\ \X_1^\TT \Y
+				\end{pmatrix}\\
+				&= \begin{bmatrix}
+					\bar{y}-\bar{\X}^\TT (\X_c\X_c)^{-1} (\X_1^\TT \Y - n\bar{\X}\bar{y}) \\ (\X_c\X_c)^{-1}(\X_1^\TT \Y - n\bar{y}\bar{\X}).
+				\end{bmatrix}
+			\end{salign*}
+			Since $\X_1^\TT \Y - \bar{\X}(n\bar{y})=\X_c^\TT\Y$, we obtain 
+			\begin{salign*}
+				\hat{\bab}&=\begin{bmatrix}
+				\bar{y}-\bar{\X}^\TT (\X_c^\TT \X)^{-1}\X_c^\TT \Y \\
+				(\X_c^\TT \X)^{-1}\X_c^\TT \Y 
+				\end{bmatrix}=\begin{pmatrix}
+					\hat{\beta}_0 \\ \hat{\b}
+				\end{pmatrix}.
+			\end{salign*}
+
+			\item By $\Var(\hat{\bab})=\sigma^2(\X^\TT \X)^{-1}$ and the above partition, we can easily obtain the result. 
+		\end{enumerate}
+	\end{proof}
+\end{pfbox}
+
 \begin{pfbox}{Proof of Corollary \ref{cor:GM_WLS}}
 	\begin{proof}
 		The WLSE satisfies conditions (C1)--(C2).
@@ -1024,6 +1127,64 @@ Under the reduced model ($H_0$), the SSE is
 	\begin{proof}
 		Item 1 is obvious. Item 2 applies Theorem \ref{thm:MVN_quad_indep}. Item 3 uses Theorem \ref{thm:quad_MVN_general} to show the $\chi^2$ distribution and \eqref{eq:chi2_moment} to show the moments. 
 	\end{proof}
+\end{pfbox}
+
+\begin{pfbox}{Proof of Proposition \ref{prop:LR_SSM_dist}}
+	\begin{proof}
+		It is shown by Theorems \ref{thm:MVN_quad_indep} and \ref{thm:quad_MVN_general}.
+	\end{proof}
+\end{pfbox}
+
+\begin{pfbox}{Proof of Proposition \ref{prop:LR_full_rank_normal_general_linear_hypo}}
+\begin{proof}
+	We can show $[\K^\top(\X^\top \X)^{-1}\K]^{-1}$ exists: since 
+	\begin{sequation*}
+		s=\rmr(\K^\TT)\geq \rmr(\K^\TT (\X^\TT\X)^{-1}) \geq \rmr(\K^\TT (\X^\TT\X)^{-1}\X^\TT)\geq \rmr(\K^\TT (\X^\TT\X)^{-1}(\X^\TT\X)) = s,
+	\end{sequation*}
+	and by $\rmr(A)=\rmr(AA^\TT)$, 
+	we have 
+	\begin{sequation*}
+		s=\rmr(\K^\TT)=\rmr(\K^\TT (\X^\TT\X)^{-1}\X^\TT)=\rmr(\K^\TT (\X^\TT\X)^{-1}\X^\TT\X(\X^\TT\X)^{-1}\K)=\rmr(\K^\TT(\X^\TT\X)^{-1}\K).
+	\end{sequation*}
+	So it is full rank and thus invertible.
+
+	It is easy to show the distribution of $\K^\TT\hat{\bab}-\m$.	
+	To show $Q\indep\SSE$, rewrite 
+	\begin{salign*}
+		Q&=({\K^\top\hat{\bab}}-\m)^\top[\K^\top(\X^\top \X)^{-1}\K]^{-1}({\K^\top\hat{\bab}}-\m)\\
+		&=({\K^\top(\X^\top \X)^{-1}\X^\top \Y}-\m)^\top[\K^\top(\X^\top \X)^{-1}\K]^{-1}({\K^\top(\X^\top \X)^{-1}\X^\top \Y}-\m),
+	\end{salign*}  
+	But 
+	\begin{salign*}
+		\K^\top(\X^\top \X)^{-1}\X^\top \Y-\m=\K^\top(\X^\top \X)^{-1}\X^\top(\Y-\X\K(\K^\top \K)^{-1}\m).
+	\end{salign*}
+	Therefore,
+	\begin{salign*}
+		Q&=(\Y-\X\K(\K^\top \K)^{-1}\m)^\top \X(\X^\top \X)^{-1}\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}\K^\top(\X^\top \X)^{-1}\X^\top\underbrace{(\Y-\X\K(\K^\top \K)^{-1}\m)}_{\d}\\
+		&=\d^\TT [\X(\X^\top \X)^{-1}\K(\K^\top(\X^\top \X)^{-1}\K)^{-1}\K^\top(\X^\top \X)^{-1}\X^\top] \d =: \d^\TT \B\d.
+	\end{salign*}
+	On the other hand,
+	\begin{salign*}
+		\SSE &= \Y^{\top}(I_n-\X(\X^{\top}\X)^{-1}\X^{\top})\Y \\
+		&=(\boldsymbol{Y}-\boldsymbol{X}\boldsymbol{K}(\boldsymbol{K}^{\top}\boldsymbol{K})^{-1}\m)^{\top}(I_n-\boldsymbol{X}(\boldsymbol{X}^{\top}\boldsymbol{X})^{-1}\boldsymbol{X}^{\top})(\boldsymbol{Y}-\boldsymbol{X}\boldsymbol{K}(\boldsymbol{K}^{\top}\boldsymbol{K})^{-1}\m)\\
+		&=\d^\top(I-\X(\X^\top \X)^{-1}\X^\top)\d =: \d^\TT \A \d,
+	\end{salign*}
+	because $\X^\top(I-\X(\X^\top \X)^{-1}\X^\top)=\0$ and $(I-\X(\X^\top \X)^{-1}\X^\top)\X=\0$.
+	Since 
+	\begin{sequation*}
+		\A\Sigma \B=(I-\X(\X^\top \X)^{-1}\X^\top)^\top\sigma^2 I\X(\X^\top \X)^{-1}\K[\K^\top(\X^\top \X)^{-1}\K]^{-1}\K^\top(\X^\top \X)^{-1}\X^\top=\0,
+	\end{sequation*}
+	by Theorem \ref{thm:MVN_quad_indep}, $Q\indep \SSE$. 
+	Then since 
+	\begin{sequation*}
+		\frac{(\K^\top(\X^\top \X)^{-1}\K)^{-1}}{\sigma^2}(\K^\top(\X^\top \X)^{-1}\K)\sigma^2=I_s,
+	\end{sequation*}
+	which is symmetric and idempotent, we have 
+	\begin{sequation*}
+		\frac{Q}{\sigma^2}\sim\chi_{s}^2 \cbk{\sigma^{-2}(\K^\TT{\bab}-\m)^\TT [\K^\TT(\X^\TT\X)^{-1}\K]^{-1}(\K^\TT{\bab}-\m)}.
+	\end{sequation*}
+	Finally, we can obtain the F distribution.
+\end{proof}	
 \end{pfbox}
 
 
